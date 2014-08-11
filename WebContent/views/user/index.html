@@ -1,0 +1,211 @@
+<div uu-action-item label="添加用户" ng-click="new(userForm)"></div>
+
+<div uu-alert level="{{alertLevel}}" msg="{{alertMsg}}"></div>
+
+<form class="form form-horizontal form-small search-form" role="form" >
+	<fieldset>
+		<legend>用户搜索</legend>
+		<div class="form-group">
+			<label class="control-label col-xs-2 col-sm-1" for="name">姓名:</label>
+			<div class="col-sm-4 col-xs-6">
+				<input type="text" class="input-sm form-control ng-pristine ng-valid" ng-model="searchModel.name" name="name" id="name"></div>
+		</div>
+		<div class="form-group">
+			<label class="control-label col-xs-2 col-sm-1" for="account">帐号:</label>
+			<div class="col-sm-4 col-xs-6">
+				<input type="text" class="input-sm form-control ng-pristine ng-valid" ng-model="searchModel.account" name="account" id="account"></div>
+		</div>
+		<div class="form-group">
+			<label class="control-label col-xs-2 col-sm-1" for="positions">岗位:</label>
+			<div class="col-sm-4 col-xs-6">
+				<input type="text" class="input-sm form-control ng-pristine ng-valid" ng-model="searchModel.positions" name="positions" id="positions"></div>
+
+			<div class="col-xs-2">
+				<button class="btn btn-default large-btn" type="submit" ng-click="reloadSearch()">
+					<span class="glyphicon glyphicon-search"></span>
+				</button></div>
+		</div>
+	</fieldset>
+</form>
+
+<div class="row container" ng-if="result.recordsCount">
+	<div uu-pagination records="result.recordsCount" page="page" action="search()" model="searchModel.pagination"></div>
+
+	<table class="table table-bordered table-striped">
+		<tr>
+			<th>姓名</th>
+			<th>帐号</th>
+			<th>性别</th>
+			<th>岗位</th>
+			<th>Email</th>
+			<th>是否有效</th>
+			<th>操作</th>
+		</tr>
+		<tr ng-repeat="user in result.records">
+			<td>{{user.name}}</td>
+			<td>{{user.account}}</td>
+			<td>{{user.gender | gender }}</td>
+			<td>{{user.positions}}</td>
+			<td>{{user.email}}</td>
+			<td>{{user.isValid | valid}}</td>
+			<td>
+				<ul class="list-inline">
+					<li>
+						<a href="" ng-click="modify(user)" data-toggle="modal" data-target="#uumodal">修改</a>
+					</li>
+					<li>
+						<a href="" ng-click="editRole(user)" data-toggle="modal" data-target="#rolemodal">修改角色</a>
+					</li>
+					<li>
+						<a title="确定删除吗？" confirm="delete(user, $index)" text="请确定您的操作，删除将无法撤销!" uu-confirm label="删除"></a>
+					</li>
+				</ul>
+			</td>
+		</tr>
+	</table>
+
+</div>
+
+<div class="modal fade" id="uumodal">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title">{{modalTitle}}</h4>
+			</div>
+			<div class="modal-body">
+				<form action="" class="form form-horizontal form-small" name="userForm" novalidate>
+					<fieldset>
+						<div class="form-group" ng-class="{ 'has-error' : userForm.username.$invalid && (!userForm.username.$pristine || submitted) }">
+							<label class="control-label col-xs-3" for="username">姓名:</label>
+							<div class="col-xs-5">
+								<input type="text" class="input-sm form-control" required ng-model="model.name" name="username" id="username"></div>
+							<div class="col-xs-4">
+								<p ng-show="userForm.username.$invalid && (!userForm.username.$pristine || submitted)" class="help-block">请输入姓名.</p>
+							</div>
+						</div>
+
+						<div class="form-group" ng-class="{ 'has-error' : userForm.useraccount.$invalid && (!userForm.useraccount.$pristine || submitted) }">
+							<label class="control-label col-xs-3" for="useraccount">帐号:</label>
+							<div class="col-xs-5">
+								<input type="text" class="input-sm form-control" required ng-model="model.account" name="useraccount" id="useraccount"></div>
+							<div class="col-xs-4">
+								<p ng-show="userForm.useraccount.$invalid && (!userForm.useraccount.$pristine || submitted)" class="help-block">请输入帐号.</p>
+							</div>
+						</div>
+
+						<div class="form-group" ng-class="{ 'has-error' : userForm.password.$invalid && (!userForm.password.$pristine || submitted) }">
+							<label class="control-label col-xs-3" for="password">密码:</label>
+							<div class="col-xs-5">
+								<input type="password" class="input-sm form-control" required ng-model="model.password" name="password" id="password"></div>
+							<div class="col-xs-4">
+								<p ng-show="userForm.password.$invalid && (!userForm.password.$pristine || submitted)" class="help-block">请输入密码.</p>
+							</div>
+						</div>
+
+						<div class="form-group" ng-class="{ 'has-error' : !model.gender && submitted }">
+							<label class="col-xs-3 control-label">性别:</label>
+							<div class="col-xs-5">
+								<div class="radio-inline">
+									<label>
+										<input type="radio" ng-model="model.gender" value="1">男</label>
+								</div>
+								<div class="radio-inline">
+									<label>
+										<input type="radio" ng-model="model.gender" value="0">女</label>
+								</div>
+							</div>
+							<div class="col-xs-4">
+								<p ng-show="!model.gender && submitted" class="help-block">请选择性别.</p>
+							</div>
+						</div>
+						<div class="form-group" ng-class="{ 'has-error' : !model.isValid && submitted }">
+							<label class="col-xs-3 control-label" for="c-gender">是否有效:</label>
+							<div class="col-xs-5">
+								<div class="radio-inline">
+									<label>
+										<input type="radio" ng-model="model.isValid" value="1">是</label>
+								</div>
+								<div class="radio-inline">
+									<label>
+										<input type="radio" ng-model="model.isValid" value="0">否</label>
+								</div>
+							</div>
+							<div class="col-xs-4">
+								<p ng-show="!model.isValid && submitted" class="help-block">请选择是否有效.</p>
+							</div>
+						</div>
+						<div class="form-group" ng-class="{ 'has-error' : userForm.positions.$invalid && (!userForm.positions.$pristine || submitted)}">
+							<label class="control-label col-xs-3" for="positions">岗位:</label>
+							<div class="col-xs-5">
+								<input type="text" class="input-sm form-control" required ng-model="model.positions" name="positions" id="positions"></div>
+							<div class="col-xs-4">
+								<p ng-show="userForm.positions.$invalid && (!userForm.positions.$pristine || submitted)" class="help-block">请输入岗位.</p>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label class="col-xs-3 control-label" for="type">用户组:</label>
+							<div class="col-xs-4">
+								<select ng-model="model.groupId" class="form-control" ng-options="group.id as group.name for group in groups"></select>
+							</div>
+						</div>
+						<div class="form-group" ng-class="{ 'has-error' : userForm.email.$invalid && (!userForm.email.$pristine || submitted)}">
+							<label class="control-label col-xs-3" for="email">Email:</label>
+							<div class="col-xs-5">
+								<input type="email" class="input-sm form-control" required ng-model="model.email" name="email" id="email"></div>
+							<div class="col-xs-4">
+								<p ng-show="userForm.email.$invalid && (!userForm.email.$pristine || submitted)" class="help-block">请输入合法email.</p>
+							</div>
+						</div>
+					</fieldset>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" ng-if="modalType == 'add'" ng-click="add(model, userForm.$valid)" class="btn btn-primary">添加</button>
+				<button type="button" ng-if="modalType == 'edit'" ng-click="save(model, userForm.$valid)" class="btn btn-primary">保存</button>
+			</div>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>
+
+<div class="modal fade" id="rolemodal" ng-if="roleModalTitle">
+	<div class="modal-dialog large-modal">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title">{{roleModalTitle}}</h4>
+			</div>
+			<div class="modal-body">
+				<div class="row">
+					<div class="group-wraper">
+						<h4 class="role-group-header">所有角色</h4>
+						<ul class="role-group">
+							<li class="role" ng-repeat="role in allRoles | filterRole : roles" ng-class="{active: role.actived}" ng-dblclick="assignRole(role)">
+								<span class="rolename">{{role.name}}</span>
+								<span class="close" ng-click="assignRole(role)">&gt;</span>
+							</li>
+						</ul>
+					</div>
+					<div class="hr-split"></div>
+					<div class="group-wraper">
+						<h4 class="role-group-header">用户角色</h4>
+						<ul class="role-group">
+							<li class="role" ng-repeat="role in roles" ng-class="{active: role.actived}" ng-dblclick="unsignRole(role)">
+								<span class="rolename">{{role.name}}</span>
+								<span class="close" ng-click="unsignRole(role)">&times;</span>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" ng-click="saveRoles()" class="btn btn-primary">保存</button>
+			</div>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>

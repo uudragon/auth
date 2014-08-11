@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="user">
+
+	<typeAlias alias="user" type="com.uud.auth.entity.User" />
+	<typeAlias alias="role" type="com.uud.auth.entity.Role" />
+	
+    <resultMap id="resultMap.userMap" class="user">
+        <result column="ID" property="id" javaType="java.lang.Long"/>
+        <result column="NAME" property="name" javaType="java.lang.String"/>
+        <result column="LOGIN_ID" property="account" javaType="java.lang.String"/>
+        <result column="SEX" property="gender" javaType="java.lang.Integer"/>
+        <result column="PASSWORD" property="password" javaType="java.lang.String"/>
+        <result column="EMAIL" property="email" javaType="java.lang.String"/>
+        <result column="PHONE" property="phone" javaType="java.lang.String"/>
+        <result column="POST" property="positions" javaType="java.lang.String"/>
+        <result column="BIRTHDAY" property="birthday" javaType="java.util.Date"/>
+        <result column="IS_ACTIVATE" property="isValid" javaType="java.lang.Boolean"/>
+        <result column="IS_REMOVED" property="isRemoved" javaType="java.lang.Boolean"/>
+        <result column="USER_NO" property="userNo" javaType="java.lang.String"/>
+    </resultMap>
+    
+    <resultMap id="resultMap.userGroupMap" class="user">
+        <result column="ID" property="id" javaType="java.lang.Long"/>
+        <result column="NAME" property="name" javaType="java.lang.String"/>
+        <result column="LOGIN_ID" property="account" javaType="java.lang.String"/>
+        <result column="SEX" property="gender" javaType="java.lang.Integer"/>
+        <result column="PASSWORD" property="password" javaType="java.lang.String"/>
+        <result column="EMAIL" property="email" javaType="java.lang.String"/>
+        <result column="PHONE" property="phone" javaType="java.lang.String"/>
+        <result column="POST" property="positions" javaType="java.lang.String"/>
+        <result column="BIRTHDAY" property="birthday" javaType="java.util.Date"/>
+        <result column="IS_ACTIVATE" property="isValid" javaType="java.lang.Boolean"/>
+        <result column="IS_REMOVED" property="isRemoved" javaType="java.lang.Boolean"/>
+        <result column="USER_NO" property="userNo" javaType="java.lang.String"/>
+        <result column="GROUP_ID" property="groupId" javaType="java.lang.Long"/>
+    </resultMap>
+    
+    <resultMap id="resultMap.userRoleMap" class="user">
+        <result column="ID" property="id" javaType="java.lang.Long"/>
+        <result column="ROLE_ID" property="roleId" javaType="java.lang.Long"/>
+    </resultMap>
+    
+    <resultMap id="resultMap.roleMap" class="role">
+        <result column="ID" property="id" javaType="java.lang.Long"/>
+        <result column="IS_REMOVED" property="isRemoved" javaType="java.lang.Boolean"/>
+        <result column="ROLE_NAME" property="roleName" javaType="java.lang.String"/>
+    </resultMap>
+    
+    <!-- 保存用户 -->
+    <insert id="save" parameterClass="user">
+        insert into t_user( NAME,LOGIN_ID,SEX,PASSWORD,EMAIL,PHONE,POST,BIRTHDAY,USER_NO )
+        values
+        ( #name#,#account#,#gender#,#password#,#email#,#phone#,#positions#,#birthday#,#userNo# )
+        <selectKey resultClass="long" keyProperty="id">
+		SELECT LAST_INSERT_ID()
+		</selectKey>
+    </insert>
+    
+    <!-- 查询用户 -->
+    <select id="findByGroupId" resultMap="resultMap.userGroupMap">
+         SELECT u.*,ugl.`USER_GROUP_ID` AS GROUP_ID 
+         	FROM t_user u, t_user_group_link ugl
+         WHERE u.`ID` = ugl.`USER_ID` AND ugl.`USER_GROUP_ID`=#value# and u.IS_REMOVED='0'
+    </select>    
+    <select id="countByGroupId" resultClass="java.lang.Integer">
+    	SELECT COUNT(1) 
+         	FROM t_user u, t_user_group_link ugl
+         WHERE u.`ID` = ugl.`USER_ID` AND ugl.`USER_GROUP_ID`=#value# and u.IS_REMOVED='0'
+    </select>
+    <!-- 查询用户 -->
+    <select id="findById" resultMap="resultMap.userMap">
+        select * from t_user where id=#value# and u.IS_REMOVED='0'
+    </select>
+    
+    <sql id="account">
+	    <dynamic prepend="and">
+			<isNotNull prepend="AND" property="LOGIN_ID" >
+			 	u.`LOGIN_ID` like '%$LOGIN_ID$%'
+		 	</isNotNull>
+	   </dynamic>
+	</sql>
+	<sql id="groupName">
+	    <dynamic prepend="and">
+			<isNotNull prepend="AND" property="GROUP_NAME" >
+			 	ug.`GROUP_NAME` like '%$GROUP_NAME$%'
+		 	</isNotNull>
+	   </dynamic>
+	</sql>
+	<sql id="groupCode">
+	    <dynamic prepend="and">
+			<isNotNull prepend="AND" property="GROUP_CODE" >
+			 	ug.`GROUP_CODE` like '%$GROUP_CODE$%'
+		 	</isNotNull>
+	   </dynamic>
+	</sql>
+	<sql id="userName">
+	    <dynamic prepend="and">
+			<isNotNull prepend="AND" property="NAME" >
+			 	u.`NAME` like '%$NAME$%'
+		 	</isNotNull>
+	   </dynamic>
+	</sql>
+	<sql id="post">
+	    <dynamic prepend="and">
+			<isNotNull prepend="AND" property="POST" >
+			 	u.`POST` like '%$POST$%'
+		 	</isNotNull>
+	   </dynamic>
+	</sql>
+	<sql id="userNo">
+	    <dynamic prepend="and">
+			<isNotNull prepend="AND" property="USER_NO" >
+			 	u.`USER_NO` like '%$USER_NO$%'
+		 	</isNotNull>
+	   </dynamic>
+	</sql>
+    <select id="findByParams" resultMap="resultMap.userGroupMap" parameterClass="java.util.HashMap">
+    	SELECT u.*, ugl.`USER_GROUP_ID` AS GROUP_ID
+		FROM t_user u
+		LEFT JOIN t_user_group_link ugl ON ugl.`USER_ID` = u.`ID`
+		 LEFT JOIN t_user_group ug  ON ugl.`USER_GROUP_ID` = ug.`ID` AND ug.`IS_REMOVED` = 0
+		 WHERE u.`IS_REMOVED` = 0 
+		 	<include refid="groupName"/>
+		 	<include refid="groupCode"/>
+		 	<include refid="userName"/>
+		 	<include refid="userNo"/>
+		 	<include refid="post"/>
+		 	<include refid="account"/>
+    </select>
+    
+    <select id="countByParams" resultClass="java.lang.Integer" parameterClass="java.util.HashMap">
+    	SELECT COUNT(1)
+    	 	FROM t_user u
+		LEFT JOIN t_user_group_link ugl ON ugl.`USER_ID` = u.`ID`
+		 LEFT JOIN t_user_group ug  ON ugl.`USER_GROUP_ID` = ug.`ID` AND ug.`IS_REMOVED` = 0
+		 WHERE u.`IS_REMOVED` = 0
+		 	<include refid="groupName"/>
+		 	<include refid="groupCode"/>
+		 	<include refid="userName"/>
+		 	<include refid="userNo"/>
+		 	<include refid="post"/>
+		 	<include refid="account"/>
+    </select>
+    
+    <update id="update" parameterClass="user">
+    	UPDATE 
+		  t_user u 
+		<dynamic prepend="SET">
+			<isNotNull prepend="," property="name" >
+				u.`NAME` = #name#
+			</isNotNull>
+			<isNotNull prepend="," property="gender" >
+				u.`SEX` = #gender#
+			</isNotNull>
+			<isNotNull prepend="," property="password" >
+				u.`PASSWORD` = #password#
+			</isNotNull>
+			<isNotNull prepend="," property="email" >
+				u.`EMAIL` = #email#
+			</isNotNull>
+			<isNotNull prepend="," property="phone" >
+				u.`PHONE` = #phone#
+			</isNotNull>
+			<isNotNull prepend="," property="positions" >
+				u.`POST` = #positions#
+			</isNotNull>
+			<isNotNull prepend="," property="birthday" >
+				u.`BIRTHDAY` = #birthday#
+			</isNotNull>
+			<isNotNull prepend="," property="isValid" >
+				u.`IS_ACTIVATE` = #isValid#
+			</isNotNull>
+			<isNotNull prepend="," property="isRemoved" >
+				u.`IS_REMOVED` = #isRemoved#
+			</isNotNull>
+		</dynamic>
+		WHERE u.`ID` = #id# 
+    </update>
+    
+    <!-- 分配角色 -->
+    <insert id="addRoles" parameterClass="java.util.List">
+        insert into t_user_role( USER_ID,ROLE_ID )
+        values
+        <iterate conjunction=",">
+       	 ( #[].id#,#[].roleId# )
+        </iterate>
+    </insert>
+    
+    <delete id="removeRoles">
+    	DELETE FROM t_user_role WHERE  USER_ID = #value#
+    </delete>
+    
+    <select id="findAll" resultMap="resultMap.userMap">
+    	select * from t_user where is_removed=0
+    </select>
+    
+    <select id="findAllUserRole" resultMap="resultMap.userRoleMap">
+    	(SELECT 
+		  u.`ID`, ugr.`ROLE_ID` 
+		FROM
+		  t_user u,
+		  t_user_group_link ugl,
+		  t_user_group_role ugr 
+		WHERE u.`ID` = ugl.`USER_ID` 
+		  AND ugr.`USER_GROUP_ID` = ugl.`USER_GROUP_ID` 
+		  AND u.`IS_REMOVED` = 0) 
+		UNION
+		(SELECT 
+		  u.id, ur.role_id 
+		FROM
+		  t_user u,
+		  t_user_role ur 
+		WHERE u.id = ur.user_id 
+		  AND u.is_removed = 0)
+    </select>
+    
+    <delete id = "deleteUserGroup">
+    	DELETE FROM t_user_group_link WHERE USER_ID=#value#
+    </delete>
+    
+    <select id="findRole" resultMap="resultMap.roleMap">
+    	SELECT * FROM t_role r,t_user_role ur 
+		WHERE ur.`ROLE_ID` = r.`id`
+		 AND ur.`USER_ID`=#value#
+    </select>
+</sqlMap>

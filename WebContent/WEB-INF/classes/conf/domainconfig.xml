@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<domain-info>
+
+	<domain name="bam" loaction="true" >
+		
+	</domain>
+	
+	<domain name="domain2" loaction="false" >
+		<load-url>http://test</load-url>
+		<parameters type="json">
+			<parameter name="user"></parameter>
+			<parameter name="password"></parameter>
+		</parameters>
+	</domain>
+	
+</domain-info>
+
+
+
+
+

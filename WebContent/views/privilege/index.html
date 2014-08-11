@@ -1,0 +1,67 @@
+<div uu-action-item label="添加根结点" ng-click="createNode(true)"></div>
+<div uu-alert level="{{alertLevel}}" msg="{{alertMsg}}"></div>
+
+<h3>权限树</h3>
+<hr>
+<ul id="priv-tree" class="ztree"></ul>
+
+<div class="modal fade" id="uumodal">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title">{{modalTitle}}</h4>
+			</div>
+			<div class="modal-body">
+				<form action="" class="form form-horizontal form-small" name="priForm">
+					<fieldset>
+						<div class="form-group" ng-class="{ 'has-error' : priForm.name.$invalid && (!priForm.name.$pristine || submitted) }">
+							<label class="control-label col-xs-3" for="name">名称:</label>
+							<div class="col-xs-5">
+								<input type="text" class="input-sm form-control" required ng-model="model.name" name="name" id="name">
+							</div>
+							<div class="col-xs-4">
+								<p ng-show="priForm.name.$invalid && (!priForm.name.$pristine || submitted)" class="help-block">请输入名称.</p>
+							</div>
+						</div>
+
+						<div class="form-group" ng-class="{ 'has-error' : priForm.link.$invalid && (!priForm.link.$pristine || submitted) }">
+							<label class="control-label col-xs-3" for="link">url:</label>
+							<div class="col-xs-5">
+								<input type="text" class="input-sm form-control" required ng-model="model.link" name="link" id="link">
+							</div>
+							<div class="col-xs-4">
+								<p ng-show="priForm.link.$invalid && (!priForm.link.$pristine || submitted)" class="help-block">请输入url.</p>
+							</div>
+						</div>
+
+						<div class="form-group" ng-class="{ 'has-error' : priForm.method.$invalid && (!priForm.method.$pristine || submitted) }">
+							<label class="control-label col-xs-3" for="method">method:</label>
+							<div class="col-xs-5">
+								<input type="text" class="input-sm form-control" required ng-model="model.method" name="method" id="method">
+							</div>
+							<div class="col-xs-4">
+								<p ng-show="priForm.method.$invalid && (!priForm.method.$pristine || submitted)" class="help-block">请输入method.</p>
+							</div>
+						</div>
+
+						<div class="form-group" ng-class="{ 'has-error' : priForm.code.$invalid && (!priForm.code.$pristine || submitted) }">
+							<label class="control-label col-xs-3" for="code">code:</label>
+							<div class="col-xs-5">
+								<input type="text" class="input-sm form-control" required ng-model="model.code" name="code" id="code">
+							</div>
+							<div class="col-xs-4">
+								<p ng-show="priForm.code.$invalid && (!priForm.code.$pristine || submitted)" class="help-block">请输入code.</p>
+							</div>
+						</div>
+
+					</fieldset>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" ng-if="modalType=='add'" ng-click="add(model, priForm.$valid)" class="btn btn-primary">添加</button>
+				<button type="button" ng-if="modalType=='edit'" ng-click="save(model, priForm.$valid)" class="btn btn-primary">保存</button>
+			</div>
+		</div>
+	</div>
+</div>

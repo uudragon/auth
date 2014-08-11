@@ -1,0 +1,217 @@
+@charset "UTF-8";
+/**
+ * Variables
+ * ----------------------------------------------------------------------------
+ */
+/**
+ * Components
+ * ----------------------------------------------------------------------------
+ */
+.header-link {
+  color: #333333;
+  text-decoration: none; }
+  .header-link.ative, .header-link:hover {
+    color: #9b3a1b; }
+
+.border, .indicator {
+  border: 1px solid #cccccc; }
+
+.indicator {
+  width: 17px;
+  height: 17px;
+  background-color: #c90d30;
+  display: inline-block;
+  position: relative;
+  top: 3px;
+  left: 2px; }
+
+/**
+ * Background
+ * ----------------------------------------------------------------------------
+ */
+.drak-grain {
+  background: transparent url("../img/dark.png"); }
+
+.light-grain {
+  background: transparent url("../img/light.png"); }
+
+/**
+ * Mixins
+ * ----------------------------------------------------------------------------
+ */
+.ng-hide-add, .ng-hide-remove {
+  -webkit-transition: all linear 0.5s;
+  -moz-transition: all linear 0.5s;
+  -o-transition: all linear 0.5s;
+  transition: all linear 0.5s;
+  display: block !important; }
+
+.ng-hide-add.ng-hide-add-active,
+.ng-hide-remove {
+  opacity: 0; }
+
+.ng-hide-add,
+.ng-hide-remove.ng-hide-remove-active {
+  opacity: 1; }
+
+/**
+ * Common
+ * ----------------------------------------------------------------------------
+ */
+a {
+  color: #333333;
+  background: transparent; }
+
+.clearfix {
+  clear: both; }
+
+.i-val {
+  padding-left: 10px; }
+
+.non-right {
+  border-right: none; }
+
+.non-left {
+  border-left: none; }
+
+.underline {
+  text-decoration: underline !important; }
+
+.uu-close {
+  float: none; }
+
+.action-item {
+  font-size: 1.2em;
+  cursor: pointer; }
+  .action-item.active, .action-item:hover {
+    color: #9b3a1b;
+    text-decoration: none; }
+  .action-item.btn {
+    font-size: 1.1em;
+    padding: 5px 11px;
+    border: 1px dashed #ccc; }
+
+.alert {
+  margin-bottom: 5px; }
+
+/**
+ * Frame
+ * ----------------------------------------------------------------------------
+ */
+.wrapper {
+  font: 1em/normal "微软雅黑", "宋体", Arial, Helvetica, sans-serif; }
+
+.content {
+  margin-left: 240px;
+  overflow-x: hidden; }
+
+.content {
+  padding: 40px 0 0 0; }
+
+/**
+ * Left Nav
+ * ----------------------------------------------------------------------------
+ */
+.left-sidebar {
+  position: fixed;
+  height: 100%;
+  left: 0;
+  width: 220px;
+  border-right: 1px solid #eee;
+  padding-right: 3px; }
+  .left-sidebar .header {
+    text-align: center; }
+  .left-sidebar .brand {
+    margin: 40px 0 auto;
+    padding-bottom: 20px; }
+
+.nav-sidebar {
+  padding: 20px 0 0 25px; }
+  .nav-sidebar > li a, .nav-sidebar > li a:hover {
+    background-color: transparent; }
+  .nav-sidebar > li a:hover {
+    color: #9b3a1b;
+    transition: 200ms; }
+  .nav-sidebar > li.active a, .nav-sidebar > li.active a:hover {
+    color: #9b3a1b;
+    border-right: 4px solid;
+    background-color: transparent;
+    transition: 200ms; }
+
+.subtitle {
+  margin-top: 10px;
+  font-weight: bold; }
+
+/**
+ * Role and Privilege list
+ * ----------------------------------------------------------------------------
+ */
+.large-modal {
+  width: 700px; }
+
+.role-group {
+  height: 353px;
+  padding: 2px 0 0 2px;
+  overflow-y: scroll;
+  margin-bottom: 0px; }
+  .role-group .role {
+    list-style: none;
+    padding: 5px 12px 5px 9px;
+    border-bottom: 1px solid #efefef; }
+    .role-group .role:nth-child(even) {
+      background-color: #f8f8f8; }
+
+.group-wraper {
+  border: 1px solid #efefef;
+  float: left;
+  width: 320px;
+  padding: 0; }
+
+.hr-split {
+  width: 20px;
+  float: left;
+  height: 1px; }
+
+.role-group-header {
+  background: steelblue;
+  margin: 0;
+  color: #efefef;
+  padding: 7px 0;
+  text-align: center;
+  font-size: 16px;
+  font-weight: normal; }
+
+/**
+ * Form
+ * ----------------------------------------------------------------------------
+ */
+.form-small label {
+  font-weight: normal; }
+
+.help-block {
+  position: absolute; }
+
+.large-btn {
+  position: relative;
+  top: -18px;
+  font-size: 24px; }
+
+/**
+ * Login Form
+ * ----------------------------------------------------------------------------
+ */
+.container.login {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  padding-top: 140px;
+  background: url(../img/body.jpg); }
+
+.input-group.login {
+  margin: 12px 0px; }
+
+.form-error-msg {
+  text-align: left;
+  margin-left: 16px;
+  color: #CC2A23;
+  font-weight: bold; }

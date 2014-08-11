@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="role">
+
+	<typeAlias alias="role" type="com.uud.auth.entity.Role" />
+	<typeAlias alias="resrole" type="com.uud.auth.entity.ResourceRole" />
+	<typeAlias alias="resource" type="com.uud.auth.entity.Resource" />
+	
+    <resultMap id="resultMap.roleMap" class="role">
+        <result column="ID" property="id" javaType="java.lang.Long"/>
+        <result column="IS_REMOVED" property="isRemoved" javaType="java.lang.Boolean"/>
+        <result column="ROLE_NAME" property="roleName" javaType="java.lang.String"/>
+    </resultMap>
+    
+    <resultMap id="resultMap.uroleMap" class="role">
+        <result column="ID" property="id" javaType="java.lang.Long"/>
+        <result column="IS_REMOVED" property="isRemoved" javaType="java.lang.Boolean"/>
+        <result column="ROLE_NAME" property="roleName" javaType="java.lang.String"/>
+        <result column="GROUPID" property="groupId" javaType="java.lang.Long"/>
+    </resultMap>
+    
+    <resultMap class="resrole" id="resultMap.rrMap">
+    	<!-- <result column="ID" property="id" javaType="java.lang.Long"/> -->
+    	<result column="ROLE_ID" property="role.id" javaType="java.lang.Long"/>
+    	<result column="RESOURCE_ID" property="resource.id" javaType="java.lang.Long"/>
+    </resultMap>
+    
+    <resultMap id="resultMap.resourceMap" class="resource">
+        <result column="ID" property="id" javaType="java.lang.Long"/>
+        <result column="NAME" property="name" javaType="java.lang.String"/>
+        <result column="URL" property="url" javaType="java.lang.String"/>
+        <result column="METHOD" property="method" javaType="java.lang.String"/>
+        <result column="PRAENT_ID" property="parent" javaType="java.lang.Long"/>
+        <result column="ACTIVE" property="active" javaType="java.lang.Boolean"/>
+    </resultMap>
+    
+    <!-- 保存用户 -->
+    <insert id="save" parameterClass="role">
+        insert into t_role( ROLE_NAME )
+        values
+        ( #roleName# )
+        <selectKey resultClass="long" keyProperty="id">
+			SELECT LAST_INSERT_ID()
+		</selectKey>
+    </insert>
+    
+    <insert id="addResources" parameterClass="java.util.List">
+    	insert into t_role_resource( ROLE_ID,RESOURCE_ID )
+        values
+        <iterate conjunction=",">
+       	 ( #[].role.id#, #[].resource.id# )
+        </iterate>
+    </insert>
+    
+    <select id="findById" resultMap="resultMap.roleMap">
+    	select * from t_role where id = #value#
+    </select>
+    
+	<sql id="groupName">
+	    <dynamic prepend="and">
+			<isNotNull prepend="AND" property="GROUP_NAME" >
+			 	rg.`GROUP_NAME` like '%$GROUP_NAME$%'
+		 	</isNotNull>
+	   </dynamic>
+	</sql>
+	<sql id="groupCode">
+	    <dynamic prepend="and">
+			<isNotNull prepend="AND" property="GROUP_CODE" >
+			 	rg.`GROUP_CODE` like '%$GROUP_CODE$%'
+		 	</isNotNull>
+	   </dynamic>
+	</sql>
+	<sql id="roleName">
+	    <dynamic prepend="and">
+			<isNotNull prepend="AND" property="ROLE_NAME" >
+			 	r.`ROLE_NAME` like '%$ROLE_NAME$%'
+		 	</isNotNull>
+	   </dynamic>
+	</sql>
+    <select id="findByParams" resultMap="resultMap.uroleMap" parameterClass="java.util.HashMap">
+    	SELECT r.*, rgl.`ROLE_GROUP_ID` as GROUPID
+		FROM
+		  t_role r 
+		  LEFT JOIN t_role_group_link rgl 
+		    ON r.`id` = rgl.`ROLE_ID` 
+		  LEFT JOIN t_role_group rg 
+		    ON rgl.`ROLE_GROUP_ID` = rg.`ID` 
+    	 <dynamic prepend="where">
+    	 	<include refid="groupName"/>
+		 	<include refid="groupCode"/>
+		 	<include refid="roleName"/>
+		 </dynamic>
+    </select>
+    
+    <select id="countByParams" resultClass="java.lang.Integer" parameterClass="java.util.HashMap">
+    	select count(1) FROM t_role r 
+		  LEFT JOIN t_role_group_link rgl 
+		    ON r.`id` = rgl.`ROLE_ID` 
+		  LEFT JOIN t_role_group rg 
+		    ON rgl.`ROLE_GROUP_ID` = rg.`ID` 
+    	 <dynamic prepend="where">
+    	 	<include refid="groupName"/>
+		 	<include refid="groupCode"/>
+		 	<include refid="roleName"/>
+		 </dynamic>
+    </select>
+    
+    <update id="update" parameterClass="role">
+    	update t_role r
+    		<dynamic prepend="SET">
+				<isNotNull prepend="," property="roleName" >
+					r.ROLE_NAME=#roleName#
+				</isNotNull>
+				<isNotNull prepend="," property="isRemoved" >
+					r.IS_REMOVED=#isRemoved#
+				</isNotNull>
+			</dynamic>
+			where id = #id#
+    </update>
+    
+    <select id="findRolePermission" resultMap="resultMap.rrMap">
+    	(SELECT 
+		  rgl.`ROLE_ID`,rgr.`RESOURCE_ID`
+		FROM
+		  t_role_group_link rgl,
+		  t_role_group_resource rgr 
+		WHERE rgl.`ROLE_GROUP_ID` = rgr.`ROLE_GROUP_ID` ) UNION
+		(SELECT 
+		  rr.`ROLE_ID`,
+		  rr.`RESOURCE_ID` 
+		FROM
+		  t_role_resource rr )
+    </select>
+    
+    <delete id="deleteById">
+    	DELETE FROM t_role WHERE id = #value#
+    </delete>
+    
+    <delete id="deleteResourceLink">
+    	DELETE FROM t_role_resource WHERE ROLE_ID = #value#
+    </delete>
+    
+    <delete id="deleteGroupLink">
+    	DELETE FROM t_role_group_link WHERE ROLE_ID = #value#
+    </delete>
+    
+    <delete id="deleteUserLink">
+    	DELETE FROM t_user_role WHERE ROLE_ID = #value#
+    </delete>
+    
+    <delete id="deleteUserGroupLink">
+    	DELETE FROM t_user_group_role WHERE ROLE_ID = #value#
+    </delete>
+    
+    <select id="findAll" resultMap="resultMap.roleMap">
+    	select * from t_role
+    </select>
+    
+    <select id="findResource" resultMap="resultMap.resourceMap">
+    	SELECT r.* FROM t_role_resource rr, t_resource r 
+    		WHERE r.`ID` = rr.`RESOURCE_ID` 
+    			AND rr.`ROLE_ID` =#value#
+    </select>
+    
+    <delete id="removeResource">
+    	DELETE FROM t_role_resource WHERE role_id=#value#
+    </delete>
+</sqlMap>

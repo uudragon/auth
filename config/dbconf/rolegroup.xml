@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="rg">
+
+	<typeAlias alias="rg" type="com.uud.auth.entity.RoleGroup" />
+
+    <resultMap id="resultMap.rgMap" class="rg">
+        <result column="ID" property="id" javaType="java.lang.Long"/>
+        <result column="GROUP_NAME" property="name" javaType="java.lang.String"/>
+        <result column="GROUP_CODE" property="groupCode" javaType="java.lang.String"/>
+        <result column="PARENT_CODE" property="parentCode" javaType="java.lang.String"/>
+        <result column="IS_REMOVED" property="isRemoved" javaType="java.lang.Boolean"/>
+    </resultMap>
+    
+    <select id="findAll" resultMap="resultMap.rgMap">
+    	select * from t_role_group
+    </select>
+    
+    <!-- 保存用户 -->
+    <insert id="save" parameterClass="rg">
+        insert into t_role_group( GROUP_NAME,GROUP_CODE,PARENT_CODE,IS_REMOVED )
+        values
+        ( #name#,#groupCode#,#parentCode#,#isRemoved# )
+        <selectKey resultClass="long" keyProperty="id">
+		SELECT LAST_INSERT_ID()
+		</selectKey>
+    </insert>
+    
+    <select id="findById" resultMap="resultMap.rgMap">
+    	select * from t_role_group where id = #value#
+    </select>
+    
+	<sql id="groupName">
+	    <dynamic prepend="and">
+			<isNotNull prepend="AND" property="GROUP_NAME" >
+			 	rg.`GROUP_NAME` like '%$GROUP_NAME$%'
+		 	</isNotNull>
+	   </dynamic>
+	</sql>
+	<sql id="groupCode">
+	    <dynamic prepend="and">
+			<isNotNull prepend="AND" property="GROUP_CODE" >
+			 	rg.`GROUP_CODE` like '%$GROUP_CODE$%'
+		 	</isNotNull>
+	   </dynamic>
+	</sql>
+	<sql id="parentCode">
+	    <dynamic prepend="and">
+			<isNotNull prepend="AND" property="PARENT_CODE" >
+			 	rg.`PARENT_CODE` like '%$PARENT_CODE$%'
+		 	</isNotNull>
+	   </dynamic>
+	</sql>
+    <select id="findByParams" resultMap="resultMap.rgMap" parameterClass="java.util.HashMap">
+    	SELECT rg.*
+		FROM t_role_group rg
+    	 <dynamic prepend="where">
+    	 	<include refid="groupName"/>
+		 	<include refid="groupCode"/>
+		 	<include refid="parentCode"/>
+		 </dynamic>
+    </select>
+    
+    <select id="countByParams" resultClass="java.lang.Integer" parameterClass="java.util.HashMap">
+    	SELECT count(1)
+		FROM t_role_group rg
+    	 <dynamic prepend="where">
+    	 	<include refid="groupName"/>
+		 	<include refid="groupCode"/>
+		 	<include refid="parentCode"/>
+		 </dynamic>
+    </select>
+    
+    <update id="update" parameterClass="rg">
+    	update t_role_group r
+    		<dynamic prepend="SET">
+				<isNotNull prepend="," property="name" >
+					r.GROUP_NAME=#name#
+				</isNotNull>
+				<isNotNull prepend="," property="groupCode" >
+					r.GROUP_CODE=#groupCode#
+				</isNotNull>
+				<isNotNull prepend="," property="parentCode" >
+					r.PARENT_CODE=#parentCode#
+				</isNotNull>
+				<isNotNull prepend="," property="isRemoved" >
+					r.IS_REMOVED=#isRemoved#
+				</isNotNull>
+			</dynamic>
+			where id = #id#
+    </update>
+    
+    
+    <!-- 添加角色 -->
+    <insert id="addRoles" parameterClass="java.util.List">
+        insert into t_role_group_link( ROLE_ID,ROLE_GROUP_ID )
+        values
+        <iterate conjunction=",">
+       	 ( #[].id#,#[].groupId# )
+        </iterate>
+    </insert>
+    
+    <insert id="addResources" parameterClass="java.util.List">
+        insert into t_role_group_resource( ROLE_GROUP_ID,RESOURCE_ID )
+        values
+        <iterate conjunction=",">
+       	 ( #[].rg.id#,#[].resource.id# )
+        </iterate>
+    </insert>
+    
+   	<delete id="deleteById">
+   		DELETE FROM t_role_group WHERE id = #value#
+   	</delete>
+    
+    <delete id="deleteRole">
+    	DELETE FROM t_role_group_link WHERE ROLE_GROUP_ID = #value#
+    </delete>
+    
+    <delete id="deleteResource">
+    	DELETE FROM t_role_group_resource WHERE ROLE_GROUP_ID = #value#
+    </delete>
+    
+     <select id="findResource" resultMap="resultMap.resourceMap">
+    	SELECT r.* FROM t_role_group_resource rr, t_resource r 
+    		WHERE r.`ID` = rr.`RESOURCE_ID` 
+    		AND rr.`ROLE_GROUP_ID` =#value#
+    </select>
+   	
+</sqlMap>

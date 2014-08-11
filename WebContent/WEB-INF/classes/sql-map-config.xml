@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMapConfig        
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map Config 2.0//EN"        
+    "http://ibatis.apache.org/dtd/sql-map-config-2.dtd">
+
+<sqlMapConfig>
+
+	<settings lazyLoadingEnabled="true" useStatementNamespaces="true" />
+
+	<sqlMap resource="dbconf/user.xml" />
+	<sqlMap resource="dbconf/user_group.xml" />
+	<sqlMap resource="dbconf/role.xml" />
+	<sqlMap resource="dbconf/rolegroup.xml" />
+	<sqlMap resource="dbconf/resource.xml" />
+</sqlMapConfig>

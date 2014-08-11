@@ -1,0 +1,9 @@
+eclipse.preferences.version=1
+encoding//WebContent/views/home.html=UTF-8
+encoding//WebContent/views/login.html=UTF-8
+encoding//WebContent/views/privilege/index.html=UTF-8
+encoding//WebContent/views/rgroup/index.html=UTF-8
+encoding//WebContent/views/role/index.html=UTF-8
+encoding//config/config.properties=UTF-8
+encoding//config/log4j.properties=UTF-8
+encoding/<project>=UTF-8

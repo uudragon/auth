@@ -1,0 +1,69 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>优优龙</title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width">
+	<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+	<!-- build:css styles/vendor.css -->
+	<!-- bower:css -->
+	<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+	<!-- endbower -->
+	<!-- endbuild -->
+	<!-- build:css({.tmp,app}) styles/main.css -->
+	<link rel="stylesheet" href="bower_components/ztree_v3/css/zTreeStyle/zTreeStyle.css" />
+	<link rel="stylesheet" href="styles/main.css">
+	<!-- endbuild -->
+</head>
+<body ng-app="authApp">
+	<!--[if lt IE 7]>
+	<p class="browsehappy">您的浏览器版本 <strong>过低</strong>. 为了获得更好的用户体验，请 <a href="http://browsehappy.com/">升级浏览器</a>.</p>
+	<![endif]-->
+
+	<div class="wrapper">
+		<div ui-view>
+			<div style="margin: 280px auto; text-align: center; width: 500px;">
+				<span>Loading...</span>
+				<div class="progress progress-striped active">
+					<div class="progress-bar"  role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<!--[if lt IE 9]>
+	<script src="bower_components/es5-shim/es5-shim.js"></script>
+	<script src="bower_components/json3/lib/json3.min.js"></script>
+	<![endif]-->
+
+	<!-- build:js scripts/vendor.js -->
+	<!-- bower:js -->
+	<script src="bower_components/jquery/dist/jquery.js"></script>
+	<script src="bower_components/angular/angular.js"></script>
+	<script src="bower_components/sass-bootstrap/dist/js/bootstrap.js"></script>
+	<script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+	<script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+	<script src="bower_components/jquery-confirm/jquery.confirm.js"></script>
+	<!-- endbower -->
+	<!-- endbuild -->
+
+	<!-- build:js({.tmp,app}) scripts/scripts.js -->
+	<script src="scripts/config.js"></script>
+	<script src="scripts/app.js"></script>
+	<script src="scripts/directives.js"></script>
+	<script src="scripts/controllers/main.js"></script>
+	<script src="scripts/services/uudbasicservice.js"></script>
+	<script src="scripts/filters/filter.js"></script>
+	<script src="bower_components/ztree_v3/js/jquery.ztree.core-3.5.js"></script>
+	<script src="bower_components/ztree_v3/js/jquery.ztree.excheck-3.5.js"></script>
+	<script src="bower_components/ztree_v3/js/jquery.ztree.exedit-3.5.js"></script>
+	<!-- endbuild -->
+</body>
+</html>

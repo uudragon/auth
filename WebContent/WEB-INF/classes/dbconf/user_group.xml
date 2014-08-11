@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="usergroup">
+
+	<typeAlias alias="user" type="com.uud.auth.entity.User" />
+	<typeAlias alias="userGroup" type="com.uud.auth.entity.UserGroup" />
+	<typeAlias alias="role" type="com.uud.auth.entity.Role" />
+	
+    <resultMap id="resultMap.userGroupMap" class="userGroup">
+        <result column="ID" property="id" javaType="java.lang.Long"/>
+        <result column="GROUP_NAME" property="name" javaType="java.lang.String"/>
+        <result column="GROUP_CODE" property="groupCode" javaType="java.lang.String"/>
+        <result column="PARENT_CODE" property="parentCode" javaType="java.lang.String"/>
+        <result column="IS_REMOVED" property="isRemoved" javaType="java.lang.Boolean"/>
+    </resultMap>
+    
+    <resultMap id="resultMap.roleMap" class="role">
+        <result column="ID" property="id" javaType="java.lang.Long"/>
+        <result column="IS_REMOVED" property="isRemoved" javaType="java.lang.Boolean"/>
+        <result column="ROLE_NAME" property="roleName" javaType="java.lang.String"/>
+    </resultMap>
+    
+    <select id="findAll" resultMap="resultMap.userGroupMap">
+    	select * from t_user_group
+    </select>
+    
+    <!-- 保存用户分组 -->
+    <insert id="save" parameterClass="userGroup">
+        insert into t_user_group( GROUP_NAME,GROUP_CODE,PARENT_CODE )
+        values
+        ( #name#,#groupCode#,#parentCode# )
+        <selectKey resultClass="long" keyProperty="id">
+		SELECT LAST_INSERT_ID()
+		</selectKey>
+    </insert>
+    
+    <!-- 添加用户 -->
+    <insert id="addUser" parameterClass="java.util.List">
+        insert into t_user_group_link( USER_ID,USER_GROUP_ID )
+        values
+        <iterate conjunction=",">
+       	 ( #[].id#,#[].groupId# )
+        </iterate>
+    </insert>
+    
+    <update id="update" parameterClass="userGroup">
+        UPDATE 
+		  t_user_group ug
+		  <dynamic prepend="SET">
+			<isNotNull prepend="," property="name" >
+				ug.`GROUP_NAME` = #name#
+			</isNotNull>
+			<isNotNull prepend="," property="groupCode" >
+				ug.`GROUP_CODE` = #groupCode#
+			</isNotNull>
+			<isNotNull prepend="," property="parentCode" >
+				ug.`PARENT_CODE` = #parentCode#
+			</isNotNull>
+			<isNotNull prepend="," property="isRemoved" >
+				ug.`IS_REMOVED` = #isRemoved#
+			</isNotNull>
+		</dynamic>
+		WHERE ug.`ID` = #id#
+    </update>
+    
+    <sql id="groupName">
+	    <dynamic prepend="and">
+			<isNotNull prepend="AND" property="GROUP_NAME" >
+			 	ug.`GROUP_NAME` like '%$GROUP_NAME$%'
+		 	</isNotNull>
+	   </dynamic>
+	</sql>
+	<sql id="groupCode">
+	    <dynamic prepend="and">
+			<isNotNull prepend="AND" property="GROUP_CODE" >
+			 	ug.`GROUP_CODE` like '%$GROUP_CODE$%'
+		 	</isNotNull>
+	   </dynamic>
+	</sql>
+    <select id="findByParams" parameterClass="java.util.HashMap" resultMap="resultMap.userGroupMap">
+    	SELECT * FROM t_user_group ug 
+    		where ug.`IS_REMOVED` = '0'
+    		<include refid="groupName"/>
+    		<include refid="groupCode"/>
+    </select>
+    
+    <select id="countByParams" parameterClass="java.util.HashMap" resultClass="java.lang.Integer">
+    	SELECT count(1) FROM t_user_group ug 
+    		where ug.`IS_REMOVED` = '0'
+    		<include refid="groupName"/>
+    		<include refid="groupCode"/>
+    </select>
+    
+    <select id="findById" resultMap="resultMap.userGroupMap">
+    	SELECT * FROM t_user_group where id = #value# and is_removed='0'
+    </select>
+    
+    <delete id="delete" parameterClass="java.util.HashMap">
+    	DELETE FROM t_user_group_link where USER_ID=#USER_ID# and USER_GROUP_ID=#GROUP_ID#
+    </delete>
+    
+    <delete id="deleteUser">
+    	DELETE FROM t_user_group_link where USER_GROUP_ID=#GROUP_ID#
+    </delete>
+    
+    <delete id="deleteRole">
+    	DELETE FROM t_user_group_role WHERE USER_GROUP_ID = #value#
+    </delete>
+    
+    <delete id="deleteById">
+    	DELETE FROM t_user_group where ID = #value#
+    </delete>
+    
+    <insert id="addRoles" parameterClass="java.util.List">
+        insert into t_user_group_role( USER_GROUP_ID,ROLE_ID )
+        values
+        <iterate conjunction=",">
+       	 ( #[].id#,#[].roleId# )
+        </iterate>
+    </insert>
+    
+    <select id="findRoles" resultMap="resultMap.roleMap">
+    	SELECT r.* FROM t_role r,t_user_group_role ur 
+		WHERE ur.`ROLE_ID` = r.`id`
+		 AND ur.`USER_GROUP_ID`=#value#
+    </select>
+</sqlMap>

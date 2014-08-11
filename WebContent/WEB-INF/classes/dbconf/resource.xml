@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="resource">
+
+	<typeAlias alias="resource" type="com.uud.auth.entity.Resource" />
+
+    <resultMap id="resultMap.resourceMap" class="resource">
+        <result column="ID" property="id" javaType="java.lang.Long"/>
+        <result column="NAME" property="name" javaType="java.lang.String"/>
+        <result column="CODE" property="code" javaType="java.lang.String"/>
+        <result column="URL" property="url" javaType="java.lang.String"/>
+        <result column="METHOD" property="method" javaType="java.lang.String"/>
+        <result column="PRAENT_ID" property="parent" javaType="java.lang.Long"/>
+        <result column="ACTIVE" property="active" javaType="java.lang.Boolean"/>
+    </resultMap>
+    
+    <delete id = "deleteById">
+    	delete from t_resource where id = #value#
+    </delete>
+    
+    <delete id="deleteRoleResource">
+    	delete from t_role_resource where RESOURCE_ID =#value#
+    </delete>
+    
+    <delete id="deleteRoleGroupResource">
+    	delete from t_role_group_resource where RESOURCE_ID =#value#
+    </delete>
+    
+    <!-- 保存用户 -->
+    <insert id="save" parameterClass="resource">
+        insert into t_resource( NAME,CODE,URL,METHOD,PRAENT_ID,ACTIVE )
+        values
+        ( #name#,#code#,#url#,#method#,#parent#,#active# )
+        <selectKey resultClass="long" keyProperty="id">
+		SELECT LAST_INSERT_ID()
+		</selectKey>
+    </insert>
+    
+    <select id="findById" resultMap="resultMap.resourceMap">
+    	select * from t_resource where id = #value#
+    </select>
+    
+	<sql id="name">
+	    <dynamic prepend="and">
+			<isNotNull prepend="AND" property="name" >
+			 	r.`NAME` like '%$name$%'
+		 	</isNotNull>
+	   </dynamic>
+	</sql>
+	<sql id="url">
+	    <dynamic prepend="and">
+			<isNotNull prepend="AND" property="url" >
+			 	r.`URL` like '%$url$%'
+		 	</isNotNull>
+	   </dynamic>
+	</sql>
+	<sql id="method">
+	    <dynamic prepend="and">
+			<isNotNull prepend="AND" property="method" >
+			 	r.`METHOD` like '%$method$%'
+		 	</isNotNull>
+	   </dynamic>
+	</sql>
+	<sql id="parent">
+	    <dynamic prepend="and">
+			<isNotNull prepend="AND" property="parent" >
+			 	r.`PRAENT_ID` = #parent#
+		 	</isNotNull>
+	   </dynamic>
+	</sql>
+	<sql id="active">
+	    <dynamic prepend="and">
+			<isNotNull prepend="AND" property="active" >
+			 	r.`ACTIVE` = #active#
+		 	</isNotNull>
+	   </dynamic>
+	</sql>
+    <select id="findByParams" resultMap="resultMap.resourceMap" parameterClass="resource">
+    	SELECT r.*
+		FROM t_resource r
+    	 <dynamic prepend="where">
+    	 	<include refid="name"/>
+		 	<include refid="url"/>
+		 	<include refid="method"/>
+		 	<include refid="parent"/>
+		 	<include refid="active"/>
+		 </dynamic>
+    </select>
+    
+    <select id="countByParams" resultClass="java.lang.Integer" parameterClass="resource">
+    	SELECT count(1)
+		FROM t_resource r
+    	 <dynamic prepend="where">
+    	 	<include refid="name"/>
+		 	<include refid="url"/>
+		 	<include refid="method"/>
+		 	<include refid="parent"/>
+		 	<include refid="active"/>
+		 </dynamic>
+    </select>
+    
+    <update id="update" parameterClass="resource">
+    	update t_resource r
+    		<dynamic prepend="SET">
+				<isNotNull prepend="," property="name" >
+					r.NAME=#name#
+				</isNotNull>
+				<isNotNull prepend="," property="url" >
+					r.URL=#url#
+				</isNotNull>
+				<isNotNull prepend="," property="method" >
+					r.METHOD=#method#
+				</isNotNull>
+				<isNotNull prepend="," property="parent" >
+					r.PRAENT_ID=#parent#
+				</isNotNull>
+				<isNotNull prepend="," property="code" >
+					r.CODE=#code#
+				</isNotNull>
+				<isNotNull prepend="," property="active" >
+					r.ACTIVE=#active#
+				</isNotNull>
+			</dynamic>
+			where id = #id#
+    </update>
+    <select id="findAll" resultMap="resultMap.resourceMap">
+    	select * from t_resource
+    </select>
+    
+    <select id="selectByParent" resultMap="resultMap.resourceMap">
+    	 SELECT * FROM t_resource WHERE PRAENT_ID=#value#
+    </select>
+</sqlMap>
