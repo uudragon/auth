@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="consumer">
+	<typeAlias alias="customer" type="com.uud.cs.entity.Customer" />
+	
+	<resultMap class="customer" id="resultMap.customerMap">
+		<result column="ID" property="id" javaType="java.lang.Long"/>
+		<result column="CODE" property="code" javaType="java.lang.String"/>
+		<result column="TYPE" property="type" javaType="java.lang.Byte"/>
+		<result column="NAME" property="name" javaType="java.lang.String"/>
+		<result column="SEX" property="sex" javaType="java.lang.Byte"/>
+		<result column="BIRTHDAY" property="birthday" javaType="java.lang.String"/>
+		<result column="CHILD" property="child" javaType="java.lang.String"/>
+		<result column="C_SEX" property="c_sex" javaType="java.lang.Byte"/>
+		<result column="EMAIL" property="email" javaType="java.lang.String"/>
+		<result column="PROVINCE" property="province" javaType="java.lang.String"/>
+		<result column="CITY" property="city" javaType="java.lang.String"/>
+		<result column="DISTRICT" property="district" javaType="java.lang.String"/>
+		<result column="STREET" property="street" javaType="java.lang.String"/>
+		<result column="ADDRESS" property="address" javaType="java.lang.String"/>
+		<result column="POST" property="post" javaType="java.lang.String"/>
+		<result column="PHONE" property="phone" javaType="java.lang.String"/>
+		<result column="MAIN_PHONE" property="main_phone" javaType="java.lang.String"/>
+		<result column="FAX" property="fax" javaType="java.lang.String"/>
+		<result column="STATUS" property="status" javaType="java.lang.Byte"/>
+		<result column="CREATOR" property="creator" javaType="java.lang.String"/>
+		<result column="CREATE_TIME" property="create_time" javaType="java.util.Date"/>
+		<result column="UPDATER" property="updater" javaType="java.lang.String"/>
+		<result column="UPDATE_TIME" property="update_time" javaType="java.util.Date"/>
+		<result column="YN" property="yn" javaType="java.lang.Byte"/>
+	</resultMap>
+	
+	<insert id="save" parameterClass="java.util.Map">
+		INSERT INTO `t_consumer`( ID,CODE, TYPE, NAME, SEX,BIRTHDAY, PARENT, P_SEX, EMAIL, PROVINCE, CITY, DISTRICT, STREET, ADDRESS, POST, F_PHONE,C_PHONE, MOBILE, MAIN_PHONE, FAX, STATUS, CREATE_USER, CREATE_TIME, YN)
+		VALUES( #id#,#code#, #type#, #name#,#sex#,#birthday#, #parent#,#pSex#,#email#,#province#,#city#,#distrct#,#street#,#address#,#post#,#fPhone#,#cPhone#,#mobile#,#mainPhone#,#fax#,#status#,#createUser#,now(),1 )
+		<selectKey resultClass="long" keyProperty="id">
+			SELECT LAST_INSERT_ID()
+		</selectKey>
+	</insert>
+	
+	<select id="findByCode" resultMap="resultMap.customerMap">
+		SELECT * FROM customer_customer c WHERE c.`code` = #value#
+	</select>
+	
+	<update id="update">
+		UPDATE 
+		  customer_customer c 
+		  <dynamic prepend="SET">
+		  	<isNotEmpty prepend="," property="address" >
+    			c.`address` =#address#
+    		</isNotEmpty>
+    		<isNotEmpty prepend="," property="address" >
+    			c.`name` =#name#
+    		</isNotEmpty>
+    		<isNotEmpty prepend="," property="address" >
+    			c.`sex` =#sex#
+    		</isNotEmpty>
+    		<isNotEmpty prepend="," property="address" >
+    			c.`child` = #child#
+    		</isNotEmpty>
+    		<isNotEmpty prepend="," property="address" >
+    			c.`phone`=#phone#
+    		</isNotEmpty>
+    		<isNotEmpty prepend="," property="address" >
+    			c.`c_sex`= #c_sex#
+    		</isNotEmpty>
+    		<isNotEmpty prepend="," property="address" >
+    			c.`birthday` = #birthday#
+    		</isNotEmpty>
+    		<isNotEmpty prepend="," property="address" >
+    			c.`province` = #province#
+    		</isNotEmpty>
+    		<isNotEmpty prepend="," property="address" >
+    			c.`city` = #city#
+    		</isNotEmpty>
+		  </dynamic>
+		  WHERE c.`code` = #code#
+	</update>
+</sqlMap>

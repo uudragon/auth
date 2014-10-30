@@ -1,0 +1,846 @@
+2014-09-30 16:33:45,453-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100129} Parameters: [12, test, 55]
+2014-09-30 16:33:45,453-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100129} Types: [java.lang.Long, java.lang.String, java.lang.Long]
+2014-09-30 16:33:45,500-[TS] DEBUG main java.sql.Connection - {conn-100128} Preparing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:33:45,500-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100130} Executing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:33:45,500-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100130} Parameters: []
+2014-09-30 16:33:45,500-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100130} Types: []
+2014-09-30 16:33:45,500-[TS] DEBUG main java.sql.ResultSet - {rset-100131} ResultSet
+2014-09-30 16:33:45,500-[TS] DEBUG main java.sql.ResultSet - {rset-100131} Header: [LAST_INSERT_ID()]
+2014-09-30 16:33:45,500-[TS] DEBUG main java.sql.ResultSet - {rset-100131} Result: [12]
+2014-09-30 16:33:45,500-[TS] DEBUG main java.sql.Connection - {conn-100132} Connection
+2014-09-30 16:33:45,500-[TS] DEBUG main java.sql.Connection - {conn-100132} Preparing Statement:    INSERT INTO t_note( ID, RECEIVER, CONTENT, SEND_TIME, SENDER )   VALUES( ?, ?, ?, now(), ? )     
+2014-09-30 16:33:45,500-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100133} Executing Statement:    INSERT INTO t_note( ID, RECEIVER, CONTENT, SEND_TIME, SENDER )   VALUES( ?, ?, ?, now(), ? )     
+2014-09-30 16:33:45,500-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100133} Parameters: [null, test1, testadf11, test]
+2014-09-30 16:33:45,500-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100133} Types: [null, java.lang.String, java.lang.String, java.lang.String]
+2014-09-30 16:33:45,531-[TS] DEBUG main java.sql.Connection - {conn-100132} Preparing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:33:45,531-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100134} Executing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:33:45,531-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100134} Parameters: []
+2014-09-30 16:33:45,531-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100134} Types: []
+2014-09-30 16:33:45,531-[TS] DEBUG main java.sql.ResultSet - {rset-100135} ResultSet
+2014-09-30 16:33:45,531-[TS] DEBUG main java.sql.ResultSet - {rset-100135} Header: [LAST_INSERT_ID()]
+2014-09-30 16:33:45,531-[TS] DEBUG main java.sql.ResultSet - {rset-100135} Result: [56]
+2014-09-30 16:33:45,531-[TS] DEBUG main java.sql.Connection - {conn-100136} Connection
+2014-09-30 16:33:45,531-[TS] DEBUG main java.sql.Connection - {conn-100136} Preparing Statement:    INSERT INTO t_note_outbox( ID, USER, NOTE_ID )   VALUES( ?, ?, ? )     
+2014-09-30 16:33:45,531-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100137} Executing Statement:    INSERT INTO t_note_outbox( ID, USER, NOTE_ID )   VALUES( ?, ?, ? )     
+2014-09-30 16:33:45,531-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100137} Parameters: [null, test1, 56]
+2014-09-30 16:33:45,531-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100137} Types: [null, java.lang.String, java.lang.Long]
+2014-09-30 16:33:45,562-[TS] DEBUG main java.sql.Connection - {conn-100136} Preparing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:33:45,562-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100138} Executing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:33:45,562-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100138} Parameters: []
+2014-09-30 16:33:45,562-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100138} Types: []
+2014-09-30 16:33:45,562-[TS] DEBUG main java.sql.ResultSet - {rset-100139} ResultSet
+2014-09-30 16:33:45,562-[TS] DEBUG main java.sql.ResultSet - {rset-100139} Header: [LAST_INSERT_ID()]
+2014-09-30 16:33:45,562-[TS] DEBUG main java.sql.ResultSet - {rset-100139} Result: [13]
+2014-09-30 16:33:45,562-[TS] DEBUG main java.sql.Connection - {conn-100140} Connection
+2014-09-30 16:33:45,562-[TS] DEBUG main java.sql.Connection - {conn-100140} Preparing Statement:    INSERT INTO t_note_inbox( ID, USER, NOTE_ID )   VALUES( ?, ?, ? )     
+2014-09-30 16:33:45,562-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100141} Executing Statement:    INSERT INTO t_note_inbox( ID, USER, NOTE_ID )   VALUES( ?, ?, ? )     
+2014-09-30 16:33:45,562-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100141} Parameters: [13, test, 56]
+2014-09-30 16:33:45,562-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100141} Types: [java.lang.Long, java.lang.String, java.lang.Long]
+2014-09-30 16:33:45,625-[TS] DEBUG main java.sql.Connection - {conn-100140} Preparing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:33:45,625-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100142} Executing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:33:45,625-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100142} Parameters: []
+2014-09-30 16:33:45,625-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100142} Types: []
+2014-09-30 16:33:45,625-[TS] DEBUG main java.sql.ResultSet - {rset-100143} ResultSet
+2014-09-30 16:33:45,625-[TS] DEBUG main java.sql.ResultSet - {rset-100143} Header: [LAST_INSERT_ID()]
+2014-09-30 16:33:45,625-[TS] DEBUG main java.sql.ResultSet - {rset-100143} Result: [13]
+2014-09-30 16:33:45,625-[TS] DEBUG main java.sql.Connection - {conn-100144} Connection
+2014-09-30 16:33:45,625-[TS] DEBUG main java.sql.Connection - {conn-100144} Preparing Statement:    INSERT INTO t_note( ID, RECEIVER, CONTENT, SEND_TIME, SENDER )   VALUES( ?, ?, ?, now(), ? )     
+2014-09-30 16:33:45,625-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100145} Executing Statement:    INSERT INTO t_note( ID, RECEIVER, CONTENT, SEND_TIME, SENDER )   VALUES( ?, ?, ?, now(), ? )     
+2014-09-30 16:33:45,625-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100145} Parameters: [null, test1, testadf12, test]
+2014-09-30 16:33:45,625-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100145} Types: [null, java.lang.String, java.lang.String, java.lang.String]
+2014-09-30 16:33:45,656-[TS] DEBUG main java.sql.Connection - {conn-100144} Preparing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:33:45,656-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100146} Executing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:33:45,656-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100146} Parameters: []
+2014-09-30 16:33:45,656-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100146} Types: []
+2014-09-30 16:33:45,656-[TS] DEBUG main java.sql.ResultSet - {rset-100147} ResultSet
+2014-09-30 16:33:45,671-[TS] DEBUG main java.sql.ResultSet - {rset-100147} Header: [LAST_INSERT_ID()]
+2014-09-30 16:33:45,671-[TS] DEBUG main java.sql.ResultSet - {rset-100147} Result: [57]
+2014-09-30 16:33:45,671-[TS] DEBUG main java.sql.Connection - {conn-100148} Connection
+2014-09-30 16:33:45,671-[TS] DEBUG main java.sql.Connection - {conn-100148} Preparing Statement:    INSERT INTO t_note_outbox( ID, USER, NOTE_ID )   VALUES( ?, ?, ? )     
+2014-09-30 16:33:45,671-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100149} Executing Statement:    INSERT INTO t_note_outbox( ID, USER, NOTE_ID )   VALUES( ?, ?, ? )     
+2014-09-30 16:33:45,671-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100149} Parameters: [null, test1, 57]
+2014-09-30 16:33:45,671-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100149} Types: [null, java.lang.String, java.lang.Long]
+2014-09-30 16:33:45,781-[TS] DEBUG main java.sql.Connection - {conn-100148} Preparing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:33:45,781-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100150} Executing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:33:45,781-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100150} Parameters: []
+2014-09-30 16:33:45,781-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100150} Types: []
+2014-09-30 16:33:45,781-[TS] DEBUG main java.sql.ResultSet - {rset-100151} ResultSet
+2014-09-30 16:33:45,781-[TS] DEBUG main java.sql.ResultSet - {rset-100151} Header: [LAST_INSERT_ID()]
+2014-09-30 16:33:45,781-[TS] DEBUG main java.sql.ResultSet - {rset-100151} Result: [14]
+2014-09-30 16:33:45,781-[TS] DEBUG main java.sql.Connection - {conn-100152} Connection
+2014-09-30 16:33:45,781-[TS] DEBUG main java.sql.Connection - {conn-100152} Preparing Statement:    INSERT INTO t_note_inbox( ID, USER, NOTE_ID )   VALUES( ?, ?, ? )     
+2014-09-30 16:33:45,781-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100153} Executing Statement:    INSERT INTO t_note_inbox( ID, USER, NOTE_ID )   VALUES( ?, ?, ? )     
+2014-09-30 16:33:45,781-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100153} Parameters: [14, test, 57]
+2014-09-30 16:33:45,781-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100153} Types: [java.lang.Long, java.lang.String, java.lang.Long]
+2014-09-30 16:33:45,812-[TS] DEBUG main java.sql.Connection - {conn-100152} Preparing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:33:45,812-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100154} Executing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:33:45,812-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100154} Parameters: []
+2014-09-30 16:33:45,812-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100154} Types: []
+2014-09-30 16:33:45,812-[TS] DEBUG main java.sql.ResultSet - {rset-100155} ResultSet
+2014-09-30 16:33:45,812-[TS] DEBUG main java.sql.ResultSet - {rset-100155} Header: [LAST_INSERT_ID()]
+2014-09-30 16:33:45,812-[TS] DEBUG main java.sql.ResultSet - {rset-100155} Result: [14]
+2014-09-30 16:33:45,812-[TS] DEBUG main java.sql.Connection - {conn-100156} Connection
+2014-09-30 16:33:45,812-[TS] DEBUG main java.sql.Connection - {conn-100156} Preparing Statement:    INSERT INTO t_note( ID, RECEIVER, CONTENT, SEND_TIME, SENDER )   VALUES( ?, ?, ?, now(), ? )     
+2014-09-30 16:33:45,828-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100157} Executing Statement:    INSERT INTO t_note( ID, RECEIVER, CONTENT, SEND_TIME, SENDER )   VALUES( ?, ?, ?, now(), ? )     
+2014-09-30 16:33:45,828-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100157} Parameters: [null, test1, testadf13, test]
+2014-09-30 16:33:45,828-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100157} Types: [null, java.lang.String, java.lang.String, java.lang.String]
+2014-09-30 16:33:45,843-[TS] DEBUG main java.sql.Connection - {conn-100156} Preparing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:33:45,843-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100158} Executing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:33:45,859-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100158} Parameters: []
+2014-09-30 16:33:45,859-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100158} Types: []
+2014-09-30 16:33:45,859-[TS] DEBUG main java.sql.ResultSet - {rset-100159} ResultSet
+2014-09-30 16:33:45,859-[TS] DEBUG main java.sql.ResultSet - {rset-100159} Header: [LAST_INSERT_ID()]
+2014-09-30 16:33:45,859-[TS] DEBUG main java.sql.ResultSet - {rset-100159} Result: [58]
+2014-09-30 16:33:45,859-[TS] DEBUG main java.sql.Connection - {conn-100160} Connection
+2014-09-30 16:33:45,859-[TS] DEBUG main java.sql.Connection - {conn-100160} Preparing Statement:    INSERT INTO t_note_outbox( ID, USER, NOTE_ID )   VALUES( ?, ?, ? )     
+2014-09-30 16:33:45,859-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100161} Executing Statement:    INSERT INTO t_note_outbox( ID, USER, NOTE_ID )   VALUES( ?, ?, ? )     
+2014-09-30 16:33:45,859-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100161} Parameters: [null, test1, 58]
+2014-09-30 16:33:45,859-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100161} Types: [null, java.lang.String, java.lang.Long]
+2014-09-30 16:33:45,890-[TS] DEBUG main java.sql.Connection - {conn-100160} Preparing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:33:45,890-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100162} Executing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:33:45,890-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100162} Parameters: []
+2014-09-30 16:33:45,890-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100162} Types: []
+2014-09-30 16:33:45,890-[TS] DEBUG main java.sql.ResultSet - {rset-100163} ResultSet
+2014-09-30 16:33:45,890-[TS] DEBUG main java.sql.ResultSet - {rset-100163} Header: [LAST_INSERT_ID()]
+2014-09-30 16:33:45,890-[TS] DEBUG main java.sql.ResultSet - {rset-100163} Result: [15]
+2014-09-30 16:33:45,890-[TS] DEBUG main java.sql.Connection - {conn-100164} Connection
+2014-09-30 16:33:45,890-[TS] DEBUG main java.sql.Connection - {conn-100164} Preparing Statement:    INSERT INTO t_note_inbox( ID, USER, NOTE_ID )   VALUES( ?, ?, ? )     
+2014-09-30 16:33:45,890-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100165} Executing Statement:    INSERT INTO t_note_inbox( ID, USER, NOTE_ID )   VALUES( ?, ?, ? )     
+2014-09-30 16:33:45,890-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100165} Parameters: [15, test, 58]
+2014-09-30 16:33:45,890-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100165} Types: [java.lang.Long, java.lang.String, java.lang.Long]
+2014-09-30 16:33:45,921-[TS] DEBUG main java.sql.Connection - {conn-100164} Preparing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:33:45,921-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100166} Executing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:33:45,921-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100166} Parameters: []
+2014-09-30 16:33:45,921-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100166} Types: []
+2014-09-30 16:33:45,921-[TS] DEBUG main java.sql.ResultSet - {rset-100167} ResultSet
+2014-09-30 16:33:45,921-[TS] DEBUG main java.sql.ResultSet - {rset-100167} Header: [LAST_INSERT_ID()]
+2014-09-30 16:33:45,921-[TS] DEBUG main java.sql.ResultSet - {rset-100167} Result: [56]
+2014-09-30 16:33:45,921-[TS] DEBUG main java.sql.Connection - {conn-100168} Connection
+2014-09-30 16:33:45,921-[TS] DEBUG main java.sql.Connection - {conn-100168} Preparing Statement:    INSERT INTO t_note( ID, RECEIVER, CONTENT, SEND_TIME, SENDER )   VALUES( ?, ?, ?, now(), ? )     
+2014-09-30 16:33:45,921-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100169} Executing Statement:    INSERT INTO t_note( ID, RECEIVER, CONTENT, SEND_TIME, SENDER )   VALUES( ?, ?, ?, now(), ? )     
+2014-09-30 16:33:45,921-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100169} Parameters: [null, test1, testadf14, test]
+2014-09-30 16:33:45,921-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100169} Types: [null, java.lang.String, java.lang.String, java.lang.String]
+2014-09-30 16:33:45,968-[TS] DEBUG main java.sql.Connection - {conn-100168} Preparing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:33:45,968-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100170} Executing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:33:45,968-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100170} Parameters: []
+2014-09-30 16:33:45,968-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100170} Types: []
+2014-09-30 16:33:45,968-[TS] DEBUG main java.sql.ResultSet - {rset-100171} ResultSet
+2014-09-30 16:33:45,968-[TS] DEBUG main java.sql.ResultSet - {rset-100171} Header: [LAST_INSERT_ID()]
+2014-09-30 16:33:45,968-[TS] DEBUG main java.sql.ResultSet - {rset-100171} Result: [59]
+2014-09-30 16:33:45,968-[TS] DEBUG main java.sql.Connection - {conn-100172} Connection
+2014-09-30 16:33:45,968-[TS] DEBUG main java.sql.Connection - {conn-100172} Preparing Statement:    INSERT INTO t_note_outbox( ID, USER, NOTE_ID )   VALUES( ?, ?, ? )     
+2014-09-30 16:33:45,968-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100173} Executing Statement:    INSERT INTO t_note_outbox( ID, USER, NOTE_ID )   VALUES( ?, ?, ? )     
+2014-09-30 16:33:45,968-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100173} Parameters: [null, test1, 59]
+2014-09-30 16:33:45,968-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100173} Types: [null, java.lang.String, java.lang.Long]
+2014-09-30 16:33:46,000-[TS] DEBUG main java.sql.Connection - {conn-100172} Preparing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:33:46,000-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100174} Executing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:33:46,000-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100174} Parameters: []
+2014-09-30 16:33:46,000-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100174} Types: []
+2014-09-30 16:33:46,000-[TS] DEBUG main java.sql.ResultSet - {rset-100175} ResultSet
+2014-09-30 16:33:46,000-[TS] DEBUG main java.sql.ResultSet - {rset-100175} Header: [LAST_INSERT_ID()]
+2014-09-30 16:33:46,000-[TS] DEBUG main java.sql.ResultSet - {rset-100175} Result: [16]
+2014-09-30 16:33:46,000-[TS] DEBUG main java.sql.Connection - {conn-100176} Connection
+2014-09-30 16:33:46,000-[TS] DEBUG main java.sql.Connection - {conn-100176} Preparing Statement:    INSERT INTO t_note_inbox( ID, USER, NOTE_ID )   VALUES( ?, ?, ? )     
+2014-09-30 16:33:46,000-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100177} Executing Statement:    INSERT INTO t_note_inbox( ID, USER, NOTE_ID )   VALUES( ?, ?, ? )     
+2014-09-30 16:33:46,000-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100177} Parameters: [16, test, 59]
+2014-09-30 16:33:46,000-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100177} Types: [java.lang.Long, java.lang.String, java.lang.Long]
+2014-09-30 16:33:46,046-[TS] DEBUG main java.sql.Connection - {conn-100176} Preparing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:33:46,046-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100178} Executing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:33:46,046-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100178} Parameters: []
+2014-09-30 16:33:46,046-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100178} Types: []
+2014-09-30 16:33:46,046-[TS] DEBUG main java.sql.ResultSet - {rset-100179} ResultSet
+2014-09-30 16:33:46,046-[TS] DEBUG main java.sql.ResultSet - {rset-100179} Header: [LAST_INSERT_ID()]
+2014-09-30 16:33:46,046-[TS] DEBUG main java.sql.ResultSet - {rset-100179} Result: [56]
+2014-09-30 16:33:46,046-[TS] DEBUG main java.sql.Connection - {conn-100180} Connection
+2014-09-30 16:33:46,046-[TS] DEBUG main java.sql.Connection - {conn-100180} Preparing Statement:    INSERT INTO t_note( ID, RECEIVER, CONTENT, SEND_TIME, SENDER )   VALUES( ?, ?, ?, now(), ? )     
+2014-09-30 16:33:46,046-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100181} Executing Statement:    INSERT INTO t_note( ID, RECEIVER, CONTENT, SEND_TIME, SENDER )   VALUES( ?, ?, ?, now(), ? )     
+2014-09-30 16:33:46,046-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100181} Parameters: [null, test1, testadf15, test]
+2014-09-30 16:33:46,046-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100181} Types: [null, java.lang.String, java.lang.String, java.lang.String]
+2014-09-30 16:33:46,078-[TS] DEBUG main java.sql.Connection - {conn-100180} Preparing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:33:46,078-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100182} Executing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:33:46,078-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100182} Parameters: []
+2014-09-30 16:33:46,078-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100182} Types: []
+2014-09-30 16:33:46,078-[TS] DEBUG main java.sql.ResultSet - {rset-100183} ResultSet
+2014-09-30 16:33:46,078-[TS] DEBUG main java.sql.ResultSet - {rset-100183} Header: [LAST_INSERT_ID()]
+2014-09-30 16:33:46,078-[TS] DEBUG main java.sql.ResultSet - {rset-100183} Result: [60]
+2014-09-30 16:33:46,078-[TS] DEBUG main java.sql.Connection - {conn-100184} Connection
+2014-09-30 16:33:46,078-[TS] DEBUG main java.sql.Connection - {conn-100184} Preparing Statement:    INSERT INTO t_note_outbox( ID, USER, NOTE_ID )   VALUES( ?, ?, ? )     
+2014-09-30 16:33:46,078-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100185} Executing Statement:    INSERT INTO t_note_outbox( ID, USER, NOTE_ID )   VALUES( ?, ?, ? )     
+2014-09-30 16:33:46,078-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100185} Parameters: [null, test1, 60]
+2014-09-30 16:33:46,078-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100185} Types: [null, java.lang.String, java.lang.Long]
+2014-09-30 16:33:46,109-[TS] DEBUG main java.sql.Connection - {conn-100184} Preparing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:33:46,109-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100186} Executing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:33:46,109-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100186} Parameters: []
+2014-09-30 16:33:46,109-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100186} Types: []
+2014-09-30 16:33:46,109-[TS] DEBUG main java.sql.ResultSet - {rset-100187} ResultSet
+2014-09-30 16:33:46,109-[TS] DEBUG main java.sql.ResultSet - {rset-100187} Header: [LAST_INSERT_ID()]
+2014-09-30 16:33:46,109-[TS] DEBUG main java.sql.ResultSet - {rset-100187} Result: [17]
+2014-09-30 16:33:46,109-[TS] DEBUG main java.sql.Connection - {conn-100188} Connection
+2014-09-30 16:33:46,109-[TS] DEBUG main java.sql.Connection - {conn-100188} Preparing Statement:    INSERT INTO t_note_inbox( ID, USER, NOTE_ID )   VALUES( ?, ?, ? )     
+2014-09-30 16:33:46,109-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100189} Executing Statement:    INSERT INTO t_note_inbox( ID, USER, NOTE_ID )   VALUES( ?, ?, ? )     
+2014-09-30 16:33:46,109-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100189} Parameters: [17, test, 60]
+2014-09-30 16:33:46,109-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100189} Types: [java.lang.Long, java.lang.String, java.lang.Long]
+2014-09-30 16:33:46,156-[TS] DEBUG main java.sql.Connection - {conn-100188} Preparing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:33:46,156-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100190} Executing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:33:46,156-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100190} Parameters: []
+2014-09-30 16:33:46,156-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100190} Types: []
+2014-09-30 16:33:46,156-[TS] DEBUG main java.sql.ResultSet - {rset-100191} ResultSet
+2014-09-30 16:33:46,156-[TS] DEBUG main java.sql.ResultSet - {rset-100191} Header: [LAST_INSERT_ID()]
+2014-09-30 16:33:46,156-[TS] DEBUG main java.sql.ResultSet - {rset-100191} Result: [60]
+2014-09-30 16:33:46,156-[TS] DEBUG main java.sql.Connection - {conn-100192} Connection
+2014-09-30 16:33:46,156-[TS] DEBUG main java.sql.Connection - {conn-100192} Preparing Statement:    INSERT INTO t_note( ID, RECEIVER, CONTENT, SEND_TIME, SENDER )   VALUES( ?, ?, ?, now(), ? )     
+2014-09-30 16:33:46,156-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100193} Executing Statement:    INSERT INTO t_note( ID, RECEIVER, CONTENT, SEND_TIME, SENDER )   VALUES( ?, ?, ?, now(), ? )     
+2014-09-30 16:33:46,156-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100193} Parameters: [null, test1, testadf16, test]
+2014-09-30 16:33:46,156-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100193} Types: [null, java.lang.String, java.lang.String, java.lang.String]
+2014-09-30 16:33:46,203-[TS] DEBUG main java.sql.Connection - {conn-100192} Preparing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:33:46,203-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100194} Executing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:33:46,203-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100194} Parameters: []
+2014-09-30 16:33:46,203-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100194} Types: []
+2014-09-30 16:33:46,203-[TS] DEBUG main java.sql.ResultSet - {rset-100195} ResultSet
+2014-09-30 16:33:46,203-[TS] DEBUG main java.sql.ResultSet - {rset-100195} Header: [LAST_INSERT_ID()]
+2014-09-30 16:33:46,203-[TS] DEBUG main java.sql.ResultSet - {rset-100195} Result: [61]
+2014-09-30 16:33:46,203-[TS] DEBUG main java.sql.Connection - {conn-100196} Connection
+2014-09-30 16:33:46,203-[TS] DEBUG main java.sql.Connection - {conn-100196} Preparing Statement:    INSERT INTO t_note_outbox( ID, USER, NOTE_ID )   VALUES( ?, ?, ? )     
+2014-09-30 16:33:46,203-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100197} Executing Statement:    INSERT INTO t_note_outbox( ID, USER, NOTE_ID )   VALUES( ?, ?, ? )     
+2014-09-30 16:33:46,203-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100197} Parameters: [null, test1, 61]
+2014-09-30 16:33:46,203-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100197} Types: [null, java.lang.String, java.lang.Long]
+2014-09-30 16:33:46,234-[TS] DEBUG main java.sql.Connection - {conn-100196} Preparing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:33:46,234-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100198} Executing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:33:46,234-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100198} Parameters: []
+2014-09-30 16:33:46,234-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100198} Types: []
+2014-09-30 16:33:46,234-[TS] DEBUG main java.sql.ResultSet - {rset-100199} ResultSet
+2014-09-30 16:33:46,234-[TS] DEBUG main java.sql.ResultSet - {rset-100199} Header: [LAST_INSERT_ID()]
+2014-09-30 16:33:46,234-[TS] DEBUG main java.sql.ResultSet - {rset-100199} Result: [18]
+2014-09-30 16:33:46,234-[TS] DEBUG main java.sql.Connection - {conn-100200} Connection
+2014-09-30 16:33:46,234-[TS] DEBUG main java.sql.Connection - {conn-100200} Preparing Statement:    INSERT INTO t_note_inbox( ID, USER, NOTE_ID )   VALUES( ?, ?, ? )     
+2014-09-30 16:33:46,234-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100201} Executing Statement:    INSERT INTO t_note_inbox( ID, USER, NOTE_ID )   VALUES( ?, ?, ? )     
+2014-09-30 16:33:46,234-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100201} Parameters: [18, test, 61]
+2014-09-30 16:33:46,234-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100201} Types: [java.lang.Long, java.lang.String, java.lang.Long]
+2014-09-30 16:33:46,265-[TS] DEBUG main java.sql.Connection - {conn-100200} Preparing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:33:46,265-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100202} Executing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:33:46,265-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100202} Parameters: []
+2014-09-30 16:33:46,265-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100202} Types: []
+2014-09-30 16:33:46,265-[TS] DEBUG main java.sql.ResultSet - {rset-100203} ResultSet
+2014-09-30 16:33:46,265-[TS] DEBUG main java.sql.ResultSet - {rset-100203} Header: [LAST_INSERT_ID()]
+2014-09-30 16:33:46,265-[TS] DEBUG main java.sql.ResultSet - {rset-100203} Result: [61]
+2014-09-30 16:33:46,265-[TS] DEBUG main java.sql.Connection - {conn-100204} Connection
+2014-09-30 16:33:46,265-[TS] DEBUG main java.sql.Connection - {conn-100204} Preparing Statement:    INSERT INTO t_note( ID, RECEIVER, CONTENT, SEND_TIME, SENDER )   VALUES( ?, ?, ?, now(), ? )     
+2014-09-30 16:33:46,265-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100205} Executing Statement:    INSERT INTO t_note( ID, RECEIVER, CONTENT, SEND_TIME, SENDER )   VALUES( ?, ?, ?, now(), ? )     
+2014-09-30 16:33:46,265-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100205} Parameters: [null, test1, testadf17, test]
+2014-09-30 16:33:46,265-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100205} Types: [null, java.lang.String, java.lang.String, java.lang.String]
+2014-09-30 16:33:46,312-[TS] DEBUG main java.sql.Connection - {conn-100204} Preparing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:33:46,312-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100206} Executing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:33:46,312-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100206} Parameters: []
+2014-09-30 16:33:46,312-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100206} Types: []
+2014-09-30 16:33:46,312-[TS] DEBUG main java.sql.ResultSet - {rset-100207} ResultSet
+2014-09-30 16:33:46,312-[TS] DEBUG main java.sql.ResultSet - {rset-100207} Header: [LAST_INSERT_ID()]
+2014-09-30 16:33:46,312-[TS] DEBUG main java.sql.ResultSet - {rset-100207} Result: [62]
+2014-09-30 16:33:46,312-[TS] DEBUG main java.sql.Connection - {conn-100208} Connection
+2014-09-30 16:33:46,312-[TS] DEBUG main java.sql.Connection - {conn-100208} Preparing Statement:    INSERT INTO t_note_outbox( ID, USER, NOTE_ID )   VALUES( ?, ?, ? )     
+2014-09-30 16:33:46,312-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100209} Executing Statement:    INSERT INTO t_note_outbox( ID, USER, NOTE_ID )   VALUES( ?, ?, ? )     
+2014-09-30 16:33:46,312-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100209} Parameters: [null, test1, 62]
+2014-09-30 16:33:46,312-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100209} Types: [null, java.lang.String, java.lang.Long]
+2014-09-30 16:33:46,343-[TS] DEBUG main java.sql.Connection - {conn-100208} Preparing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:33:46,343-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100210} Executing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:33:46,343-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100210} Parameters: []
+2014-09-30 16:33:46,343-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100210} Types: []
+2014-09-30 16:33:46,343-[TS] DEBUG main java.sql.ResultSet - {rset-100211} ResultSet
+2014-09-30 16:33:46,343-[TS] DEBUG main java.sql.ResultSet - {rset-100211} Header: [LAST_INSERT_ID()]
+2014-09-30 16:33:46,343-[TS] DEBUG main java.sql.ResultSet - {rset-100211} Result: [19]
+2014-09-30 16:33:46,343-[TS] DEBUG main java.sql.Connection - {conn-100212} Connection
+2014-09-30 16:33:46,343-[TS] DEBUG main java.sql.Connection - {conn-100212} Preparing Statement:    INSERT INTO t_note_inbox( ID, USER, NOTE_ID )   VALUES( ?, ?, ? )     
+2014-09-30 16:33:46,343-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100213} Executing Statement:    INSERT INTO t_note_inbox( ID, USER, NOTE_ID )   VALUES( ?, ?, ? )     
+2014-09-30 16:33:46,343-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100213} Parameters: [19, test, 62]
+2014-09-30 16:33:46,343-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100213} Types: [java.lang.Long, java.lang.String, java.lang.Long]
+2014-09-30 16:33:46,375-[TS] DEBUG main java.sql.Connection - {conn-100212} Preparing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:33:46,375-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100214} Executing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:33:46,375-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100214} Parameters: []
+2014-09-30 16:33:46,375-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100214} Types: []
+2014-09-30 16:33:46,375-[TS] DEBUG main java.sql.ResultSet - {rset-100215} ResultSet
+2014-09-30 16:33:46,375-[TS] DEBUG main java.sql.ResultSet - {rset-100215} Header: [LAST_INSERT_ID()]
+2014-09-30 16:33:46,375-[TS] DEBUG main java.sql.ResultSet - {rset-100215} Result: [61]
+2014-09-30 16:33:46,375-[TS] DEBUG main java.sql.Connection - {conn-100216} Connection
+2014-09-30 16:33:46,375-[TS] DEBUG main java.sql.Connection - {conn-100216} Preparing Statement:    INSERT INTO t_note( ID, RECEIVER, CONTENT, SEND_TIME, SENDER )   VALUES( ?, ?, ?, now(), ? )     
+2014-09-30 16:33:46,375-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100217} Executing Statement:    INSERT INTO t_note( ID, RECEIVER, CONTENT, SEND_TIME, SENDER )   VALUES( ?, ?, ?, now(), ? )     
+2014-09-30 16:33:46,375-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100217} Parameters: [null, test1, testadf18, test]
+2014-09-30 16:33:46,375-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100217} Types: [null, java.lang.String, java.lang.String, java.lang.String]
+2014-09-30 16:33:46,406-[TS] DEBUG main java.sql.Connection - {conn-100216} Preparing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:33:46,406-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100218} Executing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:33:46,406-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100218} Parameters: []
+2014-09-30 16:33:46,406-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100218} Types: []
+2014-09-30 16:33:46,406-[TS] DEBUG main java.sql.ResultSet - {rset-100219} ResultSet
+2014-09-30 16:33:46,406-[TS] DEBUG main java.sql.ResultSet - {rset-100219} Header: [LAST_INSERT_ID()]
+2014-09-30 16:33:46,406-[TS] DEBUG main java.sql.ResultSet - {rset-100219} Result: [63]
+2014-09-30 16:33:46,406-[TS] DEBUG main java.sql.Connection - {conn-100220} Connection
+2014-09-30 16:33:46,406-[TS] DEBUG main java.sql.Connection - {conn-100220} Preparing Statement:    INSERT INTO t_note_outbox( ID, USER, NOTE_ID )   VALUES( ?, ?, ? )     
+2014-09-30 16:33:46,406-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100221} Executing Statement:    INSERT INTO t_note_outbox( ID, USER, NOTE_ID )   VALUES( ?, ?, ? )     
+2014-09-30 16:33:46,406-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100221} Parameters: [null, test1, 63]
+2014-09-30 16:33:46,406-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100221} Types: [null, java.lang.String, java.lang.Long]
+2014-09-30 16:33:46,437-[TS] DEBUG main java.sql.Connection - {conn-100220} Preparing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:33:46,437-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100222} Executing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:33:46,437-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100222} Parameters: []
+2014-09-30 16:33:46,437-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100222} Types: []
+2014-09-30 16:33:46,437-[TS] DEBUG main java.sql.ResultSet - {rset-100223} ResultSet
+2014-09-30 16:33:46,437-[TS] DEBUG main java.sql.ResultSet - {rset-100223} Header: [LAST_INSERT_ID()]
+2014-09-30 16:33:46,437-[TS] DEBUG main java.sql.ResultSet - {rset-100223} Result: [20]
+2014-09-30 16:33:46,437-[TS] DEBUG main java.sql.Connection - {conn-100224} Connection
+2014-09-30 16:33:46,437-[TS] DEBUG main java.sql.Connection - {conn-100224} Preparing Statement:    INSERT INTO t_note_inbox( ID, USER, NOTE_ID )   VALUES( ?, ?, ? )     
+2014-09-30 16:33:46,437-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100225} Executing Statement:    INSERT INTO t_note_inbox( ID, USER, NOTE_ID )   VALUES( ?, ?, ? )     
+2014-09-30 16:33:46,437-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100225} Parameters: [20, test, 63]
+2014-09-30 16:33:46,437-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100225} Types: [java.lang.Long, java.lang.String, java.lang.Long]
+2014-09-30 16:33:46,468-[TS] DEBUG main java.sql.Connection - {conn-100224} Preparing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:33:46,468-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100226} Executing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:33:46,468-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100226} Parameters: []
+2014-09-30 16:33:46,468-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100226} Types: []
+2014-09-30 16:33:46,468-[TS] DEBUG main java.sql.ResultSet - {rset-100227} ResultSet
+2014-09-30 16:33:46,468-[TS] DEBUG main java.sql.ResultSet - {rset-100227} Header: [LAST_INSERT_ID()]
+2014-09-30 16:33:46,468-[TS] DEBUG main java.sql.ResultSet - {rset-100227} Result: [61]
+2014-09-30 16:33:46,468-[TS] DEBUG main java.sql.Connection - {conn-100228} Connection
+2014-09-30 16:33:46,468-[TS] DEBUG main java.sql.Connection - {conn-100228} Preparing Statement:    INSERT INTO t_note( ID, RECEIVER, CONTENT, SEND_TIME, SENDER )   VALUES( ?, ?, ?, now(), ? )     
+2014-09-30 16:33:46,468-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100229} Executing Statement:    INSERT INTO t_note( ID, RECEIVER, CONTENT, SEND_TIME, SENDER )   VALUES( ?, ?, ?, now(), ? )     
+2014-09-30 16:33:46,468-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100229} Parameters: [null, test1, testadf19, test]
+2014-09-30 16:33:46,468-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100229} Types: [null, java.lang.String, java.lang.String, java.lang.String]
+2014-09-30 16:33:46,500-[TS] DEBUG main java.sql.Connection - {conn-100228} Preparing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:33:46,500-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100230} Executing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:33:46,500-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100230} Parameters: []
+2014-09-30 16:33:46,500-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100230} Types: []
+2014-09-30 16:33:46,515-[TS] DEBUG main java.sql.ResultSet - {rset-100231} ResultSet
+2014-09-30 16:33:46,515-[TS] DEBUG main java.sql.ResultSet - {rset-100231} Header: [LAST_INSERT_ID()]
+2014-09-30 16:33:46,515-[TS] DEBUG main java.sql.ResultSet - {rset-100231} Result: [64]
+2014-09-30 16:33:46,515-[TS] DEBUG main java.sql.Connection - {conn-100232} Connection
+2014-09-30 16:33:46,515-[TS] DEBUG main java.sql.Connection - {conn-100232} Preparing Statement:    INSERT INTO t_note_outbox( ID, USER, NOTE_ID )   VALUES( ?, ?, ? )     
+2014-09-30 16:33:46,515-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100233} Executing Statement:    INSERT INTO t_note_outbox( ID, USER, NOTE_ID )   VALUES( ?, ?, ? )     
+2014-09-30 16:33:46,515-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100233} Parameters: [null, test1, 64]
+2014-09-30 16:33:46,515-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100233} Types: [null, java.lang.String, java.lang.Long]
+2014-09-30 16:33:46,546-[TS] DEBUG main java.sql.Connection - {conn-100232} Preparing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:33:46,546-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100234} Executing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:33:46,546-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100234} Parameters: []
+2014-09-30 16:33:46,546-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100234} Types: []
+2014-09-30 16:33:46,546-[TS] DEBUG main java.sql.ResultSet - {rset-100235} ResultSet
+2014-09-30 16:33:46,546-[TS] DEBUG main java.sql.ResultSet - {rset-100235} Header: [LAST_INSERT_ID()]
+2014-09-30 16:33:46,546-[TS] DEBUG main java.sql.ResultSet - {rset-100235} Result: [21]
+2014-09-30 16:33:46,546-[TS] DEBUG main java.sql.Connection - {conn-100236} Connection
+2014-09-30 16:33:46,546-[TS] DEBUG main java.sql.Connection - {conn-100236} Preparing Statement:    INSERT INTO t_note_inbox( ID, USER, NOTE_ID )   VALUES( ?, ?, ? )     
+2014-09-30 16:33:46,546-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100237} Executing Statement:    INSERT INTO t_note_inbox( ID, USER, NOTE_ID )   VALUES( ?, ?, ? )     
+2014-09-30 16:33:46,546-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100237} Parameters: [21, test, 64]
+2014-09-30 16:33:46,546-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100237} Types: [java.lang.Long, java.lang.String, java.lang.Long]
+2014-09-30 16:33:46,578-[TS] DEBUG main java.sql.Connection - {conn-100236} Preparing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:33:46,578-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100238} Executing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:33:46,578-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100238} Parameters: []
+2014-09-30 16:33:46,578-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100238} Types: []
+2014-09-30 16:33:46,578-[TS] DEBUG main java.sql.ResultSet - {rset-100239} ResultSet
+2014-09-30 16:33:46,578-[TS] DEBUG main java.sql.ResultSet - {rset-100239} Header: [LAST_INSERT_ID()]
+2014-09-30 16:33:46,578-[TS] DEBUG main java.sql.ResultSet - {rset-100239} Result: [64]
+2014-09-30 16:35:37,500-[TS] DEBUG main java.sql.Connection - {conn-100000} Connection
+2014-09-30 16:35:37,515-[TS] DEBUG main java.sql.Connection - {conn-100000} Preparing Statement:    INSERT INTO t_note( ID, RECEIVER, CONTENT, SEND_TIME, SENDER )   VALUES( ?, ?, ?, now(), ? )     
+2014-09-30 16:35:38,265-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100001} Executing Statement:    INSERT INTO t_note( ID, RECEIVER, CONTENT, SEND_TIME, SENDER )   VALUES( ?, ?, ?, now(), ? )     
+2014-09-30 16:35:38,265-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100001} Parameters: [null, test, testadf0, test1]
+2014-09-30 16:35:38,265-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100001} Types: [null, java.lang.String, java.lang.String, java.lang.String]
+2014-09-30 16:35:38,312-[TS] DEBUG main java.sql.Connection - {conn-100000} Preparing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:35:38,312-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100002} Executing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:35:38,312-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100002} Parameters: []
+2014-09-30 16:35:38,312-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100002} Types: []
+2014-09-30 16:35:38,328-[TS] DEBUG main java.sql.ResultSet - {rset-100003} ResultSet
+2014-09-30 16:35:38,343-[TS] DEBUG main java.sql.ResultSet - {rset-100003} Header: [LAST_INSERT_ID()]
+2014-09-30 16:35:38,343-[TS] DEBUG main java.sql.ResultSet - {rset-100003} Result: [65]
+2014-09-30 16:35:38,375-[TS] DEBUG main java.sql.Connection - {conn-100004} Connection
+2014-09-30 16:35:38,375-[TS] DEBUG main java.sql.Connection - {conn-100004} Preparing Statement:    INSERT INTO t_note_outbox( ID, USER, NOTE_ID )   VALUES( ?, ?, ? )     
+2014-09-30 16:35:38,375-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100005} Executing Statement:    INSERT INTO t_note_outbox( ID, USER, NOTE_ID )   VALUES( ?, ?, ? )     
+2014-09-30 16:35:38,375-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100005} Parameters: [null, test, 65]
+2014-09-30 16:35:38,375-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100005} Types: [null, java.lang.String, java.lang.Long]
+2014-09-30 16:35:38,437-[TS] DEBUG main java.sql.Connection - {conn-100004} Preparing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:35:38,437-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100006} Executing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:35:38,437-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100006} Parameters: []
+2014-09-30 16:35:38,437-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100006} Types: []
+2014-09-30 16:35:38,437-[TS] DEBUG main java.sql.ResultSet - {rset-100007} ResultSet
+2014-09-30 16:35:38,437-[TS] DEBUG main java.sql.ResultSet - {rset-100007} Header: [LAST_INSERT_ID()]
+2014-09-30 16:35:38,437-[TS] DEBUG main java.sql.ResultSet - {rset-100007} Result: [22]
+2014-09-30 16:35:38,437-[TS] DEBUG main java.sql.Connection - {conn-100008} Connection
+2014-09-30 16:35:38,437-[TS] DEBUG main java.sql.Connection - {conn-100008} Preparing Statement:    INSERT INTO t_note_inbox( ID, USER, NOTE_ID )   VALUES( ?, ?, ? )     
+2014-09-30 16:35:38,437-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100009} Executing Statement:    INSERT INTO t_note_inbox( ID, USER, NOTE_ID )   VALUES( ?, ?, ? )     
+2014-09-30 16:35:38,437-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100009} Parameters: [22, test1, 65]
+2014-09-30 16:35:38,437-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100009} Types: [java.lang.Long, java.lang.String, java.lang.Long]
+2014-09-30 16:35:38,531-[TS] DEBUG main java.sql.Connection - {conn-100008} Preparing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:35:38,531-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100010} Executing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:35:38,531-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100010} Parameters: []
+2014-09-30 16:35:38,531-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100010} Types: []
+2014-09-30 16:35:38,531-[TS] DEBUG main java.sql.ResultSet - {rset-100011} ResultSet
+2014-09-30 16:35:38,531-[TS] DEBUG main java.sql.ResultSet - {rset-100011} Header: [LAST_INSERT_ID()]
+2014-09-30 16:35:38,531-[TS] DEBUG main java.sql.ResultSet - {rset-100011} Result: [22]
+2014-09-30 16:35:38,531-[TS] DEBUG main java.sql.Connection - {conn-100012} Connection
+2014-09-30 16:35:38,531-[TS] DEBUG main java.sql.Connection - {conn-100012} Preparing Statement:    INSERT INTO t_note( ID, RECEIVER, CONTENT, SEND_TIME, SENDER )   VALUES( ?, ?, ?, now(), ? )     
+2014-09-30 16:35:38,531-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100013} Executing Statement:    INSERT INTO t_note( ID, RECEIVER, CONTENT, SEND_TIME, SENDER )   VALUES( ?, ?, ?, now(), ? )     
+2014-09-30 16:35:38,531-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100013} Parameters: [null, test, testadf1, test1]
+2014-09-30 16:35:38,531-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100013} Types: [null, java.lang.String, java.lang.String, java.lang.String]
+2014-09-30 16:35:38,562-[TS] DEBUG main java.sql.Connection - {conn-100012} Preparing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:35:38,562-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100014} Executing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:35:38,562-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100014} Parameters: []
+2014-09-30 16:35:38,562-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100014} Types: []
+2014-09-30 16:35:38,562-[TS] DEBUG main java.sql.ResultSet - {rset-100015} ResultSet
+2014-09-30 16:35:38,562-[TS] DEBUG main java.sql.ResultSet - {rset-100015} Header: [LAST_INSERT_ID()]
+2014-09-30 16:35:38,562-[TS] DEBUG main java.sql.ResultSet - {rset-100015} Result: [66]
+2014-09-30 16:35:38,562-[TS] DEBUG main java.sql.Connection - {conn-100016} Connection
+2014-09-30 16:35:38,562-[TS] DEBUG main java.sql.Connection - {conn-100016} Preparing Statement:    INSERT INTO t_note_outbox( ID, USER, NOTE_ID )   VALUES( ?, ?, ? )     
+2014-09-30 16:35:38,562-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100017} Executing Statement:    INSERT INTO t_note_outbox( ID, USER, NOTE_ID )   VALUES( ?, ?, ? )     
+2014-09-30 16:35:38,562-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100017} Parameters: [null, test, 66]
+2014-09-30 16:35:38,562-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100017} Types: [null, java.lang.String, java.lang.Long]
+2014-09-30 16:35:38,593-[TS] DEBUG main java.sql.Connection - {conn-100016} Preparing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:35:38,593-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100018} Executing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:35:38,593-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100018} Parameters: []
+2014-09-30 16:35:38,593-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100018} Types: []
+2014-09-30 16:35:38,593-[TS] DEBUG main java.sql.ResultSet - {rset-100019} ResultSet
+2014-09-30 16:35:38,593-[TS] DEBUG main java.sql.ResultSet - {rset-100019} Header: [LAST_INSERT_ID()]
+2014-09-30 16:35:38,593-[TS] DEBUG main java.sql.ResultSet - {rset-100019} Result: [23]
+2014-09-30 16:35:38,593-[TS] DEBUG main java.sql.Connection - {conn-100020} Connection
+2014-09-30 16:35:38,593-[TS] DEBUG main java.sql.Connection - {conn-100020} Preparing Statement:    INSERT INTO t_note_inbox( ID, USER, NOTE_ID )   VALUES( ?, ?, ? )     
+2014-09-30 16:35:38,593-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100021} Executing Statement:    INSERT INTO t_note_inbox( ID, USER, NOTE_ID )   VALUES( ?, ?, ? )     
+2014-09-30 16:35:38,593-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100021} Parameters: [23, test1, 66]
+2014-09-30 16:35:38,593-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100021} Types: [java.lang.Long, java.lang.String, java.lang.Long]
+2014-09-30 16:35:38,640-[TS] DEBUG main java.sql.Connection - {conn-100020} Preparing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:35:38,640-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100022} Executing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:35:38,640-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100022} Parameters: []
+2014-09-30 16:35:38,640-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100022} Types: []
+2014-09-30 16:35:38,640-[TS] DEBUG main java.sql.ResultSet - {rset-100023} ResultSet
+2014-09-30 16:35:38,640-[TS] DEBUG main java.sql.ResultSet - {rset-100023} Header: [LAST_INSERT_ID()]
+2014-09-30 16:35:38,640-[TS] DEBUG main java.sql.ResultSet - {rset-100023} Result: [66]
+2014-09-30 16:35:38,640-[TS] DEBUG main java.sql.Connection - {conn-100024} Connection
+2014-09-30 16:35:38,640-[TS] DEBUG main java.sql.Connection - {conn-100024} Preparing Statement:    INSERT INTO t_note( ID, RECEIVER, CONTENT, SEND_TIME, SENDER )   VALUES( ?, ?, ?, now(), ? )     
+2014-09-30 16:35:38,640-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100025} Executing Statement:    INSERT INTO t_note( ID, RECEIVER, CONTENT, SEND_TIME, SENDER )   VALUES( ?, ?, ?, now(), ? )     
+2014-09-30 16:35:38,640-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100025} Parameters: [null, test, testadf2, test1]
+2014-09-30 16:35:38,640-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100025} Types: [null, java.lang.String, java.lang.String, java.lang.String]
+2014-09-30 16:35:38,671-[TS] DEBUG main java.sql.Connection - {conn-100024} Preparing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:35:38,671-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100026} Executing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:35:38,671-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100026} Parameters: []
+2014-09-30 16:35:38,671-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100026} Types: []
+2014-09-30 16:35:38,671-[TS] DEBUG main java.sql.ResultSet - {rset-100027} ResultSet
+2014-09-30 16:35:38,671-[TS] DEBUG main java.sql.ResultSet - {rset-100027} Header: [LAST_INSERT_ID()]
+2014-09-30 16:35:38,671-[TS] DEBUG main java.sql.ResultSet - {rset-100027} Result: [67]
+2014-09-30 16:35:38,671-[TS] DEBUG main java.sql.Connection - {conn-100028} Connection
+2014-09-30 16:35:38,671-[TS] DEBUG main java.sql.Connection - {conn-100028} Preparing Statement:    INSERT INTO t_note_outbox( ID, USER, NOTE_ID )   VALUES( ?, ?, ? )     
+2014-09-30 16:35:38,671-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100029} Executing Statement:    INSERT INTO t_note_outbox( ID, USER, NOTE_ID )   VALUES( ?, ?, ? )     
+2014-09-30 16:35:38,671-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100029} Parameters: [null, test, 67]
+2014-09-30 16:35:38,671-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100029} Types: [null, java.lang.String, java.lang.Long]
+2014-09-30 16:35:38,703-[TS] DEBUG main java.sql.Connection - {conn-100028} Preparing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:35:38,703-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100030} Executing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:35:38,703-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100030} Parameters: []
+2014-09-30 16:35:38,703-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100030} Types: []
+2014-09-30 16:35:38,703-[TS] DEBUG main java.sql.ResultSet - {rset-100031} ResultSet
+2014-09-30 16:35:38,703-[TS] DEBUG main java.sql.ResultSet - {rset-100031} Header: [LAST_INSERT_ID()]
+2014-09-30 16:35:38,703-[TS] DEBUG main java.sql.ResultSet - {rset-100031} Result: [24]
+2014-09-30 16:35:38,703-[TS] DEBUG main java.sql.Connection - {conn-100032} Connection
+2014-09-30 16:35:38,703-[TS] DEBUG main java.sql.Connection - {conn-100032} Preparing Statement:    INSERT INTO t_note_inbox( ID, USER, NOTE_ID )   VALUES( ?, ?, ? )     
+2014-09-30 16:35:38,703-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100033} Executing Statement:    INSERT INTO t_note_inbox( ID, USER, NOTE_ID )   VALUES( ?, ?, ? )     
+2014-09-30 16:35:38,703-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100033} Parameters: [24, test1, 67]
+2014-09-30 16:35:38,703-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100033} Types: [java.lang.Long, java.lang.String, java.lang.Long]
+2014-09-30 16:35:38,750-[TS] DEBUG main java.sql.Connection - {conn-100032} Preparing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:35:38,750-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100034} Executing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:35:38,750-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100034} Parameters: []
+2014-09-30 16:35:38,750-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100034} Types: []
+2014-09-30 16:35:38,750-[TS] DEBUG main java.sql.ResultSet - {rset-100035} ResultSet
+2014-09-30 16:35:38,750-[TS] DEBUG main java.sql.ResultSet - {rset-100035} Header: [LAST_INSERT_ID()]
+2014-09-30 16:35:38,750-[TS] DEBUG main java.sql.ResultSet - {rset-100035} Result: [24]
+2014-09-30 16:35:38,750-[TS] DEBUG main java.sql.Connection - {conn-100036} Connection
+2014-09-30 16:35:38,750-[TS] DEBUG main java.sql.Connection - {conn-100036} Preparing Statement:    INSERT INTO t_note( ID, RECEIVER, CONTENT, SEND_TIME, SENDER )   VALUES( ?, ?, ?, now(), ? )     
+2014-09-30 16:35:38,750-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100037} Executing Statement:    INSERT INTO t_note( ID, RECEIVER, CONTENT, SEND_TIME, SENDER )   VALUES( ?, ?, ?, now(), ? )     
+2014-09-30 16:35:38,750-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100037} Parameters: [null, test, testadf3, test1]
+2014-09-30 16:35:38,750-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100037} Types: [null, java.lang.String, java.lang.String, java.lang.String]
+2014-09-30 16:35:38,781-[TS] DEBUG main java.sql.Connection - {conn-100036} Preparing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:35:38,781-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100038} Executing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:35:38,781-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100038} Parameters: []
+2014-09-30 16:35:38,781-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100038} Types: []
+2014-09-30 16:35:38,781-[TS] DEBUG main java.sql.ResultSet - {rset-100039} ResultSet
+2014-09-30 16:35:38,781-[TS] DEBUG main java.sql.ResultSet - {rset-100039} Header: [LAST_INSERT_ID()]
+2014-09-30 16:35:38,781-[TS] DEBUG main java.sql.ResultSet - {rset-100039} Result: [68]
+2014-09-30 16:35:38,781-[TS] DEBUG main java.sql.Connection - {conn-100040} Connection
+2014-09-30 16:35:38,781-[TS] DEBUG main java.sql.Connection - {conn-100040} Preparing Statement:    INSERT INTO t_note_outbox( ID, USER, NOTE_ID )   VALUES( ?, ?, ? )     
+2014-09-30 16:35:38,781-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100041} Executing Statement:    INSERT INTO t_note_outbox( ID, USER, NOTE_ID )   VALUES( ?, ?, ? )     
+2014-09-30 16:35:38,781-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100041} Parameters: [null, test, 68]
+2014-09-30 16:35:38,781-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100041} Types: [null, java.lang.String, java.lang.Long]
+2014-09-30 16:35:38,812-[TS] DEBUG main java.sql.Connection - {conn-100040} Preparing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:35:38,812-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100042} Executing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:35:38,812-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100042} Parameters: []
+2014-09-30 16:35:38,812-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100042} Types: []
+2014-09-30 16:35:38,812-[TS] DEBUG main java.sql.ResultSet - {rset-100043} ResultSet
+2014-09-30 16:35:38,828-[TS] DEBUG main java.sql.ResultSet - {rset-100043} Header: [LAST_INSERT_ID()]
+2014-09-30 16:35:38,828-[TS] DEBUG main java.sql.ResultSet - {rset-100043} Result: [25]
+2014-09-30 16:35:38,828-[TS] DEBUG main java.sql.Connection - {conn-100044} Connection
+2014-09-30 16:35:38,828-[TS] DEBUG main java.sql.Connection - {conn-100044} Preparing Statement:    INSERT INTO t_note_inbox( ID, USER, NOTE_ID )   VALUES( ?, ?, ? )     
+2014-09-30 16:35:38,828-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100045} Executing Statement:    INSERT INTO t_note_inbox( ID, USER, NOTE_ID )   VALUES( ?, ?, ? )     
+2014-09-30 16:35:38,828-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100045} Parameters: [25, test1, 68]
+2014-09-30 16:35:38,828-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100045} Types: [java.lang.Long, java.lang.String, java.lang.Long]
+2014-09-30 16:35:38,859-[TS] DEBUG main java.sql.Connection - {conn-100044} Preparing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:35:38,859-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100046} Executing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:35:38,859-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100046} Parameters: []
+2014-09-30 16:35:38,859-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100046} Types: []
+2014-09-30 16:35:38,859-[TS] DEBUG main java.sql.ResultSet - {rset-100047} ResultSet
+2014-09-30 16:35:38,859-[TS] DEBUG main java.sql.ResultSet - {rset-100047} Header: [LAST_INSERT_ID()]
+2014-09-30 16:35:38,859-[TS] DEBUG main java.sql.ResultSet - {rset-100047} Result: [68]
+2014-09-30 16:35:38,859-[TS] DEBUG main java.sql.Connection - {conn-100048} Connection
+2014-09-30 16:35:38,859-[TS] DEBUG main java.sql.Connection - {conn-100048} Preparing Statement:    INSERT INTO t_note( ID, RECEIVER, CONTENT, SEND_TIME, SENDER )   VALUES( ?, ?, ?, now(), ? )     
+2014-09-30 16:35:38,859-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100049} Executing Statement:    INSERT INTO t_note( ID, RECEIVER, CONTENT, SEND_TIME, SENDER )   VALUES( ?, ?, ?, now(), ? )     
+2014-09-30 16:35:38,875-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100049} Parameters: [null, test, testadf4, test1]
+2014-09-30 16:35:38,875-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100049} Types: [null, java.lang.String, java.lang.String, java.lang.String]
+2014-09-30 16:35:38,906-[TS] DEBUG main java.sql.Connection - {conn-100048} Preparing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:35:38,906-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100050} Executing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:35:38,921-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100050} Parameters: []
+2014-09-30 16:35:38,921-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100050} Types: []
+2014-09-30 16:35:38,921-[TS] DEBUG main java.sql.ResultSet - {rset-100051} ResultSet
+2014-09-30 16:35:38,921-[TS] DEBUG main java.sql.ResultSet - {rset-100051} Header: [LAST_INSERT_ID()]
+2014-09-30 16:35:38,921-[TS] DEBUG main java.sql.ResultSet - {rset-100051} Result: [69]
+2014-09-30 16:35:38,921-[TS] DEBUG main java.sql.Connection - {conn-100052} Connection
+2014-09-30 16:35:38,921-[TS] DEBUG main java.sql.Connection - {conn-100052} Preparing Statement:    INSERT INTO t_note_outbox( ID, USER, NOTE_ID )   VALUES( ?, ?, ? )     
+2014-09-30 16:35:38,921-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100053} Executing Statement:    INSERT INTO t_note_outbox( ID, USER, NOTE_ID )   VALUES( ?, ?, ? )     
+2014-09-30 16:35:38,921-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100053} Parameters: [null, test, 69]
+2014-09-30 16:35:38,921-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100053} Types: [null, java.lang.String, java.lang.Long]
+2014-09-30 16:35:38,953-[TS] DEBUG main java.sql.Connection - {conn-100052} Preparing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:35:38,953-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100054} Executing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:35:38,953-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100054} Parameters: []
+2014-09-30 16:35:38,953-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100054} Types: []
+2014-09-30 16:35:38,953-[TS] DEBUG main java.sql.ResultSet - {rset-100055} ResultSet
+2014-09-30 16:35:38,953-[TS] DEBUG main java.sql.ResultSet - {rset-100055} Header: [LAST_INSERT_ID()]
+2014-09-30 16:35:38,953-[TS] DEBUG main java.sql.ResultSet - {rset-100055} Result: [26]
+2014-09-30 16:35:38,953-[TS] DEBUG main java.sql.Connection - {conn-100056} Connection
+2014-09-30 16:35:38,953-[TS] DEBUG main java.sql.Connection - {conn-100056} Preparing Statement:    INSERT INTO t_note_inbox( ID, USER, NOTE_ID )   VALUES( ?, ?, ? )     
+2014-09-30 16:35:38,953-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100057} Executing Statement:    INSERT INTO t_note_inbox( ID, USER, NOTE_ID )   VALUES( ?, ?, ? )     
+2014-09-30 16:35:38,953-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100057} Parameters: [26, test1, 69]
+2014-09-30 16:35:38,953-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100057} Types: [java.lang.Long, java.lang.String, java.lang.Long]
+2014-09-30 16:35:38,984-[TS] DEBUG main java.sql.Connection - {conn-100056} Preparing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:35:38,984-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100058} Executing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:35:38,984-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100058} Parameters: []
+2014-09-30 16:35:38,984-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100058} Types: []
+2014-09-30 16:35:38,984-[TS] DEBUG main java.sql.ResultSet - {rset-100059} ResultSet
+2014-09-30 16:35:38,984-[TS] DEBUG main java.sql.ResultSet - {rset-100059} Header: [LAST_INSERT_ID()]
+2014-09-30 16:35:38,984-[TS] DEBUG main java.sql.ResultSet - {rset-100059} Result: [69]
+2014-09-30 16:35:38,984-[TS] DEBUG main java.sql.Connection - {conn-100060} Connection
+2014-09-30 16:35:38,984-[TS] DEBUG main java.sql.Connection - {conn-100060} Preparing Statement:    INSERT INTO t_note( ID, RECEIVER, CONTENT, SEND_TIME, SENDER )   VALUES( ?, ?, ?, now(), ? )     
+2014-09-30 16:35:38,984-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100061} Executing Statement:    INSERT INTO t_note( ID, RECEIVER, CONTENT, SEND_TIME, SENDER )   VALUES( ?, ?, ?, now(), ? )     
+2014-09-30 16:35:38,984-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100061} Parameters: [null, test, testadf5, test1]
+2014-09-30 16:35:38,984-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100061} Types: [null, java.lang.String, java.lang.String, java.lang.String]
+2014-09-30 16:35:39,031-[TS] DEBUG main java.sql.Connection - {conn-100060} Preparing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:35:39,031-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100062} Executing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:35:39,031-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100062} Parameters: []
+2014-09-30 16:35:39,031-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100062} Types: []
+2014-09-30 16:35:39,031-[TS] DEBUG main java.sql.ResultSet - {rset-100063} ResultSet
+2014-09-30 16:35:39,031-[TS] DEBUG main java.sql.ResultSet - {rset-100063} Header: [LAST_INSERT_ID()]
+2014-09-30 16:35:39,031-[TS] DEBUG main java.sql.ResultSet - {rset-100063} Result: [70]
+2014-09-30 16:35:39,031-[TS] DEBUG main java.sql.Connection - {conn-100064} Connection
+2014-09-30 16:35:39,031-[TS] DEBUG main java.sql.Connection - {conn-100064} Preparing Statement:    INSERT INTO t_note_outbox( ID, USER, NOTE_ID )   VALUES( ?, ?, ? )     
+2014-09-30 16:35:39,031-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100065} Executing Statement:    INSERT INTO t_note_outbox( ID, USER, NOTE_ID )   VALUES( ?, ?, ? )     
+2014-09-30 16:35:39,031-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100065} Parameters: [null, test, 70]
+2014-09-30 16:35:39,031-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100065} Types: [null, java.lang.String, java.lang.Long]
+2014-09-30 16:35:39,062-[TS] DEBUG main java.sql.Connection - {conn-100064} Preparing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:35:39,062-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100066} Executing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:35:39,062-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100066} Parameters: []
+2014-09-30 16:35:39,062-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100066} Types: []
+2014-09-30 16:35:39,078-[TS] DEBUG main java.sql.ResultSet - {rset-100067} ResultSet
+2014-09-30 16:35:39,078-[TS] DEBUG main java.sql.ResultSet - {rset-100067} Header: [LAST_INSERT_ID()]
+2014-09-30 16:35:39,078-[TS] DEBUG main java.sql.ResultSet - {rset-100067} Result: [27]
+2014-09-30 16:35:39,078-[TS] DEBUG main java.sql.Connection - {conn-100068} Connection
+2014-09-30 16:35:39,078-[TS] DEBUG main java.sql.Connection - {conn-100068} Preparing Statement:    INSERT INTO t_note_inbox( ID, USER, NOTE_ID )   VALUES( ?, ?, ? )     
+2014-09-30 16:35:39,078-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100069} Executing Statement:    INSERT INTO t_note_inbox( ID, USER, NOTE_ID )   VALUES( ?, ?, ? )     
+2014-09-30 16:35:39,078-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100069} Parameters: [27, test1, 70]
+2014-09-30 16:35:39,078-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100069} Types: [java.lang.Long, java.lang.String, java.lang.Long]
+2014-09-30 16:35:39,109-[TS] DEBUG main java.sql.Connection - {conn-100068} Preparing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:35:39,109-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100070} Executing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:35:39,109-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100070} Parameters: []
+2014-09-30 16:35:39,109-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100070} Types: []
+2014-09-30 16:35:39,109-[TS] DEBUG main java.sql.ResultSet - {rset-100071} ResultSet
+2014-09-30 16:35:39,109-[TS] DEBUG main java.sql.ResultSet - {rset-100071} Header: [LAST_INSERT_ID()]
+2014-09-30 16:35:39,109-[TS] DEBUG main java.sql.ResultSet - {rset-100071} Result: [26]
+2014-09-30 16:35:39,109-[TS] DEBUG main java.sql.Connection - {conn-100072} Connection
+2014-09-30 16:35:39,109-[TS] DEBUG main java.sql.Connection - {conn-100072} Preparing Statement:    INSERT INTO t_note( ID, RECEIVER, CONTENT, SEND_TIME, SENDER )   VALUES( ?, ?, ?, now(), ? )     
+2014-09-30 16:35:39,109-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100073} Executing Statement:    INSERT INTO t_note( ID, RECEIVER, CONTENT, SEND_TIME, SENDER )   VALUES( ?, ?, ?, now(), ? )     
+2014-09-30 16:35:39,109-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100073} Parameters: [null, test, testadf6, test1]
+2014-09-30 16:35:39,109-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100073} Types: [null, java.lang.String, java.lang.String, java.lang.String]
+2014-09-30 16:35:39,140-[TS] DEBUG main java.sql.Connection - {conn-100072} Preparing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:35:39,140-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100074} Executing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:35:39,140-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100074} Parameters: []
+2014-09-30 16:35:39,140-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100074} Types: []
+2014-09-30 16:35:39,140-[TS] DEBUG main java.sql.ResultSet - {rset-100075} ResultSet
+2014-09-30 16:35:39,140-[TS] DEBUG main java.sql.ResultSet - {rset-100075} Header: [LAST_INSERT_ID()]
+2014-09-30 16:35:39,140-[TS] DEBUG main java.sql.ResultSet - {rset-100075} Result: [71]
+2014-09-30 16:35:39,140-[TS] DEBUG main java.sql.Connection - {conn-100076} Connection
+2014-09-30 16:35:39,140-[TS] DEBUG main java.sql.Connection - {conn-100076} Preparing Statement:    INSERT INTO t_note_outbox( ID, USER, NOTE_ID )   VALUES( ?, ?, ? )     
+2014-09-30 16:35:39,140-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100077} Executing Statement:    INSERT INTO t_note_outbox( ID, USER, NOTE_ID )   VALUES( ?, ?, ? )     
+2014-09-30 16:35:39,140-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100077} Parameters: [null, test, 71]
+2014-09-30 16:35:39,140-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100077} Types: [null, java.lang.String, java.lang.Long]
+2014-09-30 16:35:39,171-[TS] DEBUG main java.sql.Connection - {conn-100076} Preparing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:35:39,171-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100078} Executing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:35:39,171-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100078} Parameters: []
+2014-09-30 16:35:39,171-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100078} Types: []
+2014-09-30 16:35:39,171-[TS] DEBUG main java.sql.ResultSet - {rset-100079} ResultSet
+2014-09-30 16:35:39,171-[TS] DEBUG main java.sql.ResultSet - {rset-100079} Header: [LAST_INSERT_ID()]
+2014-09-30 16:35:39,171-[TS] DEBUG main java.sql.ResultSet - {rset-100079} Result: [28]
+2014-09-30 16:35:39,171-[TS] DEBUG main java.sql.Connection - {conn-100080} Connection
+2014-09-30 16:35:39,171-[TS] DEBUG main java.sql.Connection - {conn-100080} Preparing Statement:    INSERT INTO t_note_inbox( ID, USER, NOTE_ID )   VALUES( ?, ?, ? )     
+2014-09-30 16:35:39,171-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100081} Executing Statement:    INSERT INTO t_note_inbox( ID, USER, NOTE_ID )   VALUES( ?, ?, ? )     
+2014-09-30 16:35:39,171-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100081} Parameters: [28, test1, 71]
+2014-09-30 16:35:39,171-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100081} Types: [java.lang.Long, java.lang.String, java.lang.Long]
+2014-09-30 16:35:39,203-[TS] DEBUG main java.sql.Connection - {conn-100080} Preparing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:35:39,203-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100082} Executing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:35:39,203-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100082} Parameters: []
+2014-09-30 16:35:39,203-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100082} Types: []
+2014-09-30 16:35:39,203-[TS] DEBUG main java.sql.ResultSet - {rset-100083} ResultSet
+2014-09-30 16:35:39,203-[TS] DEBUG main java.sql.ResultSet - {rset-100083} Header: [LAST_INSERT_ID()]
+2014-09-30 16:35:39,203-[TS] DEBUG main java.sql.ResultSet - {rset-100083} Result: [71]
+2014-09-30 16:35:39,203-[TS] DEBUG main java.sql.Connection - {conn-100084} Connection
+2014-09-30 16:35:39,203-[TS] DEBUG main java.sql.Connection - {conn-100084} Preparing Statement:    INSERT INTO t_note( ID, RECEIVER, CONTENT, SEND_TIME, SENDER )   VALUES( ?, ?, ?, now(), ? )     
+2014-09-30 16:35:39,203-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100085} Executing Statement:    INSERT INTO t_note( ID, RECEIVER, CONTENT, SEND_TIME, SENDER )   VALUES( ?, ?, ?, now(), ? )     
+2014-09-30 16:35:39,203-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100085} Parameters: [null, test, testadf7, test1]
+2014-09-30 16:35:39,203-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100085} Types: [null, java.lang.String, java.lang.String, java.lang.String]
+2014-09-30 16:35:39,234-[TS] DEBUG main java.sql.Connection - {conn-100084} Preparing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:35:39,234-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100086} Executing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:35:39,234-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100086} Parameters: []
+2014-09-30 16:35:39,234-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100086} Types: []
+2014-09-30 16:35:39,234-[TS] DEBUG main java.sql.ResultSet - {rset-100087} ResultSet
+2014-09-30 16:35:39,234-[TS] DEBUG main java.sql.ResultSet - {rset-100087} Header: [LAST_INSERT_ID()]
+2014-09-30 16:35:39,234-[TS] DEBUG main java.sql.ResultSet - {rset-100087} Result: [72]
+2014-09-30 16:35:39,234-[TS] DEBUG main java.sql.Connection - {conn-100088} Connection
+2014-09-30 16:35:39,234-[TS] DEBUG main java.sql.Connection - {conn-100088} Preparing Statement:    INSERT INTO t_note_outbox( ID, USER, NOTE_ID )   VALUES( ?, ?, ? )     
+2014-09-30 16:35:39,250-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100089} Executing Statement:    INSERT INTO t_note_outbox( ID, USER, NOTE_ID )   VALUES( ?, ?, ? )     
+2014-09-30 16:35:39,250-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100089} Parameters: [null, test, 72]
+2014-09-30 16:35:39,250-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100089} Types: [null, java.lang.String, java.lang.Long]
+2014-09-30 16:35:39,281-[TS] DEBUG main java.sql.Connection - {conn-100088} Preparing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:35:39,281-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100090} Executing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:35:39,281-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100090} Parameters: []
+2014-09-30 16:35:39,281-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100090} Types: []
+2014-09-30 16:35:39,281-[TS] DEBUG main java.sql.ResultSet - {rset-100091} ResultSet
+2014-09-30 16:35:39,281-[TS] DEBUG main java.sql.ResultSet - {rset-100091} Header: [LAST_INSERT_ID()]
+2014-09-30 16:35:39,281-[TS] DEBUG main java.sql.ResultSet - {rset-100091} Result: [29]
+2014-09-30 16:35:39,281-[TS] DEBUG main java.sql.Connection - {conn-100092} Connection
+2014-09-30 16:35:39,281-[TS] DEBUG main java.sql.Connection - {conn-100092} Preparing Statement:    INSERT INTO t_note_inbox( ID, USER, NOTE_ID )   VALUES( ?, ?, ? )     
+2014-09-30 16:35:39,281-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100093} Executing Statement:    INSERT INTO t_note_inbox( ID, USER, NOTE_ID )   VALUES( ?, ?, ? )     
+2014-09-30 16:35:39,281-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100093} Parameters: [29, test1, 72]
+2014-09-30 16:35:39,281-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100093} Types: [java.lang.Long, java.lang.String, java.lang.Long]
+2014-09-30 16:35:39,312-[TS] DEBUG main java.sql.Connection - {conn-100092} Preparing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:35:39,312-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100094} Executing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:35:39,312-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100094} Parameters: []
+2014-09-30 16:35:39,312-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100094} Types: []
+2014-09-30 16:35:39,312-[TS] DEBUG main java.sql.ResultSet - {rset-100095} ResultSet
+2014-09-30 16:35:39,312-[TS] DEBUG main java.sql.ResultSet - {rset-100095} Header: [LAST_INSERT_ID()]
+2014-09-30 16:35:39,312-[TS] DEBUG main java.sql.ResultSet - {rset-100095} Result: [29]
+2014-09-30 16:35:39,312-[TS] DEBUG main java.sql.Connection - {conn-100096} Connection
+2014-09-30 16:35:39,312-[TS] DEBUG main java.sql.Connection - {conn-100096} Preparing Statement:    INSERT INTO t_note( ID, RECEIVER, CONTENT, SEND_TIME, SENDER )   VALUES( ?, ?, ?, now(), ? )     
+2014-09-30 16:35:39,312-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100097} Executing Statement:    INSERT INTO t_note( ID, RECEIVER, CONTENT, SEND_TIME, SENDER )   VALUES( ?, ?, ?, now(), ? )     
+2014-09-30 16:35:39,312-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100097} Parameters: [null, test, testadf8, test1]
+2014-09-30 16:35:39,312-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100097} Types: [null, java.lang.String, java.lang.String, java.lang.String]
+2014-09-30 16:35:39,343-[TS] DEBUG main java.sql.Connection - {conn-100096} Preparing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:35:39,343-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100098} Executing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:35:39,343-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100098} Parameters: []
+2014-09-30 16:35:39,343-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100098} Types: []
+2014-09-30 16:35:39,343-[TS] DEBUG main java.sql.ResultSet - {rset-100099} ResultSet
+2014-09-30 16:35:39,343-[TS] DEBUG main java.sql.ResultSet - {rset-100099} Header: [LAST_INSERT_ID()]
+2014-09-30 16:35:39,343-[TS] DEBUG main java.sql.ResultSet - {rset-100099} Result: [73]
+2014-09-30 16:35:39,343-[TS] DEBUG main java.sql.Connection - {conn-100100} Connection
+2014-09-30 16:35:39,343-[TS] DEBUG main java.sql.Connection - {conn-100100} Preparing Statement:    INSERT INTO t_note_outbox( ID, USER, NOTE_ID )   VALUES( ?, ?, ? )     
+2014-09-30 16:35:39,343-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100101} Executing Statement:    INSERT INTO t_note_outbox( ID, USER, NOTE_ID )   VALUES( ?, ?, ? )     
+2014-09-30 16:35:39,343-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100101} Parameters: [null, test, 73]
+2014-09-30 16:35:39,343-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100101} Types: [null, java.lang.String, java.lang.Long]
+2014-09-30 16:35:39,375-[TS] DEBUG main java.sql.Connection - {conn-100100} Preparing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:35:39,375-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100102} Executing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:35:39,375-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100102} Parameters: []
+2014-09-30 16:35:39,375-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100102} Types: []
+2014-09-30 16:35:39,375-[TS] DEBUG main java.sql.ResultSet - {rset-100103} ResultSet
+2014-09-30 16:35:39,375-[TS] DEBUG main java.sql.ResultSet - {rset-100103} Header: [LAST_INSERT_ID()]
+2014-09-30 16:35:39,375-[TS] DEBUG main java.sql.ResultSet - {rset-100103} Result: [30]
+2014-09-30 16:35:39,375-[TS] DEBUG main java.sql.Connection - {conn-100104} Connection
+2014-09-30 16:35:39,375-[TS] DEBUG main java.sql.Connection - {conn-100104} Preparing Statement:    INSERT INTO t_note_inbox( ID, USER, NOTE_ID )   VALUES( ?, ?, ? )     
+2014-09-30 16:35:39,390-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100105} Executing Statement:    INSERT INTO t_note_inbox( ID, USER, NOTE_ID )   VALUES( ?, ?, ? )     
+2014-09-30 16:35:39,390-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100105} Parameters: [30, test1, 73]
+2014-09-30 16:35:39,390-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100105} Types: [java.lang.Long, java.lang.String, java.lang.Long]
+2014-09-30 16:35:39,406-[TS] DEBUG main java.sql.Connection - {conn-100104} Preparing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:35:39,421-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100106} Executing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:35:39,421-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100106} Parameters: []
+2014-09-30 16:35:39,421-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100106} Types: []
+2014-09-30 16:35:39,421-[TS] DEBUG main java.sql.ResultSet - {rset-100107} ResultSet
+2014-09-30 16:35:39,421-[TS] DEBUG main java.sql.ResultSet - {rset-100107} Header: [LAST_INSERT_ID()]
+2014-09-30 16:35:39,421-[TS] DEBUG main java.sql.ResultSet - {rset-100107} Result: [30]
+2014-09-30 16:35:39,421-[TS] DEBUG main java.sql.Connection - {conn-100108} Connection
+2014-09-30 16:35:39,421-[TS] DEBUG main java.sql.Connection - {conn-100108} Preparing Statement:    INSERT INTO t_note( ID, RECEIVER, CONTENT, SEND_TIME, SENDER )   VALUES( ?, ?, ?, now(), ? )     
+2014-09-30 16:35:39,421-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100109} Executing Statement:    INSERT INTO t_note( ID, RECEIVER, CONTENT, SEND_TIME, SENDER )   VALUES( ?, ?, ?, now(), ? )     
+2014-09-30 16:35:39,421-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100109} Parameters: [null, test, testadf9, test1]
+2014-09-30 16:35:39,421-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100109} Types: [null, java.lang.String, java.lang.String, java.lang.String]
+2014-09-30 16:35:39,468-[TS] DEBUG main java.sql.Connection - {conn-100108} Preparing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:35:39,468-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100110} Executing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:35:39,468-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100110} Parameters: []
+2014-09-30 16:35:39,468-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100110} Types: []
+2014-09-30 16:35:39,468-[TS] DEBUG main java.sql.ResultSet - {rset-100111} ResultSet
+2014-09-30 16:35:39,468-[TS] DEBUG main java.sql.ResultSet - {rset-100111} Header: [LAST_INSERT_ID()]
+2014-09-30 16:35:39,468-[TS] DEBUG main java.sql.ResultSet - {rset-100111} Result: [74]
+2014-09-30 16:35:39,468-[TS] DEBUG main java.sql.Connection - {conn-100112} Connection
+2014-09-30 16:35:39,468-[TS] DEBUG main java.sql.Connection - {conn-100112} Preparing Statement:    INSERT INTO t_note_outbox( ID, USER, NOTE_ID )   VALUES( ?, ?, ? )     
+2014-09-30 16:35:39,468-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100113} Executing Statement:    INSERT INTO t_note_outbox( ID, USER, NOTE_ID )   VALUES( ?, ?, ? )     
+2014-09-30 16:35:39,468-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100113} Parameters: [null, test, 74]
+2014-09-30 16:35:39,468-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100113} Types: [null, java.lang.String, java.lang.Long]
+2014-09-30 16:35:39,484-[TS] DEBUG main java.sql.Connection - {conn-100112} Preparing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:35:39,484-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100114} Executing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:35:39,484-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100114} Parameters: []
+2014-09-30 16:35:39,484-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100114} Types: []
+2014-09-30 16:35:39,500-[TS] DEBUG main java.sql.ResultSet - {rset-100115} ResultSet
+2014-09-30 16:35:39,500-[TS] DEBUG main java.sql.ResultSet - {rset-100115} Header: [LAST_INSERT_ID()]
+2014-09-30 16:35:39,500-[TS] DEBUG main java.sql.ResultSet - {rset-100115} Result: [31]
+2014-09-30 16:35:39,500-[TS] DEBUG main java.sql.Connection - {conn-100116} Connection
+2014-09-30 16:35:39,500-[TS] DEBUG main java.sql.Connection - {conn-100116} Preparing Statement:    INSERT INTO t_note_inbox( ID, USER, NOTE_ID )   VALUES( ?, ?, ? )     
+2014-09-30 16:35:39,500-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100117} Executing Statement:    INSERT INTO t_note_inbox( ID, USER, NOTE_ID )   VALUES( ?, ?, ? )     
+2014-09-30 16:35:39,500-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100117} Parameters: [31, test1, 74]
+2014-09-30 16:35:39,500-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100117} Types: [java.lang.Long, java.lang.String, java.lang.Long]
+2014-09-30 16:35:39,531-[TS] DEBUG main java.sql.Connection - {conn-100116} Preparing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:35:39,531-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100118} Executing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:35:39,531-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100118} Parameters: []
+2014-09-30 16:35:39,531-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100118} Types: []
+2014-09-30 16:35:39,531-[TS] DEBUG main java.sql.ResultSet - {rset-100119} ResultSet
+2014-09-30 16:35:39,531-[TS] DEBUG main java.sql.ResultSet - {rset-100119} Header: [LAST_INSERT_ID()]
+2014-09-30 16:35:39,531-[TS] DEBUG main java.sql.ResultSet - {rset-100119} Result: [31]
+2014-09-30 16:35:39,531-[TS] DEBUG main java.sql.Connection - {conn-100120} Connection
+2014-09-30 16:35:39,531-[TS] DEBUG main java.sql.Connection - {conn-100120} Preparing Statement:    INSERT INTO t_note( ID, RECEIVER, CONTENT, SEND_TIME, SENDER )   VALUES( ?, ?, ?, now(), ? )     
+2014-09-30 16:35:39,531-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100121} Executing Statement:    INSERT INTO t_note( ID, RECEIVER, CONTENT, SEND_TIME, SENDER )   VALUES( ?, ?, ?, now(), ? )     
+2014-09-30 16:35:39,531-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100121} Parameters: [null, test, testadf10, test1]
+2014-09-30 16:35:39,531-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100121} Types: [null, java.lang.String, java.lang.String, java.lang.String]
+2014-09-30 16:35:39,562-[TS] DEBUG main java.sql.Connection - {conn-100120} Preparing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:35:39,562-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100122} Executing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:35:39,562-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100122} Parameters: []
+2014-09-30 16:35:39,562-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100122} Types: []
+2014-09-30 16:35:39,562-[TS] DEBUG main java.sql.ResultSet - {rset-100123} ResultSet
+2014-09-30 16:35:39,578-[TS] DEBUG main java.sql.ResultSet - {rset-100123} Header: [LAST_INSERT_ID()]
+2014-09-30 16:35:39,578-[TS] DEBUG main java.sql.ResultSet - {rset-100123} Result: [75]
+2014-09-30 16:35:39,578-[TS] DEBUG main java.sql.Connection - {conn-100124} Connection
+2014-09-30 16:35:39,578-[TS] DEBUG main java.sql.Connection - {conn-100124} Preparing Statement:    INSERT INTO t_note_outbox( ID, USER, NOTE_ID )   VALUES( ?, ?, ? )     
+2014-09-30 16:35:39,578-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100125} Executing Statement:    INSERT INTO t_note_outbox( ID, USER, NOTE_ID )   VALUES( ?, ?, ? )     
+2014-09-30 16:35:39,578-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100125} Parameters: [null, test, 75]
+2014-09-30 16:35:39,578-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100125} Types: [null, java.lang.String, java.lang.Long]
+2014-09-30 16:35:39,609-[TS] DEBUG main java.sql.Connection - {conn-100124} Preparing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:35:39,609-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100126} Executing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:35:39,609-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100126} Parameters: []
+2014-09-30 16:35:39,609-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100126} Types: []
+2014-09-30 16:35:39,609-[TS] DEBUG main java.sql.ResultSet - {rset-100127} ResultSet
+2014-09-30 16:35:39,609-[TS] DEBUG main java.sql.ResultSet - {rset-100127} Header: [LAST_INSERT_ID()]
+2014-09-30 16:35:39,609-[TS] DEBUG main java.sql.ResultSet - {rset-100127} Result: [32]
+2014-09-30 16:35:39,609-[TS] DEBUG main java.sql.Connection - {conn-100128} Connection
+2014-09-30 16:35:39,609-[TS] DEBUG main java.sql.Connection - {conn-100128} Preparing Statement:    INSERT INTO t_note_inbox( ID, USER, NOTE_ID )   VALUES( ?, ?, ? )     
+2014-09-30 16:35:39,609-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100129} Executing Statement:    INSERT INTO t_note_inbox( ID, USER, NOTE_ID )   VALUES( ?, ?, ? )     
+2014-09-30 16:35:39,609-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100129} Parameters: [32, test1, 75]
+2014-09-30 16:35:39,609-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100129} Types: [java.lang.Long, java.lang.String, java.lang.Long]
+2014-09-30 16:35:39,640-[TS] DEBUG main java.sql.Connection - {conn-100128} Preparing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:35:39,640-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100130} Executing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:35:39,640-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100130} Parameters: []
+2014-09-30 16:35:39,640-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100130} Types: []
+2014-09-30 16:35:39,640-[TS] DEBUG main java.sql.ResultSet - {rset-100131} ResultSet
+2014-09-30 16:35:39,656-[TS] DEBUG main java.sql.ResultSet - {rset-100131} Header: [LAST_INSERT_ID()]
+2014-09-30 16:35:39,656-[TS] DEBUG main java.sql.ResultSet - {rset-100131} Result: [32]
+2014-09-30 16:35:39,656-[TS] DEBUG main java.sql.Connection - {conn-100132} Connection
+2014-09-30 16:35:39,656-[TS] DEBUG main java.sql.Connection - {conn-100132} Preparing Statement:    INSERT INTO t_note( ID, RECEIVER, CONTENT, SEND_TIME, SENDER )   VALUES( ?, ?, ?, now(), ? )     
+2014-09-30 16:35:39,656-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100133} Executing Statement:    INSERT INTO t_note( ID, RECEIVER, CONTENT, SEND_TIME, SENDER )   VALUES( ?, ?, ?, now(), ? )     
+2014-09-30 16:35:39,656-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100133} Parameters: [null, test, testadf11, test1]
+2014-09-30 16:35:39,656-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100133} Types: [null, java.lang.String, java.lang.String, java.lang.String]
+2014-09-30 16:35:39,687-[TS] DEBUG main java.sql.Connection - {conn-100132} Preparing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:35:39,687-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100134} Executing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:35:39,687-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100134} Parameters: []
+2014-09-30 16:35:39,687-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100134} Types: []
+2014-09-30 16:35:39,687-[TS] DEBUG main java.sql.ResultSet - {rset-100135} ResultSet
+2014-09-30 16:35:39,687-[TS] DEBUG main java.sql.ResultSet - {rset-100135} Header: [LAST_INSERT_ID()]
+2014-09-30 16:35:39,687-[TS] DEBUG main java.sql.ResultSet - {rset-100135} Result: [76]
+2014-09-30 16:35:39,687-[TS] DEBUG main java.sql.Connection - {conn-100136} Connection
+2014-09-30 16:35:39,687-[TS] DEBUG main java.sql.Connection - {conn-100136} Preparing Statement:    INSERT INTO t_note_outbox( ID, USER, NOTE_ID )   VALUES( ?, ?, ? )     
+2014-09-30 16:35:39,687-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100137} Executing Statement:    INSERT INTO t_note_outbox( ID, USER, NOTE_ID )   VALUES( ?, ?, ? )     
+2014-09-30 16:35:39,687-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100137} Parameters: [null, test, 76]
+2014-09-30 16:35:39,687-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100137} Types: [null, java.lang.String, java.lang.Long]
+2014-09-30 16:35:39,718-[TS] DEBUG main java.sql.Connection - {conn-100136} Preparing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:35:39,718-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100138} Executing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:35:39,718-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100138} Parameters: []
+2014-09-30 16:35:39,718-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100138} Types: []
+2014-09-30 16:35:39,718-[TS] DEBUG main java.sql.ResultSet - {rset-100139} ResultSet
+2014-09-30 16:35:39,718-[TS] DEBUG main java.sql.ResultSet - {rset-100139} Header: [LAST_INSERT_ID()]
+2014-09-30 16:35:39,718-[TS] DEBUG main java.sql.ResultSet - {rset-100139} Result: [33]
+2014-09-30 16:35:39,718-[TS] DEBUG main java.sql.Connection - {conn-100140} Connection
+2014-09-30 16:35:39,718-[TS] DEBUG main java.sql.Connection - {conn-100140} Preparing Statement:    INSERT INTO t_note_inbox( ID, USER, NOTE_ID )   VALUES( ?, ?, ? )     
+2014-09-30 16:35:39,718-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100141} Executing Statement:    INSERT INTO t_note_inbox( ID, USER, NOTE_ID )   VALUES( ?, ?, ? )     
+2014-09-30 16:35:39,718-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100141} Parameters: [33, test1, 76]
+2014-09-30 16:35:39,718-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100141} Types: [java.lang.Long, java.lang.String, java.lang.Long]
+2014-09-30 16:35:39,750-[TS] DEBUG main java.sql.Connection - {conn-100140} Preparing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:35:39,750-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100142} Executing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:35:39,750-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100142} Parameters: []
+2014-09-30 16:35:39,750-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100142} Types: []
+2014-09-30 16:35:39,750-[TS] DEBUG main java.sql.ResultSet - {rset-100143} ResultSet
+2014-09-30 16:35:39,750-[TS] DEBUG main java.sql.ResultSet - {rset-100143} Header: [LAST_INSERT_ID()]
+2014-09-30 16:35:39,750-[TS] DEBUG main java.sql.ResultSet - {rset-100143} Result: [33]
+2014-09-30 16:35:39,750-[TS] DEBUG main java.sql.Connection - {conn-100144} Connection
+2014-09-30 16:35:39,750-[TS] DEBUG main java.sql.Connection - {conn-100144} Preparing Statement:    INSERT INTO t_note( ID, RECEIVER, CONTENT, SEND_TIME, SENDER )   VALUES( ?, ?, ?, now(), ? )     
+2014-09-30 16:35:39,750-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100145} Executing Statement:    INSERT INTO t_note( ID, RECEIVER, CONTENT, SEND_TIME, SENDER )   VALUES( ?, ?, ?, now(), ? )     
+2014-09-30 16:35:39,750-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100145} Parameters: [null, test, testadf12, test1]
+2014-09-30 16:35:39,750-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100145} Types: [null, java.lang.String, java.lang.String, java.lang.String]
+2014-09-30 16:35:39,796-[TS] DEBUG main java.sql.Connection - {conn-100144} Preparing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:35:39,796-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100146} Executing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:35:39,796-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100146} Parameters: []
+2014-09-30 16:35:39,796-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100146} Types: []
+2014-09-30 16:35:39,796-[TS] DEBUG main java.sql.ResultSet - {rset-100147} ResultSet
+2014-09-30 16:35:39,796-[TS] DEBUG main java.sql.ResultSet - {rset-100147} Header: [LAST_INSERT_ID()]
+2014-09-30 16:35:39,796-[TS] DEBUG main java.sql.ResultSet - {rset-100147} Result: [77]
+2014-09-30 16:35:39,796-[TS] DEBUG main java.sql.Connection - {conn-100148} Connection
+2014-09-30 16:35:39,796-[TS] DEBUG main java.sql.Connection - {conn-100148} Preparing Statement:    INSERT INTO t_note_outbox( ID, USER, NOTE_ID )   VALUES( ?, ?, ? )     
+2014-09-30 16:35:39,796-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100149} Executing Statement:    INSERT INTO t_note_outbox( ID, USER, NOTE_ID )   VALUES( ?, ?, ? )     
+2014-09-30 16:35:39,796-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100149} Parameters: [null, test, 77]
+2014-09-30 16:35:39,796-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100149} Types: [null, java.lang.String, java.lang.Long]
+2014-09-30 16:35:39,828-[TS] DEBUG main java.sql.Connection - {conn-100148} Preparing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:35:39,828-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100150} Executing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:35:39,828-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100150} Parameters: []
+2014-09-30 16:35:39,828-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100150} Types: []
+2014-09-30 16:35:39,828-[TS] DEBUG main java.sql.ResultSet - {rset-100151} ResultSet
+2014-09-30 16:35:39,828-[TS] DEBUG main java.sql.ResultSet - {rset-100151} Header: [LAST_INSERT_ID()]
+2014-09-30 16:35:39,828-[TS] DEBUG main java.sql.ResultSet - {rset-100151} Result: [34]
+2014-09-30 16:35:39,828-[TS] DEBUG main java.sql.Connection - {conn-100152} Connection
+2014-09-30 16:35:39,828-[TS] DEBUG main java.sql.Connection - {conn-100152} Preparing Statement:    INSERT INTO t_note_inbox( ID, USER, NOTE_ID )   VALUES( ?, ?, ? )     
+2014-09-30 16:35:39,828-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100153} Executing Statement:    INSERT INTO t_note_inbox( ID, USER, NOTE_ID )   VALUES( ?, ?, ? )     
+2014-09-30 16:35:39,828-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100153} Parameters: [34, test1, 77]
+2014-09-30 16:35:39,828-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100153} Types: [java.lang.Long, java.lang.String, java.lang.Long]
+2014-09-30 16:35:39,859-[TS] DEBUG main java.sql.Connection - {conn-100152} Preparing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:35:39,859-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100154} Executing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:35:39,859-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100154} Parameters: []
+2014-09-30 16:35:39,859-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100154} Types: []
+2014-09-30 16:35:39,859-[TS] DEBUG main java.sql.ResultSet - {rset-100155} ResultSet
+2014-09-30 16:35:39,859-[TS] DEBUG main java.sql.ResultSet - {rset-100155} Header: [LAST_INSERT_ID()]
+2014-09-30 16:35:39,859-[TS] DEBUG main java.sql.ResultSet - {rset-100155} Result: [34]
+2014-09-30 16:35:39,859-[TS] DEBUG main java.sql.Connection - {conn-100156} Connection
+2014-09-30 16:35:39,859-[TS] DEBUG main java.sql.Connection - {conn-100156} Preparing Statement:    INSERT INTO t_note( ID, RECEIVER, CONTENT, SEND_TIME, SENDER )   VALUES( ?, ?, ?, now(), ? )     
+2014-09-30 16:35:39,859-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100157} Executing Statement:    INSERT INTO t_note( ID, RECEIVER, CONTENT, SEND_TIME, SENDER )   VALUES( ?, ?, ?, now(), ? )     
+2014-09-30 16:35:39,859-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100157} Parameters: [null, test, testadf13, test1]
+2014-09-30 16:35:39,859-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100157} Types: [null, java.lang.String, java.lang.String, java.lang.String]
+2014-09-30 16:35:39,890-[TS] DEBUG main java.sql.Connection - {conn-100156} Preparing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:35:39,890-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100158} Executing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:35:39,890-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100158} Parameters: []
+2014-09-30 16:35:39,890-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100158} Types: []
+2014-09-30 16:35:39,890-[TS] DEBUG main java.sql.ResultSet - {rset-100159} ResultSet
+2014-09-30 16:35:39,890-[TS] DEBUG main java.sql.ResultSet - {rset-100159} Header: [LAST_INSERT_ID()]
+2014-09-30 16:35:39,890-[TS] DEBUG main java.sql.ResultSet - {rset-100159} Result: [78]
+2014-09-30 16:35:39,890-[TS] DEBUG main java.sql.Connection - {conn-100160} Connection
+2014-09-30 16:35:39,890-[TS] DEBUG main java.sql.Connection - {conn-100160} Preparing Statement:    INSERT INTO t_note_outbox( ID, USER, NOTE_ID )   VALUES( ?, ?, ? )     
+2014-09-30 16:35:39,890-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100161} Executing Statement:    INSERT INTO t_note_outbox( ID, USER, NOTE_ID )   VALUES( ?, ?, ? )     
+2014-09-30 16:35:39,890-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100161} Parameters: [null, test, 78]
+2014-09-30 16:35:39,890-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100161} Types: [null, java.lang.String, java.lang.Long]
+2014-09-30 16:35:39,921-[TS] DEBUG main java.sql.Connection - {conn-100160} Preparing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:35:39,921-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100162} Executing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:35:39,921-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100162} Parameters: []
+2014-09-30 16:35:39,921-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100162} Types: []
+2014-09-30 16:35:39,921-[TS] DEBUG main java.sql.ResultSet - {rset-100163} ResultSet
+2014-09-30 16:35:39,921-[TS] DEBUG main java.sql.ResultSet - {rset-100163} Header: [LAST_INSERT_ID()]
+2014-09-30 16:35:39,921-[TS] DEBUG main java.sql.ResultSet - {rset-100163} Result: [35]
+2014-09-30 16:35:39,921-[TS] DEBUG main java.sql.Connection - {conn-100164} Connection
+2014-09-30 16:35:39,921-[TS] DEBUG main java.sql.Connection - {conn-100164} Preparing Statement:    INSERT INTO t_note_inbox( ID, USER, NOTE_ID )   VALUES( ?, ?, ? )     
+2014-09-30 16:35:39,921-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100165} Executing Statement:    INSERT INTO t_note_inbox( ID, USER, NOTE_ID )   VALUES( ?, ?, ? )     
+2014-09-30 16:35:39,921-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100165} Parameters: [35, test1, 78]
+2014-09-30 16:35:39,921-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100165} Types: [java.lang.Long, java.lang.String, java.lang.Long]
+2014-09-30 16:35:39,968-[TS] DEBUG main java.sql.Connection - {conn-100164} Preparing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:35:39,968-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100166} Executing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:35:39,968-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100166} Parameters: []
+2014-09-30 16:35:39,968-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100166} Types: []
+2014-09-30 16:35:39,968-[TS] DEBUG main java.sql.ResultSet - {rset-100167} ResultSet
+2014-09-30 16:35:39,968-[TS] DEBUG main java.sql.ResultSet - {rset-100167} Header: [LAST_INSERT_ID()]
+2014-09-30 16:35:39,968-[TS] DEBUG main java.sql.ResultSet - {rset-100167} Result: [35]
+2014-09-30 16:35:39,968-[TS] DEBUG main java.sql.Connection - {conn-100168} Connection
+2014-09-30 16:35:39,968-[TS] DEBUG main java.sql.Connection - {conn-100168} Preparing Statement:    INSERT INTO t_note( ID, RECEIVER, CONTENT, SEND_TIME, SENDER )   VALUES( ?, ?, ?, now(), ? )     
+2014-09-30 16:35:39,968-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100169} Executing Statement:    INSERT INTO t_note( ID, RECEIVER, CONTENT, SEND_TIME, SENDER )   VALUES( ?, ?, ?, now(), ? )     
+2014-09-30 16:35:39,968-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100169} Parameters: [null, test, testadf14, test1]
+2014-09-30 16:35:39,968-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100169} Types: [null, java.lang.String, java.lang.String, java.lang.String]
+2014-09-30 16:35:40,000-[TS] DEBUG main java.sql.Connection - {conn-100168} Preparing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:35:40,000-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100170} Executing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:35:40,000-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100170} Parameters: []
+2014-09-30 16:35:40,000-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100170} Types: []

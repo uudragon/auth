@@ -1,0 +1,512 @@
+2014-09-30 16:35:40,015-[TS] DEBUG main java.sql.ResultSet - {rset-100171} ResultSet
+2014-09-30 16:35:40,015-[TS] DEBUG main java.sql.ResultSet - {rset-100171} Header: [LAST_INSERT_ID()]
+2014-09-30 16:35:40,015-[TS] DEBUG main java.sql.ResultSet - {rset-100171} Result: [79]
+2014-09-30 16:35:40,015-[TS] DEBUG main java.sql.Connection - {conn-100172} Connection
+2014-09-30 16:35:40,015-[TS] DEBUG main java.sql.Connection - {conn-100172} Preparing Statement:    INSERT INTO t_note_outbox( ID, USER, NOTE_ID )   VALUES( ?, ?, ? )     
+2014-09-30 16:35:40,015-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100173} Executing Statement:    INSERT INTO t_note_outbox( ID, USER, NOTE_ID )   VALUES( ?, ?, ? )     
+2014-09-30 16:35:40,015-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100173} Parameters: [null, test, 79]
+2014-09-30 16:35:40,015-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100173} Types: [null, java.lang.String, java.lang.Long]
+2014-09-30 16:35:40,046-[TS] DEBUG main java.sql.Connection - {conn-100172} Preparing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:35:40,046-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100174} Executing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:35:40,046-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100174} Parameters: []
+2014-09-30 16:35:40,046-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100174} Types: []
+2014-09-30 16:35:40,046-[TS] DEBUG main java.sql.ResultSet - {rset-100175} ResultSet
+2014-09-30 16:35:40,046-[TS] DEBUG main java.sql.ResultSet - {rset-100175} Header: [LAST_INSERT_ID()]
+2014-09-30 16:35:40,046-[TS] DEBUG main java.sql.ResultSet - {rset-100175} Result: [36]
+2014-09-30 16:35:40,046-[TS] DEBUG main java.sql.Connection - {conn-100176} Connection
+2014-09-30 16:35:40,046-[TS] DEBUG main java.sql.Connection - {conn-100176} Preparing Statement:    INSERT INTO t_note_inbox( ID, USER, NOTE_ID )   VALUES( ?, ?, ? )     
+2014-09-30 16:35:40,046-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100177} Executing Statement:    INSERT INTO t_note_inbox( ID, USER, NOTE_ID )   VALUES( ?, ?, ? )     
+2014-09-30 16:35:40,046-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100177} Parameters: [36, test1, 79]
+2014-09-30 16:35:40,046-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100177} Types: [java.lang.Long, java.lang.String, java.lang.Long]
+2014-09-30 16:35:40,109-[TS] DEBUG main java.sql.Connection - {conn-100176} Preparing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:35:40,109-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100178} Executing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:35:40,109-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100178} Parameters: []
+2014-09-30 16:35:40,109-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100178} Types: []
+2014-09-30 16:35:40,109-[TS] DEBUG main java.sql.ResultSet - {rset-100179} ResultSet
+2014-09-30 16:35:40,109-[TS] DEBUG main java.sql.ResultSet - {rset-100179} Header: [LAST_INSERT_ID()]
+2014-09-30 16:35:40,109-[TS] DEBUG main java.sql.ResultSet - {rset-100179} Result: [36]
+2014-09-30 16:35:40,109-[TS] DEBUG main java.sql.Connection - {conn-100180} Connection
+2014-09-30 16:35:40,109-[TS] DEBUG main java.sql.Connection - {conn-100180} Preparing Statement:    INSERT INTO t_note( ID, RECEIVER, CONTENT, SEND_TIME, SENDER )   VALUES( ?, ?, ?, now(), ? )     
+2014-09-30 16:35:40,109-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100181} Executing Statement:    INSERT INTO t_note( ID, RECEIVER, CONTENT, SEND_TIME, SENDER )   VALUES( ?, ?, ?, now(), ? )     
+2014-09-30 16:35:40,109-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100181} Parameters: [null, test, testadf15, test1]
+2014-09-30 16:35:40,109-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100181} Types: [null, java.lang.String, java.lang.String, java.lang.String]
+2014-09-30 16:35:40,140-[TS] DEBUG main java.sql.Connection - {conn-100180} Preparing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:35:40,140-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100182} Executing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:35:40,140-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100182} Parameters: []
+2014-09-30 16:35:40,140-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100182} Types: []
+2014-09-30 16:35:40,140-[TS] DEBUG main java.sql.ResultSet - {rset-100183} ResultSet
+2014-09-30 16:35:40,156-[TS] DEBUG main java.sql.ResultSet - {rset-100183} Header: [LAST_INSERT_ID()]
+2014-09-30 16:35:40,156-[TS] DEBUG main java.sql.ResultSet - {rset-100183} Result: [80]
+2014-09-30 16:35:40,156-[TS] DEBUG main java.sql.Connection - {conn-100184} Connection
+2014-09-30 16:35:40,156-[TS] DEBUG main java.sql.Connection - {conn-100184} Preparing Statement:    INSERT INTO t_note_outbox( ID, USER, NOTE_ID )   VALUES( ?, ?, ? )     
+2014-09-30 16:35:40,156-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100185} Executing Statement:    INSERT INTO t_note_outbox( ID, USER, NOTE_ID )   VALUES( ?, ?, ? )     
+2014-09-30 16:35:40,156-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100185} Parameters: [null, test, 80]
+2014-09-30 16:35:40,156-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100185} Types: [null, java.lang.String, java.lang.Long]
+2014-09-30 16:35:40,187-[TS] DEBUG main java.sql.Connection - {conn-100184} Preparing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:35:40,187-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100186} Executing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:35:40,187-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100186} Parameters: []
+2014-09-30 16:35:40,187-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100186} Types: []
+2014-09-30 16:35:40,187-[TS] DEBUG main java.sql.ResultSet - {rset-100187} ResultSet
+2014-09-30 16:35:40,187-[TS] DEBUG main java.sql.ResultSet - {rset-100187} Header: [LAST_INSERT_ID()]
+2014-09-30 16:35:40,187-[TS] DEBUG main java.sql.ResultSet - {rset-100187} Result: [37]
+2014-09-30 16:35:40,187-[TS] DEBUG main java.sql.Connection - {conn-100188} Connection
+2014-09-30 16:35:40,187-[TS] DEBUG main java.sql.Connection - {conn-100188} Preparing Statement:    INSERT INTO t_note_inbox( ID, USER, NOTE_ID )   VALUES( ?, ?, ? )     
+2014-09-30 16:35:40,187-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100189} Executing Statement:    INSERT INTO t_note_inbox( ID, USER, NOTE_ID )   VALUES( ?, ?, ? )     
+2014-09-30 16:35:40,187-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100189} Parameters: [37, test1, 80]
+2014-09-30 16:35:40,187-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100189} Types: [java.lang.Long, java.lang.String, java.lang.Long]
+2014-09-30 16:35:40,218-[TS] DEBUG main java.sql.Connection - {conn-100188} Preparing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:35:40,218-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100190} Executing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:35:40,218-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100190} Parameters: []
+2014-09-30 16:35:40,218-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100190} Types: []
+2014-09-30 16:35:40,218-[TS] DEBUG main java.sql.ResultSet - {rset-100191} ResultSet
+2014-09-30 16:35:40,218-[TS] DEBUG main java.sql.ResultSet - {rset-100191} Header: [LAST_INSERT_ID()]
+2014-09-30 16:35:40,218-[TS] DEBUG main java.sql.ResultSet - {rset-100191} Result: [80]
+2014-09-30 16:35:40,218-[TS] DEBUG main java.sql.Connection - {conn-100192} Connection
+2014-09-30 16:35:40,218-[TS] DEBUG main java.sql.Connection - {conn-100192} Preparing Statement:    INSERT INTO t_note( ID, RECEIVER, CONTENT, SEND_TIME, SENDER )   VALUES( ?, ?, ?, now(), ? )     
+2014-09-30 16:35:40,218-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100193} Executing Statement:    INSERT INTO t_note( ID, RECEIVER, CONTENT, SEND_TIME, SENDER )   VALUES( ?, ?, ?, now(), ? )     
+2014-09-30 16:35:40,218-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100193} Parameters: [null, test, testadf16, test1]
+2014-09-30 16:35:40,218-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100193} Types: [null, java.lang.String, java.lang.String, java.lang.String]
+2014-09-30 16:35:40,250-[TS] DEBUG main java.sql.Connection - {conn-100192} Preparing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:35:40,250-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100194} Executing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:35:40,250-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100194} Parameters: []
+2014-09-30 16:35:40,250-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100194} Types: []
+2014-09-30 16:35:40,250-[TS] DEBUG main java.sql.ResultSet - {rset-100195} ResultSet
+2014-09-30 16:35:40,250-[TS] DEBUG main java.sql.ResultSet - {rset-100195} Header: [LAST_INSERT_ID()]
+2014-09-30 16:35:40,250-[TS] DEBUG main java.sql.ResultSet - {rset-100195} Result: [81]
+2014-09-30 16:35:40,250-[TS] DEBUG main java.sql.Connection - {conn-100196} Connection
+2014-09-30 16:35:40,250-[TS] DEBUG main java.sql.Connection - {conn-100196} Preparing Statement:    INSERT INTO t_note_outbox( ID, USER, NOTE_ID )   VALUES( ?, ?, ? )     
+2014-09-30 16:35:40,250-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100197} Executing Statement:    INSERT INTO t_note_outbox( ID, USER, NOTE_ID )   VALUES( ?, ?, ? )     
+2014-09-30 16:35:40,250-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100197} Parameters: [null, test, 81]
+2014-09-30 16:35:40,250-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100197} Types: [null, java.lang.String, java.lang.Long]
+2014-09-30 16:35:40,296-[TS] DEBUG main java.sql.Connection - {conn-100196} Preparing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:35:40,296-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100198} Executing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:35:40,296-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100198} Parameters: []
+2014-09-30 16:35:40,296-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100198} Types: []
+2014-09-30 16:35:40,296-[TS] DEBUG main java.sql.ResultSet - {rset-100199} ResultSet
+2014-09-30 16:35:40,296-[TS] DEBUG main java.sql.ResultSet - {rset-100199} Header: [LAST_INSERT_ID()]
+2014-09-30 16:35:40,296-[TS] DEBUG main java.sql.ResultSet - {rset-100199} Result: [38]
+2014-09-30 16:35:40,296-[TS] DEBUG main java.sql.Connection - {conn-100200} Connection
+2014-09-30 16:35:40,296-[TS] DEBUG main java.sql.Connection - {conn-100200} Preparing Statement:    INSERT INTO t_note_inbox( ID, USER, NOTE_ID )   VALUES( ?, ?, ? )     
+2014-09-30 16:35:40,296-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100201} Executing Statement:    INSERT INTO t_note_inbox( ID, USER, NOTE_ID )   VALUES( ?, ?, ? )     
+2014-09-30 16:35:40,296-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100201} Parameters: [38, test1, 81]
+2014-09-30 16:35:40,296-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100201} Types: [java.lang.Long, java.lang.String, java.lang.Long]
+2014-09-30 16:35:40,328-[TS] DEBUG main java.sql.Connection - {conn-100200} Preparing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:35:40,328-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100202} Executing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:35:40,328-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100202} Parameters: []
+2014-09-30 16:35:40,328-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100202} Types: []
+2014-09-30 16:35:40,328-[TS] DEBUG main java.sql.ResultSet - {rset-100203} ResultSet
+2014-09-30 16:35:40,328-[TS] DEBUG main java.sql.ResultSet - {rset-100203} Header: [LAST_INSERT_ID()]
+2014-09-30 16:35:40,328-[TS] DEBUG main java.sql.ResultSet - {rset-100203} Result: [37]
+2014-09-30 16:35:40,328-[TS] DEBUG main java.sql.Connection - {conn-100204} Connection
+2014-09-30 16:35:40,328-[TS] DEBUG main java.sql.Connection - {conn-100204} Preparing Statement:    INSERT INTO t_note( ID, RECEIVER, CONTENT, SEND_TIME, SENDER )   VALUES( ?, ?, ?, now(), ? )     
+2014-09-30 16:35:40,328-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100205} Executing Statement:    INSERT INTO t_note( ID, RECEIVER, CONTENT, SEND_TIME, SENDER )   VALUES( ?, ?, ?, now(), ? )     
+2014-09-30 16:35:40,328-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100205} Parameters: [null, test, testadf17, test1]
+2014-09-30 16:35:40,328-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100205} Types: [null, java.lang.String, java.lang.String, java.lang.String]
+2014-09-30 16:35:40,359-[TS] DEBUG main java.sql.Connection - {conn-100204} Preparing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:35:40,359-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100206} Executing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:35:40,359-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100206} Parameters: []
+2014-09-30 16:35:40,359-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100206} Types: []
+2014-09-30 16:35:40,359-[TS] DEBUG main java.sql.ResultSet - {rset-100207} ResultSet
+2014-09-30 16:35:40,359-[TS] DEBUG main java.sql.ResultSet - {rset-100207} Header: [LAST_INSERT_ID()]
+2014-09-30 16:35:40,359-[TS] DEBUG main java.sql.ResultSet - {rset-100207} Result: [82]
+2014-09-30 16:35:40,359-[TS] DEBUG main java.sql.Connection - {conn-100208} Connection
+2014-09-30 16:35:40,359-[TS] DEBUG main java.sql.Connection - {conn-100208} Preparing Statement:    INSERT INTO t_note_outbox( ID, USER, NOTE_ID )   VALUES( ?, ?, ? )     
+2014-09-30 16:35:40,359-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100209} Executing Statement:    INSERT INTO t_note_outbox( ID, USER, NOTE_ID )   VALUES( ?, ?, ? )     
+2014-09-30 16:35:40,359-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100209} Parameters: [null, test, 82]
+2014-09-30 16:35:40,359-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100209} Types: [null, java.lang.String, java.lang.Long]
+2014-09-30 16:35:40,390-[TS] DEBUG main java.sql.Connection - {conn-100208} Preparing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:35:40,390-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100210} Executing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:35:40,390-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100210} Parameters: []
+2014-09-30 16:35:40,390-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100210} Types: []
+2014-09-30 16:35:40,390-[TS] DEBUG main java.sql.ResultSet - {rset-100211} ResultSet
+2014-09-30 16:35:40,390-[TS] DEBUG main java.sql.ResultSet - {rset-100211} Header: [LAST_INSERT_ID()]
+2014-09-30 16:35:40,390-[TS] DEBUG main java.sql.ResultSet - {rset-100211} Result: [39]
+2014-09-30 16:35:40,390-[TS] DEBUG main java.sql.Connection - {conn-100212} Connection
+2014-09-30 16:35:40,390-[TS] DEBUG main java.sql.Connection - {conn-100212} Preparing Statement:    INSERT INTO t_note_inbox( ID, USER, NOTE_ID )   VALUES( ?, ?, ? )     
+2014-09-30 16:35:40,390-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100213} Executing Statement:    INSERT INTO t_note_inbox( ID, USER, NOTE_ID )   VALUES( ?, ?, ? )     
+2014-09-30 16:35:40,390-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100213} Parameters: [39, test1, 82]
+2014-09-30 16:35:40,390-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100213} Types: [java.lang.Long, java.lang.String, java.lang.Long]
+2014-09-30 16:35:40,484-[TS] DEBUG main java.sql.Connection - {conn-100212} Preparing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:35:40,484-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100214} Executing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:35:40,484-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100214} Parameters: []
+2014-09-30 16:35:40,484-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100214} Types: []
+2014-09-30 16:35:40,484-[TS] DEBUG main java.sql.ResultSet - {rset-100215} ResultSet
+2014-09-30 16:35:40,484-[TS] DEBUG main java.sql.ResultSet - {rset-100215} Header: [LAST_INSERT_ID()]
+2014-09-30 16:35:40,484-[TS] DEBUG main java.sql.ResultSet - {rset-100215} Result: [39]
+2014-09-30 16:35:40,484-[TS] DEBUG main java.sql.Connection - {conn-100216} Connection
+2014-09-30 16:35:40,484-[TS] DEBUG main java.sql.Connection - {conn-100216} Preparing Statement:    INSERT INTO t_note( ID, RECEIVER, CONTENT, SEND_TIME, SENDER )   VALUES( ?, ?, ?, now(), ? )     
+2014-09-30 16:35:40,484-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100217} Executing Statement:    INSERT INTO t_note( ID, RECEIVER, CONTENT, SEND_TIME, SENDER )   VALUES( ?, ?, ?, now(), ? )     
+2014-09-30 16:35:40,484-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100217} Parameters: [null, test, testadf18, test1]
+2014-09-30 16:35:40,484-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100217} Types: [null, java.lang.String, java.lang.String, java.lang.String]
+2014-09-30 16:35:40,515-[TS] DEBUG main java.sql.Connection - {conn-100216} Preparing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:35:40,515-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100218} Executing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:35:40,515-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100218} Parameters: []
+2014-09-30 16:35:40,515-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100218} Types: []
+2014-09-30 16:35:40,515-[TS] DEBUG main java.sql.ResultSet - {rset-100219} ResultSet
+2014-09-30 16:35:40,515-[TS] DEBUG main java.sql.ResultSet - {rset-100219} Header: [LAST_INSERT_ID()]
+2014-09-30 16:35:40,515-[TS] DEBUG main java.sql.ResultSet - {rset-100219} Result: [83]
+2014-09-30 16:35:40,515-[TS] DEBUG main java.sql.Connection - {conn-100220} Connection
+2014-09-30 16:35:40,515-[TS] DEBUG main java.sql.Connection - {conn-100220} Preparing Statement:    INSERT INTO t_note_outbox( ID, USER, NOTE_ID )   VALUES( ?, ?, ? )     
+2014-09-30 16:35:40,515-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100221} Executing Statement:    INSERT INTO t_note_outbox( ID, USER, NOTE_ID )   VALUES( ?, ?, ? )     
+2014-09-30 16:35:40,515-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100221} Parameters: [null, test, 83]
+2014-09-30 16:35:40,515-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100221} Types: [null, java.lang.String, java.lang.Long]
+2014-09-30 16:35:40,562-[TS] DEBUG main java.sql.Connection - {conn-100220} Preparing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:35:40,562-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100222} Executing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:35:40,562-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100222} Parameters: []
+2014-09-30 16:35:40,562-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100222} Types: []
+2014-09-30 16:35:40,562-[TS] DEBUG main java.sql.ResultSet - {rset-100223} ResultSet
+2014-09-30 16:35:40,562-[TS] DEBUG main java.sql.ResultSet - {rset-100223} Header: [LAST_INSERT_ID()]
+2014-09-30 16:35:40,562-[TS] DEBUG main java.sql.ResultSet - {rset-100223} Result: [40]
+2014-09-30 16:35:40,562-[TS] DEBUG main java.sql.Connection - {conn-100224} Connection
+2014-09-30 16:35:40,562-[TS] DEBUG main java.sql.Connection - {conn-100224} Preparing Statement:    INSERT INTO t_note_inbox( ID, USER, NOTE_ID )   VALUES( ?, ?, ? )     
+2014-09-30 16:35:40,562-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100225} Executing Statement:    INSERT INTO t_note_inbox( ID, USER, NOTE_ID )   VALUES( ?, ?, ? )     
+2014-09-30 16:35:40,562-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100225} Parameters: [40, test1, 83]
+2014-09-30 16:35:40,562-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100225} Types: [java.lang.Long, java.lang.String, java.lang.Long]
+2014-09-30 16:35:40,593-[TS] DEBUG main java.sql.Connection - {conn-100224} Preparing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:35:40,593-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100226} Executing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:35:40,593-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100226} Parameters: []
+2014-09-30 16:35:40,593-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100226} Types: []
+2014-09-30 16:35:40,593-[TS] DEBUG main java.sql.ResultSet - {rset-100227} ResultSet
+2014-09-30 16:35:40,593-[TS] DEBUG main java.sql.ResultSet - {rset-100227} Header: [LAST_INSERT_ID()]
+2014-09-30 16:35:40,593-[TS] DEBUG main java.sql.ResultSet - {rset-100227} Result: [82]
+2014-09-30 16:35:40,593-[TS] DEBUG main java.sql.Connection - {conn-100228} Connection
+2014-09-30 16:35:40,593-[TS] DEBUG main java.sql.Connection - {conn-100228} Preparing Statement:    INSERT INTO t_note( ID, RECEIVER, CONTENT, SEND_TIME, SENDER )   VALUES( ?, ?, ?, now(), ? )     
+2014-09-30 16:35:40,593-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100229} Executing Statement:    INSERT INTO t_note( ID, RECEIVER, CONTENT, SEND_TIME, SENDER )   VALUES( ?, ?, ?, now(), ? )     
+2014-09-30 16:35:40,593-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100229} Parameters: [null, test, testadf19, test1]
+2014-09-30 16:35:40,593-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100229} Types: [null, java.lang.String, java.lang.String, java.lang.String]
+2014-09-30 16:35:40,625-[TS] DEBUG main java.sql.Connection - {conn-100228} Preparing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:35:40,625-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100230} Executing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:35:40,625-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100230} Parameters: []
+2014-09-30 16:35:40,625-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100230} Types: []
+2014-09-30 16:35:40,625-[TS] DEBUG main java.sql.ResultSet - {rset-100231} ResultSet
+2014-09-30 16:35:40,625-[TS] DEBUG main java.sql.ResultSet - {rset-100231} Header: [LAST_INSERT_ID()]
+2014-09-30 16:35:40,625-[TS] DEBUG main java.sql.ResultSet - {rset-100231} Result: [84]
+2014-09-30 16:35:40,625-[TS] DEBUG main java.sql.Connection - {conn-100232} Connection
+2014-09-30 16:35:40,625-[TS] DEBUG main java.sql.Connection - {conn-100232} Preparing Statement:    INSERT INTO t_note_outbox( ID, USER, NOTE_ID )   VALUES( ?, ?, ? )     
+2014-09-30 16:35:40,625-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100233} Executing Statement:    INSERT INTO t_note_outbox( ID, USER, NOTE_ID )   VALUES( ?, ?, ? )     
+2014-09-30 16:35:40,625-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100233} Parameters: [null, test, 84]
+2014-09-30 16:35:40,625-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100233} Types: [null, java.lang.String, java.lang.Long]
+2014-09-30 16:35:40,656-[TS] DEBUG main java.sql.Connection - {conn-100232} Preparing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:35:40,656-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100234} Executing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:35:40,656-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100234} Parameters: []
+2014-09-30 16:35:40,656-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100234} Types: []
+2014-09-30 16:35:40,656-[TS] DEBUG main java.sql.ResultSet - {rset-100235} ResultSet
+2014-09-30 16:35:40,656-[TS] DEBUG main java.sql.ResultSet - {rset-100235} Header: [LAST_INSERT_ID()]
+2014-09-30 16:35:40,656-[TS] DEBUG main java.sql.ResultSet - {rset-100235} Result: [41]
+2014-09-30 16:35:40,656-[TS] DEBUG main java.sql.Connection - {conn-100236} Connection
+2014-09-30 16:35:40,656-[TS] DEBUG main java.sql.Connection - {conn-100236} Preparing Statement:    INSERT INTO t_note_inbox( ID, USER, NOTE_ID )   VALUES( ?, ?, ? )     
+2014-09-30 16:35:40,656-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100237} Executing Statement:    INSERT INTO t_note_inbox( ID, USER, NOTE_ID )   VALUES( ?, ?, ? )     
+2014-09-30 16:35:40,656-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100237} Parameters: [41, test1, 84]
+2014-09-30 16:35:40,656-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100237} Types: [java.lang.Long, java.lang.String, java.lang.Long]
+2014-09-30 16:35:40,687-[TS] DEBUG main java.sql.Connection - {conn-100236} Preparing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:35:40,687-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100238} Executing Statement:     SELECT LAST_INSERT_ID()   
+2014-09-30 16:35:40,687-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100238} Parameters: []
+2014-09-30 16:35:40,687-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100238} Types: []
+2014-09-30 16:35:40,687-[TS] DEBUG main java.sql.ResultSet - {rset-100239} ResultSet
+2014-09-30 16:35:40,687-[TS] DEBUG main java.sql.ResultSet - {rset-100239} Header: [LAST_INSERT_ID()]
+2014-09-30 16:35:40,687-[TS] DEBUG main java.sql.ResultSet - {rset-100239} Result: [41]
+2014-10-28 22:46:20,468-[TS] DEBUG main java.sql.Connection - {conn-100000} Connection
+2014-10-28 22:49:23,109-[TS] DEBUG main java.sql.Connection - {conn-100000} Connection
+2014-10-28 22:49:23,156-[TS] DEBUG main java.sql.Connection - {conn-100000} Preparing Statement:       SELECT * FROM orders_orders o where o.`status` < 2     
+2014-10-28 22:49:23,203-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100001} Executing Statement:       SELECT * FROM orders_orders o where o.`status` < 2     
+2014-10-28 22:49:23,203-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100001} Parameters: []
+2014-10-28 22:49:23,203-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100001} Types: []
+2014-10-28 22:49:23,218-[TS] DEBUG main java.sql.ResultSet - {rset-100002} ResultSet
+2014-10-28 22:49:23,250-[TS] DEBUG main java.sql.ResultSet - {rset-100002} Header: [id]
+2014-10-28 22:49:23,250-[TS] DEBUG main java.sql.ResultSet - {rset-100002} Result: [1]
+2014-10-28 22:49:23,250-[TS] DEBUG main java.sql.ResultSet - {rset-100002} Result: [3]
+2014-10-28 22:50:08,421-[TS] DEBUG main java.sql.Connection - {conn-100000} Connection
+2014-10-28 22:50:08,437-[TS] DEBUG main java.sql.Connection - {conn-100000} Preparing Statement:       SELECT count(1) FROM orders_orders o where o.`status` < 2     
+2014-10-28 22:50:08,500-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100001} Executing Statement:       SELECT count(1) FROM orders_orders o where o.`status` < 2     
+2014-10-28 22:50:08,500-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100001} Parameters: []
+2014-10-28 22:50:08,500-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100001} Types: []
+2014-10-28 22:50:08,546-[TS] DEBUG main java.sql.ResultSet - {rset-100002} ResultSet
+2014-10-28 22:50:08,578-[TS] DEBUG main java.sql.ResultSet - {rset-100002} Header: [count(1)]
+2014-10-28 22:50:08,578-[TS] DEBUG main java.sql.ResultSet - {rset-100002} Result: [2]
+2014-10-28 22:50:08,593-[TS] DEBUG main java.sql.Connection - {conn-100003} Connection
+2014-10-28 22:50:08,593-[TS] DEBUG main java.sql.Connection - {conn-100003} Preparing Statement:       SELECT * FROM orders_orders o LEFT JOIN customer_customer c       ON o.`customer_code` = c.`code` AND o.`status` < 2     
+2014-10-28 22:50:08,593-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100004} Executing Statement:       SELECT * FROM orders_orders o LEFT JOIN customer_customer c       ON o.`customer_code` = c.`code` AND o.`status` < 2     
+2014-10-28 22:50:08,593-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100004} Parameters: []
+2014-10-28 22:50:08,593-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100004} Types: []
+2014-10-28 22:50:08,593-[TS] DEBUG main java.sql.ResultSet - {rset-100005} ResultSet
+2014-10-28 22:52:11,562-[TS] DEBUG main java.sql.Connection - {conn-100000} Connection
+2014-10-28 22:52:11,562-[TS] DEBUG main java.sql.Connection - {conn-100000} Preparing Statement:       SELECT count(1) FROM orders_orders o where o.`status` < 2     
+2014-10-28 22:52:11,625-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100001} Executing Statement:       SELECT count(1) FROM orders_orders o where o.`status` < 2     
+2014-10-28 22:52:11,625-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100001} Parameters: []
+2014-10-28 22:52:11,625-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100001} Types: []
+2014-10-28 22:52:11,640-[TS] DEBUG main java.sql.ResultSet - {rset-100002} ResultSet
+2014-10-28 22:52:11,656-[TS] DEBUG main java.sql.ResultSet - {rset-100002} Header: [count(1)]
+2014-10-28 22:52:11,656-[TS] DEBUG main java.sql.ResultSet - {rset-100002} Result: [2]
+2014-10-28 22:52:11,671-[TS] DEBUG main java.sql.Connection - {conn-100003} Connection
+2014-10-28 22:52:11,671-[TS] DEBUG main java.sql.Connection - {conn-100003} Preparing Statement:       SELECT * FROM orders_orders o LEFT JOIN customer_customer c       ON o.`customer_code` = c.`code` AND o.`status` < 2     
+2014-10-28 22:52:11,671-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100004} Executing Statement:       SELECT * FROM orders_orders o LEFT JOIN customer_customer c       ON o.`customer_code` = c.`code` AND o.`status` < 2     
+2014-10-28 22:52:11,671-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100004} Parameters: []
+2014-10-28 22:52:11,671-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100004} Types: []
+2014-10-28 22:52:11,671-[TS] DEBUG main java.sql.ResultSet - {rset-100005} ResultSet
+2014-10-28 22:56:53,843-[TS] DEBUG main java.sql.Connection - {conn-100000} Connection
+2014-10-28 22:56:53,859-[TS] DEBUG main java.sql.Connection - {conn-100000} Preparing Statement:       SELECT count(1) FROM orders_orders o where o.`status` < 2     
+2014-10-28 22:56:53,921-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100001} Executing Statement:       SELECT count(1) FROM orders_orders o where o.`status` < 2     
+2014-10-28 22:56:53,921-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100001} Parameters: []
+2014-10-28 22:56:53,921-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100001} Types: []
+2014-10-28 22:56:53,937-[TS] DEBUG main java.sql.ResultSet - {rset-100002} ResultSet
+2014-10-28 22:56:53,953-[TS] DEBUG main java.sql.ResultSet - {rset-100002} Header: [count(1)]
+2014-10-28 22:56:53,953-[TS] DEBUG main java.sql.ResultSet - {rset-100002} Result: [2]
+2014-10-28 22:57:03,953-[TS] DEBUG main java.sql.Connection - {conn-100003} Connection
+2014-10-28 22:57:03,953-[TS] DEBUG main java.sql.Connection - {conn-100003} Preparing Statement:       SELECT * FROM orders_orders o LEFT JOIN customer_customer c       ON o.`customer_code` = c.`code` AND o.`status` < 2     
+2014-10-28 22:57:03,953-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100004} Executing Statement:       SELECT * FROM orders_orders o LEFT JOIN customer_customer c       ON o.`customer_code` = c.`code` AND o.`status` < 2     
+2014-10-28 22:57:03,953-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100004} Parameters: []
+2014-10-28 22:57:03,953-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100004} Types: []
+2014-10-28 22:57:03,953-[TS] DEBUG main java.sql.ResultSet - {rset-100005} ResultSet
+2014-10-28 22:57:38,671-[TS] DEBUG main java.sql.Connection - {conn-100000} Connection
+2014-10-28 22:57:38,703-[TS] DEBUG main java.sql.Connection - {conn-100000} Preparing Statement:       SELECT count(1) FROM orders_orders o where o.`status` < 2     
+2014-10-28 22:57:38,750-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100001} Executing Statement:       SELECT count(1) FROM orders_orders o where o.`status` < 2     
+2014-10-28 22:57:38,750-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100001} Parameters: []
+2014-10-28 22:57:38,750-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100001} Types: []
+2014-10-28 22:57:38,765-[TS] DEBUG main java.sql.ResultSet - {rset-100002} ResultSet
+2014-10-28 22:57:38,796-[TS] DEBUG main java.sql.ResultSet - {rset-100002} Header: [count(1)]
+2014-10-28 22:57:38,796-[TS] DEBUG main java.sql.ResultSet - {rset-100002} Result: [2]
+2014-10-28 22:57:44,703-[TS] DEBUG main java.sql.Connection - {conn-100003} Connection
+2014-10-28 22:57:44,703-[TS] DEBUG main java.sql.Connection - {conn-100003} Preparing Statement:       SELECT * FROM orders_orders o LEFT JOIN customer_customer c       ON o.`customer_code` = c.`code` AND o.`status` < 2     
+2014-10-28 22:57:44,703-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100004} Executing Statement:       SELECT * FROM orders_orders o LEFT JOIN customer_customer c       ON o.`customer_code` = c.`code` AND o.`status` < 2     
+2014-10-28 22:57:44,703-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100004} Parameters: []
+2014-10-28 22:57:44,703-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100004} Types: []
+2014-10-28 22:57:44,703-[TS] DEBUG main java.sql.ResultSet - {rset-100005} ResultSet
+2014-10-28 22:57:44,718-[TS] DEBUG main java.sql.ResultSet - {rset-100005} Header: [id, order_no, order_type, effective, deadline, customer_code, customer_name, customer_phone, customer_addr, has_invoice, source, agent_code, coupon_code, discount_amount, amount, payment, status, validity, order_time, creator, create_time, updater, update_time, contact_count, yn, id, code, type, name, sex, birthday, child, c_sex, email, province, city, district, street, address, post, phone, main_phone, fax, status, creator, create_time, updater, update_time, yn]
+2014-10-28 22:57:44,718-[TS] DEBUG main java.sql.ResultSet - {rset-100005} Result: [1, 1, 1, 2014-10-28, 2014-10-28, 1, 1, 1, 1, true, 1, 1, 1, 1, 1.00, 1, 1, 1, 2014-10-28 21:50:47.0, 1, 2014-10-28 21:50:44.0, , null, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2014-10-28 21:50:44.0, , null, 1]
+2014-10-28 22:57:44,718-[TS] DEBUG main java.sql.ResultSet - {rset-100005} Result: [2, 2, 1, 2014-10-28, 2014-10-28, 1, 1, 1, 1, true, 1, 2, 2, 2, 2.00, 2, 2, 2, 2014-10-28 21:51:04.0, 1, 2014-10-28 21:51:08.0, , null, 0, 1, 2, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 2, 1, 2014-10-28 21:51:08.0, , null, 1]
+2014-10-28 22:57:44,718-[TS] DEBUG main java.sql.ResultSet - {rset-100005} Result: [3, 3, 1, 2014-10-28, 2014-10-28, 1, 1, 1, 1, true, 1, 1, 1, 1, 1.00, 1, 1, 1, 2014-10-28 21:52:47.0, 1, 2014-10-28 21:52:50.0, , null, 0, 1, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2014-10-28 21:52:50.0, , null, 1]
+2014-10-28 22:59:43,031-[TS] DEBUG main java.sql.Connection - {conn-100000} Connection
+2014-10-28 22:59:43,062-[TS] DEBUG main java.sql.Connection - {conn-100000} Preparing Statement:       SELECT count(1) FROM orders_orders o where o.`status` < 2     
+2014-10-28 22:59:43,187-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100001} Executing Statement:       SELECT count(1) FROM orders_orders o where o.`status` < 2     
+2014-10-28 22:59:43,187-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100001} Parameters: []
+2014-10-28 22:59:43,187-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100001} Types: []
+2014-10-28 22:59:43,218-[TS] DEBUG main java.sql.ResultSet - {rset-100002} ResultSet
+2014-10-28 22:59:43,234-[TS] DEBUG main java.sql.ResultSet - {rset-100002} Header: [count(1)]
+2014-10-28 22:59:43,234-[TS] DEBUG main java.sql.ResultSet - {rset-100002} Result: [2]
+2014-10-28 22:59:43,250-[TS] DEBUG main java.sql.Connection - {conn-100003} Connection
+2014-10-28 22:59:43,250-[TS] DEBUG main java.sql.Connection - {conn-100003} Preparing Statement:       SELECT * FROM orders_orders o LEFT JOIN customer_customer c       ON o.`customer_code` = c.`code` AND o.`status` < 2     
+2014-10-28 22:59:43,250-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100004} Executing Statement:       SELECT * FROM orders_orders o LEFT JOIN customer_customer c       ON o.`customer_code` = c.`code` AND o.`status` < 2     
+2014-10-28 22:59:43,250-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100004} Parameters: []
+2014-10-28 22:59:43,250-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100004} Types: []
+2014-10-28 22:59:43,250-[TS] DEBUG main java.sql.ResultSet - {rset-100005} ResultSet
+2014-10-28 23:03:48,906-[TS] DEBUG main java.sql.Connection - {conn-100000} Connection
+2014-10-28 23:03:48,921-[TS] DEBUG main java.sql.Connection - {conn-100000} Preparing Statement:       SELECT count(1) FROM orders_orders o where o.`status` < 2     
+2014-10-28 23:03:48,984-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100001} Executing Statement:       SELECT count(1) FROM orders_orders o where o.`status` < 2     
+2014-10-28 23:03:48,984-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100001} Parameters: []
+2014-10-28 23:03:48,984-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100001} Types: []
+2014-10-28 23:03:49,000-[TS] DEBUG main java.sql.ResultSet - {rset-100002} ResultSet
+2014-10-28 23:03:49,031-[TS] DEBUG main java.sql.ResultSet - {rset-100002} Header: [count(1)]
+2014-10-28 23:03:49,031-[TS] DEBUG main java.sql.ResultSet - {rset-100002} Result: [2]
+2014-10-28 23:03:49,046-[TS] DEBUG main java.sql.Connection - {conn-100003} Connection
+2014-10-28 23:03:49,046-[TS] DEBUG main java.sql.Connection - {conn-100003} Preparing Statement:       SELECT * FROM orders_orders o LEFT JOIN customer_customer c       ON o.`customer_code` = c.`code` AND o.`status` < 2     
+2014-10-28 23:03:49,046-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100004} Executing Statement:       SELECT * FROM orders_orders o LEFT JOIN customer_customer c       ON o.`customer_code` = c.`code` AND o.`status` < 2     
+2014-10-28 23:03:49,046-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100004} Parameters: []
+2014-10-28 23:03:49,046-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100004} Types: []
+2014-10-28 23:03:49,046-[TS] DEBUG main java.sql.ResultSet - {rset-100005} ResultSet
+2014-10-28 23:04:42,343-[TS] DEBUG main java.sql.Connection - {conn-100000} Connection
+2014-10-28 23:04:42,359-[TS] DEBUG main java.sql.Connection - {conn-100000} Preparing Statement:       SELECT count(1) FROM orders_orders o where o.`status` < 2     
+2014-10-28 23:04:42,406-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100001} Executing Statement:       SELECT count(1) FROM orders_orders o where o.`status` < 2     
+2014-10-28 23:04:42,406-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100001} Parameters: []
+2014-10-28 23:04:42,406-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100001} Types: []
+2014-10-28 23:04:42,421-[TS] DEBUG main java.sql.ResultSet - {rset-100002} ResultSet
+2014-10-28 23:04:42,437-[TS] DEBUG main java.sql.ResultSet - {rset-100002} Header: [count(1)]
+2014-10-28 23:04:42,437-[TS] DEBUG main java.sql.ResultSet - {rset-100002} Result: [2]
+2014-10-28 23:04:42,453-[TS] DEBUG main java.sql.Connection - {conn-100003} Connection
+2014-10-28 23:04:42,453-[TS] DEBUG main java.sql.Connection - {conn-100003} Preparing Statement:       SELECT * FROM orders_orders o LEFT JOIN customer_customer c       ON o.`customer_code` = c.`code` AND o.`status` < 2     
+2014-10-28 23:04:42,468-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100004} Executing Statement:       SELECT * FROM orders_orders o LEFT JOIN customer_customer c       ON o.`customer_code` = c.`code` AND o.`status` < 2     
+2014-10-28 23:04:42,468-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100004} Parameters: []
+2014-10-28 23:04:42,468-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100004} Types: []
+2014-10-28 23:04:42,468-[TS] DEBUG main java.sql.ResultSet - {rset-100005} ResultSet
+2014-10-28 23:05:16,187-[TS] DEBUG main java.sql.Connection - {conn-100000} Connection
+2014-10-28 23:05:16,203-[TS] DEBUG main java.sql.Connection - {conn-100000} Preparing Statement:       SELECT count(1) FROM orders_orders o where o.`status` < 2     
+2014-10-28 23:05:16,265-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100001} Executing Statement:       SELECT count(1) FROM orders_orders o where o.`status` < 2     
+2014-10-28 23:05:16,265-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100001} Parameters: []
+2014-10-28 23:05:16,265-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100001} Types: []
+2014-10-28 23:05:16,281-[TS] DEBUG main java.sql.ResultSet - {rset-100002} ResultSet
+2014-10-28 23:05:16,296-[TS] DEBUG main java.sql.ResultSet - {rset-100002} Header: [count(1)]
+2014-10-28 23:05:16,296-[TS] DEBUG main java.sql.ResultSet - {rset-100002} Result: [2]
+2014-10-28 23:05:16,312-[TS] DEBUG main java.sql.Connection - {conn-100003} Connection
+2014-10-28 23:05:16,312-[TS] DEBUG main java.sql.Connection - {conn-100003} Preparing Statement:       SELECT * FROM orders_orders o LEFT JOIN customer_customer c       ON o.`customer_code` = c.`code` AND o.`status` < 2     
+2014-10-28 23:05:16,312-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100004} Executing Statement:       SELECT * FROM orders_orders o LEFT JOIN customer_customer c       ON o.`customer_code` = c.`code` AND o.`status` < 2     
+2014-10-28 23:05:16,312-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100004} Parameters: []
+2014-10-28 23:05:16,312-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100004} Types: []
+2014-10-28 23:05:16,312-[TS] DEBUG main java.sql.ResultSet - {rset-100005} ResultSet
+2014-10-28 23:05:16,484-[TS] DEBUG main java.sql.ResultSet - {rset-100005} Header: [ID, ORDER_NO, ORDER_TYPE, EFFECTIVE, DEADLINE, CUSTOMER_CODE, CUSTOMER_NAME, CUSTOMER_PHONE, CUSTOMER_ADDR, HAS_INVOICE, SOURCE, AGENT_CODE, COUPON_CODE, DISCOUNT_AMOUNT, AMOUNT, PAYMENT, STATUS, VALIDITY, ORDER_TIME, CREATOR, CREATE_TIME, UPDATER, UPDATE_TIME, CONTACT_COUNT, YN, CUSTOMER_CODE]
+2014-10-28 23:05:16,484-[TS] DEBUG main java.sql.ResultSet - {rset-100005} Result: [1, 1, 1, 2014-10-28 00:00:00.0, 2014-10-28 00:00:00.0, 1, 1, 1, 1, true, 1, 1, 1, 1.0, 1.0, 1, 1, 1, 2014-10-28 21:50:47.0, 1, 2014-10-28 21:50:44.0, , null, 0, true, 1]
+2014-10-28 23:05:16,484-[TS] DEBUG main java.sql.ResultSet - {rset-100005} Result: [2, 2, 1, 2014-10-28 00:00:00.0, 2014-10-28 00:00:00.0, 1, 1, 1, 1, true, 1, 2, 2, 2.0, 2.0, 2, 2, 2, 2014-10-28 21:51:04.0, 1, 2014-10-28 21:51:08.0, , null, 0, true, 1]
+2014-10-28 23:05:16,484-[TS] DEBUG main java.sql.ResultSet - {rset-100005} Result: [3, 3, 1, 2014-10-28 00:00:00.0, 2014-10-28 00:00:00.0, 1, 1, 1, 1, true, 1, 1, 1, 1.0, 1.0, 1, 1, 1, 2014-10-28 21:52:47.0, 1, 2014-10-28 21:52:50.0, , null, 0, true, 1]
+2014-10-28 23:05:17,093-[TS] DEBUG main java.sql.Connection - {conn-100006} Connection
+2014-10-28 23:05:17,093-[TS] DEBUG main java.sql.Connection - {conn-100006} Preparing Statement:    SELECT * FROM customer_customer c WHERE c.`code` = ?  
+2014-10-28 23:05:17,093-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100007} Executing Statement:    SELECT * FROM customer_customer c WHERE c.`code` = ?  
+2014-10-28 23:05:17,093-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100007} Parameters: [1]
+2014-10-28 23:05:17,093-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100007} Types: [java.lang.String]
+2014-10-28 23:05:17,093-[TS] DEBUG main java.sql.ResultSet - {rset-100008} ResultSet
+2014-10-28 23:05:17,093-[TS] DEBUG main java.sql.ResultSet - {rset-100008} Header: [ID, CODE, TYPE, NAME, SEX, BIRTHDAY, CHILD, C_SEX, EMAIL, PROVINCE, CITY, DISTRICT, STREET, ADDRESS, POST, PHONE, MAIN_PHONE, FAX, STATUS, CREATOR, CREATE_TIME, UPDATER, UPDATE_TIME, YN]
+2014-10-28 23:05:17,093-[TS] DEBUG main java.sql.ResultSet - {rset-100008} Result: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, , 2014-10-28 00:00:00.0, , null, 1]
+2014-10-28 23:05:17,109-[TS] DEBUG main java.sql.Connection - {conn-100009} Connection
+2014-10-28 23:05:17,109-[TS] DEBUG main java.sql.Connection - {conn-100009} Preparing Statement:    SELECT * FROM customer_customer c WHERE c.`code` = ?  
+2014-10-28 23:05:17,109-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100010} Executing Statement:    SELECT * FROM customer_customer c WHERE c.`code` = ?  
+2014-10-28 23:05:17,109-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100010} Parameters: [1]
+2014-10-28 23:05:17,109-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100010} Types: [java.lang.String]
+2014-10-28 23:05:17,109-[TS] DEBUG main java.sql.ResultSet - {rset-100011} ResultSet
+2014-10-28 23:05:17,109-[TS] DEBUG main java.sql.ResultSet - {rset-100011} Header: [ID, CODE, TYPE, NAME, SEX, BIRTHDAY, CHILD, C_SEX, EMAIL, PROVINCE, CITY, DISTRICT, STREET, ADDRESS, POST, PHONE, MAIN_PHONE, FAX, STATUS, CREATOR, CREATE_TIME, UPDATER, UPDATE_TIME, YN]
+2014-10-28 23:05:17,109-[TS] DEBUG main java.sql.ResultSet - {rset-100011} Result: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, , 2014-10-28 00:00:00.0, , null, 1]
+2014-10-28 23:05:17,109-[TS] DEBUG main java.sql.Connection - {conn-100012} Connection
+2014-10-28 23:05:17,109-[TS] DEBUG main java.sql.Connection - {conn-100012} Preparing Statement:    SELECT * FROM customer_customer c WHERE c.`code` = ?  
+2014-10-28 23:05:17,109-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100013} Executing Statement:    SELECT * FROM customer_customer c WHERE c.`code` = ?  
+2014-10-28 23:05:17,125-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100013} Parameters: [1]
+2014-10-28 23:05:17,125-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100013} Types: [java.lang.String]
+2014-10-28 23:05:17,125-[TS] DEBUG main java.sql.ResultSet - {rset-100014} ResultSet
+2014-10-28 23:05:17,125-[TS] DEBUG main java.sql.ResultSet - {rset-100014} Header: [ID, CODE, TYPE, NAME, SEX, BIRTHDAY, CHILD, C_SEX, EMAIL, PROVINCE, CITY, DISTRICT, STREET, ADDRESS, POST, PHONE, MAIN_PHONE, FAX, STATUS, CREATOR, CREATE_TIME, UPDATER, UPDATE_TIME, YN]
+2014-10-28 23:05:17,125-[TS] DEBUG main java.sql.ResultSet - {rset-100014} Result: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, , 2014-10-28 00:00:00.0, , null, 1]
+2014-10-29 20:14:37,220-[TS] DEBUG main java.sql.Connection - {conn-100000} Connection
+2014-10-29 20:14:37,236-[TS] DEBUG main java.sql.Connection - {conn-100000} Preparing Statement:       SELECT count(1) FROM orders_orders o LEFT JOIN customer_customer c       ON o.`customer_code` = c.`code` where o.`status` < 2                        
+2014-10-29 20:14:37,299-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100001} Executing Statement:       SELECT count(1) FROM orders_orders o LEFT JOIN customer_customer c       ON o.`customer_code` = c.`code` where o.`status` < 2                        
+2014-10-29 20:14:37,299-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100001} Parameters: []
+2014-10-29 20:14:37,299-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100001} Types: []
+2014-10-29 20:14:37,345-[TS] DEBUG main java.sql.ResultSet - {rset-100002} ResultSet
+2014-10-29 20:14:37,361-[TS] DEBUG main java.sql.ResultSet - {rset-100002} Header: [count(1)]
+2014-10-29 20:14:37,361-[TS] DEBUG main java.sql.ResultSet - {rset-100002} Result: [2]
+2014-10-29 20:14:37,377-[TS] DEBUG main java.sql.Connection - {conn-100003} Connection
+2014-10-29 20:14:37,377-[TS] DEBUG main java.sql.Connection - {conn-100003} Preparing Statement:       SELECT * FROM orders_orders o LEFT JOIN customer_customer c       ON o.`customer_code` = c.`code` where o.`status` < 2                                             
+2014-10-29 20:14:37,377-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100004} Executing Statement:       SELECT * FROM orders_orders o LEFT JOIN customer_customer c       ON o.`customer_code` = c.`code` where o.`status` < 2                                             
+2014-10-29 20:14:37,377-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100004} Parameters: []
+2014-10-29 20:14:37,377-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100004} Types: []
+2014-10-29 20:14:37,377-[TS] DEBUG main java.sql.ResultSet - {rset-100005} ResultSet
+2014-10-29 20:14:37,470-[TS] DEBUG main java.sql.ResultSet - {rset-100005} Header: [ID, ORDER_NO, ORDER_TYPE, EFFECTIVE, DEADLINE, CUSTOMER_CODE, CUSTOMER_NAME, CUSTOMER_PHONE, CUSTOMER_ADDR, HAS_INVOICE, SOURCE, AGENT_CODE, COUPON_CODE, DISCOUNT_AMOUNT, AMOUNT, PAYMENT, PAID, STATUS, VALIDITY, ORDER_TIME, CREATOR, CREATE_TIME, UPDATER, UPDATE_TIME, CONTACT_COUNT, YN, CUSTOMER_CODE]
+2014-10-29 20:14:37,470-[TS] DEBUG main java.sql.ResultSet - {rset-100005} Result: [1, 1, 1, 2014-10-28 00:00:00.0, 2014-10-28 00:00:00.0, 1, 1, 1, 1, true, 1, 1, 1, 1.0, 1.0, 1, false, 1, 1, 2014-10-28 21:50:47.0, 1, 2014-10-28 21:50:44.0, , null, 0, true, 1]
+2014-10-29 20:14:37,470-[TS] DEBUG main java.sql.ResultSet - {rset-100005} Result: [3, 3, 1, 2014-10-28 00:00:00.0, 2014-10-28 00:00:00.0, 1, 1, 1, 1, true, 1, 1, 1, 1.0, 1.0, 1, false, 1, 1, 2014-10-28 21:52:47.0, 1, 2014-10-28 21:52:50.0, , null, 0, true, 1]
+2014-10-29 20:14:37,986-[TS] DEBUG main java.sql.Connection - {conn-100006} Connection
+2014-10-29 20:14:37,986-[TS] DEBUG main java.sql.Connection - {conn-100006} Preparing Statement:    SELECT * FROM customer_customer c WHERE c.`code` = ?  
+2014-10-29 20:14:37,986-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100007} Executing Statement:    SELECT * FROM customer_customer c WHERE c.`code` = ?  
+2014-10-29 20:14:38,002-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100007} Parameters: [1]
+2014-10-29 20:14:38,002-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100007} Types: [java.lang.String]
+2014-10-29 20:14:38,002-[TS] DEBUG main java.sql.ResultSet - {rset-100008} ResultSet
+2014-10-29 20:14:38,002-[TS] DEBUG main java.sql.ResultSet - {rset-100008} Header: [ID, CODE, TYPE, NAME, SEX, BIRTHDAY, CHILD, C_SEX, EMAIL, PROVINCE, CITY, DISTRICT, STREET, ADDRESS, POST, PHONE, MAIN_PHONE, FAX, STATUS, CREATOR, CREATE_TIME, UPDATER, UPDATE_TIME, YN]
+2014-10-29 20:14:38,002-[TS] DEBUG main java.sql.ResultSet - {rset-100008} Result: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, , 2014-10-28 00:00:00.0, , null, 1]
+2014-10-29 20:14:38,017-[TS] DEBUG main java.sql.Connection - {conn-100009} Connection
+2014-10-29 20:14:38,017-[TS] DEBUG main java.sql.Connection - {conn-100009} Preparing Statement:    SELECT * FROM customer_customer c WHERE c.`code` = ?  
+2014-10-29 20:14:38,017-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100010} Executing Statement:    SELECT * FROM customer_customer c WHERE c.`code` = ?  
+2014-10-29 20:14:38,017-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100010} Parameters: [1]
+2014-10-29 20:14:38,017-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100010} Types: [java.lang.String]
+2014-10-29 20:14:38,017-[TS] DEBUG main java.sql.ResultSet - {rset-100011} ResultSet
+2014-10-29 20:14:38,017-[TS] DEBUG main java.sql.ResultSet - {rset-100011} Header: [ID, CODE, TYPE, NAME, SEX, BIRTHDAY, CHILD, C_SEX, EMAIL, PROVINCE, CITY, DISTRICT, STREET, ADDRESS, POST, PHONE, MAIN_PHONE, FAX, STATUS, CREATOR, CREATE_TIME, UPDATER, UPDATE_TIME, YN]
+2014-10-29 20:14:38,017-[TS] DEBUG main java.sql.ResultSet - {rset-100011} Result: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, , 2014-10-28 00:00:00.0, , null, 1]
+2014-10-29 20:21:01,830-[TS] DEBUG main java.sql.Connection - {conn-100000} Connection
+2014-10-29 20:21:01,845-[TS] DEBUG main java.sql.Connection - {conn-100000} Preparing Statement:       SELECT count(1) FROM orders_orders o LEFT JOIN customer_customer c       ON o.`customer_code` = c.`code` where o.`status` < 2                               
+2014-10-29 20:21:02,517-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100001} Executing Statement:       SELECT count(1) FROM orders_orders o LEFT JOIN customer_customer c       ON o.`customer_code` = c.`code` where o.`status` < 2                               
+2014-10-29 20:21:02,517-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100001} Parameters: []
+2014-10-29 20:21:02,517-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100001} Types: []
+2014-10-29 20:21:02,533-[TS] DEBUG main java.sql.ResultSet - {rset-100002} ResultSet
+2014-10-29 20:21:02,549-[TS] DEBUG main java.sql.ResultSet - {rset-100002} Header: [count(1)]
+2014-10-29 20:21:02,549-[TS] DEBUG main java.sql.ResultSet - {rset-100002} Result: [2]
+2014-10-29 20:21:02,564-[TS] DEBUG main java.sql.Connection - {conn-100003} Connection
+2014-10-29 20:21:02,564-[TS] DEBUG main java.sql.Connection - {conn-100003} Preparing Statement:       SELECT * FROM orders_orders o LEFT JOIN customer_customer c       ON o.`customer_code` = c.`code` where o.`status` < 2                               
+2014-10-29 20:21:02,564-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100004} Executing Statement:       SELECT * FROM orders_orders o LEFT JOIN customer_customer c       ON o.`customer_code` = c.`code` where o.`status` < 2                               
+2014-10-29 20:21:02,564-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100004} Parameters: []
+2014-10-29 20:21:02,564-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100004} Types: []
+2014-10-29 20:21:02,564-[TS] DEBUG main java.sql.ResultSet - {rset-100005} ResultSet
+2014-10-29 20:21:02,658-[TS] DEBUG main java.sql.ResultSet - {rset-100005} Header: [ID, ORDER_NO, ORDER_TYPE, EFFECTIVE, DEADLINE, CUSTOMER_CODE, CUSTOMER_NAME, CUSTOMER_PHONE, CUSTOMER_ADDR, HAS_INVOICE, SOURCE, AGENT_CODE, COUPON_CODE, DISCOUNT_AMOUNT, AMOUNT, PAYMENT, PAID, STATUS, VALIDITY, ORDER_TIME, CREATOR, CREATE_TIME, UPDATER, UPDATE_TIME, CONTACT_COUNT, YN, CUSTOMER_CODE]
+2014-10-29 20:21:02,658-[TS] DEBUG main java.sql.ResultSet - {rset-100005} Result: [1, 1, 1, 2014-10-28 00:00:00.0, 2014-10-28 00:00:00.0, 1, 1, 1, 1, true, 1, 1, 1, 1.0, 1.0, 1, false, 1, 1, 2014-10-28 21:50:47.0, 1, 2014-10-28 21:50:44.0, , null, 0, true, 1]
+2014-10-29 20:21:02,658-[TS] DEBUG main java.sql.ResultSet - {rset-100005} Result: [3, 3, 1, 2014-10-28 00:00:00.0, 2014-10-28 00:00:00.0, 1, 1, 1, 1, true, 1, 1, 1, 1.0, 1.0, 1, false, 1, 1, 2014-10-28 21:52:47.0, 1, 2014-10-28 21:52:50.0, , null, 0, true, 1]
+2014-10-29 20:21:02,924-[TS] DEBUG main java.sql.Connection - {conn-100006} Connection
+2014-10-29 20:21:02,924-[TS] DEBUG main java.sql.Connection - {conn-100006} Preparing Statement:    SELECT * FROM customer_customer c WHERE c.`code` = ?  
+2014-10-29 20:21:02,924-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100007} Executing Statement:    SELECT * FROM customer_customer c WHERE c.`code` = ?  
+2014-10-29 20:21:02,924-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100007} Parameters: [1]
+2014-10-29 20:21:02,924-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100007} Types: [java.lang.String]
+2014-10-29 20:21:02,924-[TS] DEBUG main java.sql.ResultSet - {rset-100008} ResultSet
+2014-10-29 20:21:02,924-[TS] DEBUG main java.sql.ResultSet - {rset-100008} Header: [ID, CODE, TYPE, NAME, SEX, BIRTHDAY, CHILD, C_SEX, EMAIL, PROVINCE, CITY, DISTRICT, STREET, ADDRESS, POST, PHONE, MAIN_PHONE, FAX, STATUS, CREATOR, CREATE_TIME, UPDATER, UPDATE_TIME, YN]
+2014-10-29 20:21:02,924-[TS] DEBUG main java.sql.ResultSet - {rset-100008} Result: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, , 2014-10-28 00:00:00.0, , null, 1]
+2014-10-29 20:21:02,939-[TS] DEBUG main java.sql.Connection - {conn-100009} Connection
+2014-10-29 20:21:02,939-[TS] DEBUG main java.sql.Connection - {conn-100009} Preparing Statement:    SELECT * FROM customer_customer c WHERE c.`code` = ?  
+2014-10-29 20:21:02,939-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100010} Executing Statement:    SELECT * FROM customer_customer c WHERE c.`code` = ?  
+2014-10-29 20:21:02,939-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100010} Parameters: [1]
+2014-10-29 20:21:02,939-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100010} Types: [java.lang.String]
+2014-10-29 20:21:02,939-[TS] DEBUG main java.sql.ResultSet - {rset-100011} ResultSet
+2014-10-29 20:21:02,939-[TS] DEBUG main java.sql.ResultSet - {rset-100011} Header: [ID, CODE, TYPE, NAME, SEX, BIRTHDAY, CHILD, C_SEX, EMAIL, PROVINCE, CITY, DISTRICT, STREET, ADDRESS, POST, PHONE, MAIN_PHONE, FAX, STATUS, CREATOR, CREATE_TIME, UPDATER, UPDATE_TIME, YN]
+2014-10-29 20:21:02,939-[TS] DEBUG main java.sql.ResultSet - {rset-100011} Result: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, , 2014-10-28 00:00:00.0, , null, 1]
+2014-10-29 20:22:29,939-[TS] DEBUG main java.sql.Connection - {conn-100000} Connection
+2014-10-29 20:22:29,955-[TS] DEBUG main java.sql.Connection - {conn-100000} Preparing Statement:       SELECT count(1) FROM orders_orders o LEFT JOIN customer_customer c       ON o.`customer_code` = c.`code` where o.`status` < 2      and               o.customer_name like '%1%'              and        o.paid = ?                  
+2014-10-29 20:22:30,674-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100001} Executing Statement:       SELECT count(1) FROM orders_orders o LEFT JOIN customer_customer c       ON o.`customer_code` = c.`code` where o.`status` < 2      and               o.customer_name like '%1%'              and        o.paid = ?                  
+2014-10-29 20:22:30,674-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100001} Parameters: [true]
+2014-10-29 20:22:30,674-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100001} Types: [java.lang.Boolean]
+2014-10-29 20:22:30,720-[TS] DEBUG main java.sql.ResultSet - {rset-100002} ResultSet
+2014-10-29 20:22:30,736-[TS] DEBUG main java.sql.ResultSet - {rset-100002} Header: [count(1)]
+2014-10-29 20:22:30,736-[TS] DEBUG main java.sql.ResultSet - {rset-100002} Result: [0]
+2014-10-29 20:22:30,752-[TS] DEBUG main java.sql.Connection - {conn-100003} Connection
+2014-10-29 20:22:30,752-[TS] DEBUG main java.sql.Connection - {conn-100003} Preparing Statement:       SELECT * FROM orders_orders o LEFT JOIN customer_customer c       ON o.`customer_code` = c.`code` where o.`status` < 2      and               o.customer_name like '%1%'              and        o.paid = ?                  
+2014-10-29 20:22:30,752-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100004} Executing Statement:       SELECT * FROM orders_orders o LEFT JOIN customer_customer c       ON o.`customer_code` = c.`code` where o.`status` < 2      and               o.customer_name like '%1%'              and        o.paid = ?                  
+2014-10-29 20:22:30,752-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100004} Parameters: [true]
+2014-10-29 20:22:30,752-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100004} Types: [java.lang.Boolean]
+2014-10-29 20:22:30,767-[TS] DEBUG main java.sql.ResultSet - {rset-100005} ResultSet
+2014-10-29 20:22:48,002-[TS] DEBUG main java.sql.Connection - {conn-100000} Connection
+2014-10-29 20:22:48,017-[TS] DEBUG main java.sql.Connection - {conn-100000} Preparing Statement:       SELECT count(1) FROM orders_orders o LEFT JOIN customer_customer c       ON o.`customer_code` = c.`code` where o.`status` < 2      and               o.customer_name like '%1%'              and        o.paid = ?                  
+2014-10-29 20:22:48,674-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100001} Executing Statement:       SELECT count(1) FROM orders_orders o LEFT JOIN customer_customer c       ON o.`customer_code` = c.`code` where o.`status` < 2      and               o.customer_name like '%1%'              and        o.paid = ?                  
+2014-10-29 20:22:48,674-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100001} Parameters: [false]
+2014-10-29 20:22:48,674-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100001} Types: [java.lang.Boolean]
+2014-10-29 20:22:48,689-[TS] DEBUG main java.sql.ResultSet - {rset-100002} ResultSet
+2014-10-29 20:22:48,705-[TS] DEBUG main java.sql.ResultSet - {rset-100002} Header: [count(1)]
+2014-10-29 20:22:48,705-[TS] DEBUG main java.sql.ResultSet - {rset-100002} Result: [2]
+2014-10-29 20:22:48,720-[TS] DEBUG main java.sql.Connection - {conn-100003} Connection
+2014-10-29 20:22:48,736-[TS] DEBUG main java.sql.Connection - {conn-100003} Preparing Statement:       SELECT * FROM orders_orders o LEFT JOIN customer_customer c       ON o.`customer_code` = c.`code` where o.`status` < 2      and               o.customer_name like '%1%'              and        o.paid = ?                  
+2014-10-29 20:22:48,736-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100004} Executing Statement:       SELECT * FROM orders_orders o LEFT JOIN customer_customer c       ON o.`customer_code` = c.`code` where o.`status` < 2      and               o.customer_name like '%1%'              and        o.paid = ?                  
+2014-10-29 20:22:48,736-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100004} Parameters: [false]
+2014-10-29 20:22:48,736-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100004} Types: [java.lang.Boolean]
+2014-10-29 20:22:48,736-[TS] DEBUG main java.sql.ResultSet - {rset-100005} ResultSet
+2014-10-29 20:22:48,830-[TS] DEBUG main java.sql.ResultSet - {rset-100005} Header: [ID, ORDER_NO, ORDER_TYPE, EFFECTIVE, DEADLINE, CUSTOMER_CODE, CUSTOMER_NAME, CUSTOMER_PHONE, CUSTOMER_ADDR, HAS_INVOICE, SOURCE, AGENT_CODE, COUPON_CODE, DISCOUNT_AMOUNT, AMOUNT, PAYMENT, PAID, STATUS, VALIDITY, ORDER_TIME, CREATOR, CREATE_TIME, UPDATER, UPDATE_TIME, CONTACT_COUNT, YN, CUSTOMER_CODE]
+2014-10-29 20:22:48,830-[TS] DEBUG main java.sql.ResultSet - {rset-100005} Result: [1, 1, 1, 2014-10-28 00:00:00.0, 2014-10-28 00:00:00.0, 1, 1, 1, 1, true, 1, 1, 1, 1.0, 1.0, 1, false, 1, 1, 2014-10-28 21:50:47.0, 1, 2014-10-28 21:50:44.0, , null, 0, true, 1]
+2014-10-29 20:22:48,830-[TS] DEBUG main java.sql.ResultSet - {rset-100005} Result: [3, 3, 1, 2014-10-28 00:00:00.0, 2014-10-28 00:00:00.0, 1, 1, 1, 1, true, 1, 1, 1, 1.0, 1.0, 1, false, 1, 1, 2014-10-28 21:52:47.0, 1, 2014-10-28 21:52:50.0, , null, 0, true, 1]
+2014-10-29 20:22:49,095-[TS] DEBUG main java.sql.Connection - {conn-100006} Connection
+2014-10-29 20:22:49,095-[TS] DEBUG main java.sql.Connection - {conn-100006} Preparing Statement:    SELECT * FROM customer_customer c WHERE c.`code` = ?  
+2014-10-29 20:22:49,095-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100007} Executing Statement:    SELECT * FROM customer_customer c WHERE c.`code` = ?  
+2014-10-29 20:22:49,095-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100007} Parameters: [1]
+2014-10-29 20:22:49,095-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100007} Types: [java.lang.String]
+2014-10-29 20:22:49,095-[TS] DEBUG main java.sql.ResultSet - {rset-100008} ResultSet
+2014-10-29 20:22:49,095-[TS] DEBUG main java.sql.ResultSet - {rset-100008} Header: [ID, CODE, TYPE, NAME, SEX, BIRTHDAY, CHILD, C_SEX, EMAIL, PROVINCE, CITY, DISTRICT, STREET, ADDRESS, POST, PHONE, MAIN_PHONE, FAX, STATUS, CREATOR, CREATE_TIME, UPDATER, UPDATE_TIME, YN]
+2014-10-29 20:22:49,095-[TS] DEBUG main java.sql.ResultSet - {rset-100008} Result: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, , 2014-10-28 00:00:00.0, , null, 1]
+2014-10-29 20:22:49,095-[TS] DEBUG main java.sql.Connection - {conn-100009} Connection
+2014-10-29 20:22:49,095-[TS] DEBUG main java.sql.Connection - {conn-100009} Preparing Statement:    SELECT * FROM customer_customer c WHERE c.`code` = ?  
+2014-10-29 20:22:49,095-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100010} Executing Statement:    SELECT * FROM customer_customer c WHERE c.`code` = ?  
+2014-10-29 20:22:49,095-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100010} Parameters: [1]
+2014-10-29 20:22:49,095-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100010} Types: [java.lang.String]
+2014-10-29 20:22:49,095-[TS] DEBUG main java.sql.ResultSet - {rset-100011} ResultSet
+2014-10-29 20:22:49,095-[TS] DEBUG main java.sql.ResultSet - {rset-100011} Header: [ID, CODE, TYPE, NAME, SEX, BIRTHDAY, CHILD, C_SEX, EMAIL, PROVINCE, CITY, DISTRICT, STREET, ADDRESS, POST, PHONE, MAIN_PHONE, FAX, STATUS, CREATOR, CREATE_TIME, UPDATER, UPDATE_TIME, YN]
+2014-10-29 20:22:49,095-[TS] DEBUG main java.sql.ResultSet - {rset-100011} Result: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, , 2014-10-28 00:00:00.0, , null, 1]
+2014-10-29 20:23:07,642-[TS] DEBUG main java.sql.Connection - {conn-100000} Connection
+2014-10-29 20:23:07,658-[TS] DEBUG main java.sql.Connection - {conn-100000} Preparing Statement:       SELECT count(1) FROM orders_orders o LEFT JOIN customer_customer c       ON o.`customer_code` = c.`code` where o.`status` < 2      and               o.customer_name like '%2%'              and        o.paid = ?                  
+2014-10-29 20:23:08,299-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100001} Executing Statement:       SELECT count(1) FROM orders_orders o LEFT JOIN customer_customer c       ON o.`customer_code` = c.`code` where o.`status` < 2      and               o.customer_name like '%2%'              and        o.paid = ?                  
+2014-10-29 20:23:08,314-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100001} Parameters: [false]
+2014-10-29 20:23:08,314-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100001} Types: [java.lang.Boolean]
+2014-10-29 20:23:08,330-[TS] DEBUG main java.sql.ResultSet - {rset-100002} ResultSet
+2014-10-29 20:23:08,345-[TS] DEBUG main java.sql.ResultSet - {rset-100002} Header: [count(1)]
+2014-10-29 20:23:08,345-[TS] DEBUG main java.sql.ResultSet - {rset-100002} Result: [0]
+2014-10-29 20:23:08,361-[TS] DEBUG main java.sql.Connection - {conn-100003} Connection
+2014-10-29 20:23:08,361-[TS] DEBUG main java.sql.Connection - {conn-100003} Preparing Statement:       SELECT * FROM orders_orders o LEFT JOIN customer_customer c       ON o.`customer_code` = c.`code` where o.`status` < 2      and               o.customer_name like '%2%'              and        o.paid = ?                  
+2014-10-29 20:23:08,361-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100004} Executing Statement:       SELECT * FROM orders_orders o LEFT JOIN customer_customer c       ON o.`customer_code` = c.`code` where o.`status` < 2      and               o.customer_name like '%2%'              and        o.paid = ?                  
+2014-10-29 20:23:08,361-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100004} Parameters: [false]
+2014-10-29 20:23:08,361-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100004} Types: [java.lang.Boolean]
+2014-10-29 20:23:08,361-[TS] DEBUG main java.sql.ResultSet - {rset-100005} ResultSet
+2014-10-29 20:23:43,174-[TS] DEBUG main java.sql.Connection - {conn-100000} Connection
+2014-10-29 20:23:43,189-[TS] DEBUG main java.sql.Connection - {conn-100000} Preparing Statement:       SELECT count(1) FROM orders_orders o LEFT JOIN customer_customer c       ON o.`customer_code` = c.`code` where o.`status` < 2      and               o.customer_name like '%2%'              and        o.paid = ?                  
+2014-10-29 20:23:43,861-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100001} Executing Statement:       SELECT count(1) FROM orders_orders o LEFT JOIN customer_customer c       ON o.`customer_code` = c.`code` where o.`status` < 2      and               o.customer_name like '%2%'              and        o.paid = ?                  
+2014-10-29 20:23:43,861-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100001} Parameters: [false]
+2014-10-29 20:23:43,861-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100001} Types: [java.lang.Boolean]
+2014-10-29 20:23:43,877-[TS] DEBUG main java.sql.ResultSet - {rset-100002} ResultSet
+2014-10-29 20:23:43,908-[TS] DEBUG main java.sql.ResultSet - {rset-100002} Header: [count(1)]
+2014-10-29 20:23:43,908-[TS] DEBUG main java.sql.ResultSet - {rset-100002} Result: [1]
+2014-10-29 20:23:43,924-[TS] DEBUG main java.sql.Connection - {conn-100003} Connection
+2014-10-29 20:23:43,924-[TS] DEBUG main java.sql.Connection - {conn-100003} Preparing Statement:       SELECT * FROM orders_orders o LEFT JOIN customer_customer c       ON o.`customer_code` = c.`code` where o.`status` < 2      and               o.customer_name like '%2%'              and        o.paid = ?                  
+2014-10-29 20:23:43,924-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100004} Executing Statement:       SELECT * FROM orders_orders o LEFT JOIN customer_customer c       ON o.`customer_code` = c.`code` where o.`status` < 2      and               o.customer_name like '%2%'              and        o.paid = ?                  
+2014-10-29 20:23:43,924-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100004} Parameters: [false]
+2014-10-29 20:23:43,924-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100004} Types: [java.lang.Boolean]
+2014-10-29 20:23:43,924-[TS] DEBUG main java.sql.ResultSet - {rset-100005} ResultSet
+2014-10-29 20:23:44,017-[TS] DEBUG main java.sql.ResultSet - {rset-100005} Header: [ID, ORDER_NO, ORDER_TYPE, EFFECTIVE, DEADLINE, CUSTOMER_CODE, CUSTOMER_NAME, CUSTOMER_PHONE, CUSTOMER_ADDR, HAS_INVOICE, SOURCE, AGENT_CODE, COUPON_CODE, DISCOUNT_AMOUNT, AMOUNT, PAYMENT, PAID, STATUS, VALIDITY, ORDER_TIME, CREATOR, CREATE_TIME, UPDATER, UPDATE_TIME, CONTACT_COUNT, YN, CUSTOMER_CODE]
+2014-10-29 20:23:44,017-[TS] DEBUG main java.sql.ResultSet - {rset-100005} Result: [3, 3, 1, 2014-10-28 00:00:00.0, 2014-10-28 00:00:00.0, 1, 2, 1, 1, true, 1, 1, 1, 1.0, 1.0, 1, false, 1, 1, 2014-10-28 21:52:47.0, 1, 2014-10-28 21:52:50.0, , null, 0, true, 1]
+2014-10-29 20:23:44,283-[TS] DEBUG main java.sql.Connection - {conn-100006} Connection
+2014-10-29 20:23:44,283-[TS] DEBUG main java.sql.Connection - {conn-100006} Preparing Statement:    SELECT * FROM customer_customer c WHERE c.`code` = ?  
+2014-10-29 20:23:44,283-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100007} Executing Statement:    SELECT * FROM customer_customer c WHERE c.`code` = ?  
+2014-10-29 20:23:44,283-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100007} Parameters: [1]
+2014-10-29 20:23:44,283-[TS] DEBUG main java.sql.PreparedStatement - {pstm-100007} Types: [java.lang.String]
+2014-10-29 20:23:44,283-[TS] DEBUG main java.sql.ResultSet - {rset-100008} ResultSet
+2014-10-29 20:23:44,299-[TS] DEBUG main java.sql.ResultSet - {rset-100008} Header: [ID, CODE, TYPE, NAME, SEX, BIRTHDAY, CHILD, C_SEX, EMAIL, PROVINCE, CITY, DISTRICT, STREET, ADDRESS, POST, PHONE, MAIN_PHONE, FAX, STATUS, CREATOR, CREATE_TIME, UPDATER, UPDATE_TIME, YN]
+2014-10-29 20:23:44,299-[TS] DEBUG main java.sql.ResultSet - {rset-100008} Result: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, , 2014-10-28 00:00:00.0, , null, 1]

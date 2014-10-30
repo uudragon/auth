@@ -19,7 +19,7 @@ import com.uud.commons.office.ExcelUtils;
 public class ExportTest {
 
 	@GET
-	public void export( @Context HttpServletRequest request,
+	public String export( @Context HttpServletRequest request,
 						@Context HttpServletResponse response ){
 		response.setContentType( MediaType.APPLICATION_OCTET_STREAM );
 		response.setHeader("Content-disposition", "attachment; filename=test.xlsx");
@@ -49,5 +49,6 @@ public class ExportTest {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		return "";
 	}
 }

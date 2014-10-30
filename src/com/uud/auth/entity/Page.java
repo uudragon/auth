@@ -1,9 +1,15 @@
 package com.uud.auth.entity;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Page<T> {
+public class Page<T> implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	private Integer pageSize;
 	
 	private Integer pageNo;

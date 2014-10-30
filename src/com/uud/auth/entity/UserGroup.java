@@ -1,6 +1,13 @@
 package com.uud.auth.entity;
 
-public class UserGroup {
+import java.io.Serializable;
+
+public class UserGroup implements Serializable{
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	
 	private Long id;
 	private String name;

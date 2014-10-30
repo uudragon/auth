@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="task">
+
+	<insert id="save" parameterClass="java.util.Map">
+		INSERT INTO t_task_details( ID, TASK_NO, TASK_DATE,TASK_TYPE, TASK_STATUS, CUSTMER_CODE, CUSTMER_NAME, HOPE_DATE, DEAL_DATE, DEAR_RESULT, CHANNEL, USRE_NO, OPER_USRE, DURATION, PHONE, CONTENT, YN )
+		VALUES ( #id#, #taskNo#, #taskDate#, #taskType#, #taskStatus#, #custmerCode#, #custmerName#, #hopeDate#, #dealDate#, #dearResult#, #channel#, #userNo#, #operUser#, #duration#, #phone#, #content#, 1 )
+		<selectKey resultClass="long" keyProperty="id">
+			SELECT LAST_INSERT_ID()
+		</selectKey>
+	</insert>
+	
+	
+	
+</sqlMap>

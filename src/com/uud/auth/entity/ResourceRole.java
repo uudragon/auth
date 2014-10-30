@@ -1,6 +1,13 @@
 package com.uud.auth.entity;
 
-public class ResourceRole {
+import java.io.Serializable;
+
+public class ResourceRole implements Serializable{
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	
 	private Long id;
 	private Resource resource;

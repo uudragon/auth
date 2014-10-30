@@ -13,4 +13,11 @@
 	<sqlMap resource="dbconf/role.xml" />
 	<sqlMap resource="dbconf/rolegroup.xml" />
 	<sqlMap resource="dbconf/resource.xml" />
+	<sqlMap resource="dbconf/task.xml" />
+	<sqlMap resource="dbconf/communication.xml" />
+	<sqlMap resource="dbconf/note.xml" />
+	<sqlMap resource="dbconf/message.xml" />
+	
+	<sqlMap resource="dbconf/order.xml" />
+	<sqlMap resource="dbconf/consumer.xml" />
 </sqlMapConfig>

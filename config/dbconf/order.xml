@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="order">
+	
+	<typeAlias alias="order" type="com.uud.cs.entity.Order" />
+	<typeAlias alias="ordersDetail" type="com.uud.cs.entity.OrdersDetail" />
+	
+	<resultMap id="resultMap.orderDetailMap" class="ordersDetail">
+        <result column="ID" property="id" javaType="java.lang.Long"/>
+        <result column="ORDERS_NO" property="orders_no" javaType="java.lang.String"/>
+        <result column="PRODUCT_NO" property="product_no" javaType="java.lang.String"/>
+        <result column="EFFECTIVE" property="effective" javaType="java.util.Date"/>
+        <result column="QTY" property="qty" javaType="java.lang.Long"/>
+        <result column="BULK" property="bulk" javaType="java.lang.Double"/>
+        <result column="WEIGHT" property="weight" javaType="java.lang.Double"/>
+        <result column="STATUS" property="status" javaType="java.lang.Short"/>
+        <result column="YN" property="yn" javaType="java.lang.Boolean"/>
+    </resultMap>
+    
+	<resultMap id="resultMap.orderMap" class="order">
+        <result column="ID" property="id" javaType="java.lang.Long"/>
+        <result column="ORDER_NO" property="order_no" javaType="java.lang.String"/>
+        <result column="ORDER_TYPE" property="order_type" javaType="java.lang.Short"/>
+        <result column="EFFECTIVE" property="effective" javaType="java.util.Date"/>
+        <result column="DEADLINE" property="deadline" javaType="java.util.Date"/>
+        <result column="CUSTOMER_CODE" property="customer_code" javaType="java.lang.String"/>
+        <result column="HAS_INVOICE" property="has_invoice" javaType="java.lang.Boolean"/>
+        <result column="SOURCE" property="source" javaType="java.lang.Short"/>
+        <result column="AGENT_CODE" property="agent_code" javaType="java.lang.String"/>
+        <result column="COUPON_CODE" property="coupon_code" javaType="java.lang.String"/>
+        <result column="DISCOUNT_AMOUNT" property="discount_amount" javaType="java.lang.Double"/>
+        <result column="AMOUNT" property="amount" javaType="java.lang.Double"/>
+        <result column="PAYMENT" property="payment" javaType="java.lang.Short"/>
+        <result column="PAID" property="paid" javaType="java.lang.Boolean"/>
+        <result column="STATUS" property="status" javaType="java.lang.Short"/>
+        <result column="VALIDITY" property="validity" javaType="java.lang.Short"/>
+        <result column="ORDER_TIME" property="order_time" javaType="java.util.Date"/>
+        <result column="CREATOR" property="creator" javaType="java.lang.String"/>
+        <result column="CREATE_TIME" property="create_time" javaType="java.util.Date"/>
+        <result column="UPDATER" property="updater" javaType="java.lang.String"/>
+        <result column="UPDATE_TIME" property="update_time" javaType="java.util.Date"/>
+        <result column="CONTACT_COUNT" property="contact_count" javaType="java.lang.Integer"/>
+        <result column="YN" property="yn" javaType="java.lang.Boolean"/>
+      
+        <result column="CUSTOMER_CODE" property="customer" select="consumer.findByCode"/>
+        
+        <result column="ORDER_NO" property="details" select="order.findOrdersDetail"/>
+    </resultMap>
+    
+    <resultMap id="resultMap.orderMap2" class="order">
+        <result column="ID" property="id" javaType="java.lang.Long"/>
+        <result column="ORDER_NO" property="order_no" javaType="java.lang.String"/>
+        <result column="ORDER_TYPE" property="order_type" javaType="java.lang.Short"/>
+        <result column="EFFECTIVE" property="effective" javaType="java.util.Date"/>
+        <result column="DEADLINE" property="deadline" javaType="java.util.Date"/>
+        <result column="CUSTOMER_CODE" property="customer_code" javaType="java.lang.String"/>
+        <result column="HAS_INVOICE" property="has_invoice" javaType="java.lang.Boolean"/>
+        <result column="SOURCE" property="source" javaType="java.lang.Short"/>
+        <result column="AGENT_CODE" property="agent_code" javaType="java.lang.String"/>
+        <result column="COUPON_CODE" property="coupon_code" javaType="java.lang.String"/>
+        <result column="DISCOUNT_AMOUNT" property="discount_amount" javaType="java.lang.Double"/>
+        <result column="AMOUNT" property="amount" javaType="java.lang.Double"/>
+        <result column="PAYMENT" property="payment" javaType="java.lang.Short"/>
+        <result column="PAID" property="paid" javaType="java.lang.Boolean"/>
+        <result column="STATUS" property="status" javaType="java.lang.Short"/>
+        <result column="VALIDITY" property="validity" javaType="java.lang.Short"/>
+        <result column="ORDER_TIME" property="order_time" javaType="java.util.Date"/>
+        <result column="CREATOR" property="creator" javaType="java.lang.String"/>
+        <result column="CREATE_TIME" property="create_time" javaType="java.util.Date"/>
+        <result column="UPDATER" property="updater" javaType="java.lang.String"/>
+        <result column="UPDATE_TIME" property="update_time" javaType="java.util.Date"/>
+        <result column="CONTACT_COUNT" property="contact_count" javaType="java.lang.Integer"/>
+        <result column="YN" property="yn" javaType="java.lang.Boolean"/>
+    </resultMap>
+    
+    
+    <!-- 保存订单 -->
+    <insert id="save" parameterClass="java.util.Map">
+        insert into orders_orders( order_no,order_type,effective,deadline,customer_code,
+        has_invoice,source,agent_code,coupon_code,discount_amount,amount,
+        payment,status,validity,order_time,creator,create_time,contact_count,yn )
+        values
+        ( #order_no#,#order_type#,#effective#,#deadline#,#customer_code#,
+        #has_invoice#,#source#,#agent_code#,#coupon_code#,#discount_amount#,#amount#,#payment#,
+        #status#,#validity#,#order_time#,#creator#,now(),#contact_count#,#yn# )
+        <selectKey resultClass="long" keyProperty="id">
+			SELECT LAST_INSERT_ID()
+		</selectKey>
+    </insert>
+    
+    <!-- 保存订单详情 -->
+    <insert id="saveDetail" parameterClass="java.util.Map">
+        INSERT INTO orders_ordersdetail(orders_no,product_no,effective,qty,bulk,weight,STATUS,yn)
+		VALUES(#orders_no#,#product_no#,#effective#,#qty#,#bulk#,#weight#,#STATUS#,1)
+        <selectKey resultClass="long" keyProperty="id">
+			SELECT LAST_INSERT_ID()
+		</selectKey>
+    </insert>
+    
+    <select id="findAudit" resultMap="resultMap.orderMap" parameterClass="java.util.Map">
+    	SELECT * FROM orders_orders o LEFT JOIN customer_customer c 
+    	ON o.`customer_code` = c.`code` where o.`status` &lt; 2
+    	<dynamic prepend="and">
+    		<isNotEmpty prepend="and" property="customer_name">
+    			o.customer_name like '%$customer_name$%'
+    		</isNotEmpty>
+    		<isNotEmpty prepend="and" property="paid">
+    			o.paid = #paid#
+    		</isNotEmpty>
+    	</dynamic>
+    </select>
+    
+    <select id="countAudit" resultClass="java.lang.Integer" parameterClass="java.util.Map">
+    	SELECT count(1) FROM orders_orders o LEFT JOIN customer_customer c 
+    	ON o.`customer_code` = c.`code` where o.`status` &lt; 2
+    	<dynamic prepend="and">
+    		<isNotEmpty prepend="and" property="customer_name">
+    			o.customer_name like '%$customer_name$%'
+    		</isNotEmpty>
+    		<isNotEmpty prepend="and" property="paid">
+    			o.paid = #paid#
+    		</isNotEmpty>
+    	</dynamic>
+    </select>
+    
+    <select id="findOrdersDetail" resultMap="resultMap.orderDetailMap">
+    	SELECT * FROM orders_ordersdetail od WHERE od.`orders_no` = #value#
+    </select>
+    
+    <select id="findById" resultMap="resultMap.orderMap">
+    	SELECT * FROM orders_orders o WHERE o.`id` = #value#
+    </select>
+    
+    <update id="updateStatus" parameterClass="java.util.Map">
+    	UPDATE orders_orders o SET o.`status` = #status# WHERE o.`id` = #id#
+    </update>
+    
+    <update id="update" parameterClass="java.util.Map">
+    	UPDATE orders_orders o 
+    	<dynamic prepend="SET">
+    		<isNotEmpty prepend="," property="effective" >
+    			o.`effective`=#effetive#
+    		</isNotEmpty>
+    		<isNotEmpty prepend="," property="deadline" >
+    			o.`deadline`=#deadline#
+    		</isNotEmpty>
+    		<isNotEmpty prepend="," property="payment" >
+    			o.`payment`=#payment#
+    		</isNotEmpty>
+    		<isNotEmpty prepend="," property="paid" >
+    			o.`paid`=#paid#
+    		</isNotEmpty>
+    	</dynamic>
+    	WHERE o.`id` = #id#
+    </update>
+</sqlMap>

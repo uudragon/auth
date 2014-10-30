@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="communication">
+
+	<insert id="save" parameterClass="java.util.Map">
+		INSERT INTO t_communication_details( ID, CUSTMER_CODE, USER_NO, CHAT_TYPE, CHAT_CONTENT, START_TIME, END_TIME, NEXT_TIME, DEAL_RESULT, TEL_NO, DEAL_LEVEL, THEME, PHONE_STATUS )
+		VALUES( #id#, #custmerCode#, #userNo#, #chatType#, #chatContent#, #startTime#, now(), #nextTime#, #dealResult#, #telNo#, #dealLevel#, #theme#, #phoneStatus# )
+		<selectKey resultClass="long" keyProperty="id">
+			SELECT LAST_INSERT_ID()
+		</selectKey>
+	</insert>
+	
+	
+</sqlMap>

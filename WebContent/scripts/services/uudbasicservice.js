@@ -48,17 +48,17 @@ angular.module('authApp')
 
 
 	this.login = function(user) {
-		var suffix = 'at/operate.op?className=loginAction&methodName=login&';
+		var suffix = 'atnew/operate.op?className=loginAction&methodName=login&';
 
 		return $http.get(baseurl + suffix + user);
 	}
 
 	this.logout = function(user) {
-		var suffix = 'at/operate.op?className=loginAction&methodName=logout';
+		var suffix = 'atnew/operate.op?className=loginAction&methodName=logout';
 
 		return $http.get(baseurl + suffix).success(function(data, status) {
 			//alert();
-			window.location  = '/at/login.html';
+			window.location  = '/atnew/login.html';
 		});
 	}
 
@@ -74,10 +74,10 @@ angular.module('authApp')
 
 		switch (type) {
 			case 'user':
-				suffix = 'at/operate.op?className=userAction&methodName=findById';
+				suffix = 'atnew/operate.op?className=userAction&methodName=findById';
 				break;
 			case 'userGroup':
-				suffix = 'at/operate.op?className=userGroupAction&methodName=findById';
+				suffix = 'atnew/operate.op?className=userGroupAction&methodName=findById';
 				break;
 
 			case 'role':
@@ -121,14 +121,14 @@ angular.module('authApp')
 
 		switch (type) {
 			case 'user':
-				suffix = 'at/operate.op?className=userAction&methodName=saveUser';
+				suffix = 'atnew/operate.op?className=userAction&methodName=saveUser';
 				break;
 			case 'userGroup':
-				suffix = 'at/operate.op?className=userGroupAction&methodName=save';
+				suffix = 'atnew/operate.op?className=userGroupAction&methodName=save';
 				break;
 
 			case 'role':
-				suffix = 'at/operate.op?className=roleAction&methodName=save';
+				suffix = 'atnew/operate.op?className=roleAction&methodName=save';
 				break;
 
 			case 'userRole':
@@ -136,11 +136,11 @@ angular.module('authApp')
 				break;
 
 			case 'roleGroup':
-				suffix = 'at/operate.op?className=roleGroupAction&methodName=save';
+				suffix = 'atnew/operate.op?className=roleGroupAction&methodName=save';
 				break;
 
 			case 'privilege':
-				suffix = 'at/operate.op?className=privilege&methodName=save';
+				suffix = 'atnew/operate.op?className=privilege&methodName=save';
 				break;
 
 			default:
@@ -164,14 +164,14 @@ angular.module('authApp')
 
 		switch (type) {
 			case 'user':
-				suffix = 'at/operate.op?className=userAction&methodName=delete';
+				suffix = 'atnew/operate.op?className=userAction&methodName=delete';
 				break;
 			case 'userGroup':
-				suffix = 'at/operate.op?className=userGroupAction&methodName=delete';
+				suffix = 'atnew/operate.op?className=userGroupAction&methodName=delete';
 				break;
 
 			case 'role':
-				suffix = 'at/operate.op?className=roleAction&methodName=delete';
+				suffix = 'atnew/operate.op?className=roleAction&methodName=delete';
 				break;
 
 			case 'userRole':
@@ -179,11 +179,11 @@ angular.module('authApp')
 				break;
 
 			case 'roleGroup':
-				suffix = 'at/operate.op?className=roleGroupAction&methodName=delete';
+				suffix = 'atnew/operate.op?className=roleGroupAction&methodName=delete';
 				break;
 
 			case 'privilege':
-				suffix = 'at/operate.op?className=privilege&methodName=delete';
+				suffix = 'atnew/operate.op?className=privilege&methodName=delete';
 				break;
 
 			default:
@@ -207,39 +207,39 @@ angular.module('authApp')
 
 		switch (type) {
 			case 'user':
-				suffix = 'at/operate.op?className=userAction&methodName=update';
+				suffix = 'atnew/operate.op?className=userAction&methodName=update';
 				break;
 
 			case 'userRoles':
-				suffix = 'at/operate.op?className=userAction&methodName=saveRoles';
+				suffix = 'atnew/operate.op?className=userAction&methodName=saveRoles';
 				break;
 
 			case 'userGroup':
-				suffix = 'at/operate.op?className=userGroupAction&methodName=update';
+				suffix = 'atnew/operate.op?className=userGroupAction&methodName=update';
 				break;
 
 			case 'userGroupRoles':
-				suffix = 'at/operate.op?className=userGroupAction&methodName=saveRoles';
+				suffix = 'atnew/operate.op?className=userGroupAction&methodName=saveRoles';
 				break;
 
 			case 'role':
-				suffix = 'at/operate.op?className=roleAction&methodName=update';
+				suffix = 'atnew/operate.op?className=roleAction&methodName=update';
 				break;
 
 			case 'rolePrivileges':
-				suffix = 'at/operate.op?className=roleAction&methodName=savePrivileges';
+				suffix = 'atnew/operate.op?className=roleAction&methodName=savePrivileges';
 				break;
 
 			case 'roleGroup':
-				suffix = 'at/operate.op?className=roleGroupAction&methodName=update';
+				suffix = 'atnew/operate.op?className=roleGroupAction&methodName=update';
 				break;
 
 			case 'roleGroupPrivileges':
-				suffix = 'at/operate.op?className=roleGroupAction&methodName=savePrivileges';
+				suffix = 'atnew/operate.op?className=roleGroupAction&methodName=savePrivileges';
 				break;
 
 			case 'privilege':
-				suffix = 'at/operate.op?className=privilege&methodName=update';
+				suffix = 'atnew/operate.op?className=privilege&methodName=update';
 				break;
 
 			default:
@@ -265,14 +265,14 @@ angular.module('authApp')
 		console.log('search', type);
 		switch (type) {
 			case 'user':
-				suffix = 'at/operate.op?className=userAction&methodName=searchUser';
+				suffix = 'atnew/operate.op?className=userAction&methodName=searchUser';
 				break;
 			case 'userGroup':
-				suffix = 'at/operate.op?className=userGroupAction&methodName=search';
+				suffix = 'atnew/operate.op?className=userGroupAction&methodName=search';
 				break;
 
 			case 'role':
-				suffix = 'at/operate.op?className=roleAction&methodName=search';
+				suffix = 'atnew/operate.op?className=roleAction&methodName=search';
 				break;
 
 			case 'userRole':
@@ -280,7 +280,7 @@ angular.module('authApp')
 				break;
 
 			case 'roleGroup':
-				suffix = 'at/operate.op?className=roleGroupAction&methodName=search';
+				suffix = 'atnew/operate.op?className=roleGroupAction&methodName=search';
 				break;
 
 			default:
@@ -305,11 +305,11 @@ angular.module('authApp')
 
 		switch (type) {
 			case 'user':
-		 		suffix = "at/operate.op?className=userAction&methodName=getRoles";
+		 		suffix = "atnew/operate.op?className=userAction&methodName=getRoles";
 		 		break;
 
 		 	case 'userGroup':
-		 		suffix = "at/operate.op?className=userGroupAction&methodName=getRoles";
+		 		suffix = "atnew/operate.op?className=userGroupAction&methodName=getRoles";
 		 		break;
 
 		 	default:
@@ -336,7 +336,7 @@ angular.module('authApp')
 	// get all roles
 	this.getAllRoles = function($scope) {
 
-		var suffix = "at/operate.op?className=roleAction&methodName=getAllRoles"
+		var suffix = "atnew/operate.op?className=roleAction&methodName=getAllRoles"
 
 		self.post(baseurl + suffix)
 			.success(function(data, status) {
@@ -355,11 +355,11 @@ angular.module('authApp')
 
 		switch (type) {
 			case 'user':
-				suffix = 'at/operate.op?className=userGroupAction&methodName=getGroups';
+				suffix = 'atnew/operate.op?className=userGroupAction&methodName=getGroups';
 				break;
 
 			case 'role':
-				suffix = 'at/operate.op?className=roleGroupAction&methodName=getGroups';
+				suffix = 'atnew/operate.op?className=roleGroupAction&methodName=getGroups';
 				break;
 
 			default:
@@ -382,11 +382,11 @@ angular.module('authApp')
 
 		switch (type) {
 			case 'role':
-				suffix = "at/operate.op?className=roleAction&methodName=getPrivilege";
+				suffix = "atnew/operate.op?className=roleAction&methodName=getPrivilege";
 				break;
 
 			case 'roleGroup':
-				suffix = "at/operate.op?className=roleGroupAction&methodName=getPrivilege";
+				suffix = "atnew/operate.op?className=roleGroupAction&methodName=getPrivilege";
 				break;
 
 			default: break;
@@ -412,7 +412,7 @@ angular.module('authApp')
 
 	this.getAllPrivileges = function($scope, setting) {
 
-		var suffix = 'at/operate.op?className=privilege&methodName=load';
+		var suffix = 'atnew/operate.op?className=privilege&methodName=load';
 
 		self.post(baseurl + suffix)
 			.success(function(data, status) {
@@ -447,7 +447,7 @@ angular.module('authApp')
 　
 	this.buildPrivilegeTree = function(setting) {
 
-		var suffix = 'at/operate.op?className=privilege&methodName=load';
+		var suffix = 'atnew/operate.op?className=privilege&methodName=load';
 
 		self.post(baseurl + suffix)
 			.success(function(data, status) {

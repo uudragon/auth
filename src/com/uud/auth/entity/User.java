@@ -1,8 +1,14 @@
 package com.uud.auth.entity;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class User {
+public class User implements Serializable {
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	
 	public static final Integer SEX_MALE=1;
 	public static final Integer SEX_FEMALE=0;
@@ -10,6 +16,10 @@ public class User {
 	private Long id;
 	
 	private String userNo;
+	
+	private String seat;
+	
+	private String extension;
 	
 	private String name;
 	
@@ -146,5 +156,22 @@ public class User {
 	public void setIsValid(Boolean isValid) {
 		this.isValid = isValid;
 	}
+
+	public String getSeat() {
+		return seat;
+	}
+
+	public void setSeat(String seat) {
+		this.seat = seat;
+	}
+
+	public String getExtension() {
+		return extension;
+	}
+
+	public void setExtension(String extension) {
+		this.extension = extension;
+	}
+	
 	
 }

@@ -1,7 +1,14 @@
 package com.uud.auth.entity;
 
-public class ResourceRoleGroup {
+import java.io.Serializable;
+
+public class ResourceRoleGroup implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	private Long id;
 	
 	private RoleGroup rg;

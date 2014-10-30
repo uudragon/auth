@@ -84,14 +84,14 @@
 				if (!isValid) return;
 
 				var user = 'account=' + $scope.model.account + '&password=' + md5.createHash($scope.model.password);
-				var url = 'at/operate.op?className=loginAction&methodName=login&';
+				var url = 'atnew/operate.op?className=loginAction&methodName=login&';
 
 				$http.get(config.baseurl + url + user)
 					.success(function(res, status) {
 
 						if (res.legal) {
 							// 登陆成功
-							setTimeout( window.location = '/at', 1000);
+							setTimeout( window.location = '/atnew', 1000);
 							//window.location  = '/at';
 							//
 						} else if(angular.isString(res.message)) {
