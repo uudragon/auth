@@ -73,6 +73,21 @@ public class OrderService implements IOrderService {
 		return null;
 	}
 	
+	@Override
+	public Page<Order> findConsultation(Map<String, Object> map,
+			Integer pageSize, Integer pageNo) {
+		
+		Page<Order> page = new Page<Order>();
+		page.setPageNo( pageNo );
+		page.setPageSize( pageSize );
+		Integer count = orderDao.countConsultation( map );
+		page.setRecordsCount( count );
+		page.setPageNumber( count % pageSize == 0 ? count / pageSize : count / pageSize + 1 );
+		List<Order> list = orderDao.findConsultation(map, pageSize, pageNo);
+		page.setRecords( list );
+		return page;
+	}
+	
 	public IOrderDao getOrderDao() {
 		return orderDao;
 	}

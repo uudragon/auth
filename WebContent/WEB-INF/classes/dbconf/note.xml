@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="note">
+
+	<typeAlias alias="note" type="com.uud.cs.entity.Note" />
+	
+	<resultMap id="resultMap.noteMap" class="note">
+        <result column="ID" property="id" javaType="java.lang.Long"/>
+        <result column="RECEIVER" property="receiver" javaType="java.lang.String"/>
+        <result column="SENDER" property="sender" javaType="java.lang.String"/>
+        <result column="CONTENT" property="content" javaType="java.lang.String"/>
+        <result column="SEND_TIME" property="sendTime" javaType="java.util.Date"/>
+        <result column="BOXID" property="boxId" javaType="java.lang.Long"/>
+    </resultMap>
+    
+	<resultMap id="resultMap.noteMap2" class="note">
+        <result column="ID" property="id" javaType="java.lang.Long"/>
+        <result column="RECEIVER" property="receiver" javaType="java.lang.String"/>
+        <result column="SENDER" property="sender" javaType="java.lang.String"/>
+        <result column="CONTENT" property="content" javaType="java.lang.String"/>
+        <result column="SEND_TIME" property="sendTime" javaType="java.util.Date"/>
+    </resultMap>
+	
+	<insert id="save" parameterClass="java.util.Map">
+		INSERT INTO t_note( ID, RECEIVER, CONTENT, SEND_TIME, SENDER )
+		VALUES( #id#, #receiver#, #content#, now(), #sender# )
+		<selectKey resultClass="long" keyProperty="id">
+			SELECT LAST_INSERT_ID()
+		</selectKey>
+	</insert>
+	
+	<insert id="saveIn" parameterClass="java.util.Map">
+		INSERT INTO t_note_outbox( ID, USER, NOTE_ID )
+		VALUES( #id#, #user#, #noteId# )
+		<selectKey resultClass="long" keyProperty="id">
+			SELECT LAST_INSERT_ID()
+		</selectKey>
+	</insert>
+	
+	<insert id="saveOut" parameterClass="java.util.Map">
+		INSERT INTO t_note_inbox( ID, USER, NOTE_ID, STATUS  )
+		VALUES( #id#, #user#, #noteId#, #status# )
+		<selectKey resultClass="long" keyProperty="id">
+			SELECT LAST_INSERT_ID()
+		</selectKey>
+	</insert>
+	
+	<select id="countInByParams" parameterClass="java.util.Map" resultClass="java.lang.Integer">
+		SELECT COUNT(1) FROM t_note_inbox ni, t_note n 
+		WHERE ni.note_id = n.id and ni.flag = 0 and ni.user = #user#
+		<dynamic>
+		 	<isNotNull prepend="AND" property="content" >
+		 		n.content LIKE '%$content$%'
+		 	</isNotNull>
+		 	<isNotNull prepend="AND" property="status" >
+		 		ni.status = #status#
+		 	</isNotNull>
+		 </dynamic>
+	</select>
+	
+	<select id="findInNotes" parameterClass="java.util.Map" resultMap="resultMap.noteMap">
+		SELECT n.*,ni.id as BOXID FROM t_note_inbox ni, t_note n 
+		WHERE ni.note_id = n.id and ni.flag = 0 and ni.user = #user#
+		<dynamic>
+		 	<isNotNull prepend="AND" property="content" >
+		 		n.content LIKE '%$content$%'
+		 	</isNotNull>
+		 	<isNotNull prepend="AND" property="status" >
+		 		ni.status = #status#
+		 	</isNotNull>
+		 </dynamic>
+	</select>
+	
+	
+	<select id="countOutByParams" parameterClass="java.util.Map" resultClass="java.lang.Integer">
+		SELECT COUNT(1) FROM t_note_outbox no, t_note n 
+		WHERE no.note_id = n.id and no.flag = 0 and no.user = #user#
+		<dynamic>
+		 	<isNotNull prepend="AND" property="content" >
+		 		n.content LIKE '%$content$%'
+		 	</isNotNull>
+		 	<isNotNull prepend="AND" property="status" >
+		 		no.status = #status#
+		 	</isNotNull>
+		 </dynamic>
+	</select>
+	
+	<select id="findOutNotes" parameterClass="java.util.Map" resultMap="resultMap.noteMap">
+		SELECT n.*,no.id as BOXID FROM t_note_outbox no, t_note n 
+		WHERE no.note_id = n.id and no.flag = 0 and no.user = #user#
+		<dynamic>
+		 	<isNotNull prepend="AND" property="content" >
+		 		n.content LIKE '%$content$%'
+		 	</isNotNull>
+		 	<isNotNull prepend="AND" property="status" >
+		 		no.status = #status#
+		 	</isNotNull>
+		 </dynamic>
+	</select>
+	
+	<update id="updateIn">
+		UPDATE t_note_inbox
+		<dynamic prepend="SET">
+			<isNotNull prepend="," property="flag" >
+				flag = #flag#
+			</isNotNull>
+			<isNotNull prepend="," property="status" >
+				status = #status#
+			</isNotNull>
+		</dynamic>
+		WHERE id = #boxId#
+	</update>
+	
+	<update id="updateOut">
+		UPDATE t_note_outbox
+		<dynamic prepend="SET">
+			<isNotNull prepend="," property="flag" >
+				flag = #flag#
+			</isNotNull>
+			<isNotNull prepend="," property="status" >
+				status = #status#
+			</isNotNull>
+		</dynamic>
+		WHERE id = #boxId#
+	</update>
+	
+	<update id="updateAllIn">
+		UPDATE t_note_inbox SET flag = 1 WHERE USER = #value#
+	</update>
+	
+	<update id="updateAllOut">
+		UPDATE t_note_outbox SET flag = 1 WHERE USER = #value#
+	</update>
+	
+	<update id="updateNote">
+		UPDATE t_note
+		<dynamic prepend="SET">
+			<isNotNull prepend="," property="receiver" >
+				receiver = #receiver#
+			</isNotNull>
+			<isNotNull prepend="," property="content" >
+				content = #content#
+			</isNotNull>
+		</dynamic>
+		WHERE id = #id#
+	</update>
+	
+	<select id="findById" resultMap="resultMap.noteMap2">
+		select * from t_note where id = #value#
+	</select>
+	
+	<select id="findByOutBoxId" resultMap="resultMap.noteMap">
+		SELECT n.*,no.id as BOXID FROM t_note n,t_note_outbox no 
+		WHERE no.`note_id` = n.`id` AND no.`id` = #value#
+	</select>
+	
+	<select id="findByInBoxId" resultMap="resultMap.noteMap">
+		SELECT n.*,no.id as BOXID FROM t_note n,t_note_inbox ni 
+		WHERE ni.`note_id` = n.`id` AND ni.`id` = #value#
+	</select>
+</sqlMap>

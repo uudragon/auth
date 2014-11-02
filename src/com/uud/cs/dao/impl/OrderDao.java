@@ -59,4 +59,22 @@ public class OrderDao extends SqlMapClientDaoSupport implements IOrderDao{
 	public Long saveDetail(Map<String, Object> map) {
 		return (Long) this.getSqlMapClientTemplate().insert( "order.saveDetail", map );
 	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Order> findConsultation(Map<String, Object> map,
+			Integer pageSize, Integer pageNo) {
+		int skipResults = 0;
+		if( pageNo > 1){
+			skipResults = ( pageNo - 1 ) * pageSize;
+		}
+		return this.getSqlMapClientTemplate().queryForList( "order.findConsultation", map,
+				skipResults, pageSize);
+	}
+	
+	@Override
+	public Integer countConsultation( Map<String,Object> map ){
+		return (Integer) this.getSqlMapClientTemplate().queryForObject( 
+								"order.countConsultation", map );
+	}
 }

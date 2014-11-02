@@ -18,4 +18,8 @@ public interface IOrderDao {
 	public int update(Short stats, Long id);
 	
 	public Long saveDetail( Map<String,Object> map );
+	
+	public List<Order> findConsultation( Map<String,Object> map, Integer pageSize, Integer pageNo );
+
+	public Integer countConsultation(Map<String, Object> map);
 }

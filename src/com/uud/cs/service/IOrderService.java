@@ -14,4 +14,7 @@ public interface IOrderService {
 	public int updateStatus( Short status, Long id );
 	
 	public Long save( Map<String,Object> map );
+	
+	public Page<Order> findConsultation(Map<String, Object> map,
+			Integer pageSize, Integer pageNo);
 }

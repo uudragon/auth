@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="message">
+
+	<typeAlias alias="message" type="com.uud.cs.entity.Message" />
+	<typeAlias alias="messageTemplate" type="com.uud.cs.entity.MessageTemplate" />
+	
+	<resultMap id="resultMap.messageMap" class="message">
+		<result column="ID" property="id" javaType="java.lang.Long"/>
+		<result column="TARGET" property="target" javaType="java.lang.String"/>
+		<result column="TEMPLATE" property="template" javaType="java.lang.Long"/>
+		<result column="SEND_TYPE" property="sendType" javaType="java.lang.Byte"/>
+		<result column="SEND_TIME" property="sendTime" javaType="java.util.Date"/>
+		<result column="STATUS" property="status" javaType="java.lang.Byte"/>
+		<result column="MESSAGE" property="message" javaType="java.lang.String"/>
+		<result column="OPUSER" property="opUser" javaType="java.lang.String"/>
+		<result column="CONTENT" property="content" javaType="java.lang.String"/>
+	</resultMap>
+	
+	<resultMap class="messageTemplate" id="resultMap.templateMap">
+		<result column="ID" property="id" javaType="java.lang.Long"/>
+		<result column="SUBJECT" property="subject" javaType="java.lang.String"/>
+		<result column="CONTENT" property="content" javaType="java.lang.String"/>
+	</resultMap>
+	
+	<insert id="save" parameterClass="java.util.Map">
+		INSERT INTO t_message( ID, TARGET, TEMPLATE, SEND_TYPE, SEND_TIME, STATUS, OPUSER )
+		VALUES( #id#, #target#, #template#, #sendType#, #sendTime#, 1, #opUser#)
+		<selectKey resultClass="long" keyProperty="id">
+			SELECT LAST_INSERT_ID()
+		</selectKey>
+	</insert>
+	
+	<insert id="saveTemplate" parameterClass="java.util.Map">
+		INSERT INTO t_message_template( ID, SUBJECT, CONTENT )
+		VALUES( #id#, #subject#, #content#)
+		<selectKey resultClass="long" keyProperty="id">
+			SELECT LAST_INSERT_ID()
+		</selectKey>
+	</insert>
+	
+	<select id="countByParams" parameterClass="java.util.Map" resultClass="java.lang.Integer">
+		SELECT count(1) FROM t_message m
+		<dynamic prepend="where">
+			<isNotNull prepend="AND" property="target">
+				m.target like '%$tartget$%'
+			</isNotNull>
+			<isNotNull prepend="AND" property="target">
+				m.STATUS = #status#
+			</isNotNull>
+			<isNotNull prepend="AND" property="target">
+				m.send_time &lt; #endTime#
+			</isNotNull>
+			<isNotNull prepend="AND" property="target">
+				m.send_time > #startTime#
+			</isNotNull>
+		</dynamic>
+	</select>
+	
+	<select id="findByParams" parameterClass="java.util.Map" resultMap="resultMap.messageMap">
+		SELECT m.*, mt.content FROM
+		  t_message m, t_message_template mt
+		WHERE m.template = mt.id
+		<dynamic prepend="and">
+			<isNotNull prepend="AND" property="target">
+				m.target like '%$tartget$%'
+			</isNotNull>
+			<isNotNull prepend="AND" property="target">
+				m.STATUS = #status#
+			</isNotNull>
+			<isNotNull prepend="AND" property="target">
+				m.send_time &lt; #endTime#
+			</isNotNull>
+			<isNotNull prepend="AND" property="target">
+				m.send_time > #startTime#
+			</isNotNull>
+		</dynamic>
+	</select>
+	
+	<select id="findTemplate" parameterClass="java.util.Map" resultMap="resultMap.templateMap">
+		SELECT * FROM t_message_template
+	</select>
+</sqlMap>
