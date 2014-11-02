@@ -19,8 +19,25 @@ import com.uud.cs.service.IWorkFormService;
 
 /**
  * 工单
+ * <table>
+ * <tr><td>id</td><td>主键</td></tr>
+ * <tr><td>code</td><td>编码</td></tr>
+ * <tr><td>order_no</td><td>订单编码</td></tr>
+ * <tr><td>type</td><td>类型 1、咨询 2、查询 3、投诉 4、建议</td></tr>
+ * <tr><td>subtype</td><td>子类型：11、产品 12、售后服务 13、订购 14、支付 15、物流</td></tr>
+ * <tr><td>level</td><td>紧急程1、一般 2、优先 3、紧急</td></tr>
+ * <tr><td>phone</td><td>来电号码</td></tr>
+ * <tr><td>theme</td><td>主题</td></tr>
+ * <tr><td>content</td><td>内容</td></tr>
+ * <tr><td>status</td><td>状态</td></tr>
+ * <tr><td>consumer_code</td><td>客户编码</td></tr>
+ * <tr><td>consumer_name</td><td>客户姓名</td></tr>
+ * <tr><td>create_time</td><td>创建时间</td></tr>
+ * <tr><td>user</td><td>客服编码</td></tr>
+ * <tr><td>next_time</td><td>下次联系时间</td></tr>
+ * </table>
+ * 
  * @author yangl
- *
  */
 @Path("workform")
 public class WorkFormRestService {
@@ -63,13 +80,16 @@ public class WorkFormRestService {
 	}
 	
 	/**
-	 * 
-	 * @param pageSize
-	 * @param pageNo
-	 * @param paid
-	 * @param customer_name
-	 * @param status
-	 * @return
+	 * 分页查询
+	 * @param pageSize	每页现实条数
+	 * @param pageNo	当前页码	
+	 * @param status	状态 1、未处理 2、处理中 3、关闭
+	 * @return	json格式字符串，
+	 * 			pageSize	页显示条数<br>
+	 * 			pageNo		当前页<br>
+	 * 			recordsCount	总条数<br>
+	 * 			pageNumber		总页数<br>
+	 * 			records			订单信息，参考（OrderRestService）
 	 */
 	@GET
 	@Path("consulation")

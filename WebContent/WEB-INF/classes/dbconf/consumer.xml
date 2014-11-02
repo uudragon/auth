@@ -77,4 +77,13 @@
 		  </dynamic>
 		  WHERE c.`code` = #code#
 	</update>
+	
+	<select id="findByPage" resultMap="resultMap.customerMap" parameterClass="java.util.Map">
+		SELECT * FROM customer_customer c WHERE c.`yn` =1
+	</select>
+	
+	<select id="count" resultClass="java.lang.Integer" parameterClass="java.util.Map">
+		SELECT count(1) FROM customer_customer c WHERE c.`yn` =1
+	</select>
+	
 </sqlMap>

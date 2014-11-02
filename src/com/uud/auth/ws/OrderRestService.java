@@ -3,7 +3,9 @@ package com.uud.auth.ws;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
@@ -11,6 +13,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 
 import com.uud.auth.entity.Page;
@@ -176,8 +179,10 @@ public class OrderRestService {
 	 */
 	@PUT
 	@Path("{id}")
+	@Consumes(MediaType.APPLICATION_JSON)
 	public String updateStatus( @PathParam("id") String id,
-								@QueryParam("status") String status ){
+								Map<String,Object> map ){
+		String status = (String) map.get("status");
 		int i = orderService.updateStatus( Short.parseShort( status ), Long.parseLong( id ));
 		return i > 0 ? "true" : "false";
 	}

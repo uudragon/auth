@@ -1,5 +1,6 @@
 package com.uud.cs.dao;
 
+import java.util.List;
 import java.util.Map;
 
 import com.uud.cs.entity.Customer;
@@ -10,4 +11,8 @@ public interface ICustomerDao {
 	public Customer findByCode(String code);
 
 	public int update(Map<String, Object> map);
+	
+	public List<Customer> findByPage( Map<String,Object> map, Integer pageSize, Integer pageNo );
+	
+	public Integer count( Map<String,Object> map );
 }

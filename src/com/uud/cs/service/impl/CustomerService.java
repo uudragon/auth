@@ -1,9 +1,12 @@
 package com.uud.cs.service.impl;
 
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
+import com.uud.auth.entity.Page;
 import com.uud.cs.dao.ICustomerDao;
 import com.uud.cs.entity.Customer;
 import com.uud.cs.service.ICustomerService;
@@ -20,6 +23,25 @@ public class CustomerService implements ICustomerService{
 		return customerDao.findByCode( code );
 	}
 
+	@Override
+	public Page<Customer> findByPage(Map<String, Object> map, Integer pageNo,
+			Integer pageSize) {
+		if( pageNo == null ){
+			pageNo = 1;
+		}
+		if( pageSize == null ){
+			pageSize = 10; 
+		}
+		Page<Customer> page=new Page<Customer>();
+		page.setPageSize( pageSize );
+		page.setPageNo( pageNo );
+		int count = customerDao.count( map );
+		page.setRecordsCount( count );
+		page.setPageNumber( count % pageSize == 0 ? count / pageSize : count / pageSize + 1 );
+		page.setRecords( customerDao.findByPage( map, pageSize, pageNo) );
+		return page;
+	}
+	
 	public ICustomerDao getConsumerDao() {
 		return customerDao;
 	}
@@ -27,5 +49,7 @@ public class CustomerService implements ICustomerService{
 	public void setConsumerDao(ICustomerDao consumerDao) {
 		this.customerDao = consumerDao;
 	}
+
+
 
 }

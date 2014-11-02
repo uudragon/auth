@@ -1,5 +1,6 @@
 package com.uud.cs.dao.impl;
 
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,5 +34,21 @@ public class CustomerDao extends SqlMapClientDaoSupport implements ICustomerDao 
 	@Override
 	public int update(Map<String, Object> map){
 		return this.getSqlMapClientTemplate().update( "consumer.update", map );
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Customer> findByPage(Map<String, Object> map, Integer pageSize,
+			Integer pageNo) {
+		int skipResults = 0;
+		if( pageNo > 1){
+			skipResults = ( pageNo - 1 ) * pageSize;
+		}
+		return this.getSqlMapClientTemplate().queryForList( "consumer.findByPage", map, skipResults, pageSize );
+	}
+
+	@Override
+	public Integer count(Map<String, Object> map) {
+		return (Integer) this.getSqlMapClientTemplate().queryForObject( "consumer.count", map );
 	}
 }
