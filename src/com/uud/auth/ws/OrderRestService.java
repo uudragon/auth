@@ -3,9 +3,7 @@ package com.uud.auth.ws;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.Consumes;
-import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
@@ -13,7 +11,6 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
-import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 
 import com.uud.auth.entity.Page;
@@ -115,8 +112,7 @@ public class OrderRestService {
 	 * @param pageNo	当前页码
 	 * @param paid		是否付费，true/false
 	 * @param customer_name 客户名称
-	 * @param status 	审核状态：1：待审核、2：审核中、3：无效、4：审核通过<br>
-	 * 					（核实订单为待审核订单，拆分订单为审核通过订单）
+	 * @param status 	审核状态：1：审核订单、2：拆分订单<br>
 	 * @return	json格式字符串，
 	 * 			pageSize	页显示条数<br>
 	 * 			pageNo		当前页<br>
@@ -133,11 +129,11 @@ public class OrderRestService {
 								   @QueryParam("pageNo") String pageNo,
 								   @QueryParam("paid") String paid,
 								   @QueryParam("customer_name") String customer_name,
-								   @QueryParam("status") String status){
+								   @QueryParam("workflow") String workflow){
 		Map<String,Object> map = new HashMap<String,Object>();
 		map.put("paid", paid);
 		map.put("customer_name", customer_name);
-		map.put("status", 1);
+		map.put("workflow", workflow);
 		return orderService.findAudit(map, 
 						pageSize == null ? 10 : Integer.parseInt( pageSize ),
 						pageNo == null ? 1 : Integer.parseInt( pageNo ) );
@@ -171,20 +167,42 @@ public class OrderRestService {
 	/**
 	 * 更新订单状态
 	 * 
-	 *  路径：/atnew/ws/order/{id} 方法：put<br>
+	 *  路径：/atnew/ws/order/{id}/audit 方法：put<br>
 	 * 
 	 * @param id 		主键
-	 * @param status	状态  1：待审核、2：审核中、3：无效、4：审核通过
+	 * @param audit	状态  1：待审核、2：审核中、3：无效、4：审核通过
 	 * @return true/false 
 	 */
 	@PUT
-	@Path("{id}")
+	@Path("{id}/audit")
 	@Consumes(MediaType.APPLICATION_JSON)
 	public String updateStatus( @PathParam("id") String id,
 								Map<String,Object> map ){
-		String status = (String) map.get("status");
-		int i = orderService.updateStatus( Short.parseShort( status ), Long.parseLong( id ));
+		String audit = (String) map.get("audit");
+		int i = orderService.updateAudit( Short.parseShort( audit ), Long.parseLong( id ));
 		return i > 0 ? "true" : "false";
+	}
+	
+	/**
+	 * 共享订单
+	 * 
+	 *  路径：/atnew/ws/order/{id}/workflow 方法：put<br>
+	 * 
+	 * @param id 		主键
+	 * @param workflow	状态  1：审核组、2：拆单组
+	 * @return true/false 
+	 */
+	@PUT
+	@Path("{id}/workflow")
+	@Consumes(MediaType.APPLICATION_JSON)
+	public String updateWorkFlow( @PathParam("id") String id,
+									Map<String,Object> map ){
+		String workflow = (String) map.get("workflow");
+		int i = orderService.updateWorkFolw( Short.parseShort( workflow ), Long.parseLong( id ));
+		if( i > 0 ){
+			return "true";
+		}
+		return "false";
 	}
 	
 	/**
@@ -201,7 +219,7 @@ public class OrderRestService {
 	@PUT
 	@Consumes(MediaType.APPLICATION_JSON)
 	public String update( Map<String,Object> map ){
-		int i = orderService.updateStatus( Short.parseShort( (String) map.get("status") ),
+		int i = orderService.updateWorkFolw( Short.parseShort( (String) map.get("status") ),
 											Long.parseLong( (String) map.get("id") ) );
 		return i > 0 ? "true" : "false";
 	}

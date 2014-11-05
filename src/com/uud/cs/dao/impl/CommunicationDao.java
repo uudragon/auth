@@ -1,5 +1,6 @@
 package com.uud.cs.dao.impl;
 
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +23,12 @@ public class CommunicationDao extends SqlMapClientDaoSupport implements ICommuni
 	@Override
 	public Long save(Map<String, Object> map) {
 		return (Long) this.getSqlMapClientTemplate().insert( "communication.save", map );
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Map<String, Object>> findCommunication(String code) {
+		return this.getSqlMapClientTemplate().queryForList( "communication.findCommunication", code );
 	}
 
 }

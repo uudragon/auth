@@ -1,5 +1,6 @@
 package com.uud.cs.service.impl;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -42,10 +43,16 @@ public class OrderService implements IOrderService {
 	public Order findById(Long id) {
 		return orderDao.findById( id );
 	}
-
+	
 	@Override
-	public int updateStatus(Short status, Long id) {
-		return orderDao.update(status, id);
+	public int updateAudit(Short audit, Long id) {
+		Map<String,Object> map = new HashMap<String,Object>();
+		map.put("audit", audit);
+		map.put("id", id);
+		if( Order.AUDIT_INVALID == audit ){
+			map.put("status", Order.STATUS_INVALID );
+		}
+		return orderDao.update( map );
 	}
 	
 	@Override
@@ -88,6 +95,14 @@ public class OrderService implements IOrderService {
 		return page;
 	}
 	
+	@Override
+	public int updateWorkFolw(Short workFlow, Long id) {
+		Map<String,Object> map = new HashMap<String,Object>();
+		map.put("workflow", workFlow);
+		map.put("id", id);
+		return orderDao.update(map);
+	}
+	
 	public IOrderDao getOrderDao() {
 		return orderDao;
 	}
@@ -103,5 +118,6 @@ public class OrderService implements IOrderService {
 	public void setConsumerDao(ICustomerDao consumerDao) {
 		this.customerDao = consumerDao;
 	}
+
 	
 }

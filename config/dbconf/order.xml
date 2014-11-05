@@ -32,7 +32,7 @@
         <result column="DISCOUNT_AMOUNT" property="discount_amount" javaType="java.lang.Double"/>
         <result column="AMOUNT" property="amount" javaType="java.lang.Double"/>
         <result column="PAYMENT" property="payment" javaType="java.lang.Short"/>
-        <result column="PAID" property="paid" javaType="java.lang.Boolean"/>
+        <result column="PAID" property="paid" javaType="java.lang.Short"/>
         <result column="STATUS" property="status" javaType="java.lang.Short"/>
         <result column="VALIDITY" property="validity" javaType="java.lang.Short"/>
         <result column="ORDER_TIME" property="order_time" javaType="java.util.Date"/>
@@ -42,7 +42,9 @@
         <result column="UPDATE_TIME" property="update_time" javaType="java.util.Date"/>
         <result column="CONTACT_COUNT" property="contact_count" javaType="java.lang.Integer"/>
         <result column="YN" property="yn" javaType="java.lang.Boolean"/>
-      
+        <result column="AUDIT" property="audit" javaType="java.lang.Short"/>
+        <result column="WORKFLOW" property="workflow" javaType="java.lang.Short"/>
+        
         <result column="CUSTOMER_CODE" property="customer" select="consumer.findByCode"/>
         
         <result column="ORDER_NO" property="details" select="order.findOrdersDetail"/>
@@ -62,7 +64,7 @@
         <result column="DISCOUNT_AMOUNT" property="discount_amount" javaType="java.lang.Double"/>
         <result column="AMOUNT" property="amount" javaType="java.lang.Double"/>
         <result column="PAYMENT" property="payment" javaType="java.lang.Short"/>
-        <result column="PAID" property="paid" javaType="java.lang.Boolean"/>
+        <result column="PAID" property="paid" javaType="java.lang.Short"/>
         <result column="STATUS" property="status" javaType="java.lang.Short"/>
         <result column="VALIDITY" property="validity" javaType="java.lang.Short"/>
         <result column="ORDER_TIME" property="order_time" javaType="java.util.Date"/>
@@ -71,6 +73,8 @@
         <result column="UPDATER" property="updater" javaType="java.lang.String"/>
         <result column="UPDATE_TIME" property="update_time" javaType="java.util.Date"/>
         <result column="CONTACT_COUNT" property="contact_count" javaType="java.lang.Integer"/>
+        <result column="AUDIT" property="audit" javaType="java.lang.Short"/>
+        <result column="WORKFLOW" property="workflow" javaType="java.lang.Short"/>
         <result column="YN" property="yn" javaType="java.lang.Boolean"/>
     </resultMap>
     
@@ -79,11 +83,11 @@
     <insert id="save" parameterClass="java.util.Map">
         insert into orders_orders( order_no,order_type,effective,deadline,customer_code,
         has_invoice,source,agent_code,coupon_code,discount_amount,amount,
-        payment,status,validity,order_time,creator,create_time,contact_count,yn )
+        payment,status,validity,order_time,creator,create_time,contact_count,yn,workflow,audit )
         values
         ( #order_no#,#order_type#,#effective#,#deadline#,#customer_code#,
         #has_invoice#,#source#,#agent_code#,#coupon_code#,#discount_amount#,#amount#,#payment#,
-        #status#,#validity#,#order_time#,#creator#,now(),#contact_count#,#yn# )
+        #status#,#validity#,#order_time#,#creator#,now(),#contact_count#,#yn#,1,1 )
         <selectKey resultClass="long" keyProperty="id">
 			SELECT LAST_INSERT_ID()
 		</selectKey>
@@ -100,8 +104,11 @@
     
     <select id="findAudit" resultMap="resultMap.orderMap" parameterClass="java.util.Map">
     	SELECT * FROM orders_orders o LEFT JOIN customer_customer c 
-    	ON o.`customer_code` = c.`code` where o.`status` = #status#
-    	<dynamic prepend="and">
+    	ON o.`customer_code` = c.`code`
+    	<dynamic prepend="where">
+    		<isNotEmpty prepend="and" property="workflow">
+    			o.`workflow` = #workflow#
+    		</isNotEmpty>
     		<isNotEmpty prepend="and" property="customer_name">
     			o.customer_name like '%$customer_name$%'
     		</isNotEmpty>
@@ -113,8 +120,11 @@
     
     <select id="countAudit" resultClass="java.lang.Integer" parameterClass="java.util.Map">
     	SELECT count(1) FROM orders_orders o LEFT JOIN customer_customer c 
-    	ON o.`customer_code` = c.`code` where o.`status` = #status#
-    	<dynamic prepend="and">
+    	ON o.`customer_code` = c.`code`
+    	<dynamic prepend="where">
+    		<isNotEmpty prepend="and" property="workflow">
+    			o.`workflow` = #workflow#
+    		</isNotEmpty>
     		<isNotEmpty prepend="and" property="customer_name">
     			o.customer_name like '%$customer_name$%'
     		</isNotEmpty>
@@ -132,9 +142,9 @@
     	SELECT * FROM orders_orders o WHERE o.`id` = #value#
     </select>
     
-    <update id="updateStatus" parameterClass="java.util.Map">
-    	UPDATE orders_orders o SET o.`status` = #status# WHERE o.`id` = #id#
-    </update>
+    <select id="findByNo" resultMap="resultMap.orderMap">
+    	SELECT * FROM orders_orders o WHERE o.`order_no` = #value#
+    </select>
     
     <update id="update" parameterClass="java.util.Map">
     	UPDATE orders_orders o 
@@ -150,6 +160,15 @@
     		</isNotEmpty>
     		<isNotEmpty prepend="," property="paid" >
     			o.`paid`=#paid#
+    		</isNotEmpty>
+    		<isNotEmpty prepend="," property="workflow" >
+    			o.`workflow`=#workflow#
+    		</isNotEmpty>
+    		<isNotEmpty prepend="," property="status" >
+    			o.`status`=#status#
+    		</isNotEmpty>
+    		<isNotEmpty prepend="," property="audit" >
+    			o.`audit`=#audit#
     		</isNotEmpty>
     	</dynamic>
     	WHERE o.`id` = #id#

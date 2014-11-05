@@ -5,6 +5,7 @@ import java.util.Map;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
@@ -68,11 +69,19 @@ public class CustomerRestService {
 	@GET
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Page<Customer> findByPage( @QueryParam("pageSize") String pageSize,
-									  @QueryParam("pageNo") String pageNo){
+									  @QueryParam("pageNo") String pageNo,
+									  @QueryParam("is_allot") String is_allot){
 		Map<String,Object> map = new HashMap<String,Object>();
-		
+		map.put( "is_allot", is_allot );
 		return customerService.findByPage(map,
 				pageNo != null ? Integer.parseInt( pageNo ) : 1, 
 				pageSize != null ? Integer.parseInt( pageSize ) : 10 );
+	}
+	
+	@PUT
+	@Consumes(MediaType.APPLICATION_JSON)
+	public String allot( Map<String,Object> map ){
+		int i = customerService.allot( map );
+		return i > 0 ? "true" : "false";
 	}
 }

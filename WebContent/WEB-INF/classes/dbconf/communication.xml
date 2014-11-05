@@ -3,12 +3,34 @@
     "http://ibatis.apache.org/dtd/sql-map-2.dtd">
 <sqlMap namespace="communication">
 
+	<typeAlias alias="communication" type="com.uud.cs.entity.Communication"/>
+	
+	<resultMap class="communication" id="communicationMap">
+		<result property="id" column="ID" javaType="java.lang.Long"/>
+		<result property="tel_no" column="TEL_NO" javaType="java.lang.String"/>
+		<result property="tel_status" column="TEL_STATUS" javaType="java.lang.Short"/>
+		<result property="start_time" column="START_TIME" javaType="java.util.Date"/>
+		<result property="end_time" column="END_TIME" javaType="java.util.Date"/>
+		<result property="form_no" column="FORM_NO" javaType="java.lang.String"/>
+		<result property="user_no" column="USER_NO" javaType="java.lang.String"/>
+		<result property="content" column="CONTENT" javaType="java.lang.String"/>
+		<result property="theme" column="THEME" javaType="java.lang.String"/>
+		<result property="next_time" column="NEXT_TIME" javaType="java.util.Date"/>
+	</resultMap>
+	
 	<insert id="save" parameterClass="java.util.Map">
-		INSERT INTO t_communication(tel_no,tel_status,start_time,end_time,form_no,user_no,theme,content)
-		VALUES(#tel_no#,#tel_status#,#start_time#,#end_time#,#form_no#,#user_no#,#theme#,#content#)
+		INSERT INTO t_communication(tel_no,tel_status,start_time,end_time,form_no,user_no,theme,content,next_time)
+		VALUES(#tel_no#,#tel_status#,#start_time#,#end_time#,#form_no#,#user_no#,#theme#,#content#,#next_time#)
 		<selectKey resultClass="long" keyProperty="id">
 			SELECT LAST_INSERT_ID()
 		</selectKey>
 	</insert>
 	
+	<select id="findCommunication" resultMap="communicationMap">
+		SELECT 
+		  c.*
+		FROM
+		  t_communication c 
+		WHERE c.`form_no` = #value#
+	</select>
 </sqlMap>

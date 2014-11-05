@@ -11,10 +11,12 @@ public interface IOrderService {
 	
 	public Order findById( Long id );
 	
-	public int updateStatus( Short status, Long id );
+	public int updateWorkFolw( Short workFlow, Long id );
 	
 	public Long save( Map<String,Object> map );
 	
 	public Page<Order> findConsultation(Map<String, Object> map,
 			Integer pageSize, Integer pageNo);
+
+	public int updateAudit(Short status, Long id);
 }

@@ -11,4 +11,5 @@ public interface ICustomerService {
 	
 	public Page<Customer> findByPage( Map<String,Object> map ,Integer pageNo , Integer pageSize );
 	
+	public int allot( Map<String,Object> map );
 }

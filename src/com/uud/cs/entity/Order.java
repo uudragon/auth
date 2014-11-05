@@ -11,6 +11,17 @@ public class Order implements Serializable{
 	 */
 	private static final long serialVersionUID = 1L;
 	
+	public static final Short AUDIT_WAITING=1;
+	public static final Short AUDIT_DOING=2;
+	public static final Short AUDIT_DONE=3;
+	public static final Short AUDIT_INVALID=4;
+	
+	public static final Short STATUS_NORMAL=1;
+	public static final Short STATUS_INVALID=2;
+	
+	public static final Short WORKFLOW_AUDIT=1;
+	public static final Short WORKFLOW_SPLIT=2;
+	
 	private Long id;
 	private String order_no;
 	private Short order_type;
@@ -28,7 +39,7 @@ public class Order implements Serializable{
 	private Double amount;
 	private Short payment;
 	private Short status;
-	private Boolean paid;
+	private Short paid;
 	private Short validity;
 	private Date order_time;
 	private String creator;
@@ -37,11 +48,29 @@ public class Order implements Serializable{
 	private Date update_time;
 	private Integer contact_count;
 	private Boolean yn;
+	private Short audit;
+	private Short workflow;
 	
 	private Customer customer;
 	
 	private List<OrdersDetail> details;
+	
+	public Short getAudit() {
+		return audit;
+	}
 
+	public void setAudit(Short audit) {
+		this.audit = audit;
+	}
+
+	public Short getWorkflow() {
+		return workflow;
+	}
+
+	public void setWorkflow(Short workflow) {
+		this.workflow = workflow;
+	}
+	
 	public Long getId() {
 		return id;
 	}
@@ -258,13 +287,12 @@ public class Order implements Serializable{
 		this.details = details;
 	}
 
-	public Boolean getPaid() {
+	public Short getPaid() {
 		return paid;
 	}
 
-	public void setPaid(Boolean paid) {
+	public void setPaid(Short paid) {
 		this.paid = paid;
 	}
-	
 
 }

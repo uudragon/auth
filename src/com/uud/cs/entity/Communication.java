@@ -6,13 +6,14 @@ public class Communication {
 	
 	private Long id;
 	private String tel_no;
-	private String tel_status;
+	private Short tel_status;
 	private Date start_time;
 	private Date end_time;
 	private String form_no;
 	private String user_no;
 	private String theme;
 	private String content;
+	private Date next_time;
 	
 	public String getTheme() {
 		return theme;
@@ -38,12 +39,6 @@ public class Communication {
 	public void setTel_no(String tel_no) {
 		this.tel_no = tel_no;
 	}
-	public String getTel_status() {
-		return tel_status;
-	}
-	public void setTel_status(String tel_status) {
-		this.tel_status = tel_status;
-	}
 	public Date getStart_time() {
 		return start_time;
 	}
@@ -67,5 +62,17 @@ public class Communication {
 	}
 	public void setUser_no(String user_no) {
 		this.user_no = user_no;
+	}
+	public Short getTel_status() {
+		return tel_status;
+	}
+	public void setTel_status(Short tel_status) {
+		this.tel_status = tel_status;
+	}
+	public Date getNext_time() {
+		return next_time;
+	}
+	public void setNext_time(Date next_time) {
+		this.next_time = next_time;
 	}
 }

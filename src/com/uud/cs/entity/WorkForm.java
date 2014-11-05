@@ -1,6 +1,7 @@
 package com.uud.cs.entity;
 
 import java.util.Date;
+import java.util.List;
 
 public class WorkForm {
 	public static final byte TASK_TYPE_CONSULTATION = 1; 
@@ -26,7 +27,10 @@ public class WorkForm {
 	private String consumer_name;
 	private Date create_time;
 	private String user;
-	private Date next_time;
+	
+	private Order order;
+	
+	private List<Communication> communications;
 	
 	public Long getId() {
 		return id;
@@ -112,10 +116,16 @@ public class WorkForm {
 	public void setUser(String user) {
 		this.user = user;
 	}
-	public Date getNext_time() {
-		return next_time;
+	public Order getOrder() {
+		return order;
 	}
-	public void setNext_time(Date next_time) {
-		this.next_time = next_time;
+	public void setOrder(Order order) {
+		this.order = order;
+	}
+	public List<Communication> getCommunications() {
+		return communications;
+	}
+	public void setCommunications(List<Communication> communications) {
+		this.communications = communications;
 	}
 }

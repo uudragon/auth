@@ -14,6 +14,7 @@ import javax.ws.rs.core.MediaType;
 import com.uud.auth.entity.Page;
 import com.uud.auth.servlet.ServiceBeanContext;
 import com.uud.cs.entity.Order;
+import com.uud.cs.entity.WorkForm;
 import com.uud.cs.service.IOrderService;
 import com.uud.cs.service.IWorkFormService;
 
@@ -80,7 +81,8 @@ public class WorkFormRestService {
 	}
 	
 	/**
-	 * 分页查询
+	 * 投诉分页查询
+	 * 路径：atnew/ws/workform/consulation 方法：get
 	 * @param pageSize	每页现实条数
 	 * @param pageNo	当前页码	
 	 * @param status	状态 1、未处理 2、处理中 3、关闭
@@ -94,12 +96,39 @@ public class WorkFormRestService {
 	@GET
 	@Path("consulation")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Page<Order> findByPage(@QueryParam("pageSize") String pageSize,
+	public Page<WorkForm> findConsulationByPage(@QueryParam("pageSize") String pageSize,
 								  @QueryParam("pageNo") String pageNo,
 								  @QueryParam("status") String status ){
 		Map<String,Object> map = new HashMap<String,Object>();
 		map.put("status", status);
-		return orderService.findConsultation( map,
+		map.put("type", 3);
+		return workFormService.findByPage( map,
+				pageSize == null ? 10 : Integer.parseInt( pageSize ),
+				pageNo == null ? 1 : Integer.parseInt( pageNo ) );
+	}
+	
+	@GET
+	@Path("check")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Page<WorkForm> findCheckByPage(@QueryParam("pageSize") String pageSize,
+								  @QueryParam("pageNo") String pageNo,
+								  @QueryParam("status") String status ){
+		Map<String,Object> map = new HashMap<String,Object>();
+		map.put("status", status);
+		map.put("type", 2);
+		return workFormService.findByPage( map,
+				pageSize == null ? 10 : Integer.parseInt( pageSize ),
+				pageNo == null ? 1 : Integer.parseInt( pageNo ) );
+	}
+	
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	public Page<WorkForm> findByPage(@QueryParam("pageSize") String pageSize,
+								  @QueryParam("pageNo") String pageNo,
+								  @QueryParam("status") String status ){
+		Map<String,Object> map = new HashMap<String,Object>();
+		map.put("status", status);
+		return workFormService.findByPage( map,
 				pageSize == null ? 10 : Integer.parseInt( pageSize ),
 				pageNo == null ? 1 : Integer.parseInt( pageNo ) );
 	}

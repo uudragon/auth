@@ -1,6 +1,5 @@
 package com.uud.cs.dao.impl;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -48,11 +47,8 @@ public class OrderDao extends SqlMapClientDaoSupport implements IOrderDao{
 	}
 
 	@Override
-	public int update( Short stats, Long id ){
-		Map<String,Object> map = new HashMap<String,Object>();
-		map.put("status", stats);
-		map.put("id", id);
-		return this.getSqlMapClientTemplate().update( "order.updateStatus", map );
+	public int update( Map<String,Object> map ){
+		return this.getSqlMapClientTemplate().update( "order.update", map );
 	}
 
 	@Override

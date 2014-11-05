@@ -15,4 +15,6 @@ public interface ICustomerDao {
 	public List<Customer> findByPage( Map<String,Object> map, Integer pageSize, Integer pageNo );
 	
 	public Integer count( Map<String,Object> map );
+
+	public Integer allot(Map<String, Object> map);
 }

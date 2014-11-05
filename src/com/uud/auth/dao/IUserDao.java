@@ -48,4 +48,5 @@ public interface IUserDao {
 	public List<User> findUerRole(); 
 	
 	public List<Role> findRole( Long userId );
+
 }

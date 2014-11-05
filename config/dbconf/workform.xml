@@ -3,16 +3,60 @@
     "http://ibatis.apache.org/dtd/sql-map-2.dtd">
 <sqlMap namespace="workform">
 
+	<typeAlias alias="workform" type="com.uud.cs.entity.WorkForm" />
+	
+	<resultMap id="resultMap.workformMap" class="workform">
+        <result column="ID" property="id" javaType="java.lang.Long"/>
+        <result column="CODE" property="code" javaType="java.lang.String"/>
+        <result column="ORDER_NO" property="order_no" javaType="java.lang.String"/>
+        <result column="TYPE" property="type" javaType="java.lang.Short"/>
+        <result column="SUBTYPE" property="subtype" javaType="java.lang.Short"/>
+        <result column="LEVEL" property="level" javaType="java.lang.Short"/>
+        <result column="PHONE" property="phone" javaType="java.lang.String"/>
+        <result column="THEME" property="theme" javaType="java.lang.String"/>
+        <result column="CONTENT" property="content" javaType="java.lang.String"/>
+        <result column="STATUS" property="status" javaType="java.lang.Short"/>
+        <result column="CONSUMER_CODE" property="consumer_code" javaType="java.lang.String"/>
+        <result column="CONSUMER_NAME" property="consumer_name" javaType="java.lang.String"/>
+        <result column="CREATE_TIME" property="create_time" javaType="java.util.Date"/>
+        <result column="USER" property="user" javaType="java.lang.String"/>
+                
+        <result property="order" column="ORDER_NO" select="order.findByNo"/>
+        <result property="communications" column="code" select="communication.findCommunication"/>
+    </resultMap>
+	
 	<insert id="save" parameterClass="java.util.Map">
 		INSERT INTO t_work_form( code,order_no,type,subtype,level,phone,theme,content,status
-				,consumer_code,consumer_name,create_time,user,next_time)
+				,consumer_code,consumer_name,create_time,user)
 		VALUES(#code#,#order_no#,#type#,#subtype#,#level#,#phone#,#theme#,#content#,#status#
-				,#consumer_code#,#consumer_name#,now(),#user#,#next_time#)
+				,#consumer_code#,#consumer_name#,now(),#user#)
 		<selectKey resultClass="long" keyProperty="id">
 			SELECT LAST_INSERT_ID()
 		</selectKey>
 	</insert>
 	
-
+	<select id="findByPage" parameterClass="java.util.HashMap" resultMap="resultMap.workformMap">
+		SELECT * FROM t_work_form wf 
+		<dynamic prepend="where">
+			<isNotEmpty property="type" prepend="and">
+				wf.`type`=#type#
+			</isNotEmpty>
+			<isNotEmpty property="status" prepend="and">
+				wf.`status`=#status#
+			</isNotEmpty>
+		</dynamic>
+	</select>
 	
+	
+	<select id="countByPage" parameterClass="java.util.HashMap" resultClass="java.lang.Integer">
+		SELECT count(1) FROM t_work_form wf 
+		<dynamic prepend="where">
+			<isNotEmpty property="type" prepend="and">
+				wf.`type`=#type#
+			</isNotEmpty>
+			<isNotEmpty property="status" prepend="and">
+				wf.`status`=#status#
+			</isNotEmpty>
+		</dynamic>
+	</select>
 </sqlMap>

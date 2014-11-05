@@ -37,7 +37,7 @@ public class Customer {
 	private String updater;
 	private Date update_time;
 	private Byte yn;
-	
+	private Boolean is_allot;
 	
 	public Long getId() {
 		return id;
@@ -182,5 +182,11 @@ public class Customer {
 	}
 	public void setYn(Byte yn) {
 		this.yn = yn;
+	}
+	public Boolean getIs_allot() {
+		return is_allot;
+	}
+	public void setIs_allot(Boolean is_allot) {
+		this.is_allot = is_allot;
 	}
 }

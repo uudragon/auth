@@ -225,4 +225,5 @@
 		WHERE ur.`ROLE_ID` = r.`id`
 		 AND ur.`USER_ID`=#value#
     </select>
+    
 </sqlMap>

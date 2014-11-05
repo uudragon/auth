@@ -74,16 +74,37 @@
     		<isNotEmpty prepend="," property="address" >
     			c.`city` = #city#
     		</isNotEmpty>
+    		<isNotEmpty prepend="," property="is_allot">
+    			c.`is_allot`=#is_allot#
+    		</isNotEmpty>
+    		<isNotEmpty prepend="," property="manager">
+    			c.`manager`=#manager#
+    		</isNotEmpty>
 		  </dynamic>
 		  WHERE c.`code` = #code#
 	</update>
 	
 	<select id="findByPage" resultMap="resultMap.customerMap" parameterClass="java.util.Map">
 		SELECT * FROM customer_customer c WHERE c.`yn` =1
+		<isNotEmpty prepend="and" property="is_allot">
+			 c.`is_allot`=#is_allot#
+		</isNotEmpty>
 	</select>
 	
 	<select id="count" resultClass="java.lang.Integer" parameterClass="java.util.Map">
 		SELECT count(1) FROM customer_customer c WHERE c.`yn` =1
+		<isNotEmpty prepend="and" property="is_allot">
+			 c.`is_allot`=#is_allot#
+		</isNotEmpty>
 	</select>
+	
+	<update id="allot" parameterClass="java.util.Map">
+		UPDATE 
+		  customer_customer c 
+		SET
+		  c.`is_allot` = 1,
+		  c.`manager` = #manager#
+		WHERE c.`id` IN ( $ids$ )
+	</update>
 	
 </sqlMap>

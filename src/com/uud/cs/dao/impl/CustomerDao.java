@@ -51,4 +51,9 @@ public class CustomerDao extends SqlMapClientDaoSupport implements ICustomerDao 
 	public Integer count(Map<String, Object> map) {
 		return (Integer) this.getSqlMapClientTemplate().queryForObject( "consumer.count", map );
 	}
+	
+	@Override
+	public Integer allot( Map<String,Object> map ){
+		return this.getSqlMapClientTemplate().update( "consumer.allot", map );
+	}
 }

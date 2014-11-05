@@ -42,6 +42,11 @@ public class CustomerService implements ICustomerService{
 		return page;
 	}
 	
+	@Override
+	public int allot(Map<String, Object> map) {
+		return customerDao.allot( map );
+	}
+	
 	public ICustomerDao getConsumerDao() {
 		return customerDao;
 	}
@@ -49,7 +54,4 @@ public class CustomerService implements ICustomerService{
 	public void setConsumerDao(ICustomerDao consumerDao) {
 		this.customerDao = consumerDao;
 	}
-
-
-
 }

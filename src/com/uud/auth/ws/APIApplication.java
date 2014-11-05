@@ -13,6 +13,7 @@ public class APIApplication extends ResourceConfig {
         register(LoggingFilter.class);
         
         //加载Resource
+        register(UserRestService.class);
         register(AuthorService.class);
         register(ExportTest.class);
         
@@ -21,5 +22,6 @@ public class APIApplication extends ResourceConfig {
         register(OrderRestService.class);
         register(WorkFormRestService.class);
         register(CustomerRestService.class);
+        register(CommunicationRestService.class);
     }
 }
