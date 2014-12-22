@@ -53,10 +53,10 @@ http://www.springframework.org/schema/mvc
         <tx:attributes>
             <tx:method name="select*" read-only="true" propagation="REQUIRED"/>
             <tx:method name="find*" read-only="true"  propagation="REQUIRED"/>
-            <tx:method name="save*"  propagation="REQUIRED" isolation="REPEATABLE_READ"/>
-            <tx:method name="update*"  propagation="REQUIRED" isolation="REPEATABLE_READ"/>
-            <tx:method name="add*"  propagation="REQUIRED" isolation="REPEATABLE_READ" />
-            <tx:method name="delete*"  propagation="REQUIRED" isolation="REPEATABLE_READ"/>
+            <tx:method name="save*"  propagation="REQUIRED" isolation="REPEATABLE_READ" rollback-for="Exception"/>
+            <tx:method name="update*"  propagation="REQUIRED" isolation="REPEATABLE_READ" rollback-for="Exception"/>
+            <tx:method name="add*"  propagation="REQUIRED" isolation="REPEATABLE_READ"  rollback-for="Exception"/>
+            <tx:method name="delete*"  propagation="REQUIRED" isolation="REPEATABLE_READ" rollback-for="Exception"/>
         </tx:attributes>
     </tx:advice>
     
