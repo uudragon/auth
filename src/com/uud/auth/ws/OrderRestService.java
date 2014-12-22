@@ -197,12 +197,20 @@ public class OrderRestService {
 	@Consumes(MediaType.APPLICATION_JSON)
 	public String updateWorkFlow( @PathParam("id") String id,
 									Map<String,Object> map ){
-		String workflow = (String) map.get("workflow");
-		int i = orderService.updateWorkFolw( Short.parseShort( workflow ), Long.parseLong( id ));
+		Short workflow = Short.valueOf( (String)map.get("workflow") );
+		int i = orderService.updateWorkFolw( workflow, Long.parseLong( id ) );
 		if( i > 0 ){
 			return "true";
 		}
 		return "false";
+	}
+	
+	@PUT
+	@Path("{id}/split")
+	@Consumes(MediaType.APPLICATION_JSON)
+	public String splitForm( @PathParam("id") String id ){
+		
+		return id;
 	}
 	
 	/**

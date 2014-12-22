@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="knowledgebase">
+	<typeAlias alias="knowledgebase" type="com.uud.cs.entity.KnowledgeBase" />
+	
+	<resultMap class="knowledgebase" id="resultMap.knowledgebaseMap">
+		<result column="ID" property="id" javaType="java.lang.Long"/>
+		<result column="TITLE" property="title" javaType="java.lang.String"/>
+		<result column="CONTENT" property="content" javaType="java.lang.String"/>
+		<result column="CREATER" property="creater" javaType="java.lang.String"/>
+		<result column="UPDATE_TIME" property="update_time" javaType="java.util.Date"/>
+		<result column="TYPE" property="type" javaType="java.lang.Short"/>
+		<result column="BROWSE_NUMBER" property="browse_number" javaType="java.lang.Integer"/>
+	</resultMap>
+	
+	<insert id="save" parameterClass="java.util.Map">
+		INSERT INTO `t_knowledge_base`( TITLE,CONTENT,CREATER,UPDATE_TIME,TYPE,BROWSE_NUMBER )
+		VALUES( #title#,#content#,#creater#,now(),#type#,0 )
+		<selectKey resultClass="long" keyProperty="id">
+			SELECT LAST_INSERT_ID()
+		</selectKey>
+	</insert>
+	
+	<select id="findByPage" parameterClass="java.util.Map" resultMap="resultMap.knowledgebaseMap">
+		select * from t_knowledge_base
+		<dynamic prepend="where">
+			<isNotEmpty prepend="and" property="type">
+				type=#type#
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="title">
+				title like '%$title$%'
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="content">
+				content like '%$content$%'
+			</isNotEmpty>
+		</dynamic>
+	</select>
+	
+	<select id="countByPage" parameterClass="java.util.Map" resultClass="java.lang.Integer">
+		select count(1) from t_knowledge_base
+		<dynamic prepend="where">
+			<isNotEmpty prepend="and" property="type">
+				type=#type#
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="title">
+				title like '%$title$%'
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="content">
+				content like '%$content$%'
+			</isNotEmpty>
+		</dynamic>
+	</select>
+	
+	<select id="findById" resultMap="resultMap.knowledgebaseMap">
+		select * from t_knowledge_base where id=#value#
+	</select>
+	
+	<update id="update" parameterClass="java.util.Map">
+		UPDATE t_knowledge_base kb 
+		<dynamic prepend="SET">
+			<isNotEmpty prepend="," property="content">
+				kb.`content` = #content#
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="title">
+				kb.`title` = #title#
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="type">
+				kb.`type` = #type#
+			</isNotEmpty>
+		</dynamic>
+			,kb.update_time=now()
+		WHERE kb.`id`= #id#
+	</update>
+	
+	<update id="updateBN" parameterClass="java.lang.Long">
+		UPDATE t_knowledge_base kb 
+		set kb.browse_number=kb.browse_number+1
+		WHERE kb.`id`= #value#
+	</update>
+	
+	<delete id="delete" parameterClass="java.lang.Long">
+		delete from t_knowledge_base where id=#value#
+	</delete>
+	
+</sqlMap>

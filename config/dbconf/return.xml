@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="return">
+
+	<typeAlias alias="returnForm" type="com.uud.cs.entity.ReturnGoodsForm" />
+	
+	<resultMap class="returnForm" id="resultMap.exchangeMap">
+		<result column="ID" property="id" javaType="java.lang.Long"/>
+		<result column="ORDER_NO" property="order_no" javaType="java.lang.String"/>
+		<result column="TYPE" property="type" javaType="java.lang.Short"/>
+		<result column="RESULT" property="result" javaType="java.lang.Short"/>
+		<result column="REASON" property="reason" javaType="java.lang.String"/>
+		<result column="CREATE_TIME" property="create_time" javaType="java.util.Date"/>
+		<result column="ISSN" property="issn" javaType="java.lang.String"/>
+		<result column="NUMBER" property="number" javaType="java.lang.Integer"/>
+		<result column="IS_ENTER" property="is_enter" javaType="java.lang.Short"/>
+		<result column="REFUND" property="refund" javaType="java.lang.Float"/>
+		<result column="HOLDER" property="holder" javaType="java.lang.String"/>
+		<result column="COMMISSION_CHARGE" property="commission_charge" javaType="java.lang.Float"/>
+		<result column="PAYEE" property="payee" javaType="java.lang.String"/>
+		<result column="ACCOUNTS" property="accounts" javaType="java.lang.String"/>
+		<result column="BANK" property="bank" javaType="java.lang.String"/>
+	</resultMap>
+	
+	<insert id="save" parameterClass="java.util.Map">
+		INSERT INTO `t_return_goods_form`( ORDER_NO,TYPE,RESULT,REASON,CREATE_TIME,ISSN,NUMBER,IS_ENTER,REFUND,HOLDER,COMMISSION_CHARGE,PAYEE,ACCOUNTS,BANK )
+		VALUES( #order_no#,#type#,#result#,#reason#,now(),#create_time#,#issn#,#number#,#is_enter#,#refund#,#holder#,#commission_charge#,#payee#,#accounts#,#bank# )
+		<selectKey resultClass="long" keyProperty="id">
+			SELECT LAST_INSERT_ID()
+		</selectKey>
+	</insert>
+	
+	
+	
+</sqlMap>
