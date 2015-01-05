@@ -32,6 +32,16 @@ public class CustomerDao extends SqlMapClientDaoSupport implements ICustomerDao 
 	}
 	
 	@Override
+	public Customer findByName( String name ){
+		return (Customer) this.getSqlMapClientTemplate().queryForObject( "consumer.findByPhone", name );
+	}
+	
+	@Override
+	public Customer findByPhone( String phone ){
+		return (Customer) this.getSqlMapClientTemplate().queryForObject( "consumer.findByName", phone );
+	}
+	
+	@Override
 	public int update(Map<String, Object> map){
 		return this.getSqlMapClientTemplate().update( "consumer.update", map );
 	}

@@ -36,4 +36,6 @@ public interface IAccessInfo {
 			Long userId);
 	public List<Resource> getResources(String code, String domain,
 			Long userId);
+
+	public List<Resource> getResources(String domain, Long userId);
 }

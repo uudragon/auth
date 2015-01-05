@@ -110,4 +110,12 @@
 		WHERE c.`id` IN ( $ids$ )
 	</update>
 	
+	<select id="findByPhone" resultMap="resultMap.customerMap">
+		SELECT * FROM customer_customer c WHERE c.phone = #value#
+	</select>
+	
+	<select id="findByName" resultMap="resultMap.customerMap">
+		SELECT * FROM customer_customer c WHERE c.name = #value#
+	</select>
+	
 </sqlMap>

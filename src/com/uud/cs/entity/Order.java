@@ -13,8 +13,8 @@ public class Order implements Serializable{
 	
 	public static final Short AUDIT_WAITING=1;
 	public static final Short AUDIT_DOING=2;
-	public static final Short AUDIT_DONE=3;
-	public static final Short AUDIT_INVALID=4;
+	public static final Short AUDIT_DONE=4;
+	public static final Short AUDIT_INVALID=3;
 	
 	public static final Short STATUS_NORMAL=1;
 	public static final Short STATUS_INVALID=2;
@@ -50,6 +50,7 @@ public class Order implements Serializable{
 	private Boolean yn;
 	private Short audit;
 	private Short workflow;
+	private String invoice_title;
 	
 	private Customer customer;
 	

@@ -10,6 +10,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
+import com.alibaba.fastjson.JSON;
 import com.uud.auth.entity.Page;
 import com.uud.auth.servlet.ServiceBeanContext;
 import com.uud.cs.entity.Customer;
@@ -83,5 +84,12 @@ public class CustomerRestService {
 	public String allot( Map<String,Object> map ){
 		int i = customerService.allot( map );
 		return i > 0 ? "true" : "false";
+	}
+	
+	@GET
+	@Path("customers/findByPhone")
+	public String findByPhone( @QueryParam("phone") String phone ){
+		Customer c = customerService.findByPhone( phone );
+		return JSON.toJSONString( c );
 	}
 }

@@ -47,6 +47,11 @@ public class CustomerService implements ICustomerService{
 		return customerDao.allot( map );
 	}
 	
+	@Override
+	public Customer findByPhone( String phone ){
+		return customerDao.findByPhone( phone );
+	}
+	
 	public ICustomerDao getConsumerDao() {
 		return customerDao;
 	}

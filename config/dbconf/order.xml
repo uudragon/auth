@@ -76,18 +76,19 @@
         <result column="AUDIT" property="audit" javaType="java.lang.Short"/>
         <result column="WORKFLOW" property="workflow" javaType="java.lang.Short"/>
         <result column="YN" property="yn" javaType="java.lang.Boolean"/>
+        <result column="INVOICE_TITLE" property="invoice_title" javaType="java.lang.String"/>
     </resultMap>
     
     
     <!-- 保存订单 -->
     <insert id="save" parameterClass="java.util.Map">
         insert into orders_orders( order_no,order_type,effective,deadline,customer_code,
-        has_invoice,source,agent_code,coupon_code,discount_amount,amount,
-        payment,status,validity,order_time,creator,create_time,contact_count,yn,workflow,audit,paid )
+        has_invoice,source,agent_code,coupon_code,discount_amount,amount,payment,status,
+        validity,order_time,creator,create_time,contact_count,yn,workflow,audit,paid,invoice_title )
         values
         ( #order_no#,#order_type#,#effective#,#deadline#,#customer_code#,
         #has_invoice#,#source#,#agent_code#,#coupon_code#,#discount_amount#,#amount#,#payment#,
-        1,#validity#,#order_time#,#creator#,now(),#contact_count#,#yn#,1,1,#paid# )
+        1,#validity#,#effective#,#creator#,now(),1,1,1,1,#paid#,#invoice_title# )
         <selectKey resultClass="long" keyProperty="id">
 			SELECT LAST_INSERT_ID()
 		</selectKey>
@@ -96,7 +97,7 @@
     <!-- 保存订单详情 -->
     <insert id="saveDetail" parameterClass="java.util.Map">
         INSERT INTO orders_ordersdetail(orders_no,product_no,effective,qty,bulk,weight,STATUS,yn)
-		VALUES(#orders_no#,#product_no#,#effective#,#qty#,#bulk#,#weight#,#STATUS#,1)
+		VALUES(#orders_no#,#product_no#,#effective#,#qty#,#bulk#,#weight#,0,1)
         <selectKey resultClass="long" keyProperty="id">
 			SELECT LAST_INSERT_ID()
 		</selectKey>
@@ -169,6 +170,9 @@
     		</isNotEmpty>
     		<isNotEmpty prepend="," property="audit" >
     			o.`audit`=#audit#
+    		</isNotEmpty>
+    		<isNotEmpty prepend="," property="invoice_title" >
+    			o.`invoice_title`=#invoice_title#
     		</isNotEmpty>
     	</dynamic>
     	WHERE o.`id` = #id#

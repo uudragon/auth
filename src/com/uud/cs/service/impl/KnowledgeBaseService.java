@@ -28,7 +28,10 @@ public class KnowledgeBaseService implements IKnowledgeBaseService {
 
 	@Override
 	public Long save(Map<String, Object> map) {
-		return knowledgeBaseDao.save( map );
+		Long id = knowledgeBaseDao.save( map );
+		throw new RuntimeException();
+		//int a = 1/0;
+		//return id;
 	}
 
 	@Override

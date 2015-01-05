@@ -15,6 +15,8 @@ public class LoginMessage {
 	
 	private User user;
 
+	private String resources;
+	
 	public Boolean getLegal() {
 		return legal;
 	}
@@ -45,6 +47,14 @@ public class LoginMessage {
 
 	public void setUser(User user) {
 		this.user = user;
+	}
+
+	public String getResources() {
+		return resources;
+	}
+
+	public void setResources(String resources) {
+		this.resources = resources;
 	}
 	
 }

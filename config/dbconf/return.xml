@@ -31,6 +31,13 @@
 		</selectKey>
 	</insert>
 	
+	<select id="countByParams" parameterClass="java.util.Map" resultClass="java.lang.Integer">
+		SELECT count(1) FROM t_return_goods_form rgd WHERE rgd.result=#value#
+	</select>
+	
+	<select id="findByParams" parameterClass="java.util.Map" resultMap="resultMap.exchangeMap">
+		SELECT * FROM t_return_goods_form rgd WHERE rgd.result=#value#
+	</select>
 	
 	
 </sqlMap>

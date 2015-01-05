@@ -52,7 +52,9 @@ public class AuthorService {
 		if( user != null && user.getIsValid() && user.getPassword().equals( password ) ){
 			lm.setLegal( true );
 			lm.setUser( user );
-			lm.setToken( TokenProcessorFactory.getProcessor().buildToken( user.getId(), domain ) );
+			String token = TokenProcessorFactory.getProcessor().buildToken( user.getId(), domain );
+			lm.setToken( token );
+			lm.setResources( getResourceList( token, domain ) );
 		} else if( user != null && !user.getIsValid() ){
 			lm.setLegal( false );
 			lm.setMessage( ErrorCode.AUTH_ACCOUNT_UNACTIVE + ":the user is unactived!" );
@@ -244,5 +246,40 @@ public class AuthorService {
 			result.setMessage( "" );
 		}
 		return result;
+	}
+	
+	/**
+	 * 验证token是否过期
+	 * 访问路径：${authpath}/ws/auth/checkTimeOut  方法：GET
+	 * @param token token
+	 * @return false/true
+	 */
+	@GET
+	@Path( "checkTimeOut" )
+	public String checkTimeOut( @QueryParam("token") String token ){
+		Token t = TokenProcessorFactory.getProcessor().getToken( token );
+		if( t == null ){
+			return "false";
+		}
+		return "true";
+	}
+	
+	
+	private String getResourceList( String token, String domain ){
+		Token t = TokenProcessorFactory.getProcessor().getToken( token );
+		if( t != null ){
+			List<Resource> list = AccessFactory.getAccessInfo().getResources( domain, t.getUserId() );
+			String resourceCodes="";
+			if( list != null ){
+				for( Resource r : list ){
+					resourceCodes = resourceCodes + "," + r.getCode();
+				}
+				if( resourceCodes.length() > 0 ){
+					resourceCodes = resourceCodes.substring( 1 );
+				}
+			}
+			return resourceCodes;
+		}
+		return "";
 	}
 }

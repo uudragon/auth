@@ -381,6 +381,11 @@ public class AccessInfo1 implements IAccessInfo {
 		}
 		return null;
 	}
+	@Override
+	public List<Resource> getResources(String domain, Long userId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }
 class AuthMessage{

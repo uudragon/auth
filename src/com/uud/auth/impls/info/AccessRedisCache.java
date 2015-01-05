@@ -326,4 +326,36 @@ public class AccessRedisCache extends AbstractAccessCache{
 		}
 	}
 
+	@Override
+	public List<Resource> getResources(String domain, Long userId) {
+		
+		List<Resource> resources = new ArrayList<Resource>();
+		Jedis jedis = null;
+		try{
+			jedis = RedisPool.getInstance().getPool().getResource();
+			String roleIdStr = jedis.hget( domain + "_ur", userId.toString() );
+			if( roleIdStr != null ){
+				String[] roleIds = roleIdStr.split(",");
+				String resourceIdStr = "";
+				for( String roleId : roleIds ){
+					resourceIdStr = resourceIdStr + "," + jedis.hget( domain + "_rr", roleId );
+				}
+				if( resourceIdStr.length() > 0  ){
+					resourceIdStr = resourceIdStr.substring( 1 );
+					String resourceIds[] = resourceIdStr.split( "," );
+					for( String resourceId : resourceIds ){
+						String rStr = jedis.hget( domain + "_resource", resourceId );
+						Resource r = JSON.parseObject( rStr, Resource.class );
+						resources.add( r );
+					}
+				}
+			}
+		} catch ( Exception e ){
+			e.printStackTrace();
+		} finally {
+			RedisPool.getInstance().getPool().returnResource( jedis );
+		}
+		return resources;
+	}
+
 }

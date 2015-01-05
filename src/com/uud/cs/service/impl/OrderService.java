@@ -3,6 +3,7 @@ package com.uud.cs.service.impl;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -52,6 +53,9 @@ public class OrderService implements IOrderService {
 		if( Order.AUDIT_INVALID == audit ){
 			map.put("status", Order.STATUS_INVALID );
 		}
+		if( Order.AUDIT_DONE == audit ){
+			map.put( "workflow", Order.WORKFLOW_SPLIT );
+		}
 		return orderDao.update( map );
 	}
 	
@@ -65,6 +69,7 @@ public class OrderService implements IOrderService {
 			if( c != null ){
 				customerDao.update( customer );
 			} else {
+				customer.put( "code", UUID.randomUUID().toString() );
 				customerDao.save( customer );
 			}
 			@SuppressWarnings("unchecked")

@@ -1,6 +1,7 @@
 package com.uud.auth.impls.info;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -241,6 +242,26 @@ public class AccessLocalCache extends AbstractAccessCache{
 		return resources;
 	}
 
+	@Override
+	public List<Resource> getResources( String domain, Long userId ) {
+		List<Resource> list = new ArrayList<Resource>();
+		if( containsKey( domain ) ){
+			AuthMessage am = get( domain );
+			Map<Long, Long[]> map = am.getUser_role();
+			Long[] roleIds = map.get( userId );
+			Map<Long, Long[]> rrMap = am.getRole_resource();
+			Map<Long, Resource> rmap = am.getResources();
+			List<Long> resourceIdList = new ArrayList<Long>();
+			for( Long roleId : roleIds ){
+				resourceIdList.addAll( Arrays.asList( rrMap.get( roleId ) ) );
+			}
+			for( Long resourceId : resourceIdList ){
+				list.add( rmap.get( resourceId ) );
+			}
+		}
+		return list;
+	}
+	
 	@Override
 	public void clear() {
 		map.clear();

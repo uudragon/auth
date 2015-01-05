@@ -17,4 +17,8 @@ public interface ICustomerDao {
 	public Integer count( Map<String,Object> map );
 
 	public Integer allot(Map<String, Object> map);
+
+	public Customer findByPhone( String phone );
+
+	public Customer findByName( String name );
 }
