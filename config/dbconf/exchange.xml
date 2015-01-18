@@ -6,29 +6,83 @@
 	
 	<resultMap class="exchangeForm" id="resultMap.exchangeMap">
 		<result column="ID" property="id" javaType="java.lang.Long"/>
+		<result column="FORM_NO" property="form_no" javaType="java.lang.String"></result>
 		<result column="ORDER_NO" property="order_no" javaType="java.lang.String"/>
 		<result column="TYPE" property="type" javaType="java.lang.Short"/>
 		<result column="RESULT" property="result" javaType="java.lang.Short"/>
-		<result column="STATS" property="status" javaType="java.lang.Short"/>
+		<result column="STATUS" property="status" javaType="java.lang.Short"/>
 		<result column="EXCHANGE_SUBJECT" property="exchange_subject" javaType="java.lang.Short"/>
 		<result column="REASON" property="reason" javaType="java.lang.String"/>
 		<result column="IS_ENTER" property="is_enter" javaType="java.lang.Short"/>
 		<result column="SEND_STATUS" property="send_status" javaType="java.lang.Short"/>
 		<result column="SEND_TYPE" property="send_type" javaType="java.lang.Short"/>
-		<result column="HOLDER" property="holder" javaType="java.lang.String"/>
+		<result column="HOLDER" property="holder" javaType="java.lang.Short"/>
 		<result column="FARE" property="fare" javaType="java.lang.Float"/>
 		<result column="ISSN" property="issn" javaType="java.lang.String"/>
 		<result column="CREATE_TIME" property="create_time" javaType="java.util.Date"/>
+		<result column="NUMBER" property="number" javaType="java.lang.Integer"/>
+		<result column="CREATE_USER" property="create_user" javaType="java.lang.String"></result>
+		<result column="UPDATE_USER" property="update_user" javaType="java.lang.String"></result>
 	</resultMap>
 	
 	<insert id="save" parameterClass="java.util.Map">
-		INSERT INTO `t_exchange_goods_form`( ORDER_NO,TYPE,RESULT,STATS,EXCHANGE_SUBJECT,REASON,IS_ENTER,SEND_STATUS,SEND_TYPE,HOLDER,FARE,ISSN,CREATE_TIME )
-		VALUES( #order_no#,#type#,#result#,#status#,#exchange_subject#,#reason#,#is_enter#,#send_status#,#send_type#,#holder#,#fare#,#issn#,now() )
+		INSERT INTO `t_exchange_goods_form`( FORM_NO,ORDER_NO,TYPE,RESULT,STATUS,EXCHANGE_SUBJECT,REASON,IS_ENTER,SEND_STATUS,SEND_TYPE,HOLDER,FARE,ISSN,CREATE_TIME,NUMBER,CREATE_USER )
+		VALUES( #form_no#,#order_no#,#type#,0,0,#exchange_subject#,#reason#,#is_enter#,#send_status#,#send_type#,#holder#,#fare#,#issn#,now(),#number#,#create_user# )
 		<selectKey resultClass="long" keyProperty="id">
 			SELECT LAST_INSERT_ID()
 		</selectKey>
 	</insert>
 	
+	<select id="findByPage" parameterClass="java.util.Map" resultMap="resultMap.exchangeMap">
+		SELECT * FROM t_exchange_goods_form egf
+		<dynamic prepend="where">
+			<isNotEmpty prepend="and" property="create_time">
+				DATE_FORMAT(egf.create_time,'%Y-%m-%d')=#create_time#
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="result">
+				egf.result=#result#
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="status">
+				egf.status=#status#
+			</isNotEmpty>
+		</dynamic>
+	</select>
 	
+	<select id="countByPage" parameterClass="java.util.Map" resultClass="java.lang.Integer">
+		SELECT count(1) FROM t_exchange_goods_form egf
+		<dynamic prepend="where">
+			<isNotEmpty prepend="and" property="create_time">
+				DATE_FORMAT(egf.create_time,'%Y-%m-%d')=#create_time#
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="result">
+				egf.result=#result#
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="status">
+				egf.status=#status#
+			</isNotEmpty>
+		</dynamic>
+	</select>
+	
+	<update id="updateStauts" parameterClass="java.util.Map">
+		UPDATE t_exchange_goods_form egf
+		<dynamic prepend="set">
+			<isNotEmpty prepend="," property="update_user">
+				egf.update_user=#update_user#
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="result">
+				egf.result=#result#
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="status">
+				egf.status=#status#
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="is_enter">
+				egf.is_enter=#is_enter#
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="send_status">
+				egf.send_status=#send_status#
+			</isNotEmpty>
+		</dynamic>
+		WHERE egf.form_no=#form_no#
+	</update>
 	
 </sqlMap>

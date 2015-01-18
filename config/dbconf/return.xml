@@ -21,23 +21,63 @@
 		<result column="PAYEE" property="payee" javaType="java.lang.String"/>
 		<result column="ACCOUNTS" property="accounts" javaType="java.lang.String"/>
 		<result column="BANK" property="bank" javaType="java.lang.String"/>
+		<result column="FORM_NO" property="form_no" javaType="java.lang.String"/>
+		<result column="UPDATE_USER" property="update_user" javaType="java.lang.String"/>
+		<result column="CREATE_USER" property="create_user" javaType="java.lang.String"/>
 	</resultMap>
 	
 	<insert id="save" parameterClass="java.util.Map">
-		INSERT INTO `t_return_goods_form`( ORDER_NO,TYPE,RESULT,REASON,CREATE_TIME,ISSN,NUMBER,IS_ENTER,REFUND,HOLDER,COMMISSION_CHARGE,PAYEE,ACCOUNTS,BANK )
-		VALUES( #order_no#,#type#,#result#,#reason#,now(),#create_time#,#issn#,#number#,#is_enter#,#refund#,#holder#,#commission_charge#,#payee#,#accounts#,#bank# )
+		INSERT INTO `t_return_goods_form`( FORM_NO,ORDER_NO,TYPE,RESULT,REASON,CREATE_TIME,ISSN,NUMBER,IS_ENTER,REFUND,HOLDER,COMMISSION_CHARGE,PAYEE,ACCOUNTS,BANK,CREATE_USER )
+		VALUES( #form_no#,#order_no#,#type#,1,#reason#,now(),#issn#,#number#,#is_enter#,#refund#,#holder#,#commission_charge#,#payee#,#accounts#,#bank#,#create_user# )
 		<selectKey resultClass="long" keyProperty="id">
 			SELECT LAST_INSERT_ID()
 		</selectKey>
 	</insert>
 	
 	<select id="countByParams" parameterClass="java.util.Map" resultClass="java.lang.Integer">
-		SELECT count(1) FROM t_return_goods_form rgd WHERE rgd.result=#value#
+		SELECT COUNT(1) FROM t_return_goods_form rgd 
+		<dynamic prepend="where">
+			<isNotEmpty prepend="and" property="result">
+    			rgd.result=#result#
+    		</isNotEmpty>
+    		<isNotEmpty prepend="and" property="create_time">
+    			DATE_FORMAT(rgd.create_time,'%Y-%m-%d')=#create_time#
+    		</isNotEmpty>
+    		<isNotEmpty prepend="and" property="order_no">
+    			rgd.order_no=#order_no#
+    		</isNotEmpty>
+		</dynamic>
 	</select>
 	
 	<select id="findByParams" parameterClass="java.util.Map" resultMap="resultMap.exchangeMap">
-		SELECT * FROM t_return_goods_form rgd WHERE rgd.result=#value#
+		SELECT * FROM t_return_goods_form rgd
+		<dynamic prepend="where">
+			<isNotEmpty prepend="and" property="result">
+    			rgd.result=#result#
+    		</isNotEmpty>
+    		<isNotEmpty prepend="and" property="create_time">
+    			DATE_FORMAT(rgd.create_time,'%Y-%m-%d')=#create_time#
+    		</isNotEmpty>
+    		<isNotEmpty prepend="and" property="order_no">
+    			rgd.order_no=#order_no#
+    		</isNotEmpty>
+		</dynamic>
 	</select>
 	
+	<update id="update" parameterClass="java.util.Map">
+		UPDATE t_return_goods_form rgf 
+		<dynamic prepend="set">
+			<isNotEmpty prepend="," property="update_user">
+				rgf.`update_user`= #update_user#
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="result">
+				rgf.`result`= #result#
+			</isNotEmpty>
+			<isNotEmpty prepend="," property="is_enter">
+				rgf.`is_enter`= #is_enter#
+			</isNotEmpty>
+		</dynamic>
+		WHERE rgf.`form_no`=#form_no#
+	</update>
 	
 </sqlMap>

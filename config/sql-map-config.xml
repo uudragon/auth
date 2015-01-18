@@ -22,5 +22,6 @@
 	<sqlMap resource="dbconf/consumer.xml" />
 	<sqlMap resource="dbconf/workform.xml" />
 	<sqlMap resource="dbconf/knowledgebase.xml" />
-	
+	<sqlMap resource="dbconf/return.xml" />
+	<sqlMap resource="dbconf/exchange.xml" />
 </sqlMapConfig>
