@@ -43,7 +43,7 @@ http://www.springframework.org/schema/mvc
     
 	<!-- 配置切面 -->
 	<aop:config>
-		<aop:pointcut expression="execution(* com.uud.auth.service.impl.*.*(..))"
+		<aop:pointcut expression="execution(* com.uud.auth.service.impl.*.*(..)) || execution(* com.uud.cs.service.impl.*.*(..))"
 			id="myTx1" />
 		<aop:advisor advice-ref="txAdvice" pointcut-ref="myTx1" />
 	</aop:config>
@@ -53,10 +53,11 @@ http://www.springframework.org/schema/mvc
         <tx:attributes>
             <tx:method name="select*" read-only="true" propagation="REQUIRED"/>
             <tx:method name="find*" read-only="true"  propagation="REQUIRED"/>
-            <tx:method name="save*"  propagation="REQUIRED" isolation="REPEATABLE_READ"/>
-            <tx:method name="update*"  propagation="REQUIRED" isolation="REPEATABLE_READ"/>
-            <tx:method name="add*"  propagation="REQUIRED" isolation="REPEATABLE_READ" />
-            <tx:method name="delete*"  propagation="REQUIRED" isolation="REPEATABLE_READ"/>
+            <tx:method name="save*"  propagation="REQUIRED" rollback-for="RuntimeException"/>
+            <tx:method name="update*"  propagation="REQUIRED" rollback-for="RuntimeException"/>
+            <tx:method name="add*"  propagation="REQUIRED" rollback-for="RuntimeException"/>
+            <tx:method name="delete*"  propagation="REQUIRED" rollback-for="RuntimeException"/>
+            <tx:method name="*"  propagation="REQUIRED" read-only="true"/>
         </tx:attributes>
     </tx:advice>
     
