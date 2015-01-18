@@ -24,5 +24,7 @@ public class APIApplication extends ResourceConfig {
         register(CustomerRestService.class);
         register(CommunicationRestService.class);
         register(KnowledgeBaseService.class);
+        register(ReturnRestService.class);
+        register(ExchangeRestService.class);
     }
 }

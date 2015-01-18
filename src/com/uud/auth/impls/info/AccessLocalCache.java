@@ -253,7 +253,10 @@ public class AccessLocalCache extends AbstractAccessCache{
 			Map<Long, Resource> rmap = am.getResources();
 			List<Long> resourceIdList = new ArrayList<Long>();
 			for( Long roleId : roleIds ){
-				resourceIdList.addAll( Arrays.asList( rrMap.get( roleId ) ) );
+				if( rrMap.containsKey( roleId ) && rrMap.get( roleId ) != null ){
+					Long[] resources = rrMap.get( roleId );
+					resourceIdList.addAll( Arrays.asList( resources ) );
+				}
 			}
 			for( Long resourceId : resourceIdList ){
 				list.add( rmap.get( resourceId ) );

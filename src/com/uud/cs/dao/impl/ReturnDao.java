@@ -24,7 +24,6 @@ public class ReturnDao extends SqlMapClientDaoSupport implements IReturnDao {
 	@Override
 	public void save(Map<String, Object> map) {
 		this.getSqlMapClientTemplate().insert( "return.save", map );
-		
 	}
 
 	@Override
@@ -35,7 +34,12 @@ public class ReturnDao extends SqlMapClientDaoSupport implements IReturnDao {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<ReturnGoodsForm> findByPage( Map<String,Object> map, Integer pageNo,Integer pageSize ){
-		return this.getSqlMapClientTemplate().queryForList( "return.countByParams", 
+		return this.getSqlMapClientTemplate().queryForList( "return.findByParams", 
 				map, ( pageNo - 1 ) * pageSize , pageSize);
+	}
+	
+	@Override
+	public void updateStatus( Map<String,Object> map ){
+		this.getSqlMapClientTemplate().update( "return.update", map );
 	}
 }

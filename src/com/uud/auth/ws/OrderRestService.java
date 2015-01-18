@@ -129,10 +129,23 @@ public class OrderRestService {
 								   @QueryParam("pageNo") String pageNo,
 								   @QueryParam("paid") String paid,
 								   @QueryParam("customer_name") String customer_name,
-								   @QueryParam("workflow") String workflow){
+								   @QueryParam("cicustomer_phone") String phone,
+								   @QueryParam("payment") String payment,
+								   @QueryParam("audit") String audit,
+								   @QueryParam("start_time") String start_time,
+								   @QueryParam("end_time") String end_time,
+								   @QueryParam("status") String status,
+								   @QueryParam("workflow") String workflow								  
+								   ){
 		Map<String,Object> map = new HashMap<String,Object>();
 		map.put("paid", paid);
 		map.put("customer_name", customer_name);
+		map.put("phone", phone);
+		map.put("payment", payment);
+		map.put("audit", audit);
+		map.put("start_time", start_time);
+		map.put("end_time", end_time);
+		map.put("status", status);
 		map.put("workflow", workflow);
 		return orderService.findAudit(map, 
 						pageSize == null ? 10 : Integer.parseInt( pageSize ),

@@ -12,4 +12,6 @@ public interface IReturnDao {
 
 	public List<ReturnGoodsForm> findByPage(Map<String, Object> map, Integer pageNo,
 			Integer pageSize);
+
+	public void updateStatus(Map<String, Object> map);
 }

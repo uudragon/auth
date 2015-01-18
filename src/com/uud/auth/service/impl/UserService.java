@@ -94,6 +94,9 @@ public class UserService implements IUserService {
 		page.setRecordsCount( recordscount );
 		page.setPageNumber( recordscount / pageSize );
 		List<User> rows = userDao.findByParams(map, pageSize, pageNo);
+		for( User user : rows ){
+			user.setPassword("");
+		}
 		page.setRecords( rows );
 		return page;
 	}

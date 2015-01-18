@@ -14,11 +14,33 @@ public class ReturnGoodsForm {
 	private Integer number;
 	private Short is_enter;
 	private Float refund;
-	private Short holder;
+	private String holder;
 	private Float commission_charge;
 	private String payee;
 	private String accounts;
 	private String bank;
+	private String update_user;
+	private String create_user;
+	private String form_no;
+	
+	public String getUpdate_user() {
+		return update_user;
+	}
+	public void setUpdate_user(String update_user) {
+		this.update_user = update_user;
+	}
+	public String getCreate_user() {
+		return create_user;
+	}
+	public void setCreate_user(String create_user) {
+		this.create_user = create_user;
+	}
+	public String getForm_no() {
+		return form_no;
+	}
+	public void setForm_no(String form_no) {
+		this.form_no = form_no;
+	}
 	public Long getId() {
 		return id;
 	}
@@ -79,10 +101,10 @@ public class ReturnGoodsForm {
 	public void setRefund(Float refund) {
 		this.refund = refund;
 	}
-	public Short getHolder() {
+	public String getHolder() {
 		return holder;
 	}
-	public void setHolder(Short holder) {
+	public void setHolder(String holder) {
 		this.holder = holder;
 	}
 	public Float getCommission_charge() {

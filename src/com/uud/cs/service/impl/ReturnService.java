@@ -32,6 +32,17 @@ public class ReturnService implements IReturnService {
 		return page;
 	}
 	
+	@Override
+	public void save(Map<String, Object> map) {
+		returnDao.save( map );;
+		//TODO 调用库房接口
+	}
+	
+	@Override
+	public void update( Map<String,Object> map ){
+		returnDao.updateStatus( map );
+	}
+	
 	public IReturnDao getReturnDao() {
 		return returnDao;
 	}
@@ -39,4 +50,5 @@ public class ReturnService implements IReturnService {
 	public void setReturnDao(IReturnDao returnDao) {
 		this.returnDao = returnDao;
 	}
+
 }

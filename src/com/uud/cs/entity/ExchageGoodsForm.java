@@ -5,6 +5,7 @@ import java.util.Date;
 public class ExchageGoodsForm {
 	
 	private Long id;
+	private String form_no;
 	private String order_no;
 	private Short type;
 	private Short result;
@@ -18,6 +19,9 @@ public class ExchageGoodsForm {
 	private Float fare;
 	private String issn;
 	private Date create_time;
+	private Integer number;
+	private String create_user;
+	private String update_user;
 	
 	public Long getId() {
 		return id;
@@ -102,5 +106,29 @@ public class ExchageGoodsForm {
 	}
 	public void setCreate_time(Date create_time) {
 		this.create_time = create_time;
+	}
+	public Integer getNumber() {
+		return number;
+	}
+	public void setNumber(Integer number) {
+		this.number = number;
+	}
+	public String getUpdate_user() {
+		return update_user;
+	}
+	public void setUpdate_user(String update_user) {
+		this.update_user = update_user;
+	}
+	public String getCreate_user() {
+		return create_user;
+	}
+	public void setCreate_user(String create_user) {
+		this.create_user = create_user;
+	}
+	public String getForm_no() {
+		return form_no;
+	}
+	public void setForm_no(String form_no) {
+		this.form_no = form_no;
 	}
 }
