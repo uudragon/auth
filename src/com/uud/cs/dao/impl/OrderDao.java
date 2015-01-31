@@ -1,5 +1,6 @@
 package com.uud.cs.dao.impl;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -72,5 +73,28 @@ public class OrderDao extends SqlMapClientDaoSupport implements IOrderDao{
 	public Integer countConsultation( Map<String,Object> map ){
 		return (Integer) this.getSqlMapClientTemplate().queryForObject( 
 								"order.countConsultation", map );
+	}
+	
+	@Override
+	public Integer updateWorkFlow( Map<String,Object> map ){
+		return this.getSqlMapClientTemplate().update( "order.updateWorkFlow", map );
+	}
+	
+	@Override
+	public Order findByNo( String order_no ){
+		return (Order) this.getSqlMapClientTemplate().queryForObject( "order.findByNo", order_no );
+	}
+	
+	@Override
+	public Order findByPhone( String phone ){
+		return (Order) this.getSqlMapClientTemplate().queryForObject( "order.findByPhone", phone );
+	}
+
+	@Override
+	public int updateDetailStatus(long id, int status) {
+		Map<String,Object> map = new HashMap<String,Object>();
+		map.put( "id", id );
+		map.put( "status", status );
+		return this.getSqlMapClientTemplate().update( "order.updateDetailStatus", map );
 	}
 }

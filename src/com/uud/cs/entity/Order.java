@@ -24,7 +24,7 @@ public class Order implements Serializable{
 	
 	private Long id;
 	private String order_no;
-	private Short order_type;
+	private String order_type;
 	private Date effective;
 	private Date deadline;
 	private String customer_code;
@@ -52,6 +52,23 @@ public class Order implements Serializable{
 	private Short workflow;
 	private String invoice_title;
 	
+	
+	public String getOrder_type() {
+		return order_type;
+	}
+
+	public void setOrder_type(String order_type) {
+		this.order_type = order_type;
+	}
+
+	public String getInvoice_title() {
+		return invoice_title;
+	}
+
+	public void setInvoice_title(String invoice_title) {
+		this.invoice_title = invoice_title;
+	}
+
 	private Customer customer;
 	
 	private List<OrdersDetail> details;
@@ -86,14 +103,6 @@ public class Order implements Serializable{
 
 	public void setOrder_no(String order_no) {
 		this.order_no = order_no;
-	}
-
-	public Short getOrder_type() {
-		return order_type;
-	}
-
-	public void setOrder_type(Short order_type) {
-		this.order_type = order_type;
 	}
 
 	public Date getEffective() {

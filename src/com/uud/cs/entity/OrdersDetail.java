@@ -12,6 +12,7 @@ public class OrdersDetail implements Serializable{
 	
 	private Long id;
 	private String orders_no;
+	private String product_name;
 	private String product_no;
 	private Date effective;
 	private Long qty;
@@ -73,5 +74,11 @@ public class OrdersDetail implements Serializable{
 	}
 	public void setYn(Boolean yn) {
 		this.yn = yn;
+	}
+	public String getProduct_name() {
+		return product_name;
+	}
+	public void setProduct_name(String product_name) {
+		this.product_name = product_name;
 	}
 }

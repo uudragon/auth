@@ -22,4 +22,12 @@ public interface IOrderDao {
 	public Integer countConsultation(Map<String, Object> map);
 
 	public int update(Map<String, Object> map);
+
+	public Integer updateWorkFlow(Map<String, Object> map);
+
+	public Order findByNo(String order_no);
+
+	public Order findByPhone(String phone);
+	
+	public int updateDetailStatus(long id, int status);
 }

@@ -13,10 +13,19 @@ public interface IOrderService {
 	
 	public int updateWorkFolw( Short workFlow, Long id );
 	
-	public Long save( Map<String,Object> map );
+	public Long save( Map<String,Object> map ) throws Exception;
 	
 	public Page<Order> findConsultation(Map<String, Object> map,
 			Integer pageSize, Integer pageNo);
 
 	public int updateAudit(Short status, Long id);
+
+	public String updateOrderSplit( Long id );
+
+	public Order findByNo(String orderNo);
+
+	public Order findByPhone(String phone);
+
+	public int updateDetailStatus(long id, int status);
+
 }

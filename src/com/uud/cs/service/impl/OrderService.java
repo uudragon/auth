@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import com.uud.auth.entity.Page;
+import com.uud.auth.ws.client.OrderSplitService;
+import com.uud.auth.ws.client.ProductService;
 import com.uud.cs.dao.ICustomerDao;
 import com.uud.cs.dao.IOrderDao;
 import com.uud.cs.entity.Customer;
@@ -26,6 +28,14 @@ public class OrderService implements IOrderService {
 	@Autowired
 	@Qualifier("customerDao")
 	private ICustomerDao customerDao;
+	
+	@Autowired
+	@Qualifier("orderSplit")
+	private OrderSplitService orderSplit;
+	
+	@Autowired
+	@Qualifier("productService")
+	private ProductService productService;
 	
 	@Override
 	public Page<Order> findAudit( Map<String,Object> map, Integer pageSize, Integer pageNo) {
@@ -60,7 +70,7 @@ public class OrderService implements IOrderService {
 	}
 	
 	@Override
-	public Long save(Map<String, Object> map) {
+	public Long save(Map<String, Object> map) throws Exception {
 		
 		@SuppressWarnings("unchecked")
 		Map<String,Object> customer = (Map<String, Object>) map.get("customer");
@@ -72,13 +82,17 @@ public class OrderService implements IOrderService {
 				customer.put( "code", UUID.randomUUID().toString() );
 				customerDao.save( customer );
 			}
+			
+			/*List<Map<String,Object>> details = productService
+										.getProductByOrderType( (String)map.get("order_type"));
 			@SuppressWarnings("unchecked")
 			List<Map<String,Object>> details = (List<Map<String, Object>>) map.get( "details" );
 			if( details != null ){
 				for( Map<String,Object> detail : details ){
+					detail.put("orders_no", map.get("order_no") );
 					orderDao.saveDetail( detail );
 				}
-			}
+			}*/
 			map.put("customer_code", customer.get("code") );
 			return orderDao.save( map );
 		}
@@ -106,6 +120,34 @@ public class OrderService implements IOrderService {
 		map.put("workflow", workFlow);
 		map.put("id", id);
 		return orderDao.update(map);
+	}
+	
+	@Override
+	public String updateOrderSplit( Long id ) {
+		Order order = orderDao.findById(id);
+		Map<String,Object> map = new HashMap<String,Object>();
+		map.put("workflow", 4);
+		map.put("preflow", 2);
+		map.put("id", id);
+		if( orderDao.updateWorkFlow(map) == 1 ){
+			return orderSplit.getSplitDetails( order );
+		}
+		return "[]";
+	}
+	
+	@Override
+	public int updateDetailStatus( long id, int status ){
+		return orderDao.updateDetailStatus( id, status );
+	}
+	
+	@Override
+	public Order findByNo( String orderNo ){
+		return orderDao.findByNo( orderNo );
+	}
+	
+	@Override
+	public Order findByPhone( String phone ){
+		return orderDao.findByPhone( phone );
 	}
 	
 	public IOrderDao getOrderDao() {

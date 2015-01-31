@@ -56,4 +56,9 @@ public class WorkFormService implements IWorkFormService{
 		return page ;
 	}
 	
+	@Override
+	public Integer updateStatus( Integer status,Long id ){
+		return workFormDao.updateStatus( status,id );
+	}
+	
 }

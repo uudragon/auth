@@ -26,11 +26,17 @@ public class ExchangeRestService {
 	
 	@POST
 	@Consumes( MediaType.APPLICATION_JSON )
-	public void save( Map<String,Object> map ){
+	public String save( Map<String,Object> map ){
 		if( !map.containsKey( "form_no" ) || map.get( "form_no" ) == null ){
 			map.put("form_no", UUID.randomUUID().toString() );
 		}
-		exchangeService.save( map );
+		try{
+			exchangeService.save( map );	
+		} catch ( Exception e ){
+			e.printStackTrace();
+			return "false";
+		}
+		return "true";
 	}
 	
 	@GET

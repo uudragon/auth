@@ -1,5 +1,6 @@
 package com.uud.cs.dao.impl;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -36,5 +37,13 @@ public class WorkFormDao extends SqlMapClientDaoSupport implements IWorkFormDao 
 	@Override
 	public Integer countByPage( Map<String,Object> map ){
 		return (Integer) this.getSqlMapClientTemplate().queryForObject( "workform.countByPage", map );
+	}
+
+	@Override
+	public Integer updateStatus( Integer status, Long id ) {
+		Map<String,Object> map = new HashMap<String,Object>();
+		map.put("status", status);
+		map.put("id", id);
+		return this.getSqlMapClientTemplate().update( "workform.updateStatus", map );
 	}
 }

@@ -30,7 +30,12 @@ public class ReturnRestService {
 		if( !map.containsKey( "form_no" ) || map.get( "form_no" ) == null ){
 			map.put( "form_no", UUID.randomUUID().toString() );
 		}
-		returnService.save( map );
+		try{
+			returnService.save( map );
+		} catch ( Exception e ){
+			e.printStackTrace();
+			return "false";
+		}
 		return "true";
 	}
 	

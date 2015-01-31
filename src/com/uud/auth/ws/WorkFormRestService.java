@@ -1,11 +1,14 @@
 package com.uud.auth.ws;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
 import javax.ws.rs.Consumes;
+import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
@@ -13,7 +16,6 @@ import javax.ws.rs.core.MediaType;
 
 import com.uud.auth.entity.Page;
 import com.uud.auth.servlet.ServiceBeanContext;
-import com.uud.cs.entity.Order;
 import com.uud.cs.entity.WorkForm;
 import com.uud.cs.service.IOrderService;
 import com.uud.cs.service.IWorkFormService;
@@ -74,6 +76,9 @@ public class WorkFormRestService {
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	public String save( Map<String,Object> map ){
+		if( Integer.parseInt( ( (String)map.get("type") ) ) != 3 ){
+			map.put("update_time", new Date() );
+		}
 		if( workFormService.save( map ) != null ){
 			return "true";
 		}
@@ -82,7 +87,7 @@ public class WorkFormRestService {
 	
 	/**
 	 * 投诉分页查询
-	 * 路径：atnew/ws/workform/consulation 方法：get
+	 * 路径：atnew/ws/workform/complain 方法：get
 	 * @param pageSize	每页现实条数
 	 * @param pageNo	当前页码	
 	 * @param status	状态 1、未处理 2、处理中 3、关闭
@@ -94,7 +99,7 @@ public class WorkFormRestService {
 	 * 			records			订单信息，参考（OrderRestService）
 	 */
 	@GET
-	@Path("consulation")
+	@Path("complain")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Page<WorkForm> findConsulationByPage(@QueryParam("pageSize") String pageSize,
 								  @QueryParam("pageNo") String pageNo,
@@ -132,4 +137,15 @@ public class WorkFormRestService {
 				pageSize == null ? 10 : Integer.parseInt( pageSize ),
 				pageNo == null ? 1 : Integer.parseInt( pageNo ) );
 	}
+	
+	@Path("{id}")
+	@PUT
+	public String updateStatus( @QueryParam("id") Long id,
+								@FormParam("status") Integer status ){
+		if( workFormService.updateStatus( status, id ) > 0 ){
+			return "true";
+		}
+		return "false";
+	}
+	
 }

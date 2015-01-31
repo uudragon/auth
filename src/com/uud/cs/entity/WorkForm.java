@@ -27,7 +27,7 @@ public class WorkForm {
 	private String consumer_name;
 	private Date create_time;
 	private String user;
-	
+	private Date update_time;
 	private Order order;
 	
 	private List<Communication> communications;
@@ -127,5 +127,11 @@ public class WorkForm {
 	}
 	public void setCommunications(List<Communication> communications) {
 		this.communications = communications;
+	}
+	public Date getUpdate_time() {
+		return update_time;
+	}
+	public void setUpdate_time(Date update_time) {
+		this.update_time = update_time;
 	}
 }

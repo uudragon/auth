@@ -22,6 +22,7 @@ public class ExchageGoodsForm {
 	private Integer number;
 	private String create_user;
 	private String update_user;
+	private Date update_time;
 	
 	public Long getId() {
 		return id;
@@ -130,5 +131,11 @@ public class ExchageGoodsForm {
 	}
 	public void setForm_no(String form_no) {
 		this.form_no = form_no;
+	}
+	public Date getUpdate_time() {
+		return update_time;
+	}
+	public void setUpdate_time(Date update_time) {
+		this.update_time = update_time;
 	}
 }

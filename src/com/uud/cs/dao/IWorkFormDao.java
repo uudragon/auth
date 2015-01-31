@@ -12,4 +12,6 @@ public interface IWorkFormDao {
 			Integer pageNo);
 
 	public Integer countByPage(Map<String, Object> map);
+
+	public Integer updateStatus(Integer status, Long id);
 }

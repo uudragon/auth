@@ -177,6 +177,21 @@ public class OrderRestService {
 		return order;
 	}
 	
+	@GET
+	@Path("findByNo")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Order findByNo( @QueryParam("order_no") String order_no ){
+		Order order = orderService.findByNo( order_no );
+		return order;
+	}
+	
+	@GET
+	@Path("findByPhone")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Order findByPhone( @QueryParam("phone") String phone ){
+		Order order = orderService.findByPhone( phone );
+		return order;
+	}
 	/**
 	 * 更新订单状态
 	 * 
@@ -218,12 +233,15 @@ public class OrderRestService {
 		return "false";
 	}
 	
-	@PUT
+	/**
+	 * 拆单
+	 * @param id
+	 * @return
+	 */
+	@GET
 	@Path("{id}/split")
-	@Consumes(MediaType.APPLICATION_JSON)
 	public String splitForm( @PathParam("id") String id ){
-		
-		return id;
+		return orderService.updateOrderSplit( Long.parseLong( id ) );
 	}
 	
 	/**
@@ -255,10 +273,11 @@ public class OrderRestService {
 	 * 				客户信息的字段参考customer_customer表的字段<br>
 	 * 				订单详情的字段参考orders_ordersdetail表的字段
 	 * @return true/false
+	 * @throws Exception 
 	 */
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
-	public String save( Map<String,Object> map ){
+	public String save( Map<String,Object> map ) throws Exception{
 		Long id = orderService.save( map );
 		return id != null ? "true" : "false";
 	}
