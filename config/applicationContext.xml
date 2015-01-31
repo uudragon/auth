@@ -67,6 +67,7 @@ http://www.springframework.org/schema/mvc
 					  com.uud.auth.service.impl,
 					  com.uud.auth.action,
 					  com.uud.cs.dao.impl,
-					  com.uud.cs.service.impl" />
+					  com.uud.cs.service.impl,
+					  com.uud.auth.ws.client" />
 	
 </beans>

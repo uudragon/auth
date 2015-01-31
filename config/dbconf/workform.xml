@@ -20,16 +20,17 @@
         <result column="CONSUMER_NAME" property="consumer_name" javaType="java.lang.String"/>
         <result column="CREATE_TIME" property="create_time" javaType="java.util.Date"/>
         <result column="USER" property="user" javaType="java.lang.String"/>
-                
+        <result column="UPDATE_TIME" property="update_time" javaType="java.util.Date"/>
+        
         <result property="order" column="ORDER_NO" select="order.findByNo"/>
         <result property="communications" column="code" select="communication.findCommunication"/>
     </resultMap>
 	
 	<insert id="save" parameterClass="java.util.Map">
 		INSERT INTO t_work_form( code,order_no,type,subtype,level,phone,theme,content,status
-				,consumer_code,consumer_name,create_time,user)
+				,consumer_code,consumer_name,create_time,user,update_time )
 		VALUES(#code#,#order_no#,#type#,#subtype#,#level#,#phone#,#theme#,#content#,#status#
-				,#consumer_code#,#consumer_name#,now(),#user#)
+				,#consumer_code#,#consumer_name#,now(),#user#,#update_time# )
 		<selectKey resultClass="long" keyProperty="id">
 			SELECT LAST_INSERT_ID()
 		</selectKey>
@@ -59,4 +60,8 @@
 			</isNotEmpty>
 		</dynamic>
 	</select>
+	
+	<update id="updateStatus" parameterClass="java.util.HashMap" >
+		update t_work_form set status = #status#, update_time = now() where id =#id#
+	</update>
 </sqlMap>

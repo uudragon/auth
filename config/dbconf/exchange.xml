@@ -23,6 +23,7 @@
 		<result column="NUMBER" property="number" javaType="java.lang.Integer"/>
 		<result column="CREATE_USER" property="create_user" javaType="java.lang.String"></result>
 		<result column="UPDATE_USER" property="update_user" javaType="java.lang.String"></result>
+		<result column="UPDATE_TIME" property="update_time" javaType="java.util.Date"></result>
 	</resultMap>
 	
 	<insert id="save" parameterClass="java.util.Map">
@@ -66,6 +67,7 @@
 	<update id="updateStauts" parameterClass="java.util.Map">
 		UPDATE t_exchange_goods_form egf
 		<dynamic prepend="set">
+			egf.update_time=now(),
 			<isNotEmpty prepend="," property="update_user">
 				egf.update_user=#update_user#
 			</isNotEmpty>
@@ -81,6 +83,7 @@
 			<isNotEmpty prepend="," property="send_status">
 				egf.send_status=#send_status#
 			</isNotEmpty>
+			
 		</dynamic>
 		WHERE egf.form_no=#form_no#
 	</update>

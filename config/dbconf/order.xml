@@ -10,6 +10,7 @@
         <result column="ID" property="id" javaType="java.lang.Long"/>
         <result column="ORDERS_NO" property="orders_no" javaType="java.lang.String"/>
         <result column="PRODUCT_NO" property="product_no" javaType="java.lang.String"/>
+        <result column="PRODUCT_NAME" property="product_name" javaType="java.lang.String"/>
         <result column="EFFECTIVE" property="effective" javaType="java.util.Date"/>
         <result column="QTY" property="qty" javaType="java.lang.Long"/>
         <result column="BULK" property="bulk" javaType="java.lang.Double"/>
@@ -21,7 +22,7 @@
 	<resultMap id="resultMap.orderMap" class="order">
         <result column="ID" property="id" javaType="java.lang.Long"/>
         <result column="ORDER_NO" property="order_no" javaType="java.lang.String"/>
-        <result column="ORDER_TYPE" property="order_type" javaType="java.lang.Short"/>
+        <result column="ORDER_TYPE" property="order_type" javaType="java.lang.String"/>
         <result column="EFFECTIVE" property="effective" javaType="java.util.Date"/>
         <result column="DEADLINE" property="deadline" javaType="java.util.Date"/>
         <result column="CUSTOMER_CODE" property="customer_code" javaType="java.lang.String"/>
@@ -44,6 +45,7 @@
         <result column="YN" property="yn" javaType="java.lang.Boolean"/>
         <result column="AUDIT" property="audit" javaType="java.lang.Short"/>
         <result column="WORKFLOW" property="workflow" javaType="java.lang.Short"/>
+        <result column="INVOICE_TITLE" property="invoice_title" javaType="java.lang.String"/>
         
         <result column="CUSTOMER_CODE" property="customer" select="consumer.findByCode"/>
         
@@ -53,7 +55,7 @@
     <resultMap id="resultMap.orderMap2" class="order">
         <result column="ID" property="id" javaType="java.lang.Long"/>
         <result column="ORDER_NO" property="order_no" javaType="java.lang.String"/>
-        <result column="ORDER_TYPE" property="order_type" javaType="java.lang.Short"/>
+        <result column="ORDER_TYPE" property="order_type" javaType="java.lang.String"/>
         <result column="EFFECTIVE" property="effective" javaType="java.util.Date"/>
         <result column="DEADLINE" property="deadline" javaType="java.util.Date"/>
         <result column="CUSTOMER_CODE" property="customer_code" javaType="java.lang.String"/>
@@ -96,8 +98,8 @@
     
     <!-- 保存订单详情 -->
     <insert id="saveDetail" parameterClass="java.util.Map">
-        INSERT INTO orders_ordersdetail(orders_no,product_no,effective,qty,bulk,weight,STATUS,yn)
-		VALUES(#orders_no#,#product_no#,#effective#,#qty#,#bulk#,#weight#,0,1)
+        INSERT INTO orders_ordersdetail(orders_no,product_name,product_no,effective,qty,bulk,weight,STATUS,yn)
+		VALUES(#orders_no#,#product_name#,#product_no#,#effective#,#qty#,#bulk#,#weight#,0,1)
         <selectKey resultClass="long" keyProperty="id">
 			SELECT LAST_INSERT_ID()
 		</selectKey>
@@ -232,4 +234,30 @@
 		  		wf.`status`=#status#
 		  </isNotEmpty>
 	</select>
+	
+	<update id="updateWorkFlow" parameterClass="java.util.Map">
+    	UPDATE orders_orders o
+    	<dynamic prepend="SET">
+    		<isNotEmpty prepend="," property="workflow" >
+    			o.`workflow`=#workflow#
+    		</isNotEmpty>
+    	</dynamic>
+    	where id = #id# and o.workflow=#preflow#
+    </update>
+    
+     <select id="findByPhone" resultMap="resultMap.orderMap">
+    	SELECT *, MAX(o.`create_time`) FROM orders_orders o LEFT JOIN customer_customer c 
+    	ON o.`customer_code` = c.`code`
+    	where c.phone=#value#
+    </select>
+    
+    <update id="updateDetailStatus" parameterClass="java.util.Map">
+    	UPDATE orders_ordersdetail od
+    	<dynamic prepend="SET">
+    		<isNotEmpty prepend="," property="status" >
+    			od.`status`=#status#
+    		</isNotEmpty>
+    	</dynamic>
+    	where id = #id#
+    </update>
 </sqlMap>

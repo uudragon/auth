@@ -24,6 +24,7 @@
 		<result column="FORM_NO" property="form_no" javaType="java.lang.String"/>
 		<result column="UPDATE_USER" property="update_user" javaType="java.lang.String"/>
 		<result column="CREATE_USER" property="create_user" javaType="java.lang.String"/>
+		<result column="UPDATE_TIME" property="update_time" javaType="java.util.Date"></result>
 	</resultMap>
 	
 	<insert id="save" parameterClass="java.util.Map">
@@ -67,6 +68,7 @@
 	<update id="update" parameterClass="java.util.Map">
 		UPDATE t_return_goods_form rgf 
 		<dynamic prepend="set">
+			rgf.update_time=now(),
 			<isNotEmpty prepend="," property="update_user">
 				rgf.`update_user`= #update_user#
 			</isNotEmpty>
