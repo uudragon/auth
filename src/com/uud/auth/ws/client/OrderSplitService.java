@@ -75,6 +75,16 @@ public class OrderSplitService {
 				.post( Entity.entity( req, MediaType.APPLICATION_JSON ), String.class );
 	}
 	
+	public String amountSetting( Order order,String updater ){
+		Map<String,Object> req = new HashMap<String,Object>();
+		req.put( "orders_no", order.getOrder_no() );
+		req.put( "amount", order.getAmount() );
+		req.put( "updater", updater );
+		return wt.path("outbound/shipment/amount_setting/")
+			.request( MediaType.APPLICATION_JSON )
+			.post( Entity.entity( req, MediaType.APPLICATION_JSON ), String.class );
+	}
+	
 	public static void main( String args[] ){
 		/*Date d = new Date();
 		SimpleDateFormat df = new SimpleDateFormat();
@@ -83,6 +93,6 @@ public class OrderSplitService {
 		ApplicationContext ctx=new FileSystemXmlApplicationContext("classpath:applicationContext.xml");
 		IOrderService oservice = (IOrderService) ctx.getBean( "orderService" );
 		OrderSplitService service = new OrderSplitService();
-		System.out.print( service.getSplitDetails( oservice.findById( 1l ) ) );
+		System.out.print( service.amountSetting( oservice.findById( 212l ),"1234" ) );
 	}
 }

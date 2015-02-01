@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javax.ws.rs.Consumes;
+import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
@@ -238,10 +239,11 @@ public class OrderRestService {
 	 * @param id
 	 * @return
 	 */
-	@GET
+	@PUT
 	@Path("{id}/split")
-	public String splitForm( @PathParam("id") String id ){
-		return orderService.updateOrderSplit( Long.parseLong( id ) );
+	public String splitForm( @PathParam("id") String id,
+							 @FormParam("updater") String updater ){
+		return orderService.updateOrderSplit( Long.parseLong( id ), updater );
 	}
 	
 	/**

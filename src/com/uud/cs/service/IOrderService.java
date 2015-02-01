@@ -20,12 +20,12 @@ public interface IOrderService {
 
 	public int updateAudit(Short status, Long id);
 
-	public String updateOrderSplit( Long id );
-
 	public Order findByNo(String orderNo);
 
 	public Order findByPhone(String phone);
 
 	public int updateDetailStatus(long id, int status);
+
+	public String updateOrderSplit(Long id, String updater);
 
 }

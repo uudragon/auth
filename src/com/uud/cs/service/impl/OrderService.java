@@ -84,17 +84,23 @@ public class OrderService implements IOrderService {
 			}
 			
 			/*List<Map<String,Object>> details = productService
-										.getProductByOrderType( (String)map.get("order_type"));
-			@SuppressWarnings("unchecked")
-			List<Map<String,Object>> details = (List<Map<String, Object>>) map.get( "details" );
-			if( details != null ){
+										.getProductByOrderType( (String)map.get("order_type"));*/
+			/*@SuppressWarnings("unchecked")
+			List<Map<String,Object>> details = (List<Map<String, Object>>) map.get( "details" );*/
+			/*if( details != null ){
 				for( Map<String,Object> detail : details ){
 					detail.put("orders_no", map.get("order_no") );
 					orderDao.saveDetail( detail );
 				}
 			}*/
 			map.put("customer_code", customer.get("code") );
-			return orderDao.save( map );
+			Long id = orderDao.save( map );
+			Order order = orderDao.findByNo( (String)map.get( "order_no" ) );
+			String json = orderSplit.getSplitDetails( order );	
+			if( json.contains( "\'error\':" ) ){
+				throw new RuntimeException("split order error!");
+			}
+			return id;
 		}
 		return null;
 	}
@@ -123,16 +129,17 @@ public class OrderService implements IOrderService {
 	}
 	
 	@Override
-	public String updateOrderSplit( Long id ) {
+	public String updateOrderSplit( Long id, String updater ) {
 		Order order = orderDao.findById(id);
 		Map<String,Object> map = new HashMap<String,Object>();
 		map.put("workflow", 4);
 		map.put("preflow", 2);
 		map.put("id", id);
 		if( orderDao.updateWorkFlow(map) == 1 ){
-			return orderSplit.getSplitDetails( order );
+			orderSplit.amountSetting( order, updater );
+			return "true";
 		}
-		return "[]";
+		return "false";
 	}
 	
 	@Override
