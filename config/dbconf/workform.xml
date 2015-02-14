@@ -29,8 +29,8 @@
 	<insert id="save" parameterClass="java.util.Map">
 		INSERT INTO t_work_form( code,order_no,type,subtype,level,phone,theme,content,status
 				,consumer_code,consumer_name,create_time,user,update_time )
-		VALUES(#code#,#order_no#,#type#,#subtype#,#level#,#phone#,#theme#,#content#,#status#
-				,#consumer_code#,#consumer_name#,now(),#user#,#update_time# )
+		VALUES(#code#,#order_no#,#type#,#subtype#,#level#,#customer_phone#,#theme#,#content#,#status#
+				,#consumer_code#,#customer_name#,now(),#user#,#update_time# )
 		<selectKey resultClass="long" keyProperty="id">
 			SELECT LAST_INSERT_ID()
 		</selectKey>

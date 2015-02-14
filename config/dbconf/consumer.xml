@@ -35,8 +35,13 @@
 		<!-- INSERT INTO `customer_customer`( ID,CODE, TYPE, NAME, SEX,BIRTHDAY, PARENT, P_SEX, EMAIL, PROVINCE, CITY, DISTRICT, STREET, ADDRESS, POST, F_PHONE,C_PHONE, MOBILE, MAIN_PHONE, FAX, STATUS, CREATE_USER, CREATE_TIME, YN)
 		VALUES( #id#,#code#, #type#, #name#,#sex#,#birthday#, #parent#,#pSex#,#email#,#province#,#city#,#distrct#,#street#,#address#,#post#,#fPhone#,#cPhone#,#mobile#,#mainPhone#,#fax#,#status#,#createUser#,now(),1 )
 		 -->
-		INSERT INTO `customer_customer`( CODE, TYPE, NAME, SEX,BIRTHDAY, CHILD,C_SEX, EMAIL, PROVINCE, CITY, DISTRICT, STREET, ADDRESS, POST,PHONE,  MAIN_PHONE, FAX, PAID, STATUS, CREATOR, CREATE_TIME, UPDATER, YN, MANAGER, IS_ALLOT )
-		VALUES( #code#, #type#, #name#,#sex#,#birthday#, #child#,#c_sex#,#email#,#province#,#city#,#distrct#,#street#,#address#,#post#,#phone#,#main_phone#,#fax#,#paid#,#status#,#creator#,now(),#creator#,1,#creator#,1 )
+		INSERT INTO `customer_customer`( CODE, TYPE, NAME, SEX,BIRTHDAY, CHILD,C_SEX,
+		 EMAIL, PROVINCE, CITY, DISTRICT, STREET, ADDRESS, POST,PHONE,  
+		 MAIN_PHONE, FAX, PAID, STATUS, CREATOR, CREATE_TIME, UPDATER, YN, MANAGER, IS_ALLOT )
+		VALUES( #code#, #type#, #name#,#sex#,#birthday#, #child#,
+		#c_sex#,#email#,#province#,#city#,#distrct#,#street#,#address#,
+		#post#,#phone#,#main_phone#,#fax#,#paid#,#status#,#creator#,now(),
+		#creator#,1,#creator#,1 )
 		<selectKey resultClass="long" keyProperty="id">
 			SELECT LAST_INSERT_ID()
 		</selectKey>

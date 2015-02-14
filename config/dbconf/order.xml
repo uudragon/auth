@@ -46,6 +46,16 @@
         <result column="AUDIT" property="audit" javaType="java.lang.Short"/>
         <result column="WORKFLOW" property="workflow" javaType="java.lang.Short"/>
         <result column="INVOICE_TITLE" property="invoice_title" javaType="java.lang.String"/>
+        <result column="CONSIGNEE" property="consignee" javaType="java.lang.String"/>
+        <result column="PROVINCE" property="province" javaType="java.lang.String"/>
+        <result column="CITY" property="city" javaType="java.lang.String"/>
+        <result column="DISTRICT" property="district" javaType="java.lang.String"/>
+        <result column="STREET" property="street" javaType="java.lang.String"/>
+        <result column="ADDRESS" property="address" javaType="java.lang.String"/>
+        <result column="POST" property="post" javaType="java.lang.String"/>
+        <result column="PHONE" property="phone" javaType="java.lang.String"/>
+        <result column="MAIN_PHONE" property="main_phone" javaType="java.lang.String"/>
+        <result column="MAIL" property="mail" javaType="java.lang.String"/>
         
         <result column="CUSTOMER_CODE" property="customer" select="consumer.findByCode"/>
         
@@ -79,6 +89,17 @@
         <result column="WORKFLOW" property="workflow" javaType="java.lang.Short"/>
         <result column="YN" property="yn" javaType="java.lang.Boolean"/>
         <result column="INVOICE_TITLE" property="invoice_title" javaType="java.lang.String"/>
+        
+        <result column="CONSIGNEE" property="consignee" javaType="java.lang.String"/>
+        <result column="PROVINCE" property="province" javaType="java.lang.String"/>
+        <result column="CITY" property="city" javaType="java.lang.String"/>
+        <result column="DISTRICT" property="district" javaType="java.lang.String"/>
+        <result column="STREET" property="street" javaType="java.lang.String"/>
+        <result column="ADDRESS" property="address" javaType="java.lang.String"/>
+        <result column="POST" property="post" javaType="java.lang.String"/>
+        <result column="PHONE" property="phone" javaType="java.lang.String"/>
+        <result column="MAIN_PHONE" property="main_phone" javaType="java.lang.String"/>
+        <result column="MAIL" property="mail" javaType="java.lang.String"/>
     </resultMap>
     
     
@@ -86,11 +107,13 @@
     <insert id="save" parameterClass="java.util.Map">
         insert into orders_orders( order_no,order_type,effective,deadline,customer_code,
         has_invoice,source,agent_code,coupon_code,discount_amount,amount,payment,status,
-        validity,order_time,creator,create_time,contact_count,yn,workflow,audit,paid,invoice_title,updater )
+        validity,order_time,creator,create_time,contact_count,yn,workflow,audit,paid,
+        invoice_title,updater,consignee,province,city,district,address,post,phone,main_phone,mail )
         values
         ( #order_no#,#order_type#,#effective#,#deadline#,#customer_code#,
         #has_invoice#,#source#,#agent_code#,#coupon_code#,#discount_amount#,#amount#,#payment#,
-        1,#validity#,#effective#,#creator#,now(),1,1,#workflow#,#audit#,#paid#,#invoice_title#,#creator# )
+        1,#validity#,#effective#,#creator#,now(),1,1,1,#audit#,#paid#,#invoice_title#,
+        #creator#,#consignee#,#province#,#city#,#district#,#address#,#post#,#phone#,#main_phone#,#mail# )
         <selectKey resultClass="long" keyProperty="id">
 			SELECT LAST_INSERT_ID()
 		</selectKey>

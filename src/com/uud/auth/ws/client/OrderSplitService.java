@@ -1,6 +1,7 @@
 package com.uud.auth.ws.client;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.ws.rs.client.Client;
@@ -14,6 +15,8 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.FileSystemXmlApplicationContext;
 import org.springframework.stereotype.Service;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.TypeReference;
 import com.uud.auth.util.ConfigHelper;
 import com.uud.cs.entity.Customer;
 import com.uud.cs.entity.Order;
@@ -40,7 +43,7 @@ public class OrderSplitService {
 /*		Date date = ;
 		SimpleDateFormat df = new SimpleDateFormat("");*/
 		req.put("effective_date", order.getEffective() );
-		String address = customer.getProvince() + customer.getCity() + customer.getAddress();
+		String address = order.getProvince() + order.getCity() + order.getDistrict() + order.getAddress();
 		req.put("address", address );
 		req.put("customer_tel", customer.getPhone() );
 		req.put("amount", order.getAmount() );
@@ -49,6 +52,7 @@ public class OrderSplitService {
 		req.put("updater", order.getUpdater() );
 		req.put("package_code", order.getOrder_type() );
 		req.put("status", 5);
+		req.put("source", order.getSource() );
 		/*List<OrdersDetail> details = order.getDetails();
 		List<Map<String,Object>> ods = new ArrayList<Map<String,Object>>();
 		for( OrdersDetail od : details ){
@@ -85,6 +89,20 @@ public class OrderSplitService {
 			.post( Entity.entity( req, MediaType.APPLICATION_JSON ), String.class );
 	}
 	
+	
+	public List<Map<String,Object>> getPackages(){
+		String json = wt.path("baseinfo/packages_all/")
+				.request( MediaType.APPLICATION_JSON )
+				.get( String.class );
+		return JSON.parseObject( json, new TypeReference<List<Map<String,Object>>>(){} );
+	}
+	
+	public String getSplitForm( String ordersNo ){
+		return wt.path("/outbound/shipments/orders" + ordersNo + "/")
+					.request( MediaType.APPLICATION_JSON )
+					.get( String.class );
+	}
+
 	public static void main( String args[] ){
 		/*Date d = new Date();
 		SimpleDateFormat df = new SimpleDateFormat();
@@ -92,7 +110,10 @@ public class OrderSplitService {
 		System.out.print( );*/
 		ApplicationContext ctx=new FileSystemXmlApplicationContext("classpath:applicationContext.xml");
 		IOrderService oservice = (IOrderService) ctx.getBean( "orderService" );
+		OrderSplitService orderSplit = (OrderSplitService) ctx.getBean("orderSplit");/*
 		OrderSplitService service = new OrderSplitService();
-		System.out.print( service.amountSetting( oservice.findById( 212l ),"1234" ) );
+		System.out.print( service.amountSetting( oservice.findById( 212l ),"1234" ) );*/
+		System.out.print( orderSplit.getSplitForm("83ea8b13-29f6-cda2") );
 	}
+	
 }

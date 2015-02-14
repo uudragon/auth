@@ -94,6 +94,15 @@ public class OrderService implements IOrderService {
 				}
 			}*/
 			map.put("customer_code", customer.get("code") );
+			map.put("consignee", customer.get("name") );
+			map.put("province", customer.get("province") );
+			map.put("city", customer.get("city") );
+			map.put("district", customer.get("district") );
+			map.put("address", customer.get("address") );
+			map.put("post", customer.get("post") );
+			map.put("phone", customer.get("phone") );
+			map.put("main_phone", customer.get("main_phone") );
+			map.put("mail", customer.get("mail") );
 			Long id = orderDao.save( map );
 			Order order = orderDao.findByNo( (String)map.get( "order_no" ) );
 			String json = orderSplit.getSplitDetails( order );	
@@ -129,17 +138,26 @@ public class OrderService implements IOrderService {
 	}
 	
 	@Override
+	public String getOrderSplit( Long id, String updater ){
+		Order order = orderDao.findById(id);
+		orderSplit.amountSetting( order, updater );
+		return orderSplit.getSplitForm( order.getOrder_no() );
+	}
+	
+	@Override
 	public String updateOrderSplit( Long id, String updater ) {
 		Order order = orderDao.findById(id);
-		Map<String,Object> map = new HashMap<String,Object>();
-		map.put("workflow", 4);
-		map.put("preflow", 2);
-		map.put("id", id);
-		if( orderDao.updateWorkFlow(map) == 1 ){
-			orderSplit.amountSetting( order, updater );
-			return "true";
+		if( Order.PAYMENT_COD == order.getPayment() ){
+			Map<String,Object> map = new HashMap<String,Object>();
+			map.put("workflow", 4);
+			map.put("preflow", 2);
+			map.put("id", id);
+			if( orderDao.updateWorkFlow(map) == 1 ){
+				return "true";
+			}
+			return "false";
 		}
-		return "false";
+		return "true";
 	}
 	
 	@Override

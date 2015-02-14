@@ -76,7 +76,7 @@ public class WorkFormRestService {
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	public String save( Map<String,Object> map ){
-		if( Integer.parseInt( ( (String)map.get("type") ) ) != 3 ){
+		if( (Integer)map.get("type") != 3 ){
 			map.put("update_time", new Date() );
 		}
 		if( workFormService.save( map ) != null ){

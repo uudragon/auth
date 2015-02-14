@@ -28,4 +28,6 @@ public interface IOrderService {
 
 	public String updateOrderSplit(Long id, String updater);
 
+	public String getOrderSplit(Long id, String updater);
+
 }

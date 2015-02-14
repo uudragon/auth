@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javax.ws.rs.Consumes;
-import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
@@ -241,11 +240,28 @@ public class OrderRestService {
 	 */
 	@PUT
 	@Path("{id}/split")
+	@Consumes( MediaType.APPLICATION_JSON )
 	public String splitForm( @PathParam("id") String id,
-							 @FormParam("updater") String updater ){
+							 Map<String,Object> map ){
+		String updater = (String) map.get( "updater" );
 		return orderService.updateOrderSplit( Long.parseLong( id ), updater );
 	}
 	
+	/**
+	 * 获取拆单结果
+	 * @param id
+	 * @param map
+	 * @return
+	 */
+	@GET
+	@Path("{id}/split")
+	@Produces( MediaType.APPLICATION_JSON )
+	public String getSplitForm( @PathParam("id") String id,
+							 Map<String,Object> map ){
+		String updater = (String) map.get( "updater" );
+		
+		return orderService.getOrderSplit( Long.parseLong( id ), updater );
+	}
 	/**
 	 * 更新订单内容
 	 * 路径：/atnew/ws/order 方法：put<br>
@@ -258,13 +274,23 @@ public class OrderRestService {
 	 * @return true/false
 	 */
 	@PUT
+	@Path("{id}")
+	@Consumes(MediaType.APPLICATION_JSON)
+	public String updateWorkFolw( @PathParam("id") String id,
+						  Map<String,Object> map ){
+		int i = orderService.updateWorkFolw( Short.parseShort( (String) map.get("status") ),
+											Long.parseLong( id ) );
+		return i > 0 ? "true" : "false";
+	}
+	
+	
+	@PUT
 	@Consumes(MediaType.APPLICATION_JSON)
 	public String update( Map<String,Object> map ){
 		int i = orderService.updateWorkFolw( Short.parseShort( (String) map.get("status") ),
 											Long.parseLong( (String) map.get("id") ) );
 		return i > 0 ? "true" : "false";
 	}
-	
 	/**
 	 * 保存订单状态
 	 * 

@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.uud.auth.impls.info.AccessFactory;
 import com.uud.auth.util.ConfigHelper;
+import com.uud.auth.util.PackagesSchedule;
 
 
 public class DispatchServlet extends HttpServlet{
@@ -33,6 +34,7 @@ public class DispatchServlet extends HttpServlet{
 		ServiceBeanContext.getInstance();
 		AccessFactory.getAccessInfo().load();
 		ConfigHelper.getInstance();
+		PackagesSchedule.init();
 	}
 
 	@Override

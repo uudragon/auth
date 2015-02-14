@@ -3,6 +3,9 @@ package com.uud.cs.entity;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
+
+import com.uud.auth.util.PackagesSchedule;
 
 public class Order implements Serializable{
 
@@ -22,9 +25,14 @@ public class Order implements Serializable{
 	public static final Short WORKFLOW_AUDIT=1;
 	public static final Short WORKFLOW_SPLIT=2;
 	
+	public static final Short PAYMENT_BANK=1;
+	public static final Short PAYMENT_ZHIFUBAO=2;
+	public static final Short PAYMENT_COD=3;
+	
 	private Long id;
 	private String order_no;
 	private String order_type;
+	private String packag;
 	private Date effective;
 	private Date deadline;
 	private String customer_code;
@@ -52,13 +60,106 @@ public class Order implements Serializable{
 	private Short workflow;
 	private String invoice_title;
 	
+	private String consignee;
+	private String province;
+	private String city;
+	private String district;
+	private String street;
+	private String address;
+	private String post;
+	private String phone;
+	private String main_phone;
+	private String mail;
 	
+	
+	public String getConsignee() {
+		return consignee;
+	}
+
+	public void setConsignee(String consignee) {
+		this.consignee = consignee;
+	}
+
+	public String getProvince() {
+		return province;
+	}
+
+	public void setProvince(String province) {
+		this.province = province;
+	}
+
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+
+	public String getDistrict() {
+		return district;
+	}
+
+	public void setDistrict(String district) {
+		this.district = district;
+	}
+
+	public String getStreet() {
+		return street;
+	}
+
+	public void setStreet(String street) {
+		this.street = street;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public String getPost() {
+		return post;
+	}
+
+	public void setPost(String post) {
+		this.post = post;
+	}
+
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
+	public String getMain_phone() {
+		return main_phone;
+	}
+
+	public void setMain_phone(String main_phone) {
+		this.main_phone = main_phone;
+	}
+
+	public String getMail() {
+		return mail;
+	}
+
+	public void setMail(String mail) {
+		this.mail = mail;
+	}
+
 	public String getOrder_type() {
 		return order_type;
 	}
 
 	public void setOrder_type(String order_type) {
 		this.order_type = order_type;
+		Map<String,Object> map = PackagesSchedule.getPackage( order_type );
+		this.packag = (String) map.get( "package_name" );
 	}
 
 	public String getInvoice_title() {
@@ -303,6 +404,14 @@ public class Order implements Serializable{
 
 	public void setPaid(Short paid) {
 		this.paid = paid;
+	}
+
+	public String getPackag() {
+		return packag;
+	}
+
+	public void setPackag(String packag) {
+		this.packag = packag;
 	}
 
 }
