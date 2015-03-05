@@ -71,6 +71,7 @@ public class Order implements Serializable{
 	private String main_phone;
 	private String mail;
 	
+	private Boolean split;
 	
 	public String getConsignee() {
 		return consignee;
@@ -412,6 +413,14 @@ public class Order implements Serializable{
 
 	public void setPackag(String packag) {
 		this.packag = packag;
+	}
+
+	public Boolean getSplit() {
+		return split;
+	}
+
+	public void setSplit(Boolean split) {
+		this.split = split;
 	}
 
 }

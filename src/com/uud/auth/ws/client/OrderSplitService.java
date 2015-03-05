@@ -36,20 +36,20 @@ public class OrderSplitService {
 	
 	public String getSplitDetails( Order order ){
 		Map<String,Object> req = new HashMap<String,Object>();
-		Customer customer = order.getCustomer();
+		//Customer customer = order.getCustomer();
 		req.put("orders_no", order.getOrder_no() );
-		req.put("customer_code", customer.getCode() );
-		req.put("customer_name", customer.getName() );
+		req.put("customer_code", order.getCustomer_code() );
+		req.put("customer_name", order.getConsignee() );
 /*		Date date = ;
 		SimpleDateFormat df = new SimpleDateFormat("");*/
 		req.put("effective_date", order.getEffective() );
 		String address = order.getProvince() + order.getCity() + order.getDistrict() + order.getAddress();
 		req.put("address", address );
-		req.put("customer_tel", customer.getPhone() );
+		req.put("customer_tel", order.getPhone() );
 		req.put("amount", order.getAmount() );
 		req.put("has_invoice", order.getHas_invoice()?1:0 );
 		req.put("creator", order.getCreator() );
-		req.put("updater", order.getUpdater() );
+		req.put("updater", order.getCreator() );
 		req.put("package_code", order.getOrder_type() );
 		req.put("status", 5);
 		req.put("source", order.getSource() );

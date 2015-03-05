@@ -60,6 +60,18 @@ public class OrderService implements IOrderService {
 		Map<String,Object> map = new HashMap<String,Object>();
 		map.put("audit", audit);
 		map.put("id", id);
+		Order order = findById( id );
+		if( !order.getSplit() ){
+			String json = orderSplit.getSplitDetails( order );	
+			if( json.contains( "\'error\':" ) ){
+				throw new RuntimeException("split order error!");
+			} else {
+				Map<String,Object> splitMap = new HashMap<String,Object>();
+				splitMap.put( "id", id );
+				splitMap.put( "split", 1 );
+				update(splitMap);
+			}
+		}
 		if( Order.AUDIT_INVALID == audit ){
 			map.put("status", Order.STATUS_INVALID );
 		}
@@ -108,6 +120,11 @@ public class OrderService implements IOrderService {
 			String json = orderSplit.getSplitDetails( order );	
 			if( json.contains( "\'error\':" ) ){
 				throw new RuntimeException("split order error!");
+			} else {
+				map = new HashMap<String,Object>();
+				map.put( "split", 1 );
+				map.put( "id", order.getId() );
+				update( map );
 			}
 			return id;
 		}
@@ -134,13 +151,32 @@ public class OrderService implements IOrderService {
 		Map<String,Object> map = new HashMap<String,Object>();
 		map.put("workflow", workFlow);
 		map.put("id", id);
+		Order order = findById( id );
+		if( !order.getSplit() ){
+			String json = orderSplit.getSplitDetails( order );	
+			if( json.contains( "\'error\':" ) ){
+				throw new RuntimeException("split order error!");
+			} else {
+				Map<String,Object> splitMap = new HashMap<String,Object>();
+				splitMap.put( "id", id );
+				splitMap.put( "split", 1 );
+				update(splitMap);
+			}
+		}
+		return orderDao.update(map);
+	}
+	
+	@Override
+	public int update( Map<String,Object> map ) {
 		return orderDao.update(map);
 	}
 	
 	@Override
 	public String getOrderSplit( Long id, String updater ){
 		Order order = orderDao.findById(id);
-		orderSplit.amountSetting( order, updater );
+		if( order.getPaid() != 1 ){
+			orderSplit.amountSetting( order, updater );
+		}
 		return orderSplit.getSplitForm( order.getOrder_no() );
 	}
 	

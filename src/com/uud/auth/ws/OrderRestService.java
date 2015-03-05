@@ -169,7 +169,6 @@ public class OrderRestService {
 	@Path("{id}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Order findById( @PathParam("id") String id ){
-		//Map<String,Object> map = new HashMap<String,Object>();
 		Order order = orderService.findById( Long.parseLong( id ) );
 		/*map.put("order", order);
 		Customer consumer = consumerService.findByCode( order.getCustomer_code() );
@@ -206,8 +205,8 @@ public class OrderRestService {
 	@Consumes(MediaType.APPLICATION_JSON)
 	public String updateStatus( @PathParam("id") String id,
 								Map<String,Object> map ){
-		String audit = (String) map.get("audit");
-		int i = orderService.updateAudit( Short.parseShort( audit ), Long.parseLong( id ));
+		String audit = map.get("audit").toString();
+		int i = orderService.updateAudit( Short.valueOf( audit ), Long.parseLong( id ));
 		return i > 0 ? "true" : "false";
 	}
 	
@@ -256,9 +255,8 @@ public class OrderRestService {
 	@GET
 	@Path("{id}/split")
 	@Produces( MediaType.APPLICATION_JSON )
-	public String getSplitForm( @PathParam("id") String id,
-							 Map<String,Object> map ){
-		String updater = (String) map.get( "updater" );
+	public String getSplitForm( @PathParam("id") String id, 
+								@QueryParam("updater") String updater ){
 		
 		return orderService.getOrderSplit( Long.parseLong( id ), updater );
 	}
@@ -276,10 +274,9 @@ public class OrderRestService {
 	@PUT
 	@Path("{id}")
 	@Consumes(MediaType.APPLICATION_JSON)
-	public String updateWorkFolw( @PathParam("id") String id,
+	public String update( @PathParam("id") String id,
 						  Map<String,Object> map ){
-		int i = orderService.updateWorkFolw( Short.parseShort( (String) map.get("status") ),
-											Long.parseLong( id ) );
+		int i = orderService.update( map );
 		return i > 0 ? "true" : "false";
 	}
 	

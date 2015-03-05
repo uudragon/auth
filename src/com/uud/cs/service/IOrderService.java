@@ -30,4 +30,6 @@ public interface IOrderService {
 
 	public String getOrderSplit(Long id, String updater);
 
+	public int update(Map<String, Object> map);
+
 }
