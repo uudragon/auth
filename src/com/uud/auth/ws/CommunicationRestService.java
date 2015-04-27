@@ -3,7 +3,9 @@ package com.uud.auth.ws;
 import java.util.List;
 import java.util.Map;
 
+import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
@@ -49,5 +51,17 @@ public class CommunicationRestService {
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<Map<String,Object>> findCommunication( @QueryParam("code") String code ){
 		return communicationService.findCommnication( code );
+	}
+	
+	/**
+	 * 
+	 * @param map
+	 * @return
+	 */
+	@POST
+	@Consumes(MediaType.APPLICATION_JSON)
+	public String save( Map<String,Object> map ){
+		Long id = communicationService.save( map );
+		return id != null ? "true" : "false";
 	}
 }
