@@ -92,6 +92,18 @@ public class OrderService implements IOrderService {
 				customerDao.update( customer );
 			} else {
 				customer.put( "code", UUID.randomUUID().toString() );
+				if( customer.get("province")  == null ){
+					customer.put("province", map.get("province") );
+				}
+				if( customer.get("city")  == null ){
+					customer.put("city", map.get("city") );
+				}
+				if( customer.get("district")  == null ){
+					customer.put("district", map.get("district") );
+				}
+				if( customer.get("address")  == null ){
+					customer.put("address", map.get("address") );
+				}
 				customerDao.save( customer );
 			}
 			
