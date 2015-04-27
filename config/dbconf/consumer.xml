@@ -39,7 +39,7 @@
 		 EMAIL, PROVINCE, CITY, DISTRICT, STREET, ADDRESS, POST,PHONE,  
 		 MAIN_PHONE, FAX, PAID, STATUS, CREATOR, CREATE_TIME, UPDATER, YN, MANAGER, IS_ALLOT )
 		VALUES( #code#, #type#, #name#,#sex#,#birthday#, #child#,
-		#c_sex#,#email#,#province#,#city#,#distrct#,#street#,#address#,
+		#c_sex#,#email#,#province#,#city#,#district#,#street#,#address#,
 		#post#,#phone#,#main_phone#,#fax#,#paid#,#status#,#creator#,now(),
 		#creator#,1,#creator#,1 )
 		<selectKey resultClass="long" keyProperty="id">

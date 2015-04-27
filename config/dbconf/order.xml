@@ -56,6 +56,7 @@
         <result column="PHONE" property="phone" javaType="java.lang.String"/>
         <result column="MAIN_PHONE" property="main_phone" javaType="java.lang.String"/>
         <result column="MAIL" property="mail" javaType="java.lang.String"/>
+        <result column="SPLIT" property="split" javaType="java.lang.Boolean"/>
         
         <result column="CUSTOMER_CODE" property="customer" select="consumer.findByCode"/>
         
@@ -159,6 +160,28 @@
     		<isNotEmpty prepend="and" property="end_time">
     			o.CREATE_TIME &lt; #end_time#
     		</isNotEmpty>
+    		<isNotEmpty prepend="and" property="agent_code">
+    			( o.agent_code = #agent_code#
+    			or
+    			( o.agent_code is null
+    			 and o.province in $provinces$
+    			 and o.city in $citys$
+    			 and o.district in $districts$ ) )
+    		</isNotEmpty>
+    		<isEmpty prepend="and" property="fromagent">
+    			( ( o.agent_code is not null and o.paid = 1 )
+    			or
+    			( o.agent_code is null ) )
+    		</isEmpty>
+    		<isNotEmpty prepend="and" property="province">
+    			o.province=#province#
+    		</isNotEmpty>
+    		<isNotEmpty prepend="and" property="city">
+    			o.city=#city#
+    		</isNotEmpty>
+    		<isNotEmpty prepend="and" property="district">
+    			o.district=#district#
+    		</isNotEmpty>
     	</dynamic>
     </select>
     
@@ -193,6 +216,28 @@
     		<isNotEmpty prepend="and" property="end_time">
     			o.CREATE_TIME &lt; #end_time#
     		</isNotEmpty>
+    		<isNotEmpty prepend="and" property="agent_code">
+    			( o.agent_code = #agent_code#
+    			or
+    			( o.agent_code is null
+    			 and o.province in $provinces$
+    			 and o.city in $citys$
+    			 and o.district in $districts$ ) )
+    		</isNotEmpty>
+    		<isEmpty prepend="and" property="fromagent">
+    			( ( o.agent_code is not null and o.paid = 1 )
+    			or
+    			( o.agent_code is null )  )
+    		</isEmpty>
+    		<isNotEmpty prepend="and" property="province">
+    			o.province=#province#
+    		</isNotEmpty>
+    		<isNotEmpty prepend="and" property="city">
+    			o.city=#city#
+    		</isNotEmpty>
+    		<isNotEmpty prepend="and" property="district">
+    			o.district=#district#
+    		</isNotEmpty>
     	</dynamic>
     </select>
     
@@ -212,7 +257,7 @@
     	UPDATE orders_orders o 
     	<dynamic prepend="SET">
     		<isNotEmpty prepend="," property="effective" >
-    			o.`effective`=#effetive#
+    			o.`effective`=#effective#
     		</isNotEmpty>
     		<isNotEmpty prepend="," property="deadline" >
     			o.`deadline`=#deadline#
@@ -232,8 +277,41 @@
     		<isNotEmpty prepend="," property="audit" >
     			o.`audit`=#audit#
     		</isNotEmpty>
-    		<isNotEmpty prepend="," property="invoice_title" >
-    			o.`invoice_title`=#invoice_title#
+    		<isNotEmpty prepend="," property="consignee" >
+    			o.`consignee`=#consignee#
+    		</isNotEmpty>
+    		<isNotEmpty prepend="," property="province" >
+    			o.`province`=#province#
+    		</isNotEmpty>
+    		<isNotEmpty prepend="," property="city" >
+    			o.`city`=#city#
+    		</isNotEmpty>
+    		<isNotEmpty prepend="," property="district" >
+    			o.`district`=#district#
+    		</isNotEmpty>
+    		<isNotEmpty prepend="," property="street" >
+    			o.`street`=#street#
+    		</isNotEmpty>
+    		<isNotEmpty prepend="," property="address" >
+    			o.`address`=#address#
+    		</isNotEmpty>
+    		<isNotEmpty prepend="," property="post" >
+    			o.`post`=#post#
+    		</isNotEmpty>
+    		<isNotEmpty prepend="," property="phone" >
+    			o.`phone`=#phone#
+    		</isNotEmpty>
+    		<isNotEmpty prepend="," property="main_phone" >
+    			o.`main_phone`=#main_phone#
+    		</isNotEmpty>
+    		<isNotEmpty prepend="," property="mail" >
+    			o.`mail`=#mail#
+    		</isNotEmpty>
+    		<isNotEmpty prepend="," property="split" >
+    			o.`split`=#split#
+    		</isNotEmpty>
+    		<isNotEmpty prepend="," property="order_type" >
+    			o.`order_type`=#order_type#
     		</isNotEmpty>
     	</dynamic>
     	WHERE o.`id` = #id#
