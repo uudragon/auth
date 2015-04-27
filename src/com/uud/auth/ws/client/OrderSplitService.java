@@ -52,6 +52,7 @@ public class OrderSplitService {
 		req.put("updater", order.getCreator() );
 		req.put("package_code", order.getOrder_type() );
 		req.put("status", 5);
+		req.put("agent_code", order.getAgent_code());
 		req.put("source", order.getSource() );
 		/*List<OrdersDetail> details = order.getDetails();
 		List<Map<String,Object>> ods = new ArrayList<Map<String,Object>>();
