@@ -70,6 +70,7 @@ public class Order implements Serializable{
 	private String phone;
 	private String main_phone;
 	private String mail;
+	private Integer firstsend = 1;
 	
 	private Boolean split;
 	
@@ -421,6 +422,14 @@ public class Order implements Serializable{
 
 	public void setSplit(Boolean split) {
 		this.split = split;
+	}
+
+	public Integer getFirstsend() {
+		return firstsend;
+	}
+
+	public void setFirstsend(Integer firstsend) {
+		this.firstsend = firstsend;
 	}
 
 }

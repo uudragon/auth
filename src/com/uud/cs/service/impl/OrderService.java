@@ -83,7 +83,9 @@ public class OrderService implements IOrderService {
 	
 	@Override
 	public Long save(Map<String, Object> map) throws Exception {
-		
+		if( !map.containsKey( "firstsend" ) || "".equals( map.get( "firstsend" ) ) ){
+			map.put( "firstsend", 1 );
+		}
 		@SuppressWarnings("unchecked")
 		Map<String,Object> customer = (Map<String, Object>) map.get("customer");
 		if( customer != null ){

@@ -57,6 +57,7 @@
         <result column="MAIN_PHONE" property="main_phone" javaType="java.lang.String"/>
         <result column="MAIL" property="mail" javaType="java.lang.String"/>
         <result column="SPLIT" property="split" javaType="java.lang.Boolean"/>
+        <result column="FIRSTSEND" property="firstsend" javaType="java.lang.Integer"/>
         
         <result column="CUSTOMER_CODE" property="customer" select="consumer.findByCode"/>
         
@@ -101,6 +102,7 @@
         <result column="PHONE" property="phone" javaType="java.lang.String"/>
         <result column="MAIN_PHONE" property="main_phone" javaType="java.lang.String"/>
         <result column="MAIL" property="mail" javaType="java.lang.String"/>
+        <result column="FIRSTSEND" property="firstsend" javaType="java.lang.Integer"/>
     </resultMap>
     
     
@@ -109,12 +111,12 @@
         insert into orders_orders( order_no,order_type,effective,deadline,customer_code,
         has_invoice,source,agent_code,coupon_code,discount_amount,amount,payment,status,
         validity,order_time,creator,create_time,contact_count,yn,workflow,audit,paid,
-        invoice_title,updater,consignee,province,city,district,address,post,phone,main_phone,mail )
+        invoice_title,updater,consignee,province,city,district,address,post,phone,main_phone,mail,firstsend )
         values
         ( #order_no#,#order_type#,#effective#,#deadline#,#customer_code#,
         #has_invoice#,#source#,#agent_code#,#coupon_code#,#discount_amount#,#amount#,#payment#,
         1,#validity#,#effective#,#creator#,now(),1,1,1,#audit#,#paid#,#invoice_title#,
-        #creator#,#consignee#,#province#,#city#,#district#,#address#,#post#,#phone#,#main_phone#,#mail# )
+        #creator#,#consignee#,#province#,#city#,#district#,#address#,#post#,#phone#,#main_phone#,#mail#,#firstsend#)
         <selectKey resultClass="long" keyProperty="id">
 			SELECT LAST_INSERT_ID()
 		</selectKey>
