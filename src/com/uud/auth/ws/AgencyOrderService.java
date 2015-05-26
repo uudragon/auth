@@ -19,6 +19,8 @@ import javax.ws.rs.core.MediaType;
 
 import com.uud.auth.entity.Page;
 import com.uud.auth.servlet.ServiceBeanContext;
+import com.uud.auth.util.ConfigHelper;
+import com.uud.auth.util.SequenceUtil;
 import com.uud.auth.ws.client.AgencyMessageService;
 import com.uud.auth.ws.client.OrderSplitService;
 import com.uud.cs.entity.Order;
@@ -153,5 +155,11 @@ public class AgencyOrderService {
 	@Produces( MediaType.APPLICATION_JSON )
 	public String getSplitForm( @PathParam("order_no") String order_no ){
 		return orderSplit.getSplitForm( order_no );
+	}
+	
+	@GET
+	@Path("getOrderNo")
+	public String getSeq(){
+		return "d" + SequenceUtil.getSequence();
 	}
 }

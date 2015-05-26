@@ -13,8 +13,13 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
+import org.apache.log4j.Logger;
+
+import com.alibaba.fastjson.JSON;
 import com.uud.auth.entity.Page;
 import com.uud.auth.servlet.ServiceBeanContext;
+import com.uud.auth.util.ConfigHelper;
+import com.uud.auth.util.SequenceUtil;
 import com.uud.cs.entity.Order;
 import com.uud.cs.service.ICustomerService;
 import com.uud.cs.service.IOrderService;
@@ -97,6 +102,8 @@ import com.uud.cs.service.IOrderService;
  */
 @Path("order")
 public class OrderRestService {
+	
+	private static final Logger LOG = Logger.getLogger( OrderRestService.class );
 	
 	private IOrderService orderService = ServiceBeanContext.getInstance().getBean("orderService");
 	
@@ -303,7 +310,16 @@ public class OrderRestService {
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	public String save( Map<String,Object> map ) throws Exception{
+		if( LOG.isDebugEnabled() ){
+			LOG.debug( "receive:" + JSON.toJSONString( map ) );
+		}
 		Long id = orderService.save( map );
 		return id != null ? "true" : "false";
+	}
+	
+	@GET
+	@Path("getOrderNo")
+	public String getSeq(){
+		return ConfigHelper.getInstance().getString( "bam.cluster.id" ) + SequenceUtil.getSequence();
 	}
 }

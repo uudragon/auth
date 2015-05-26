@@ -45,7 +45,11 @@ public class OrderSplitService {
 		req.put("effective_date", order.getEffective() );
 		String address = order.getProvince() + order.getCity() + order.getDistrict() + order.getAddress();
 		req.put("address", address );
+		req.put("province", order.getProvince());
+		req.put( "city", order.getCity() );
 		req.put("customer_tel", order.getPhone() );
+		req.put( "main_phone", order.getMain_phone() );
+		req.put( "post", order.getPost() );
 		req.put("amount", order.getAmount() );
 		req.put("has_invoice", order.getHas_invoice()?1:0 );
 		req.put("creator", order.getCreator() );

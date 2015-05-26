@@ -28,5 +28,6 @@ public class APIApplication extends ResourceConfig {
         register(ExchangeRestService.class);
         register(AgencyOrderService.class);
         register(OrderRebateService.class);
+        register(Order4WebRestService.class);
     }
 }
