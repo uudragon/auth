@@ -31,6 +31,13 @@
 	<servlet>
 		<description>
 		</description>
+		<display-name>AlipayAgencyServlet</display-name>
+		<servlet-name>AlipayAgencyServlet</servlet-name>
+		<servlet-class>com.uud.pay.servlet.AlipayAgencyServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<description>
+		</description>
 		<display-name>AlipayNotifyServlet</display-name>
 		<servlet-name>AlipayNotifyServlet</servlet-name>
 		<servlet-class>com.uud.pay.servlet.AlipayNotifyServlet</servlet-class>
@@ -45,6 +52,10 @@
 	<servlet-mapping>  
 		<servlet-name>JerseyServlet</servlet-name>  
 		<url-pattern>/ws/*</url-pattern>  
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>AlipayAgencyServlet</servlet-name>
+		<url-pattern>/AlipayAgencyServlet</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>AlipayServlet</servlet-name>
