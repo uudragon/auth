@@ -171,7 +171,9 @@
     			 and o.district in $districts$ ) )
     		</isNotEmpty>
     		<isEmpty prepend="and" property="fromagent">
-    			( ( o.agent_code is not null and o.paid = 1 )
+    			( ( o.agent_code is not null AND
+    			( o.paid = 1 OR ( o.paid = 0 AND o.`payment` = 3 ) )
+    			)
     			or
     			( o.agent_code is null ) )
     		</isEmpty>
@@ -227,9 +229,11 @@
     			 and o.district in $districts$ ) )
     		</isNotEmpty>
     		<isEmpty prepend="and" property="fromagent">
-    			( ( o.agent_code is not null and o.paid = 1 )
+    			( ( o.agent_code is not null AND
+    			( o.paid = 1 OR ( o.paid = 0 AND o.`payment` = 3 ) )
+    			)
     			or
-    			( o.agent_code is null )  )
+    			( o.agent_code is null ) )
     		</isEmpty>
     		<isNotEmpty prepend="and" property="province">
     			o.province=#province#
@@ -352,6 +356,14 @@
     	SELECT *, MAX(o.`create_time`) FROM orders_orders o LEFT JOIN customer_customer c 
     	ON o.`customer_code` = c.`code`
     	where c.phone=#value#
+    </select>
+    
+    <select id="findByDate" resultMap="resultMap.orderMap2" parameterClass="java.util.HashMap">
+    
+    SELECT * FROM `orders_orders` o 
+    	WHERE  DATE_FORMAT(o.`create_time`,'%Y-%m-%d') &gt;= #startDate#
+    	   AND DATE_FORMAT(o.`create_time`,'%Y-%m-%d') &lt;= #endDate#
+	   AND o.`agent_code` = #agentCode#
     </select>
     
     <update id="updateDetailStatus" parameterClass="java.util.Map">
