@@ -1,5 +1,6 @@
 package com.uud.cs.dao;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -30,4 +31,6 @@ public interface IOrderDao {
 	public Order findByPhone(String phone);
 	
 	public int updateDetailStatus(long id, int status);
+	
+	public List<Order> findByDate( Date startDate, Date endDate, String agentCode );
 }

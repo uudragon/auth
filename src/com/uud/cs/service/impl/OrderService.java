@@ -1,5 +1,6 @@
 package com.uud.cs.service.impl;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -197,7 +198,8 @@ public class OrderService implements IOrderService {
 	@Override
 	public String updateOrderSplit( Long id, String updater ) {
 		Order order = orderDao.findById(id);
-		if( Order.PAYMENT_COD == order.getPayment() ){
+		if( Order.PAYMENT_COD.equals( order.getPayment() )
+				|| order.getPaid() == 1 ){
 			Map<String,Object> map = new HashMap<String,Object>();
 			map.put("workflow", 4);
 			map.put("preflow", 2);
@@ -225,6 +227,11 @@ public class OrderService implements IOrderService {
 		return orderDao.findByPhone( phone );
 	}
 	
+	@Override
+	public List<Order> findByDate(Date startDate, Date endDate, String agentCode) {
+		return orderDao.findByDate(startDate, endDate, agentCode);
+	}
+	
 	public IOrderDao getOrderDao() {
 		return orderDao;
 	}
@@ -240,6 +247,5 @@ public class OrderService implements IOrderService {
 	public void setConsumerDao(ICustomerDao consumerDao) {
 		this.customerDao = consumerDao;
 	}
-
 	
 }

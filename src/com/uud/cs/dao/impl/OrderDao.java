@@ -1,5 +1,7 @@
 package com.uud.cs.dao.impl;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -96,5 +98,15 @@ public class OrderDao extends SqlMapClientDaoSupport implements IOrderDao{
 		map.put( "id", id );
 		map.put( "status", status );
 		return this.getSqlMapClientTemplate().update( "order.updateDetailStatus", map );
+	}
+
+	@SuppressWarnings("unchecked")
+	public List<Order> findByDate(Date startDate, Date endDate, String agentCode) {
+		Map<String,Object> map = new HashMap<String,Object>();
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		map.put("endDate", sdf.format( endDate ) );
+		map.put("startDate", sdf.format( startDate ));
+		map.put("agentCode", agentCode);
+		return this.getSqlMapClientTemplate().queryForList( "order.findByDate", map );
 	}
 }

@@ -1,5 +1,7 @@
 package com.uud.cs.service;
 
+import java.util.Date;
+import java.util.List;
 import java.util.Map;
 
 import com.uud.auth.entity.Page;
@@ -31,5 +33,7 @@ public interface IOrderService {
 	public String getOrderSplit(Long id, String updater);
 
 	public int update(Map<String, Object> map);
+	
+	public List<Order> findByDate( Date startDate, Date endDate, String agentCode);
 
 }

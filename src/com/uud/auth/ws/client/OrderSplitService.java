@@ -47,6 +47,7 @@ public class OrderSplitService {
 		req.put("address", address );
 		req.put("province", order.getProvince());
 		req.put( "city", order.getCity() );
+		req.put( "district", order.getDistrict() );
 		req.put("customer_tel", order.getPhone() );
 		req.put( "main_phone", order.getMain_phone() );
 		req.put( "post", order.getPost() );
