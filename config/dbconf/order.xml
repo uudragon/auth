@@ -358,12 +358,23 @@
     	where c.phone=#value#
     </select>
     
-    <select id="findByDate" resultMap="resultMap.orderMap2" parameterClass="java.util.HashMap">
+    <select id="findByDate" resultMap="resultMap.orderMap2" parameterClass="java.util.HashMap">   
+	    SELECT * FROM `orders_orders` o 
+	    	WHERE  DATE_FORMAT(o.`create_time`,'%Y-%m-%d') &gt;= #startDate#
+	    	   AND DATE_FORMAT(o.`create_time`,'%Y-%m-%d') &lt;= #endDate#
+	    	   AND o.`agent_code` IS NOT NULL 
+    	       AND o.`agent_code` != ''
+    	       AND o.`paid` = 1
+    	       LIMIT #start#,#pageSize#
+    </select>
     
-    SELECT * FROM `orders_orders` o 
-    	WHERE  DATE_FORMAT(o.`create_time`,'%Y-%m-%d') &gt;= #startDate#
-    	   AND DATE_FORMAT(o.`create_time`,'%Y-%m-%d') &lt;= #endDate#
-	   AND o.`agent_code` = #agentCode#
+    <select id="countByDate" resultClass="java.lang.Integer" parameterClass="java.util.HashMap">   
+    	SELECT count(1) FROM `orders_orders` o 
+	    	WHERE  DATE_FORMAT(o.`create_time`,'%Y-%m-%d') &gt;= #startDate#
+	    	   AND DATE_FORMAT(o.`create_time`,'%Y-%m-%d') &lt;= #endDate#
+	    	   AND o.`agent_code` IS NOT NULL 
+    	       AND o.`agent_code` != ''
+    	       AND o.`paid` = 1
     </select>
     
     <update id="updateDetailStatus" parameterClass="java.util.Map">

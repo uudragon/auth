@@ -228,8 +228,13 @@ public class OrderService implements IOrderService {
 	}
 	
 	@Override
-	public List<Order> findByDate(Date startDate, Date endDate, String agentCode) {
-		return orderDao.findByDate(startDate, endDate, agentCode);
+	public List<Order> findByDate(Date startDate, Date endDate, Integer pageSize, Integer pageNo) {
+		return orderDao.findByDate(startDate, endDate, pageSize, pageNo );
+	}
+	
+	@Override
+	public Integer countByDate(Date startDate, Date endDate ) {
+		return orderDao.countByDate(startDate, endDate );
 	}
 	
 	public IOrderDao getOrderDao() {

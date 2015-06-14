@@ -34,6 +34,8 @@ public interface IOrderService {
 
 	public int update(Map<String, Object> map);
 	
-	public List<Order> findByDate( Date startDate, Date endDate, String agentCode);
+	public List<Order> findByDate( Date startDate, Date endDate, Integer pageSize, Integer pageNo );
+
+	public Integer countByDate(Date startDate, Date endDate);
 
 }

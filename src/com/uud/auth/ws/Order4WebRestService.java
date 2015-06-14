@@ -45,14 +45,22 @@ public class Order4WebRestService {
 	@Path("amount")
 	public String getAmount( @QueryParam("startDate") String startDate,
 											@QueryParam("endDate") String endDate,
-											@QueryParam("agentCode") String agentCode) throws ParseException{
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-		List<Order> list = orderService.findByDate(sdf.parse(startDate), sdf.parse(endDate), agentCode);
-		double amount = 0.0f;
-		for( int i = 0 ; i< list.size(); i++){
-			Order order = list.get( i );
-			amount = amount +order.getAmount();
+											@QueryParam("pageSize") Integer pageSize,
+											@QueryParam("pageNo") Integer pageNo) throws ParseException{
+		if( pageSize == null ){
+			pageSize =10;
 		}
-		return String.valueOf( amount );
+		if( pageNo == null ){
+			pageNo = 1;
+		}
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		List<Order> list = orderService.findByDate(sdf.parse(startDate), sdf.parse(endDate), pageSize, pageNo);
+		Integer total = orderService.countByDate(sdf.parse(startDate), sdf.parse(endDate));
+		Map<String,Object> map = new HashMap<String,Object>();
+		map.put("recordsCount", total);
+		map.put("records", list);
+		map.put("pageSize", pageSize);
+		map.put("pageNo", pageNo);
+		return JSON.toJSONString( map );
 	}
 }

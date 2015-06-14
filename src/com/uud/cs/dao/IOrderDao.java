@@ -32,5 +32,7 @@ public interface IOrderDao {
 	
 	public int updateDetailStatus(long id, int status);
 	
-	public List<Order> findByDate( Date startDate, Date endDate, String agentCode );
+	public List<Order> findByDate( Date startDate, Date endDate, Integer pageSize, Integer pageNo );
+
+	public Integer countByDate(Date startDate, Date endDate);
 }
